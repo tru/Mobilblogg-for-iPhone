@@ -1,0 +1,405 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* MobilBloggAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* MobilBloggAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		6144628C109019D800AD9801 /* MBURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446289109019D800AD9801 /* MBURLConnection.m */; };
+		6144628D109019D800AD9801 /* MBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6144628B109019D800AD9801 /* MBAPI.m */; };
+		6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446291109019E100AD9801 /* NSObject+SBJSON.m */; };
+		6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446293109019E100AD9801 /* NSString+SBJSON.m */; };
+		6144629E109019E100AD9801 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446295109019E100AD9801 /* SBJSON.m */; };
+		6144629F109019E100AD9801 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446297109019E100AD9801 /* SBJsonBase.m */; };
+		614462A0109019E100AD9801 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446299109019E100AD9801 /* SBJsonParser.m */; };
+		614462A1109019E100AD9801 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6144629B109019E100AD9801 /* SBJsonWriter.m */; };
+		614462BF10901B2400AD9801 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 614462BE10901B2400AD9801 /* Three20.bundle */; };
+		614462E710901B5300AD9801 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 614462E610901B5300AD9801 /* QuartzCore.framework */; };
+		614462F110901C3D00AD9801 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614462F010901C3D00AD9801 /* RootController.m */; };
+		61446323109020A200AD9801 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 614462B510901ADC00AD9801 /* libThree20.a */; };
+		6144639510902A8F00AD9801 /* MBStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6144639410902A8F00AD9801 /* MBStore.m */; };
+		614463D1109034CA00AD9801 /* ConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614463CF109034CA00AD9801 /* ConfigController.m */; };
+		614463D2109034CA00AD9801 /* ConfigController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 614463D0109034CA00AD9801 /* ConfigController.xib */; };
+		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
+		61BE24C51090B85400D76E03 /* defaultRemoteImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61BE24C41090B85400D76E03 /* defaultRemoteImage.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		614462B410901ADC00AD9801 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 614462AD10901ADC00AD9801 /* Three20.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+		614463211090208100AD9801 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 614462AD10901ADC00AD9801 /* Three20.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* MobilBloggAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobilBloggAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* MobilBloggAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobilBloggAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* MobilBlogg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobilBlogg.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* MobilBlogg_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobilBlogg_Prefix.pch; sourceTree = "<group>"; };
+		61446288109019D800AD9801 /* MBURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBURLConnection.h; sourceTree = "<group>"; };
+		61446289109019D800AD9801 /* MBURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBURLConnection.m; sourceTree = "<group>"; };
+		6144628A109019D800AD9801 /* MBAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAPI.h; sourceTree = "<group>"; };
+		6144628B109019D800AD9801 /* MBAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAPI.m; sourceTree = "<group>"; };
+		6144628F109019E100AD9801 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		61446290109019E100AD9801 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		61446291109019E100AD9801 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		61446292109019E100AD9801 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		61446293109019E100AD9801 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		61446294109019E100AD9801 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		61446295109019E100AD9801 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		61446296109019E100AD9801 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		61446297109019E100AD9801 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		61446298109019E100AD9801 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		61446299109019E100AD9801 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		6144629A109019E100AD9801 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		6144629B109019E100AD9801 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		614462AD10901ADC00AD9801 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
+		614462BE10901B2400AD9801 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
+		614462E610901B5300AD9801 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		614462EF10901C3D00AD9801 /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
+		614462F010901C3D00AD9801 /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
+		6144639310902A8F00AD9801 /* MBStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBStore.h; path = ../MBStore.h; sourceTree = "<group>"; };
+		6144639410902A8F00AD9801 /* MBStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBStore.m; path = ../MBStore.m; sourceTree = "<group>"; };
+		614463CE109034CA00AD9801 /* ConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigController.h; sourceTree = "<group>"; };
+		614463CF109034CA00AD9801 /* ConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigController.m; sourceTree = "<group>"; };
+		614463D0109034CA00AD9801 /* ConfigController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ConfigController.xib; path = Classes/ConfigController.xib; sourceTree = "<group>"; };
+		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
+		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
+		61BE24C41090B85400D76E03 /* defaultRemoteImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultRemoteImage.jpg; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* MobilBlogg-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobilBlogg-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61446323109020A200AD9801 /* libThree20.a in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				614462E710901B5300AD9801 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				61BE24371090B20C00D76E03 /* BlogListController.h */,
+				61BE24381090B20C00D76E03 /* BlogListController.m */,
+				6144639310902A8F00AD9801 /* MBStore.h */,
+				6144639410902A8F00AD9801 /* MBStore.m */,
+				1D3623240D0F684500981E51 /* MobilBloggAppDelegate.h */,
+				1D3623250D0F684500981E51 /* MobilBloggAppDelegate.m */,
+				614462EF10901C3D00AD9801 /* RootController.h */,
+				614462F010901C3D00AD9801 /* RootController.m */,
+				614463CE109034CA00AD9801 /* ConfigController.h */,
+				614463CF109034CA00AD9801 /* ConfigController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* MobilBlogg.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				614462AD10901ADC00AD9801 /* Three20.xcodeproj */,
+				6144628E109019E100AD9801 /* JSON */,
+				61446285109019BF00AD9801 /* MBAPI */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* MobilBlogg_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				61BE24C41090B85400D76E03 /* defaultRemoteImage.jpg */,
+				614463D0109034CA00AD9801 /* ConfigController.xib */,
+				614462BE10901B2400AD9801 /* Three20.bundle */,
+				8D1107310486CEB800E47090 /* MobilBlogg-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				614462E610901B5300AD9801 /* QuartzCore.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61446285109019BF00AD9801 /* MBAPI */ = {
+			isa = PBXGroup;
+			children = (
+				61446288109019D800AD9801 /* MBURLConnection.h */,
+				61446289109019D800AD9801 /* MBURLConnection.m */,
+				6144628A109019D800AD9801 /* MBAPI.h */,
+				6144628B109019D800AD9801 /* MBAPI.m */,
+			);
+			name = MBAPI;
+			sourceTree = "<group>";
+		};
+		6144628E109019E100AD9801 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				6144628F109019E100AD9801 /* JSON.h */,
+				61446290109019E100AD9801 /* NSObject+SBJSON.h */,
+				61446291109019E100AD9801 /* NSObject+SBJSON.m */,
+				61446292109019E100AD9801 /* NSString+SBJSON.h */,
+				61446293109019E100AD9801 /* NSString+SBJSON.m */,
+				61446294109019E100AD9801 /* SBJSON.h */,
+				61446295109019E100AD9801 /* SBJSON.m */,
+				61446296109019E100AD9801 /* SBJsonBase.h */,
+				61446297109019E100AD9801 /* SBJsonBase.m */,
+				61446298109019E100AD9801 /* SBJsonParser.h */,
+				61446299109019E100AD9801 /* SBJsonParser.m */,
+				6144629A109019E100AD9801 /* SBJsonWriter.h */,
+				6144629B109019E100AD9801 /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		614462AE10901ADC00AD9801 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				614462B510901ADC00AD9801 /* libThree20.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* MobilBlogg */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MobilBlogg" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				614463221090208100AD9801 /* PBXTargetDependency */,
+			);
+			name = MobilBlogg;
+			productName = MobilBlogg;
+			productReference = 1D6058910D05DD3D006BFB54 /* MobilBlogg.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MobilBlogg" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 614462AE10901ADC00AD9801 /* Products */;
+					ProjectRef = 614462AD10901ADC00AD9801 /* Three20.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* MobilBlogg */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		614462B510901ADC00AD9801 /* libThree20.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20.a;
+			remoteRef = 614462B410901ADC00AD9801 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				614462BF10901B2400AD9801 /* Three20.bundle in Resources */,
+				614463D2109034CA00AD9801 /* ConfigController.xib in Resources */,
+				61BE24C51090B85400D76E03 /* defaultRemoteImage.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* MobilBloggAppDelegate.m in Sources */,
+				6144628C109019D800AD9801 /* MBURLConnection.m in Sources */,
+				6144628D109019D800AD9801 /* MBAPI.m in Sources */,
+				6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */,
+				6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */,
+				6144629E109019E100AD9801 /* SBJSON.m in Sources */,
+				6144629F109019E100AD9801 /* SBJsonBase.m in Sources */,
+				614462A0109019E100AD9801 /* SBJsonParser.m in Sources */,
+				614462A1109019E100AD9801 /* SBJsonWriter.m in Sources */,
+				614462F110901C3D00AD9801 /* RootController.m in Sources */,
+				6144639510902A8F00AD9801 /* MBStore.m in Sources */,
+				614463D1109034CA00AD9801 /* ConfigController.m in Sources */,
+				61BE24391090B20C00D76E03 /* BlogListController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		614463221090208100AD9801 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20;
+			targetProxy = 614463211090208100AD9801 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MobilBlogg_Prefix.pch;
+				HEADER_SEARCH_PATHS = ../three20/src;
+				INFOPLIST_FILE = "MobilBlogg-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = MobilBlogg;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MobilBlogg_Prefix.pch;
+				HEADER_SEARCH_PATHS = ../three20/src;
+				INFOPLIST_FILE = "MobilBlogg-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = MobilBlogg;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MobilBlogg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MobilBlogg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
