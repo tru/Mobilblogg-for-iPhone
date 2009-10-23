@@ -12,8 +12,10 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		6144628C109019D800AD9801 /* MBURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446289109019D800AD9801 /* MBURLConnection.m */; };
-		6144628D109019D800AD9801 /* MBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6144628B109019D800AD9801 /* MBAPI.m */; };
+		613479811092136800DD5DE7 /* MBURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6134797D1092136800DD5DE7 /* MBURLResponse.m */; };
+		613479821092136800DD5DE7 /* MBStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6134797F1092136800DD5DE7 /* MBStore.m */; };
+		613479881092138000DD5DE7 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479831092138000DD5DE7 /* GTMNSString+URLArguments.m */; };
+		613479891092138000DD5DE7 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479851092138000DD5DE7 /* GTMNSDictionary+URLArguments.m */; };
 		6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446291109019E100AD9801 /* NSObject+SBJSON.m */; };
 		6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446293109019E100AD9801 /* NSString+SBJSON.m */; };
 		6144629E109019E100AD9801 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446295109019E100AD9801 /* SBJSON.m */; };
@@ -24,11 +26,11 @@
 		614462E710901B5300AD9801 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 614462E610901B5300AD9801 /* QuartzCore.framework */; };
 		614462F110901C3D00AD9801 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614462F010901C3D00AD9801 /* RootController.m */; };
 		61446323109020A200AD9801 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 614462B510901ADC00AD9801 /* libThree20.a */; };
-		6144639510902A8F00AD9801 /* MBStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6144639410902A8F00AD9801 /* MBStore.m */; };
 		614463D1109034CA00AD9801 /* ConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614463CF109034CA00AD9801 /* ConfigController.m */; };
 		614463D2109034CA00AD9801 /* ConfigController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 614463D0109034CA00AD9801 /* ConfigController.xib */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE24C51090B85400D76E03 /* defaultRemoteImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61BE24C41090B85400D76E03 /* defaultRemoteImage.jpg */; };
+		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +59,15 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* MobilBlogg_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobilBlogg_Prefix.pch; sourceTree = "<group>"; };
-		61446288109019D800AD9801 /* MBURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBURLConnection.h; sourceTree = "<group>"; };
-		61446289109019D800AD9801 /* MBURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBURLConnection.m; sourceTree = "<group>"; };
-		6144628A109019D800AD9801 /* MBAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAPI.h; sourceTree = "<group>"; };
-		6144628B109019D800AD9801 /* MBAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAPI.m; sourceTree = "<group>"; };
+		6134797D1092136800DD5DE7 /* MBURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBURLResponse.m; path = MBAPI/MBURLResponse.m; sourceTree = "<group>"; };
+		6134797E1092136800DD5DE7 /* MBURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBURLResponse.h; path = MBAPI/MBURLResponse.h; sourceTree = "<group>"; };
+		6134797F1092136800DD5DE7 /* MBStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBStore.m; path = MBAPI/MBStore.m; sourceTree = "<group>"; };
+		613479801092136800DD5DE7 /* MBStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBStore.h; path = MBAPI/MBStore.h; sourceTree = "<group>"; };
+		613479831092138000DD5DE7 /* GTMNSString+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GTMNSString+URLArguments.m"; path = "GTM/GTMNSString+URLArguments.m"; sourceTree = "<group>"; };
+		613479841092138000DD5DE7 /* GTMNSString+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GTMNSString+URLArguments.h"; path = "GTM/GTMNSString+URLArguments.h"; sourceTree = "<group>"; };
+		613479851092138000DD5DE7 /* GTMNSDictionary+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GTMNSDictionary+URLArguments.m"; path = "GTM/GTMNSDictionary+URLArguments.m"; sourceTree = "<group>"; };
+		613479861092138000DD5DE7 /* GTMNSDictionary+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GTMNSDictionary+URLArguments.h"; path = "GTM/GTMNSDictionary+URLArguments.h"; sourceTree = "<group>"; };
+		613479871092138000DD5DE7 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDefines.h; path = GTM/GTMDefines.h; sourceTree = "<group>"; };
 		6144628F109019E100AD9801 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		61446290109019E100AD9801 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		61446291109019E100AD9801 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -79,14 +86,14 @@
 		614462E610901B5300AD9801 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		614462EF10901C3D00AD9801 /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
 		614462F010901C3D00AD9801 /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
-		6144639310902A8F00AD9801 /* MBStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBStore.h; path = ../MBStore.h; sourceTree = "<group>"; };
-		6144639410902A8F00AD9801 /* MBStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBStore.m; path = ../MBStore.m; sourceTree = "<group>"; };
 		614463CE109034CA00AD9801 /* ConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigController.h; sourceTree = "<group>"; };
 		614463CF109034CA00AD9801 /* ConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigController.m; sourceTree = "<group>"; };
 		614463D0109034CA00AD9801 /* ConfigController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ConfigController.xib; path = Classes/ConfigController.xib; sourceTree = "<group>"; };
 		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
 		61BE24C41090B85400D76E03 /* defaultRemoteImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultRemoteImage.jpg; sourceTree = "<group>"; };
+		61BE258D1091DAF600D76E03 /* BlogListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListModel.h; sourceTree = "<group>"; };
+		61BE258E1091DAF600D76E03 /* BlogListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListModel.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MobilBlogg-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobilBlogg-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,8 +118,8 @@
 			children = (
 				61BE24371090B20C00D76E03 /* BlogListController.h */,
 				61BE24381090B20C00D76E03 /* BlogListController.m */,
-				6144639310902A8F00AD9801 /* MBStore.h */,
-				6144639410902A8F00AD9801 /* MBStore.m */,
+				61BE258D1091DAF600D76E03 /* BlogListModel.h */,
+				61BE258E1091DAF600D76E03 /* BlogListModel.m */,
 				1D3623240D0F684500981E51 /* MobilBloggAppDelegate.h */,
 				1D3623250D0F684500981E51 /* MobilBloggAppDelegate.m */,
 				614462EF10901C3D00AD9801 /* RootController.h */,
@@ -134,8 +141,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				614462AD10901ADC00AD9801 /* Three20.xcodeproj */,
-				6144628E109019E100AD9801 /* JSON */,
+				61BE25771090CA5900D76E03 /* Externals */,
 				61446285109019BF00AD9801 /* MBAPI */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -180,10 +186,10 @@
 		61446285109019BF00AD9801 /* MBAPI */ = {
 			isa = PBXGroup;
 			children = (
-				61446288109019D800AD9801 /* MBURLConnection.h */,
-				61446289109019D800AD9801 /* MBURLConnection.m */,
-				6144628A109019D800AD9801 /* MBAPI.h */,
-				6144628B109019D800AD9801 /* MBAPI.m */,
+				6134797D1092136800DD5DE7 /* MBURLResponse.m */,
+				6134797E1092136800DD5DE7 /* MBURLResponse.h */,
+				6134797F1092136800DD5DE7 /* MBStore.m */,
+				613479801092136800DD5DE7 /* MBStore.h */,
 			);
 			name = MBAPI;
 			sourceTree = "<group>";
@@ -214,6 +220,28 @@
 				614462B510901ADC00AD9801 /* libThree20.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		61BE25771090CA5900D76E03 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				61BE25901091DE7500D76E03 /* GTM */,
+				6144628E109019E100AD9801 /* JSON */,
+				614462AD10901ADC00AD9801 /* Three20.xcodeproj */,
+			);
+			name = Externals;
+			sourceTree = "<group>";
+		};
+		61BE25901091DE7500D76E03 /* GTM */ = {
+			isa = PBXGroup;
+			children = (
+				613479831092138000DD5DE7 /* GTMNSString+URLArguments.m */,
+				613479841092138000DD5DE7 /* GTMNSString+URLArguments.h */,
+				613479851092138000DD5DE7 /* GTMNSDictionary+URLArguments.m */,
+				613479861092138000DD5DE7 /* GTMNSDictionary+URLArguments.h */,
+				613479871092138000DD5DE7 /* GTMDefines.h */,
+			);
+			name = GTM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,8 +318,6 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* MobilBloggAppDelegate.m in Sources */,
-				6144628C109019D800AD9801 /* MBURLConnection.m in Sources */,
-				6144628D109019D800AD9801 /* MBAPI.m in Sources */,
 				6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */,
 				6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */,
 				6144629E109019E100AD9801 /* SBJSON.m in Sources */,
@@ -299,9 +325,13 @@
 				614462A0109019E100AD9801 /* SBJsonParser.m in Sources */,
 				614462A1109019E100AD9801 /* SBJsonWriter.m in Sources */,
 				614462F110901C3D00AD9801 /* RootController.m in Sources */,
-				6144639510902A8F00AD9801 /* MBStore.m in Sources */,
 				614463D1109034CA00AD9801 /* ConfigController.m in Sources */,
 				61BE24391090B20C00D76E03 /* BlogListController.m in Sources */,
+				61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */,
+				613479811092136800DD5DE7 /* MBURLResponse.m in Sources */,
+				613479821092136800DD5DE7 /* MBStore.m in Sources */,
+				613479881092138000DD5DE7 /* GTMNSString+URLArguments.m in Sources */,
+				613479891092138000DD5DE7 /* GTMNSDictionary+URLArguments.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
