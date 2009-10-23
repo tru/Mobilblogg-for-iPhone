@@ -16,6 +16,7 @@
 		613479821092136800DD5DE7 /* MBStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6134797F1092136800DD5DE7 /* MBStore.m */; };
 		613479881092138000DD5DE7 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479831092138000DD5DE7 /* GTMNSString+URLArguments.m */; };
 		613479891092138000DD5DE7 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479851092138000DD5DE7 /* GTMNSDictionary+URLArguments.m */; };
+		613479A7109217AA00DD5DE7 /* BlogListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479A6109217AA00DD5DE7 /* BlogListDataSource.m */; };
 		6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446291109019E100AD9801 /* NSObject+SBJSON.m */; };
 		6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446293109019E100AD9801 /* NSString+SBJSON.m */; };
 		6144629E109019E100AD9801 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446295109019E100AD9801 /* SBJSON.m */; };
@@ -68,6 +69,8 @@
 		613479851092138000DD5DE7 /* GTMNSDictionary+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GTMNSDictionary+URLArguments.m"; path = "GTM/GTMNSDictionary+URLArguments.m"; sourceTree = "<group>"; };
 		613479861092138000DD5DE7 /* GTMNSDictionary+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GTMNSDictionary+URLArguments.h"; path = "GTM/GTMNSDictionary+URLArguments.h"; sourceTree = "<group>"; };
 		613479871092138000DD5DE7 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDefines.h; path = GTM/GTMDefines.h; sourceTree = "<group>"; };
+		613479A5109217AA00DD5DE7 /* BlogListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListDataSource.h; sourceTree = "<group>"; };
+		613479A6109217AA00DD5DE7 /* BlogListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListDataSource.m; sourceTree = "<group>"; };
 		6144628F109019E100AD9801 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		61446290109019E100AD9801 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		61446291109019E100AD9801 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				61BE258E1091DAF600D76E03 /* BlogListModel.m */,
 				1D3623240D0F684500981E51 /* MobilBloggAppDelegate.h */,
 				1D3623250D0F684500981E51 /* MobilBloggAppDelegate.m */,
+				613479A5109217AA00DD5DE7 /* BlogListDataSource.h */,
+				613479A6109217AA00DD5DE7 /* BlogListDataSource.m */,
 				614462EF10901C3D00AD9801 /* RootController.h */,
 				614462F010901C3D00AD9801 /* RootController.m */,
 				614463CE109034CA00AD9801 /* ConfigController.h */,
@@ -332,6 +337,7 @@
 				613479821092136800DD5DE7 /* MBStore.m in Sources */,
 				613479881092138000DD5DE7 /* GTMNSString+URLArguments.m in Sources */,
 				613479891092138000DD5DE7 /* GTMNSDictionary+URLArguments.m in Sources */,
+				613479A7109217AA00DD5DE7 /* BlogListDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

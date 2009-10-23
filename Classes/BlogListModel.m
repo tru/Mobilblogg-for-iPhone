@@ -46,21 +46,11 @@
 	
 	url = [url stringByAppendingFormat:@"?%@", [dict gtm_httpArgumentsString]];
 	TTURLRequest *req = [TTURLRequest requestWithURL:url delegate:self];
-	req.cachePolicy = TTURLRequestCachePolicyNoCache;
+	req.cachePolicy = cachePolicy;
 	req.response = responseModel;
 	req.httpMethod = @"GET";
 	
 	[req send];
-}
-
-- (void)requestDidFinishLoad:(TTURLRequest*)request
-{
-	NSLog(@"Hello did finish load!");
-}
-
-- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error
-{
-	NSLog(@"Error: %@", [error localizedDescription]);
 }
 
 -(void)reset
@@ -74,7 +64,7 @@
 
 -(NSArray *)results
 {
-	NSLog(@"Helo results!)");
+	NSLog(@"Helo results!");
     return [[[responseModel entries] copy] autorelease];
 }
 

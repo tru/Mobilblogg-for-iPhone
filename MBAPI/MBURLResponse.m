@@ -7,6 +7,7 @@
 //
 
 #import "MBURLResponse.h"
+#import "JSON.h"
 
 @implementation MBURLResponse
 @synthesize entries;
@@ -34,7 +35,23 @@
 #pragma mark TTURLResponse
 - (NSError*)request:(TTURLRequest*)request processResponse:(NSHTTPURLResponse*)response data:(id)data
 {
-    NSLog(@"We have data, I guess %s", [data bytes]);
+	SBJSON *parser = [[SBJSON alloc] init];
+	
+	/* Wee Latrin1 ;) */
+	NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSISOLatin1StringEncoding];
+	responseBody = [responseBody stringByReplacingOccurrencesOfString:@"'" withString:@"\""];
+	NSError *jsonErr;
+	NSArray *photos = [parser objectWithString:responseBody error:&jsonErr];
+	
+	for (NSDictionary *p in photos) {
+		NSLog(@"Adding item with caption %@", [p objectForKey:@"caption"]);
+		TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:[p objectForKey:@"caption"]
+															 subtitle:[NSString stringWithFormat:@"By %@", [p objectForKey:@"user"]]
+															 imageURL:[p objectForKey:@"picture_small"]
+																  URL:[NSString stringWithFormat:@"mb://picture/%@", [p objectForKey:@"id"]]];
+		[self.entries addObject:item];
+	}
+	
 	return nil;
 }
 

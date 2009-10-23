@@ -8,12 +8,12 @@
 
 #import "BlogListController.h"
 #import "BlogListModel.h"
+#import "BlogListDataSource.h"
 
 
 @implementation BlogListController
 
 @synthesize name;
-@synthesize mbapi;
 
 -(id)initWithName:(NSString*)nameStr
 {
@@ -21,17 +21,14 @@
 	self.name = nameStr;
 	self.title = [NSString stringWithFormat:@"Blog for %@", nameStr];
 	self.variableHeightRows = YES;	
-	return self;
-}
 
--(void)createModel
-{
 	NSLog(@"Creating Model");
 	
-	TTSectionedDataSource *ds = [TTSectionedDataSource dataSourceWithArrays:nil];
+	id<TTTableViewDataSource> ds = [BlogListDataSource dataSourceWithItems:nil];
 	ds.model = [[BlogListModel alloc] initWithBloggName:self.name];
 	self.dataSource = ds;
-	
+
+	return self;
 }
 
 @end

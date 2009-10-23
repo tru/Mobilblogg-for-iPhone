@@ -8,14 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
-#import "MBAPI.h"
 
 @interface BlogListController : TTTableViewController {
 	NSString *name;
-	MBAPI *mbapi;
 }
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, retain) MBAPI *mbapi;
 
 -(id)initWithName:(NSString *)nameStr;
 

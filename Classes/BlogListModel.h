@@ -21,3 +21,7 @@
 -(id)initWithBloggName:(NSString*)bName;
 
 @end
+
+@protocol BlogListModelProtocol
+-(NSArray*)results;
+@end
