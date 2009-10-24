@@ -20,7 +20,10 @@
 	self = [super init];
 	self.name = nameStr;
 	self.title = [NSString stringWithFormat:@"Blog for %@", nameStr];
-	self.variableHeightRows = YES;	
+	self.variableHeightRows = YES;
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
+																						   target:self 
+																						   action:@selector(refresh)];
 
 	NSLog(@"Creating Model");
 	
@@ -29,6 +32,12 @@
 	self.dataSource = ds;
 
 	return self;
+}
+
+-(void)refresh
+{
+	NSLog(@"Refreshing");
+	[self reload];
 }
 
 @end
