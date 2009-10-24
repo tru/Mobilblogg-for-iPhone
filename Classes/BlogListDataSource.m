@@ -8,6 +8,7 @@
 
 #import "BlogListDataSource.h"
 #import "BlogListModel.h"
+#import "MBPhoto.h"
 
 @implementation BlogListDataSource
 
@@ -18,9 +19,14 @@
     NSLog(@"Removing all objects in the table view.");
     [self.items removeAllObjects];
     
-/*	[self.items addObject:@"Today"];*/
-    for (TTTableSubtitleItem *photo in [(id<BlogListModelProtocol>)self.model results])
-        [self.items addObject:photo];
+    for (MBPhoto *photo in [(id<BlogListModelProtocol>)self.model results]) {
+		TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:photo.caption 
+															 subtitle:[@"By: " stringByAppendingString:photo.user]
+															 imageURL:[photo.smallURL absoluteString]
+																  URL:[@"mb://picture/" stringByAppendingFormat:@"%d", photo.photoId]];
+        [self.items addObject:item];
+	}
+
 	
 	[self.items addObject:[TTTableMoreButton itemWithText:@"Load more ..."]];
     

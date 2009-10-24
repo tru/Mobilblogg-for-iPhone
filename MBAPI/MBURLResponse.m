@@ -8,6 +8,7 @@
 
 #import "MBURLResponse.h"
 #import "JSON.h"
+#import "MBPhoto.h"
 
 @implementation MBURLResponse
 @synthesize entries;
@@ -45,11 +46,13 @@
 	
 	for (NSDictionary *p in photos) {
 		NSLog(@"Adding item with caption %@", [p objectForKey:@"caption"]);
-		TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:[p objectForKey:@"caption"]
-															 subtitle:[NSString stringWithFormat:@"By %@", [p objectForKey:@"user"]]
-															 imageURL:[p objectForKey:@"picture_small"]
-																  URL:[NSString stringWithFormat:@"mb://picture/%@", [p objectForKey:@"id"]]];
-		[self.entries addObject:item];
+		MBPhoto *photo = [[MBPhoto alloc] initWithPhotoId:[p objectForKey:@"id"]];
+		photo.caption = [p objectForKey:@"caption"];
+		photo.user = [p objectForKey:@"user"];
+		photo.smallURL = [NSURL URLWithString:[p objectForKey:@"picture_small"]];
+		photo.largeURL = [NSURL URLWithString:[p objectForKey:@"picture_large"]];
+		
+		[self.entries addObject:photo];
 	}
 	
 	return nil;
