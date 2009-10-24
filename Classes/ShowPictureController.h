@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Three20/Three20.h>
+#import "MBPhoto.h"
 
-
-@interface ShowPictureController : UIViewController {
-
+@interface ShowPictureController : TTPhotoViewController {
+	MBPhoto *_photo;
 }
 
 -(id)initWithId:(id)pictureId;

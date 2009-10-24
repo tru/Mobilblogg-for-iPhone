@@ -8,22 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
+#import <Three20/Three20.h>
 
-@interface MBPhoto : NSObject {
-	NSUInteger photoId;
-	NSString *user;
-	NSString *caption;
-	NSUInteger x, y;
-	NSURL *smallURL;
-	NSURL *largeURL;
+@interface MBPhoto : NSObject<TTPhoto> {
+	id<TTPhotoSource> _photoSource;
+	NSUInteger _photoId;
+	NSString *_thumbURL;
+	NSString *_smallURL;
+	NSString *_URL;
+	CGSize _size;
+	NSInteger _index;
+	NSString *_caption;
+	NSString *_user;
 }
 
-@property (nonatomic) NSUInteger photoId;
 @property (nonatomic, copy) NSString *user;
-@property (nonatomic, copy) NSString *caption;
-@property (nonatomic) NSUInteger x;
-@property (nonatomic) NSUInteger y;
-@property (nonatomic, copy) NSURL *smallURL;
-@property (nonatomic, copy) NSURL *largeURL;
+@property (nonatomic) NSUInteger photoId;
+@property (nonatomic, copy) NSString *smallURL;
+@property (nonatomic, copy) NSString *thumbURL;
+@property (nonatomic, copy) NSString *URL;
+
++(MBPhoto*)getPhotoById:(NSUInteger)pId;
++(void)storePhoto:(MBPhoto*)photo;
+-(id)initWithPhotoId:(NSUInteger)pId;
+
 
 @end

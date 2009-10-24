@@ -13,6 +13,7 @@
 #import "BlogListController.h"
 #import "ShowPictureController.h"
 #import "SearchUserViewController.h"
+#import "CommentViewController.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -24,6 +25,8 @@
 	[URLMap from:@"mb://listblog/(initWithName:)" toViewController:[BlogListController class]];
 	[URLMap	from:@"mb://picture/(initWithId:)" toViewController:[ShowPictureController class]];
 	[URLMap from:@"mb://searchuser" toViewController:[SearchUserViewController class]];
+	[URLMap from:@"mb://comments/(initWithId:)" toViewController:[CommentViewController class]
+													  transition:UIViewAnimationTransitionFlipFromLeft];
 	
 	if (![ttnav restoreViewControllers]) {
 		[ttnav openURL:@"mb://root" animated:NO];

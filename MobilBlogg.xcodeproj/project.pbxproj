@@ -21,6 +21,8 @@
 		61347B78109306EC00DD5DE7 /* SearchUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347B77109306EC00DD5DE7 /* SearchUserViewController.m */; };
 		61347BB31093096B00DD5DE7 /* SearchUserDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347BB21093096B00DD5DE7 /* SearchUserDataSource.m */; };
 		61347D711093352100DD5DE7 /* MBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347D701093352100DD5DE7 /* MBPhoto.m */; };
+		61347D9F109339FF00DD5DE7 /* PhotoSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347D9E109339FF00DD5DE7 /* PhotoSource.m */; };
+		61347E881093466D00DD5DE7 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347E871093466D00DD5DE7 /* CommentViewController.m */; };
 		6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446291109019E100AD9801 /* NSObject+SBJSON.m */; };
 		6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446293109019E100AD9801 /* NSString+SBJSON.m */; };
 		6144629E109019E100AD9801 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446295109019E100AD9801 /* SBJSON.m */; };
@@ -82,6 +84,10 @@
 		61347BB21093096B00DD5DE7 /* SearchUserDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUserDataSource.m; sourceTree = "<group>"; };
 		61347D701093352100DD5DE7 /* MBPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBPhoto.m; path = MBAPI/MBPhoto.m; sourceTree = "<group>"; };
 		61347D721093352900DD5DE7 /* MBPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBPhoto.h; path = MBAPI/MBPhoto.h; sourceTree = "<group>"; };
+		61347D9D109339FF00DD5DE7 /* PhotoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSource.h; sourceTree = "<group>"; };
+		61347D9E109339FF00DD5DE7 /* PhotoSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSource.m; sourceTree = "<group>"; };
+		61347E861093466D00DD5DE7 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		61347E871093466D00DD5DE7 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		6144628F109019E100AD9801 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		61446290109019E100AD9801 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		61446291109019E100AD9801 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				61347E8A1093467300DD5DE7 /* PhotoView */,
 				61347B7B1093072800DD5DE7 /* Others */,
 				61347B7A1093071400DD5DE7 /* SearchUser */,
 				61347B79109306F300DD5DE7 /* BloggList */,
@@ -219,12 +226,23 @@
 		61347B7B1093072800DD5DE7 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				61347A7F1092417D00DD5DE7 /* ShowPictureController.h */,
-				61347A801092417D00DD5DE7 /* ShowPictureController.m */,
 				614463CE109034CA00AD9801 /* ConfigController.h */,
 				614463CF109034CA00AD9801 /* ConfigController.m */,
 			);
 			name = Others;
+			sourceTree = "<group>";
+		};
+		61347E8A1093467300DD5DE7 /* PhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				61347E861093466D00DD5DE7 /* CommentViewController.h */,
+				61347E871093466D00DD5DE7 /* CommentViewController.m */,
+				61347D9D109339FF00DD5DE7 /* PhotoSource.h */,
+				61347D9E109339FF00DD5DE7 /* PhotoSource.m */,
+				61347A7F1092417D00DD5DE7 /* ShowPictureController.h */,
+				61347A801092417D00DD5DE7 /* ShowPictureController.m */,
+			);
+			name = PhotoView;
 			sourceTree = "<group>";
 		};
 		61446285109019BF00AD9801 /* MBAPI */ = {
@@ -382,6 +400,8 @@
 				61347B78109306EC00DD5DE7 /* SearchUserViewController.m in Sources */,
 				61347BB31093096B00DD5DE7 /* SearchUserDataSource.m in Sources */,
 				61347D711093352100DD5DE7 /* MBPhoto.m in Sources */,
+				61347D9F109339FF00DD5DE7 /* PhotoSource.m in Sources */,
+				61347E881093466D00DD5DE7 /* CommentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

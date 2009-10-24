@@ -22,7 +22,7 @@
     for (MBPhoto *photo in [(id<BlogListModelProtocol>)self.model results]) {
 		TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:photo.caption 
 															 subtitle:[@"By: " stringByAppendingString:photo.user]
-															 imageURL:[photo.smallURL absoluteString]
+															 imageURL:photo.thumbURL
 																  URL:[@"mb://picture/" stringByAppendingFormat:@"%d", photo.photoId]];
         [self.items addObject:item];
 	}

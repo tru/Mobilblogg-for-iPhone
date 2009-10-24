@@ -46,12 +46,14 @@
 	
 	for (NSDictionary *p in photos) {
 		NSLog(@"Adding item with caption %@", [p objectForKey:@"caption"]);
-		MBPhoto *photo = [[MBPhoto alloc] initWithPhotoId:[p objectForKey:@"id"]];
+		MBPhoto *photo = [[MBPhoto alloc] initWithPhotoId:[[p objectForKey:@"id"] intValue]];
 		photo.caption = [p objectForKey:@"caption"];
 		photo.user = [p objectForKey:@"user"];
-		photo.smallURL = [NSURL URLWithString:[p objectForKey:@"picture_small"]];
-		photo.largeURL = [NSURL URLWithString:[p objectForKey:@"picture_large"]];
+		photo.thumbURL = [p objectForKey:@"picture_small"];
+		photo.smallURL = [p objectForKey:@"picture_large"];
+		photo.URL = [p objectForKey:@"picture_large"];
 		
+		[MBPhoto storePhoto:photo]; /* global cache of photos */
 		[self.entries addObject:photo];
 	}
 	
