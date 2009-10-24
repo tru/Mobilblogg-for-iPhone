@@ -21,6 +21,8 @@
 /*	[self.items addObject:@"Today"];*/
     for (TTTableSubtitleItem *photo in [(id<BlogListModelProtocol>)self.model results])
         [self.items addObject:photo];
+	
+	[self.items addObject:[TTTableMoreButton itemWithText:@"Load more ..."]];
     
     NSLog(@"Added %lu result objects", (unsigned long)[self.items count]);
 }

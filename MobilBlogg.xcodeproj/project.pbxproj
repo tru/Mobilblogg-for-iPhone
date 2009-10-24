@@ -17,6 +17,9 @@
 		613479881092138000DD5DE7 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479831092138000DD5DE7 /* GTMNSString+URLArguments.m */; };
 		613479891092138000DD5DE7 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479851092138000DD5DE7 /* GTMNSDictionary+URLArguments.m */; };
 		613479A7109217AA00DD5DE7 /* BlogListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479A6109217AA00DD5DE7 /* BlogListDataSource.m */; };
+		61347A811092417D00DD5DE7 /* ShowPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347A801092417D00DD5DE7 /* ShowPictureController.m */; };
+		61347B78109306EC00DD5DE7 /* SearchUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347B77109306EC00DD5DE7 /* SearchUserViewController.m */; };
+		61347BB31093096B00DD5DE7 /* SearchUserDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347BB21093096B00DD5DE7 /* SearchUserDataSource.m */; };
 		6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446291109019E100AD9801 /* NSObject+SBJSON.m */; };
 		6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446293109019E100AD9801 /* NSString+SBJSON.m */; };
 		6144629E109019E100AD9801 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446295109019E100AD9801 /* SBJSON.m */; };
@@ -30,7 +33,6 @@
 		614463D1109034CA00AD9801 /* ConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614463CF109034CA00AD9801 /* ConfigController.m */; };
 		614463D2109034CA00AD9801 /* ConfigController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 614463D0109034CA00AD9801 /* ConfigController.xib */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
-		61BE24C51090B85400D76E03 /* defaultRemoteImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61BE24C41090B85400D76E03 /* defaultRemoteImage.jpg */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,12 @@
 		613479871092138000DD5DE7 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDefines.h; path = GTM/GTMDefines.h; sourceTree = "<group>"; };
 		613479A5109217AA00DD5DE7 /* BlogListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListDataSource.h; sourceTree = "<group>"; };
 		613479A6109217AA00DD5DE7 /* BlogListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListDataSource.m; sourceTree = "<group>"; };
+		61347A7F1092417D00DD5DE7 /* ShowPictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPictureController.h; sourceTree = "<group>"; };
+		61347A801092417D00DD5DE7 /* ShowPictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPictureController.m; sourceTree = "<group>"; };
+		61347B76109306EC00DD5DE7 /* SearchUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUserViewController.h; sourceTree = "<group>"; };
+		61347B77109306EC00DD5DE7 /* SearchUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUserViewController.m; sourceTree = "<group>"; };
+		61347BB11093096B00DD5DE7 /* SearchUserDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUserDataSource.h; sourceTree = "<group>"; };
+		61347BB21093096B00DD5DE7 /* SearchUserDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUserDataSource.m; sourceTree = "<group>"; };
 		6144628F109019E100AD9801 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		61446290109019E100AD9801 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		61446291109019E100AD9801 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -94,7 +102,6 @@
 		614463D0109034CA00AD9801 /* ConfigController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ConfigController.xib; path = Classes/ConfigController.xib; sourceTree = "<group>"; };
 		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
-		61BE24C41090B85400D76E03 /* defaultRemoteImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultRemoteImage.jpg; sourceTree = "<group>"; };
 		61BE258D1091DAF600D76E03 /* BlogListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListModel.h; sourceTree = "<group>"; };
 		61BE258E1091DAF600D76E03 /* BlogListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListModel.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MobilBlogg-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobilBlogg-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -119,18 +126,13 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				61BE24371090B20C00D76E03 /* BlogListController.h */,
-				61BE24381090B20C00D76E03 /* BlogListController.m */,
-				61BE258D1091DAF600D76E03 /* BlogListModel.h */,
-				61BE258E1091DAF600D76E03 /* BlogListModel.m */,
+				61347B7B1093072800DD5DE7 /* Others */,
+				61347B7A1093071400DD5DE7 /* SearchUser */,
+				61347B79109306F300DD5DE7 /* BloggList */,
 				1D3623240D0F684500981E51 /* MobilBloggAppDelegate.h */,
 				1D3623250D0F684500981E51 /* MobilBloggAppDelegate.m */,
-				613479A5109217AA00DD5DE7 /* BlogListDataSource.h */,
-				613479A6109217AA00DD5DE7 /* BlogListDataSource.m */,
 				614462EF10901C3D00AD9801 /* RootController.h */,
 				614462F010901C3D00AD9801 /* RootController.m */,
-				614463CE109034CA00AD9801 /* ConfigController.h */,
-				614463CF109034CA00AD9801 /* ConfigController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -169,7 +171,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				61BE24C41090B85400D76E03 /* defaultRemoteImage.jpg */,
 				614463D0109034CA00AD9801 /* ConfigController.xib */,
 				614462BE10901B2400AD9801 /* Three20.bundle */,
 				8D1107310486CEB800E47090 /* MobilBlogg-Info.plist */,
@@ -186,6 +187,41 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61347B79109306F300DD5DE7 /* BloggList */ = {
+			isa = PBXGroup;
+			children = (
+				61BE24371090B20C00D76E03 /* BlogListController.h */,
+				61BE24381090B20C00D76E03 /* BlogListController.m */,
+				61BE258D1091DAF600D76E03 /* BlogListModel.h */,
+				61BE258E1091DAF600D76E03 /* BlogListModel.m */,
+				613479A5109217AA00DD5DE7 /* BlogListDataSource.h */,
+				613479A6109217AA00DD5DE7 /* BlogListDataSource.m */,
+			);
+			name = BloggList;
+			sourceTree = "<group>";
+		};
+		61347B7A1093071400DD5DE7 /* SearchUser */ = {
+			isa = PBXGroup;
+			children = (
+				61347BB11093096B00DD5DE7 /* SearchUserDataSource.h */,
+				61347BB21093096B00DD5DE7 /* SearchUserDataSource.m */,
+				61347B76109306EC00DD5DE7 /* SearchUserViewController.h */,
+				61347B77109306EC00DD5DE7 /* SearchUserViewController.m */,
+			);
+			name = SearchUser;
+			sourceTree = "<group>";
+		};
+		61347B7B1093072800DD5DE7 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				61347A7F1092417D00DD5DE7 /* ShowPictureController.h */,
+				61347A801092417D00DD5DE7 /* ShowPictureController.m */,
+				614463CE109034CA00AD9801 /* ConfigController.h */,
+				614463CF109034CA00AD9801 /* ConfigController.m */,
+			);
+			name = Others;
 			sourceTree = "<group>";
 		};
 		61446285109019BF00AD9801 /* MBAPI */ = {
@@ -310,7 +346,6 @@
 			files = (
 				614462BF10901B2400AD9801 /* Three20.bundle in Resources */,
 				614463D2109034CA00AD9801 /* ConfigController.xib in Resources */,
-				61BE24C51090B85400D76E03 /* defaultRemoteImage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +373,9 @@
 				613479881092138000DD5DE7 /* GTMNSString+URLArguments.m in Sources */,
 				613479891092138000DD5DE7 /* GTMNSDictionary+URLArguments.m in Sources */,
 				613479A7109217AA00DD5DE7 /* BlogListDataSource.m in Sources */,
+				61347A811092417D00DD5DE7 /* ShowPictureController.m in Sources */,
+				61347B78109306EC00DD5DE7 /* SearchUserViewController.m in Sources */,
+				61347BB31093096B00DD5DE7 /* SearchUserDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

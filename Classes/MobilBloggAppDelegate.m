@@ -11,6 +11,8 @@
 
 #import "ConfigController.h"
 #import "BlogListController.h"
+#import "ShowPictureController.h"
+#import "SearchUserViewController.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -20,7 +22,8 @@
 	[URLMap from:@"mb://root" toViewController:[RootController class]];
 	[URLMap from:@"mb://configure" toModalViewController:[ConfigController class]];
 	[URLMap from:@"mb://listblog/(initWithName:)" toViewController:[BlogListController class]];
-/*	[URLMap from:@"mb://gotouser" toViewController:[SearchController class]];*/
+	[URLMap	from:@"mb://picture/(initWithId:)" toViewController:[ShowPictureController class]];
+	[URLMap from:@"mb://searchuser" toViewController:[SearchUserViewController class]];
 	
 	if (![ttnav restoreViewControllers]) {
 		[ttnav openURL:@"mb://root" animated:NO];

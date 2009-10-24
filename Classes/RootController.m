@@ -28,7 +28,7 @@
 					   @"My pages",
 					   [TTTableTextItem itemWithText:@"My Blog" URL:[@"mb://listblog/" stringByAppendingString:[MBStore getUserName]]],
 					   @"MobilBlogg",
-					   [TTTableTextItem itemWithText:@"Go to User" URL:@"mb://gotouser"],
+					   [TTTableTextItem itemWithText:@"Go to User" URL:@"mb://searchuser"],
 					   @"Settings",
 					   [TTTableTextItem itemWithText:@"Settings" URL:@"mb://configure"],
 					   nil];
