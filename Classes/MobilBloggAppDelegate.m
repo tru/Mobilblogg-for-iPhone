@@ -14,6 +14,7 @@
 #import "ShowPictureController.h"
 #import "SearchUserViewController.h"
 #import "CommentViewController.h"
+#import "FirstPageController.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -27,6 +28,7 @@
 	[URLMap from:@"mb://searchuser" toViewController:[SearchUserViewController class]];
 	[URLMap from:@"mb://comments/(initWithId:)" toViewController:[CommentViewController class]
 													  transition:UIViewAnimationTransitionFlipFromLeft];
+	[URLMap	from:@"mb://firstpage" toViewController:[FirstPageController class]];
 	
 	if (![ttnav restoreViewControllers]) {
 		[ttnav openURL:@"mb://root" animated:NO];

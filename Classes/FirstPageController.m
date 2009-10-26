@@ -1,25 +1,21 @@
 //
-//  BlogListController.m
+//  FirstPageController.m
 //  MobilBlogg
 //
-//  Created by Tobias Rundström on 2009-10-22.
+//  Created by Tobias Rundström on 2009-10-26.
 //  Copyright 2009 Purple Scout. All rights reserved.
 //
 
-#import "BlogListController.h"
+#import "FirstPageController.h"
 #import "BlogListModel.h"
 #import "BlogListDataSource.h"
 
+@implementation FirstPageController
 
-@implementation BlogListController
-
-@synthesize name;
-
--(id)initWithName:(NSString*)nameStr
+-(id)init
 {
 	self = [super init];
-	self.name = nameStr;
-	self.title = [NSString stringWithFormat:NSLocalizedString(@"Blog for %@", nil), nameStr];
+	self.title = NSLocalizedString (@"First Page", nil);
 	self.variableHeightRows = YES;
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
 																						   target:self 
@@ -28,7 +24,7 @@
 	NSLog(@"Creating Model");
 	
 	id<TTTableViewDataSource> ds = [BlogListDataSource dataSourceWithItems:nil];
-	ds.model = [[BlogListModel alloc] initWithBloggName:self.name];
+	ds.model = [[BlogListModel alloc] initWithFunction:@"listFirstpage"];
 	self.dataSource = ds;
 
 	return self;

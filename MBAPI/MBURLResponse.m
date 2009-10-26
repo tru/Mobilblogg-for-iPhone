@@ -38,11 +38,13 @@
 {
 	SBJSON *parser = [[SBJSON alloc] init];
 	
-	/* Wee Latrin1 ;) */
-	NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSISOLatin1StringEncoding];
-	responseBody = [responseBody stringByReplacingOccurrencesOfString:@"'" withString:@"\""];
+	NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	NSError *jsonErr;
 	NSArray *photos = [parser objectWithString:responseBody error:&jsonErr];
+	
+	if (!photos) {
+		NSLog(@"Error? %@", [jsonErr localizedDescription]);
+	}
 	
 	for (NSDictionary *p in photos) {
 		NSLog(@"Adding item with caption %@", [p objectForKey:@"caption"]);

@@ -16,7 +16,7 @@
 	self = [super init];
 	_photoId = [pId intValue];
 
-	self.title=@"Comments";
+	self.title=NSLocalizedString (@"Comments", nil);
 	self.variableHeightRows = YES;
 	self.dataSource = [TTListDataSource dataSourceWithObjects:[TTTableMessageItem itemWithTitle:@"Cat" 
 																						caption:nil 

@@ -31,12 +31,13 @@
 - (void)createModel
 {
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
-					   @"My pages",
-					   [TTTableTextItem itemWithText:@"My Blog" URL:[@"mb://listblog/" stringByAppendingString:[MBStore getUserName]]],
-					   @"MobilBlogg",
-					   [TTTableTextItem itemWithText:@"Go to User" URL:@"mb://searchuser"],
-					   @"Settings",
-					   [TTTableTextItem itemWithText:@"Settings" URL:@"mb://configure"],
+					   NSLocalizedString(@"My pages", nil),
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"My Blog",nil) URL:[@"mb://listblog/" stringByAppendingString:[MBStore getUserName]]],
+					   NSLocalizedString(@"MobilBlogg", nil),
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"Go to User", nil) URL:@"mb://searchuser"],
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"First Page", nil) URL:@"mb://firstpage"],
+					   NSLocalizedString(@"Settings", nil),
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"Settings", @"Menu item") URL:@"mb://configure"],
 					   nil];
 }
 

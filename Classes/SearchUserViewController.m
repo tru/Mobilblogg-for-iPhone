@@ -15,7 +15,7 @@
 {
 	self = [super init];
 		
-	self.title = @"Search User";
+	self.title = NSLocalizedString(@"Search User", nil);
 	self.dataSource = [TTListDataSource dataSourceWithItems:nil];
 	
 	return self;

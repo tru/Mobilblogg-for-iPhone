@@ -23,6 +23,10 @@
 		61347D711093352100DD5DE7 /* MBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347D701093352100DD5DE7 /* MBPhoto.m */; };
 		61347D9F109339FF00DD5DE7 /* PhotoSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347D9E109339FF00DD5DE7 /* PhotoSource.m */; };
 		61347E881093466D00DD5DE7 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347E871093466D00DD5DE7 /* CommentViewController.m */; };
+		61347F791095776500DD5DE7 /* FirstPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347F781095776500DD5DE7 /* FirstPageController.m */; };
+		61347FCE10957E3800DD5DE7 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614462F010901C3D00AD9801 /* RootController.m */; };
+		61347FF2109581F000DD5DE7 /* ConfigController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61347FF1109581F000DD5DE7 /* ConfigController.xib */; };
+		613480141095833500DD5DE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 613480121095833500DD5DE7 /* Localizable.strings */; };
 		6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446291109019E100AD9801 /* NSObject+SBJSON.m */; };
 		6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446293109019E100AD9801 /* NSString+SBJSON.m */; };
 		6144629E109019E100AD9801 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446295109019E100AD9801 /* SBJSON.m */; };
@@ -31,10 +35,8 @@
 		614462A1109019E100AD9801 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6144629B109019E100AD9801 /* SBJsonWriter.m */; };
 		614462BF10901B2400AD9801 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 614462BE10901B2400AD9801 /* Three20.bundle */; };
 		614462E710901B5300AD9801 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 614462E610901B5300AD9801 /* QuartzCore.framework */; };
-		614462F110901C3D00AD9801 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614462F010901C3D00AD9801 /* RootController.m */; };
 		61446323109020A200AD9801 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 614462B510901ADC00AD9801 /* libThree20.a */; };
 		614463D1109034CA00AD9801 /* ConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614463CF109034CA00AD9801 /* ConfigController.m */; };
-		614463D2109034CA00AD9801 /* ConfigController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 614463D0109034CA00AD9801 /* ConfigController.xib */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
 /* End PBXBuildFile section */
@@ -88,6 +90,11 @@
 		61347D9E109339FF00DD5DE7 /* PhotoSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSource.m; sourceTree = "<group>"; };
 		61347E861093466D00DD5DE7 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		61347E871093466D00DD5DE7 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		61347F771095776500DD5DE7 /* FirstPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageController.h; sourceTree = "<group>"; };
+		61347F781095776500DD5DE7 /* FirstPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstPageController.m; sourceTree = "<group>"; };
+		61347FF3109581FA00DD5DE7 /* se */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = se; path = Classes/se.lproj/ConfigController.xib; sourceTree = "<group>"; };
+		613480131095833500DD5DE7 /* se */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = se; path = Classes/se.lproj/Localizable.strings; sourceTree = "<group>"; };
+		613480151095833F00DD5DE7 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = Classes/English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6144628F109019E100AD9801 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		61446290109019E100AD9801 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		61446291109019E100AD9801 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -108,7 +115,7 @@
 		614462F010901C3D00AD9801 /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
 		614463CE109034CA00AD9801 /* ConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigController.h; sourceTree = "<group>"; };
 		614463CF109034CA00AD9801 /* ConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigController.m; sourceTree = "<group>"; };
-		614463D0109034CA00AD9801 /* ConfigController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ConfigController.xib; path = Classes/ConfigController.xib; sourceTree = "<group>"; };
+		614463D0109034CA00AD9801 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Classes/English.lproj/ConfigController.xib; sourceTree = "<group>"; };
 		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
 		61BE258D1091DAF600D76E03 /* BlogListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListModel.h; sourceTree = "<group>"; };
@@ -181,7 +188,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				614463D0109034CA00AD9801 /* ConfigController.xib */,
+				613480121095833500DD5DE7 /* Localizable.strings */,
+				61347FF1109581F000DD5DE7 /* ConfigController.xib */,
 				614462BE10901B2400AD9801 /* Three20.bundle */,
 				8D1107310486CEB800E47090 /* MobilBlogg-Info.plist */,
 			);
@@ -226,6 +234,8 @@
 		61347B7B1093072800DD5DE7 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				61347F771095776500DD5DE7 /* FirstPageController.h */,
+				61347F781095776500DD5DE7 /* FirstPageController.m */,
 				614463CE109034CA00AD9801 /* ConfigController.h */,
 				614463CF109034CA00AD9801 /* ConfigController.m */,
 			);
@@ -337,6 +347,15 @@
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MobilBlogg" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				Swedish,
+				en,
+				se,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectReferences = (
@@ -368,7 +387,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				614462BF10901B2400AD9801 /* Three20.bundle in Resources */,
-				614463D2109034CA00AD9801 /* ConfigController.xib in Resources */,
+				61347FF2109581F000DD5DE7 /* ConfigController.xib in Resources */,
+				613480141095833500DD5DE7 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +407,7 @@
 				6144629F109019E100AD9801 /* SBJsonBase.m in Sources */,
 				614462A0109019E100AD9801 /* SBJsonParser.m in Sources */,
 				614462A1109019E100AD9801 /* SBJsonWriter.m in Sources */,
-				614462F110901C3D00AD9801 /* RootController.m in Sources */,
+				61347FCE10957E3800DD5DE7 /* RootController.m in Sources */,
 				614463D1109034CA00AD9801 /* ConfigController.m in Sources */,
 				61BE24391090B20C00D76E03 /* BlogListController.m in Sources */,
 				61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */,
@@ -402,6 +422,7 @@
 				61347D711093352100DD5DE7 /* MBPhoto.m in Sources */,
 				61347D9F109339FF00DD5DE7 /* PhotoSource.m in Sources */,
 				61347E881093466D00DD5DE7 /* CommentViewController.m in Sources */,
+				61347F791095776500DD5DE7 /* FirstPageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +435,27 @@
 			targetProxy = 614463211090208100AD9801 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		61347FF1109581F000DD5DE7 /* ConfigController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				614463D0109034CA00AD9801 /* English */,
+				61347FF3109581FA00DD5DE7 /* se */,
+			);
+			name = ConfigController.xib;
+			sourceTree = "<group>";
+		};
+		613480121095833500DD5DE7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				613480131095833500DD5DE7 /* se */,
+				613480151095833F00DD5DE7 /* English */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {

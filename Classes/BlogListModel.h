@@ -14,11 +14,14 @@
 	MBURLResponse *responseModel;
 	NSUInteger page;
 	NSString *bloggName;
+	NSString *funcName;
 }
 
 @property (nonatomic, copy) NSString *bloggName;
+@property (nonatomic, copy) NSString *funcName;
 
 -(id)initWithBloggName:(NSString*)bName;
+-(id)initWithFunction:(NSString*)fName;
 
 @end
 

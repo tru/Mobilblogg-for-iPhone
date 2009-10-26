@@ -16,6 +16,16 @@
 #define kMBAPIHost "www.mobilblog.nu/o.o.i.s" //&func=listBlogg&user=tru&page=1"
 
 @synthesize bloggName;
+@synthesize funcName;
+
+-(id)initWithFunction:(NSString*)fName
+{
+	self = [super init];
+	page = 1;
+	self.funcName = fName;
+	responseModel = [[MBURLResponse alloc] init];
+	return self;
+}
 
 -(id)initWithBloggName:(NSString*)bName
 {
@@ -37,12 +47,17 @@
 	NSLog(@"Loading data for %@ at page %d", bloggName, page);
 	
 	NSString *url = [NSString stringWithFormat:@"%s%s", kMBAPIProtocol, kMBAPIHost];
-	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 						  @".api.t", @"template",
-						  @"listBlogg", @"func",
-						  self.bloggName, @"user",
 						  [NSString stringWithFormat:@"%lu",page], @"page",
 						  nil];
+	
+	if (self.bloggName) {
+		[dict setObject:@"listBlogg" forKey:@"func"];
+		[dict setObject:self.bloggName forKey:@"user"];
+	} else if (self.funcName) {
+		[dict setObject:self.funcName forKey:@"func"];
+	}
 	
 	url = [url stringByAppendingFormat:@"?%@", [dict gtm_httpArgumentsString]];
 	TTURLRequest *req = [TTURLRequest requestWithURL:url delegate:self];
