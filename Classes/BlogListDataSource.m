@@ -12,6 +12,24 @@
 
 @implementation BlogListDataSource
 
++ (NSString *)wordWrapString:(NSString *)string atLength:(NSUInteger)length
+{
+	if ([string length] < length) {
+		return string;
+	}
+	NSMutableString *str = [string mutableCopy];
+	char space = [str characterAtIndex:length];
+	NSUInteger len = length;
+	while (space != ' ') {
+		len--;
+		space = [str characterAtIndex:len];
+	}
+	
+	NSLog(@"wordwrapped: %@ to %@", string, [string substringToIndex:len]);
+	
+	return [[str substringToIndex:len] stringByPaddingToLength:len+3 withString:@"." startingAtIndex:0];
+}
+
 - (void)tableViewDidLoadModel:(UITableView *)tableView
 {
     [super tableViewDidLoadModel:tableView];
@@ -20,7 +38,13 @@
     [self.items removeAllObjects];
     
     for (MBPhoto *photo in [(id<BlogListModelProtocol>)self.model results]) {
-		TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:photo.caption 
+		NSString *caption;
+		if ([photo.caption length] > 25) {
+			caption = [BlogListDataSource wordWrapString:photo.caption atLength:25];
+		} else {
+			caption = photo.caption;
+		}
+		TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:caption
 															 subtitle:[@"By: " stringByAppendingString:photo.user]
 															 imageURL:photo.thumbURL
 																  URL:[@"mb://picture/" stringByAppendingFormat:@"%d", photo.photoId]];
