@@ -56,7 +56,8 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
+	[self.photoSource release];
+	[super dealloc];
 }
 
 

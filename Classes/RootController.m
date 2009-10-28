@@ -23,7 +23,6 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera 
 																						   target:self 
 																						   action:@selector(camera)];
-	
 	return self;
 }
 
