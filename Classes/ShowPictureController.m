@@ -21,7 +21,15 @@
 		NSLog(@"Ouch no photo in the global store...");
 		return nil;
 	}
-	self.photoSource = [[PhotoSource alloc] initWithPhotos:[NSArray arrayWithObject:_photo]];
+	
+	NSArray *photoList = [MBPhoto getCurrentBlogList];
+	if (!photoList) {
+		NSLog(@"No CurrentBlogList?");
+		return nil;
+	}
+	
+	self.photoSource = [[PhotoSource alloc] initWithPhotos:photoList];
+	self.centerPhoto = _photo;
 	
 	return self;
 }
@@ -34,6 +42,11 @@
 	UIBarButtonItem *comments = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(comments)];
 	NSArray *items = [NSArray arrayWithObjects:space, _previousButton, space, _nextButton, space, comments, nil];
 	_toolbar.items = items;
+	
+}
+
+-(void)viewDidLoad
+{
 }
 
 -(void)comments

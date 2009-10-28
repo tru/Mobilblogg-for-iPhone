@@ -13,7 +13,28 @@
 @synthesize photoSource = _photoSource, size = _size, index = _index, caption = _caption, user = _user, photoId = _photoId;
 @synthesize thumbURL = _thumbURL, smallURL = _smallURL, URL = _URL;
 
-static NSMutableDictionary *_photoStore;
+static NSMutableDictionary *_photoStore = NULL;
+static NSArray *_currentBlogList = NULL;
+
++(NSArray *)getCurrentBlogList
+{
+	NSArray *ret;
+	@synchronized(_currentBlogList)
+	{
+		ret = [_currentBlogList copy];
+	}
+	return ret;
+}
+
++(void)setCurrentBlogList:(NSArray*)blogList
+{
+	@synchronized(_currentBlogList) {
+		if (_currentBlogList) {
+			[_currentBlogList release];
+		}
+		_currentBlogList = [blogList copy];
+	}
+}
 
 +(MBPhoto *)getPhotoById:(NSUInteger) pId
 {

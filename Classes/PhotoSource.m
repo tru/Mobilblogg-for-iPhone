@@ -7,6 +7,7 @@
 //
 
 #import "PhotoSource.h"
+#import "MBPhoto.h"
 
 
 @implementation PhotoSource
@@ -18,6 +19,11 @@
 	self = [super init];
 	
 	_items = [photos mutableCopy];
+	int index = 0;
+	for (MBPhoto *it in _items) {
+		it.photoSource = self;
+		it.index = index ++;
+	}
 	
 	_isLoading = NO;
 	return self;
@@ -84,20 +90,21 @@
 }
 
 - (NSInteger)maxPhotoIndex {
-  return _items.count-1;
+	return _items.count-1;
 }
 
 - (id<TTPhoto>)photoAtIndex:(NSInteger)index {
-  if (index < _items.count) {
-    id photo = [_items objectAtIndex:index];
-    if (photo == [NSNull null]) {
-      return nil;
-    } else {
-      return photo;
-    }
-  } else {
-    return nil;
-  }
+	if (index < _items.count) {
+		id photo = [_items objectAtIndex:index];
+		if (photo == [NSNull null]) {
+			return nil;
+		} else {
+			NSLog(@"Returning photo (%@) at index %d", [photo caption], index);
+			return photo;
+		}
+	} else {
+		return nil;
+	}
 }
 
 

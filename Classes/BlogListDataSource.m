@@ -36,7 +36,9 @@
     
     NSLog(@"Removing all objects in the table view.");
     [self.items removeAllObjects];
-    
+	
+	[MBPhoto setCurrentBlogList:[(id<BlogListModelProtocol>)self.model results]];
+	
     for (MBPhoto *photo in [(id<BlogListModelProtocol>)self.model results]) {
 		NSString *caption;
 		if ([photo.caption length] > 25) {
@@ -55,6 +57,11 @@
 	[self.items addObject:[TTTableMoreButton itemWithText:@"Load more ..."]];
     
     NSLog(@"Added %lu result objects", (unsigned long)[self.items count]);
+}
+
+-(void)dealloc
+{
+	[super dealloc];
 }
 
 
