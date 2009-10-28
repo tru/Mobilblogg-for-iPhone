@@ -99,7 +99,6 @@
 		if (photo == [NSNull null]) {
 			return nil;
 		} else {
-			NSLog(@"Returning photo (%@) at index %d", [photo caption], index);
 			return photo;
 		}
 	} else {
