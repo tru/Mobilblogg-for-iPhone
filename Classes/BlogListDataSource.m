@@ -27,7 +27,9 @@
 	
 	NSLog(@"wordwrapped: %@ to %@", string, [string substringToIndex:len]);
 	
-	return [[str substringToIndex:len] stringByPaddingToLength:len+3 withString:@"." startingAtIndex:0];
+	NSString *retstr = [str substringToIndex:len];
+	[str release];
+	return [retstr stringByPaddingToLength:len+3 withString:@"." startingAtIndex:0];
 }
 
 - (void)tableViewDidLoadModel:(UITableView *)tableView

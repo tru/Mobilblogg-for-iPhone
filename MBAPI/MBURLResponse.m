@@ -42,6 +42,8 @@
 	NSError *jsonErr;
 	NSArray *photos = [parser objectWithString:responseBody error:&jsonErr];
 	
+	[responseBody release];
+	
 	if (!photos) {
 		NSLog(@"Error? %@", [jsonErr localizedDescription]);
 	}
@@ -57,7 +59,11 @@
 		
 		[MBPhoto storePhoto:photo]; /* global cache of photos */
 		[self.entries addObject:photo];
+		
+		[photo release];
 	}
+
+	[parser release];
 	
 	return nil;
 }

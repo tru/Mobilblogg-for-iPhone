@@ -31,8 +31,8 @@
 +(MBPhoto*)getPhotoById:(NSUInteger)pId;
 +(void)storePhoto:(MBPhoto*)photo;
 -(id)initWithPhotoId:(NSUInteger)pId;
-+(NSArray*)getCurrentBlogList;
-+(NSArray*)setCurrentBlogList:(NSArray *)blogList;
++(NSArray*)getCurrentBlogListCopy;
++(void)setCurrentBlogList:(NSArray *)blogList;
 
 
 @end

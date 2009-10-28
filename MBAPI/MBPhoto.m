@@ -16,7 +16,7 @@
 static NSMutableDictionary *_photoStore = NULL;
 static NSArray *_currentBlogList = NULL;
 
-+(NSArray *)getCurrentBlogList
++(NSArray *)getCurrentBlogListCopy
 {
 	NSArray *ret;
 	@synchronized(_currentBlogList)

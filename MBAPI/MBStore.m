@@ -32,12 +32,12 @@
 	NSFileManager *mgr = [NSFileManager defaultManager];
 	NSString *archive = [self _getStoreOrCreate];
 	NSDictionary *retdict;
-	if ([mgr fileExistsAtPath:archive]) {
-		retdict = [[NSKeyedUnarchiver unarchiveObjectWithFile:archive] copy];
-	} else {
+	if (![mgr fileExistsAtPath:archive]) {
 		retdict = [[NSDictionary alloc] init];
 		[NSKeyedArchiver archiveRootObject:retdict toFile:archive];
+		[retdict release];
 	}
+	retdict = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
 	return retdict;
 }
 

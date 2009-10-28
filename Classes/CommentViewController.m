@@ -35,6 +35,7 @@
 {
 	TTPostController *pc = [[TTPostController alloc] init];
 	[pc showInView:self.tableView animated:YES];
+	[pc release];
 }
 
 @end

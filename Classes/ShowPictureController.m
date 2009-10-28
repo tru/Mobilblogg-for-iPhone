@@ -22,13 +22,14 @@
 		return nil;
 	}
 	
-	NSArray *photoList = [MBPhoto getCurrentBlogList];
+	NSArray *photoList = [MBPhoto getCurrentBlogListCopy];
 	if (!photoList) {
 		NSLog(@"No CurrentBlogList?");
 		return nil;
 	}
 	
 	self.photoSource = [[PhotoSource alloc] initWithPhotos:photoList];
+	[photoList release];
 	self.centerPhoto = _photo;
 	
 	return self;
@@ -39,7 +40,7 @@
 	[super loadView];
 	UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 						 UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
-	UIBarButtonItem *comments = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(comments)];
+	UIBarButtonItem *comments = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(comments)] autorelease];
 	NSArray *items = [NSArray arrayWithObjects:space, _previousButton, space, _nextButton, space, comments, nil];
 	_toolbar.items = items;
 	
