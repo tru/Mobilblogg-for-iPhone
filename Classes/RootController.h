@@ -10,8 +10,10 @@
 #import <Three20/Three20.h>
 
 
-@interface RootController : TTTableViewController {
+@interface RootController : TTTableViewController<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
 
 }
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end

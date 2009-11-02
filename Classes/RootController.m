@@ -58,15 +58,57 @@
 
 - (void)camera
 {
+	UIActionSheet *askPicture = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+		[askPicture addButtonWithTitle:NSLocalizedString(@"Take Picture with Camera", nil)];
+	}
+	[askPicture addButtonWithTitle:NSLocalizedString(@"Choose from Library", nil)];
+	[askPicture addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
+	if ([askPicture numberOfButtons] == 3) {
+		[askPicture setCancelButtonIndex:2];
+	} else {
+		[askPicture setCancelButtonIndex:1];
+	}
+	[askPicture showInView:[self view]];
+	
+	[askPicture release];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	[actionSheet dismissAsKeyboard:YES];
 	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 	picker.delegate = self;
-	[self presentModalViewController:picker animated:YES];
+	
+	if (buttonIndex == 0 &&
+		[UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+		[picker takePicture];
+	} else {
+		[self presentModalViewController:picker animated:YES];
+	}
+	
 	[picker release];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
 	[picker dismissModalViewControllerAnimated:YES];
+	
+	UIImage *img = [info objectForKey:UIImagePickerControllerEditedImage];
+	if (!img) {
+		img = [info objectForKey:UIImagePickerControllerOriginalImage];
+	}
+	if (!img) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No image?", nil)
+														message:NSLocalizedString(@"We have no image here, grave error", nil)
+													   delegate:nil
+											  cancelButtonTitle:NSLocalizedString(@"Ok, beem me up!", nil)
+											  otherButtonTitles:nil];
+		[img release];
+		[alert release];
+		return;
+	}
+	
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
