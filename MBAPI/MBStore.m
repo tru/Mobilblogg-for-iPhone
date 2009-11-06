@@ -7,58 +7,68 @@
 //
 
 #import "MBStore.h"
-
+#import <Security/Security.h>
+#import "SFHFKeychainUtils.h"
 
 @implementation MBStore
 
-+ (NSString*)_getStoreOrCreate
++(void)setObject:(id)object forKey:(NSString*)key
 {
-	NSFileManager *mgr = [NSFileManager defaultManager];
-	NSString *path = [NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-	path = [path stringByAppendingPathComponent:@"mobilblog"];
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:object forKey:key];
+}
+
++(id)getObjectForKey:(NSString*)key
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	return [defaults objectForKey:key];
+}
+
++(NSString*)getUserName
+{
+	return [self getObjectForKey:@"username"];
+}
+
++(void)saveUserName:(NSString *)username
+{
+	return [self setObject:username	forKey:@"username"];
+}
+
++(void)savePassword:(NSString *)password forUsername:(NSString*)username
+{
+	NSError *err;
 	
-	BOOL isDir;
-	if (![mgr fileExistsAtPath:path isDirectory:&isDir] || !isDir) {
-		[mgr createDirectoryAtPath:path attributes:nil];
+	[SFHFKeychainUtils storeUsername:username
+						 andPassword:password
+					  forServiceName:@"MobilBlogg"
+					  updateExisting:YES
+							   error:&err];
+	
+	if (err) {
+		NSLog(@"Couldn't store password!");
 	}
-
-	NSString *archive = [path stringByAppendingPathComponent:@"store.archive"];
-
-	return archive;
 }
 
-+ (NSDictionary*)_getStore
++(NSString*)getPasswordForUsername:(NSString*)username
 {
-	NSFileManager *mgr = [NSFileManager defaultManager];
-	NSString *archive = [self _getStoreOrCreate];
-	NSDictionary *retdict;
-	if (![mgr fileExistsAtPath:archive]) {
-		retdict = [[NSDictionary alloc] init];
-		[NSKeyedArchiver archiveRootObject:retdict toFile:archive];
-		[retdict release];
+	NSError *err;
+	NSString *pass = [SFHFKeychainUtils getPasswordForUsername:username
+												andServiceName:@"MobilBlogg"
+														 error:&err];
+	if (err) {
+		NSLog(@"No password found or error");
 	}
-	retdict = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
-	return retdict;
+	
+	return pass;
 }
 
-+ (BOOL)_saveStore:(NSDictionary*)dict
++(void)removePasswordForUsername:(NSString*)username
 {
-	NSString *archive = [self _getStoreOrCreate];
-	return [NSKeyedArchiver archiveRootObject:dict toFile:archive];
-}
-
-+ (NSString*)getUserName
-{
-	NSDictionary *dict = [self _getStore];
-	return [dict objectForKey:@"username"];
-}
-
-+ (BOOL)saveUserName:(NSString*)username
-{
-	NSLog(@"Saving username %@", username);
-	NSMutableDictionary *dict = [[self _getStore] mutableCopy];
-	[dict setObject:username forKey:@"username"];
-	return [self _saveStore:dict];
+	NSError *err;
+	[SFHFKeychainUtils deleteItemForUsername:username andServiceName:@"MobilBlogg" error:&err];
+	if (err) {
+		NSLog(@"RemovePassword failed!");
+	}
 }
 
 @end

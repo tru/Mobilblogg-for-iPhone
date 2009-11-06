@@ -40,10 +40,14 @@
 	[super loadView];
 	UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 						 UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
-	UIBarButtonItem *comments = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(comments)] autorelease];
-	NSArray *items = [NSArray arrayWithObjects:space, _previousButton, space, _nextButton, space, comments, nil];
-	_toolbar.items = items;
 	
+	UIBarButtonItem *comments = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose 
+																			   target:self
+																			   action:@selector(comments)] autorelease];
+	
+	NSArray *items = [NSArray arrayWithObjects:space, _previousButton, space, _nextButton, space, comments, nil];
+	
+	_toolbar.items = items;
 }
 
 -(void)viewDidLoad

@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface MBStore : NSObject {
 }
 
 + (NSString*)getUserName;
-+ (BOOL)saveUserName:(NSString*) username;
++ (void)saveUserName:(NSString*) username;
++(void)savePassword:(NSString *)password forUsername:(NSString *)username;
++(NSString *)getPasswordForUsername:(NSString *)username;
++(void)removePasswordForUsername:(NSString*)username;
 
 @end

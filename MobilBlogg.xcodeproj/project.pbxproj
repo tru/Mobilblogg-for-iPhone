@@ -39,6 +39,9 @@
 		614463D1109034CA00AD9801 /* ConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614463CF109034CA00AD9801 /* ConfigController.m */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
+		61E0D48D10A430A800809C22 /* MBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D48C10A430A800809C22 /* MBLogin.m */; };
+		61E0D4E810A4549800809C22 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */; };
+		61E0D50610A4567E00809C22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E0D50510A4567E00809C22 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,11 @@
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
 		61BE258D1091DAF600D76E03 /* BlogListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListModel.h; sourceTree = "<group>"; };
 		61BE258E1091DAF600D76E03 /* BlogListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListModel.m; sourceTree = "<group>"; };
+		61E0D48B10A430A800809C22 /* MBLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBLogin.h; path = MBAPI/MBLogin.h; sourceTree = "<group>"; };
+		61E0D48C10A430A800809C22 /* MBLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBLogin.m; path = MBAPI/MBLogin.m; sourceTree = "<group>"; };
+		61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = SFHFKeychainUtils/SFHFKeychainUtils.m; sourceTree = SOURCE_ROOT; };
+		61E0D4E710A4549800809C22 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = SFHFKeychainUtils/SFHFKeychainUtils.h; sourceTree = SOURCE_ROOT; };
+		61E0D50510A4567E00809C22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* MobilBlogg-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobilBlogg-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +141,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				614462E710901B5300AD9801 /* QuartzCore.framework in Frameworks */,
+				61E0D50610A4567E00809C22 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +208,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61E0D50510A4567E00809C22 /* Security.framework */,
 				614462E610901B5300AD9801 /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -264,6 +274,8 @@
 				6134797E1092136800DD5DE7 /* MBURLResponse.h */,
 				6134797F1092136800DD5DE7 /* MBStore.m */,
 				613479801092136800DD5DE7 /* MBStore.h */,
+				61E0D48B10A430A800809C22 /* MBLogin.h */,
+				61E0D48C10A430A800809C22 /* MBLogin.m */,
 			);
 			name = MBAPI;
 			sourceTree = "<group>";
@@ -299,6 +311,7 @@
 		61BE25771090CA5900D76E03 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				61E0D4E510A4548400809C22 /* SFHFKeychainUtils */,
 				61BE25901091DE7500D76E03 /* GTM */,
 				6144628E109019E100AD9801 /* JSON */,
 				614462AD10901ADC00AD9801 /* Three20.xcodeproj */,
@@ -316,6 +329,15 @@
 				613479871092138000DD5DE7 /* GTMDefines.h */,
 			);
 			name = GTM;
+			sourceTree = "<group>";
+		};
+		61E0D4E510A4548400809C22 /* SFHFKeychainUtils */ = {
+			isa = PBXGroup;
+			children = (
+				61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */,
+				61E0D4E710A4549800809C22 /* SFHFKeychainUtils.h */,
+			);
+			name = SFHFKeychainUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,6 +446,8 @@
 				61347D9F109339FF00DD5DE7 /* PhotoSource.m in Sources */,
 				61347E881093466D00DD5DE7 /* CommentViewController.m in Sources */,
 				61347F791095776500DD5DE7 /* FirstPageController.m in Sources */,
+				61E0D48D10A430A800809C22 /* MBLogin.m in Sources */,
+				61E0D4E810A4549800809C22 /* SFHFKeychainUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Three20/Three20.h>
+#import "MBLogin.h"
 
 
-@interface RootController : TTTableViewController<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
-
+@interface RootController : TTTableViewController<UIActionSheetDelegate,
+												  UINavigationControllerDelegate,
+												  UIImagePickerControllerDelegate,
+												  MBLoginDelegateProtocol>{
+	TTActivityLabel *_activity;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;

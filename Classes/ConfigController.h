@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBLogin.h"
 
 
-@interface ConfigController : UIViewController {
+@interface ConfigController : UIViewController<MBLoginDelegateProtocol> {
 	UITextField *username;
 	UITextField *password;
+	UIActivityIndicatorView *_activity;
 }
 
 @property (nonatomic,retain) IBOutlet UITextField *username;
 @property (nonatomic,retain) IBOutlet UITextField *password;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activity;
 
 @end

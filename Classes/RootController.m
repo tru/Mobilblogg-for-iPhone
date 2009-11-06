@@ -23,6 +23,10 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera 
 																						   target:self 
 																						   action:@selector(camera)];
+	
+	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 416)
+												 style:TTActivityLabelStyleBlackBox
+												  text:NSLocalizedString(@"Initializing", nil)];
 	return self;
 }
 
@@ -41,11 +45,50 @@
 }
 
 - (void)viewDidLoad {
-	NSString *username = [MBStore getUserName];
-	if (!username) {
+	NSString *username, *password;
+	
+	username = [MBStore getUserName];
+	password = [MBStore getPasswordForUsername:username];
+	
+	if (!username || !password) {
 		[[TTNavigator navigator] openURL:@"mb://configure" animated:NO];
 	} else {
-		NSLog(@"Have username %@", username);
+		MBLogin *login = [MBLogin loginWithUsername:username andPassword:password];
+		login.delegate = self;
+		
+		self.navigationItem.rightBarButtonItem.enabled = NO;
+		[[self view] addSubview:_activity];
+	}
+}
+
+-(void)loginDidSucceed
+{
+	[_activity removeFromSuperview];
+	self.navigationItem.rightBarButtonItem.enabled = YES;
+}
+
+-(void)loginDidFailWithError:(NSError *)err
+{
+	[_activity removeFromSuperview];
+	self.navigationItem.rightBarButtonItem.enabled = YES;
+	
+	[MBStore removePasswordForUsername:[MBStore getUserName]];
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
+													message:NSLocalizedString(@"Saved credentials are not valid", nil)
+												   delegate:self
+										  cancelButtonTitle:NSLocalizedString(@"Quit", nil)
+										  otherButtonTitles:NSLocalizedString(@"Settings", nil),nil];
+
+	[alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 0) {
+		
+	} else {
+		[[TTNavigator navigator] openURL:@"mb://configure" animated:YES];
 	}
 }
 
@@ -82,11 +125,12 @@
 	
 	if (buttonIndex == 0 &&
 		[UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-		[picker takePicture];
+		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
 	} else {
-		[self presentModalViewController:picker animated:YES];
+		picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 	}
 	
+	[self presentModalViewController:picker animated:YES];
 	[picker release];
 }
 
