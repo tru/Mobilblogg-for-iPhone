@@ -338,8 +338,12 @@ static char ctrl[0x22];
             c++;
             
         } else if (*c < 0x20) {
-            [self addErrorWithCode:ECTRL description: [NSString stringWithFormat:@"Unescaped control character '0x%x'", *c]];
-            return NO;
+/*            [self addErrorWithCode:ECTRL description: [NSString stringWithFormat:@"Unescaped control character '0x%x'", *c]];
+            return NO;*/
+			/* MobilBlogg.nu HACK */
+			unichar invalidChar = '?';
+			CFStringAppendCharacters((CFMutableStringRef)*o, &invalidChar, 1);
+			c++;
             
         } else {
             NSLog(@"should not be able to get here");
