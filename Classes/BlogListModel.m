@@ -13,7 +13,7 @@
 @implementation BlogListModel
 
 #define kMBAPIProtocol "http://"
-#define kMBAPIHost "www.mobilblog.nu/o.o.i.s" //&func=listBlogg&user=tru&page=1"
+#define kMBAPIHost "www.mobilblogg.nu/o.o.i.s" //&func=listBlogg&user=tru&page=1"
 
 @synthesize bloggName;
 @synthesize funcName;

@@ -20,6 +20,7 @@
 	NSInteger _index;
 	NSString *_caption;
 	NSString *_user;
+	NSDate *_date;
 }
 
 @property (nonatomic, copy) NSString *user;
@@ -27,6 +28,7 @@
 @property (nonatomic, copy) NSString *smallURL;
 @property (nonatomic, copy) NSString *thumbURL;
 @property (nonatomic, copy) NSString *URL;
+@property (nonatomic, copy) NSDate *date;
 
 +(MBPhoto*)getPhotoById:(NSUInteger)pId;
 +(void)storePhoto:(MBPhoto*)photo;

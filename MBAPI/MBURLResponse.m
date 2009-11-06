@@ -33,6 +33,16 @@
 	[super dealloc];
 }
 
+-(void)printErrorTrace:(NSError*)err
+{
+	NSLog(@"Error tranceback:");
+	NSError *node = err;
+	while (node) {
+		NSLog(@"  %@", [node localizedDescription]);
+		node = [[node userInfo] objectForKey:NSUnderlyingErrorKey];
+	}
+}
+
 #pragma mark TTURLResponse
 - (NSError*)request:(TTURLRequest*)request processResponse:(NSHTTPURLResponse*)response data:(id)data
 {
@@ -41,11 +51,13 @@
 	NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	NSError *jsonErr;
 	NSArray *photos = [parser objectWithString:responseBody error:&jsonErr];
+	NSDateFormatter *dFormater = [[NSDateFormatter alloc] init];
+	[dFormater setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 	
 	[responseBody release];
 	
 	if (!photos) {
-		NSLog(@"Error? %@", [jsonErr localizedDescription]);
+		[self printErrorTrace:jsonErr];
 	}
 	
 	for (NSDictionary *p in photos) {
@@ -56,12 +68,21 @@
 		photo.thumbURL = [p objectForKey:@"picture_small"];
 		photo.smallURL = [p objectForKey:@"picture_large"];
 		photo.URL = [p objectForKey:@"picture_large"];
+		NSString *dateStr = [p objectForKey:@"createdate"];
+		if (dateStr) {
+			photo.date = [dFormater dateFromString:[p objectForKey:@"createdate"]];
+			if (!photo.date) {
+				NSLog(@"Date parsing fail %@", [p objectForKey:@"createdate"]);
+			}
+		}
 		
 		[MBPhoto storePhoto:photo]; /* global cache of photos */
 		[self.entries addObject:photo];
 		
 		[photo release];
 	}
+	
+	[dFormater release];
 
 	[parser release];
 	

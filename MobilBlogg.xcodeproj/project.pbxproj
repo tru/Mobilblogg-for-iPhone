@@ -42,6 +42,7 @@
 		61E0D48D10A430A800809C22 /* MBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D48C10A430A800809C22 /* MBLogin.m */; };
 		61E0D4E810A4549800809C22 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */; };
 		61E0D50610A4567E00809C22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E0D50510A4567E00809C22 /* Security.framework */; };
+		61E0D5AC10A4647E00809C22 /* StartPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D5AB10A4647E00809C22 /* StartPageController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,8 @@
 		61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = SFHFKeychainUtils/SFHFKeychainUtils.m; sourceTree = SOURCE_ROOT; };
 		61E0D4E710A4549800809C22 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = SFHFKeychainUtils/SFHFKeychainUtils.h; sourceTree = SOURCE_ROOT; };
 		61E0D50510A4567E00809C22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		61E0D5AA10A4647E00809C22 /* StartPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartPageController.h; sourceTree = "<group>"; };
+		61E0D5AB10A4647E00809C22 /* StartPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartPageController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MobilBlogg-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobilBlogg-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +247,8 @@
 		61347B7B1093072800DD5DE7 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				61E0D5AA10A4647E00809C22 /* StartPageController.h */,
+				61E0D5AB10A4647E00809C22 /* StartPageController.m */,
 				61347F771095776500DD5DE7 /* FirstPageController.h */,
 				61347F781095776500DD5DE7 /* FirstPageController.m */,
 				614463CE109034CA00AD9801 /* ConfigController.h */,
@@ -448,6 +453,7 @@
 				61347F791095776500DD5DE7 /* FirstPageController.m in Sources */,
 				61E0D48D10A430A800809C22 /* MBLogin.m in Sources */,
 				61E0D4E810A4549800809C22 /* SFHFKeychainUtils.m in Sources */,
+				61E0D5AC10A4647E00809C22 /* StartPageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

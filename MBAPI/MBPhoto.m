@@ -12,6 +12,7 @@
 
 @synthesize photoSource = _photoSource, size = _size, index = _index, caption = _caption, user = _user, photoId = _photoId;
 @synthesize thumbURL = _thumbURL, smallURL = _smallURL, URL = _URL;
+@synthesize date = _date;
 
 static NSMutableDictionary *_photoStore = NULL;
 static NSArray *_currentBlogList = NULL;

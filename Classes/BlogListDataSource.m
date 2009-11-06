@@ -48,8 +48,12 @@
 		} else {
 			caption = photo.caption;
 		}
+		NSMutableString *subtitle = [NSMutableString stringWithFormat:@"By: %@", photo.user];
+		if (photo.date) {
+			[subtitle appendFormat:@" - %@", [photo.date formatRelativeTime]];
+		}
 		TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:caption
-															 subtitle:[@"By: " stringByAppendingString:photo.user]
+															 subtitle:subtitle
 															 imageURL:photo.thumbURL
 																  URL:[@"mb://picture/" stringByAppendingFormat:@"%d", photo.photoId]];
         [self.items addObject:item];

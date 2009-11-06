@@ -15,7 +15,7 @@
 - (id)init {
 	self = [super init];
 	
-	self.title = @"MobilBlog.nu";
+	self.title = @"MobilBlogg.nu";
 	self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" 
 																			  style:UIBarButtonItemStyleBordered 
 																			 target:nil action:nil] autorelease];
@@ -35,7 +35,10 @@
 {
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 					   NSLocalizedString(@"My pages", nil),
-					   [TTTableTextItem itemWithText:NSLocalizedString(@"My Blog",nil) URL:[@"mb://listblog/" stringByAppendingString:[MBStore getUserName]]],
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"My Start Page", nil)
+												 URL:@"mb://mystartpage/"],
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"My Blog",nil) 
+												 URL:[@"mb://listblog/" stringByAppendingString:[MBStore getUserName]]],
 					   NSLocalizedString(@"MobilBlogg", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Go to User", nil) URL:@"mb://searchuser"],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"First Page", nil) URL:@"mb://firstpage"],
@@ -101,7 +104,12 @@
 
 - (void)camera
 {
-	UIActionSheet *askPicture = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+	UIActionSheet *askPicture = [[UIActionSheet alloc] initWithTitle:nil 
+															delegate:self
+												   cancelButtonTitle:nil
+											  destructiveButtonTitle:nil
+												   otherButtonTitles:nil];
+	
 	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
 		[askPicture addButtonWithTitle:NSLocalizedString(@"Take Picture with Camera", nil)];
 	}
