@@ -89,9 +89,4 @@
 	return nil;
 }
 
-- (NSString*)format
-{
-	return @"JSON";
-}
-
 @end

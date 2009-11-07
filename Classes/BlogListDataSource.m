@@ -67,6 +67,7 @@
 
 -(void)dealloc
 {
+	NSLog(@"BlogListDataSource get's dealloced");
 	[super dealloc];
 }
 

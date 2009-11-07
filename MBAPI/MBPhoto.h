@@ -35,6 +35,7 @@
 -(id)initWithPhotoId:(NSUInteger)pId;
 +(NSArray*)getCurrentBlogListCopy;
 +(void)setCurrentBlogList:(NSArray *)blogList;
++(void)removePhoto:(MBPhoto *)photo;
 
 
 @end

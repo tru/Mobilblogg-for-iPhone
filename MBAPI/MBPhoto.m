@@ -31,6 +31,11 @@ static NSArray *_currentBlogList = NULL;
 {
 	@synchronized(_currentBlogList) {
 		if (_currentBlogList) {
+			NSLog(@"We have a curent blog that we are releasing now!");
+			for (MBPhoto *p in _currentBlogList) {
+				[MBPhoto removePhoto:p];
+				[p release];
+			}
 			[_currentBlogList release];
 		}
 		_currentBlogList = [blogList copy];
@@ -48,6 +53,13 @@ static NSArray *_currentBlogList = NULL;
 		ret = [_photoStore objectForKey:[NSNumber numberWithUnsignedInt:pId]];
 	}
 	return ret;
+}
+
++(void)removePhoto:(MBPhoto *)photo
+{
+	@synchronized(_photoStore) {
+		[_photoStore removeObjectForKey:[NSNumber numberWithUnsignedInt:photo.photoId]];
+	}
 }
 
 +(void)storePhoto:(MBPhoto *)photo
@@ -80,6 +92,18 @@ static NSArray *_currentBlogList = NULL;
   } else {
     return nil;
   }
+}
+
+-(void)dealloc
+{
+	NSLog(@"Destroying MBPhoto %d", _photoId);
+	[_thumbURL release];
+	[_smallURL release];
+	[_URL release];
+	[_caption release];
+	[_user release];
+	[_date release];
+	[super dealloc];
 }
 
 @end
