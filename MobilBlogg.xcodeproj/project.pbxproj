@@ -505,6 +505,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = MobilBlogg;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
 		};
@@ -522,6 +523,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = MobilBlogg;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};

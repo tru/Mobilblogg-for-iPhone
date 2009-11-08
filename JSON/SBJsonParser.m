@@ -324,15 +324,22 @@ static char ctrl[0x22];
                 case 'u':
                     c++;
                     if (![self scanUnicodeChar:&uc]) {
-                        [self addErrorWithCode:EUNICODE description: @"Broken unicode character"];
-                        return NO;
+						unichar invalidChar = '?';
+						CFStringAppendCharacters((CFMutableStringRef)*o, &invalidChar, 1);
+						c++;
+						continue;
                     }
                     c--; // hack.
                     break;
                 default:
-                    [self addErrorWithCode:EESCAPE description: [NSString stringWithFormat:@"Illegal escape sequence '0x%x'", uc]];
-                    return NO;
-                    break;
+/*                    [self addErrorWithCode:EESCAPE description: [NSString stringWithFormat:@"Illegal escape sequence '0x%x'", uc]];
+                    return NO;*/
+				{
+					unichar invalidChar = '?';
+					CFStringAppendCharacters((CFMutableStringRef)*o, &invalidChar, 1);
+					c++;
+                    continue;
+				}
             }
             CFStringAppendCharacters((CFMutableStringRef)*o, &uc, 1);
             c++;
