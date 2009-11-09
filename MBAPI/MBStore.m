@@ -12,10 +12,20 @@
 
 @implementation MBStore
 
++(void)removeAllData
+{
+	[MBStore removePasswordForUsername:[MBStore getUserName]];
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults removeObjectForKey:@"username"];
+	[defaults removeObjectForKey:@"previousGotoUsers"];
+	[defaults synchronize];
+}
+
 +(void)setObject:(id)object forKey:(NSString*)key
 {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setObject:object forKey:key];
+	[defaults synchronize];
 }
 
 +(id)getObjectForKey:(NSString*)key

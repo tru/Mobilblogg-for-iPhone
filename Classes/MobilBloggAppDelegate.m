@@ -9,14 +9,14 @@
 #import "MobilBloggAppDelegate.h"
 #import <Three20/Three20.h>
 
-#import "ConfigController.h"
-#import "NewConfigController.h"
+#import "UserConfigController.h"
 #import "BlogListController.h"
 #import "ShowPictureController.h"
 #import "SearchUserViewController.h"
 #import "CommentViewController.h"
 #import "FirstPageController.h"
 #import "StartPageController.h"
+#import "GotoUserController.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -24,7 +24,11 @@
 	TTNavigator *ttnav = [TTNavigator navigator];
 	TTURLMap *URLMap = ttnav.URLMap;
 	[URLMap from:@"mb://root" toViewController:[RootController class]];
-	[URLMap from:@"mb://configure" toModalViewController:[NewConfigController class]];
+	/* we want to open it from the root as a modal controller, and some times from the
+	 configure class as a normal class */
+	[URLMap from:@"mb://userconfmodal" toModalViewController:[UserConfigController class]];
+	[URLMap from:@"mb://userconf" toViewController:[UserConfigController class]];
+	
 	[URLMap from:@"mb://listblog/(initWithName:)" toViewController:[BlogListController class]];
 	[URLMap	from:@"mb://picture/(initWithId:)" toViewController:[ShowPictureController class]];
 	[URLMap from:@"mb://searchuser" toViewController:[SearchUserViewController class]];
@@ -32,6 +36,7 @@
 													  transition:UIViewAnimationTransitionFlipFromLeft];
 	[URLMap	from:@"mb://firstpage" toViewController:[FirstPageController class]];
 	[URLMap from:@"mb://mystartpage" toViewController:[StartPageController class]];
+	[URLMap from:@"mb://gotouser" toViewController:[GotoUserController class]];
 	
 	if (![ttnav restoreViewControllers]) {
 		[ttnav openURL:@"mb://root" animated:NO];

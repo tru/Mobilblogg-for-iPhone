@@ -1,5 +1,5 @@
 //
-//  NewConfigController.h
+//  GotoUser.h
 //  MobilBlogg
 //
 //  Created by Tobias Rundström on 2009-11-09.
@@ -7,14 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <Three20/Three20.h>
-#import "MBLogin.h"
 
-@interface NewConfigController : TTTableViewController<UITextFieldDelegate,MBLoginDelegateProtocol> {
-	TTActivityLabel *_activity;
+@interface GotoUserController : TTTableViewController {
 	UITextField *_username;
-	UITextField *_password;
 }
 
 @end

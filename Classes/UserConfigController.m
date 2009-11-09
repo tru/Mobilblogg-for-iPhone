@@ -6,10 +6,10 @@
 //  Copyright 2009 Purple Scout. All rights reserved.
 //
 
-#import "NewConfigController.h"
+#import "UserConfigController.h"
 #import "MBStore.h"
 
-@implementation NewConfigController
+@implementation UserConfigController
 
 
 -(id)init
@@ -18,6 +18,7 @@
 	
 	self.title = NSLocalizedString(@"Settings", nil);
 	self.tableViewStyle = UITableViewStyleGrouped;
+		
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
 																						   target:self 
 																						   action:@selector(saveSettings)];
@@ -25,6 +26,8 @@
 	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 416)
 												 style:TTActivityLabelStyleBlackBox
 												  text:NSLocalizedString(@"Logging in", nil)];
+	
+	[[TTNavigator navigator].URLMap	from:@"mb://_cleardata" toViewController:self selector:@selector(clearData)];
 	return self;
 }
 
@@ -52,12 +55,25 @@
 	_password.returnKeyType = UIReturnKeyDone;
 	_username.delegate = self;
 	
+	
+		
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 					   NSLocalizedString(@"Username", nil),
 					   _username,
 					   NSLocalizedString(@"Password", nil),
 					   _password,
+#ifdef DEBUG					   
+					   NSLocalizedString(@"Debug", nil),
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"Clear stored data", nil) URL:@"mb://_cleardata"],
+#endif
 					   nil];
+}
+
+-(void)clearData
+{
+	NSLog(@"Removing stored data");
+	[MBStore removeAllData];
+	[self dismissModalViewController];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField*)field
@@ -86,7 +102,8 @@
 {
 	[MBStore saveUserName:_username.text];
 	[MBStore savePassword:_password.text forUsername:_username.text];
-	
+		
+	[_activity removeFromSuperview];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
@@ -108,6 +125,7 @@
 
 -(void)dealloc
 {
+	[[TTNavigator navigator].URLMap	removeURL:@"mb://_cleardata"];
 	[_activity release];
 	[_password release];
 	[_username release];

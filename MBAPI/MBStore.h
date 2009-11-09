@@ -17,4 +17,9 @@
 +(NSString *)getPasswordForUsername:(NSString *)username;
 +(void)removePasswordForUsername:(NSString*)username;
 
++(id)getObjectForKey:(NSString *)key;
++(void)setObject:(id)object forKey:(NSString*)key;
+
++(void)removeAllData;
+
 @end

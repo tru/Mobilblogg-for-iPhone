@@ -35,7 +35,8 @@
 		614462E710901B5300AD9801 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 614462E610901B5300AD9801 /* QuartzCore.framework */; };
 		61446323109020A200AD9801 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 614462B510901ADC00AD9801 /* libThree20.a */; };
 		6165922E10A80DC200B1FE8D /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6165922D10A80DC200B1FE8D /* Three20.bundle */; };
-		6165925C10A80EBD00B1FE8D /* NewConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165925B10A80EBD00B1FE8D /* NewConfigController.m */; };
+		6165925C10A80EBD00B1FE8D /* UserConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165925B10A80EBD00B1FE8D /* UserConfigController.m */; };
+		616592FC10A8344000B1FE8D /* GotoUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616592FB10A8344000B1FE8D /* GotoUserController.m */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
 		61E0D48D10A430A800809C22 /* MBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D48C10A430A800809C22 /* MBLogin.m */; };
@@ -115,8 +116,10 @@
 		614462EF10901C3D00AD9801 /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
 		614462F010901C3D00AD9801 /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
 		6165922D10A80DC200B1FE8D /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
-		6165925A10A80EBD00B1FE8D /* NewConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewConfigController.h; sourceTree = "<group>"; };
-		6165925B10A80EBD00B1FE8D /* NewConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewConfigController.m; sourceTree = "<group>"; };
+		6165925A10A80EBD00B1FE8D /* UserConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserConfigController.h; sourceTree = "<group>"; };
+		6165925B10A80EBD00B1FE8D /* UserConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserConfigController.m; sourceTree = "<group>"; };
+		616592FA10A8344000B1FE8D /* GotoUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotoUserController.h; sourceTree = "<group>"; };
+		616592FB10A8344000B1FE8D /* GotoUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotoUserController.m; sourceTree = "<group>"; };
 		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
 		61BE258D1091DAF600D76E03 /* BlogListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListModel.h; sourceTree = "<group>"; };
@@ -247,8 +250,10 @@
 				61E0D5AB10A4647E00809C22 /* StartPageController.m */,
 				61347F771095776500DD5DE7 /* FirstPageController.h */,
 				61347F781095776500DD5DE7 /* FirstPageController.m */,
-				6165925A10A80EBD00B1FE8D /* NewConfigController.h */,
-				6165925B10A80EBD00B1FE8D /* NewConfigController.m */,
+				6165925A10A80EBD00B1FE8D /* UserConfigController.h */,
+				6165925B10A80EBD00B1FE8D /* UserConfigController.m */,
+				616592FA10A8344000B1FE8D /* GotoUserController.h */,
+				616592FB10A8344000B1FE8D /* GotoUserController.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -448,7 +453,8 @@
 				61E0D48D10A430A800809C22 /* MBLogin.m in Sources */,
 				61E0D4E810A4549800809C22 /* SFHFKeychainUtils.m in Sources */,
 				61E0D5AC10A4647E00809C22 /* StartPageController.m in Sources */,
-				6165925C10A80EBD00B1FE8D /* NewConfigController.m in Sources */,
+				6165925C10A80EBD00B1FE8D /* UserConfigController.m in Sources */,
+				616592FC10A8344000B1FE8D /* GotoUserController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +492,7 @@
 				GCC_PREFIX_HEADER = MobilBlogg_Prefix.pch;
 				HEADER_SEARCH_PATHS = ../three20/src;
 				INFOPLIST_FILE = "MobilBlogg-Info.plist";
+				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",

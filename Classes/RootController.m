@@ -40,10 +40,10 @@
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"My Blog",nil) 
 												 URL:[@"mb://listblog/" stringByAppendingString:[MBStore getUserName]]],
 					   NSLocalizedString(@"MobilBlogg", nil),
-					   [TTTableTextItem itemWithText:NSLocalizedString(@"Go to User", nil) URL:@"mb://searchuser"],
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"Go to User", nil) URL:@"mb://gotouser"],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"First Page", nil) URL:@"mb://firstpage"],
 					   NSLocalizedString(@"Settings", nil),
-					   [TTTableTextItem itemWithText:NSLocalizedString(@"Settings", @"Menu item") URL:@"mb://configure"],
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"Settings", @"Menu item") URL:@"mb://userconfmodal"],
 					   nil];
 }
 
@@ -54,7 +54,7 @@
 	password = [MBStore getPasswordForUsername:username];
 	
 	if (!username || !password) {
-		[[TTNavigator navigator] openURL:@"mb://configure" animated:NO];
+		[[TTNavigator navigator] openURL:@"mb://userconfmodal" animated:NO];
 	} else {
 		MBLogin *login = [MBLogin loginWithUsername:username andPassword:password];
 		login.delegate = self;
@@ -100,7 +100,7 @@
 	if (buttonIndex == 0) {
 		/*TODO: make something fancy here later */
 	} else {
-		[[TTNavigator navigator] openURL:@"mb://configure" animated:YES];
+		[[TTNavigator navigator] openURL:@"mb://userconfmodal" animated:YES];
 	}
 }
 
