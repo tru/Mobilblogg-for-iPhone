@@ -22,8 +22,12 @@
 -(void)createModel
 {
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
-					   NSLocalizedString(@"MobilBlogg.nu for iPhone by:",nil),
+					   NSLocalizedString(@"MobilBlogg.nu for iPhone",nil),
+					   [TTTableTextItem itemWithText:[NSString stringWithFormat:@"Version: %@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]] 
+																			URL:@"http://opensource.purplescout.se/projects/roadmap/mbiphone"],
+					   NSLocalizedString(@"Developed by:", nil),
 					   [TTTableTextItem itemWithText:@"Tobias Rundström" URL:@"mb://listblog/tru"],
+					   [TTTableTextItem itemWithText:@"PurpleScout AB" URL:@"http://www.purplescout.com/"],
 					   NSLocalizedString(@"Server side code by:", nil),
 					   [TTTableTextItem itemWithText:@"Henrik Öhman" URL:@"mb://listblog/fivestar"],
 					   NSLocalizedString(@"BETA testers:", nil),
