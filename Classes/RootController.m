@@ -42,8 +42,9 @@
 					   NSLocalizedString(@"MobilBlogg", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Go to User", nil) URL:@"mb://gotouser"],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"First Page", nil) URL:@"mb://firstpage"],
-					   NSLocalizedString(@"Settings", nil),
+					   NSLocalizedString(@"Application", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Settings", @"Menu item") URL:@"mb://userconfmodal"],
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"About", nil) URL:@"mb://about"],
 					   nil];
 }
 

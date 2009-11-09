@@ -17,12 +17,14 @@
 #import "FirstPageController.h"
 #import "StartPageController.h"
 #import "GotoUserController.h"
+#import "AboutController.h"
 
 @implementation MobilBloggAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	TTNavigator *ttnav = [TTNavigator navigator];
 	TTURLMap *URLMap = ttnav.URLMap;
+	[URLMap from:@"*" toViewController:[TTWebController class]];
 	[URLMap from:@"mb://root" toViewController:[RootController class]];
 	/* we want to open it from the root as a modal controller, and some times from the
 	 configure class as a normal class */
@@ -37,6 +39,7 @@
 	[URLMap	from:@"mb://firstpage" toViewController:[FirstPageController class]];
 	[URLMap from:@"mb://mystartpage" toViewController:[StartPageController class]];
 	[URLMap from:@"mb://gotouser" toViewController:[GotoUserController class]];
+	[URLMap	from:@"mb://about" toViewController:[AboutController class]];
 	
 	if (![ttnav restoreViewControllers]) {
 		[ttnav openURL:@"mb://root" animated:NO];
