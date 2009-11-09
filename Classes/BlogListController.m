@@ -23,12 +23,11 @@
 	self.variableHeightRows = YES;
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
 																						   target:self 
-																						   action:@selector(refresh)];
-
-	NSLog(@"Creating Model");
+																						   action:@selector(refresh)];	
+	_pool = [[NSAutoreleasePool alloc] init];
 	
 	id<TTTableViewDataSource> ds = [BlogListDataSource dataSourceWithItems:nil];
-	ds.model = [[BlogListModel alloc] initWithBloggName:self.name];
+	ds.model = [[[BlogListModel alloc] initWithBloggName:self.name] autorelease];
 	self.dataSource = ds;
 
 	return self;
@@ -38,6 +37,14 @@
 {
 	NSLog(@"Refreshing");
 	[self reload];
+}
+
+-(void)dealloc
+{
+	NSLog(@"DEALLOC: BlogListController %@", self.name);
+	[_pool drain];
+	[_pool release];
+	[super dealloc];
 }
 
 @end

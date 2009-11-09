@@ -23,8 +23,9 @@
 
 	NSLog(@"Creating Model");
 	
+	_pool = [[NSAutoreleasePool alloc] init];
 	id<TTTableViewDataSource> ds = [BlogListDataSource dataSourceWithItems:nil];
-	ds.model = [[BlogListModel alloc] initWithFunction:@"listStartpage"];
+	ds.model = [[[BlogListModel alloc] initWithFunction:@"listStartpage"] autorelease];
 	self.dataSource = ds;
 
 	return self;
@@ -34,6 +35,14 @@
 {
 	NSLog(@"Refreshing");
 	[self reload];
+}
+
+-(void)dealloc
+{
+	NSLog(@"DEALLOC: StartPageController");
+	[_pool drain];
+	[_pool release];
+	[super dealloc];
 }
 
 

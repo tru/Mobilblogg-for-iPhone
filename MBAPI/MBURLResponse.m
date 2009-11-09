@@ -11,25 +11,20 @@
 #import "MBPhoto.h"
 
 @implementation MBURLResponse
-@synthesize entries;
-
-+ (id)response
-{
-	NSLog(@"inited!");
-    return [[[[self class] alloc] init] autorelease];
-}
+@synthesize entries = _entries;
 
 -(id)init
 {
 	NSLog(@"Response got called");
 	self = [super init];
-	self.entries = [[NSMutableArray alloc] init];
+	_entries = [[NSMutableArray alloc] init];
 	return self;
 }
 
 -(void)dealloc
 {
-	[entries release];
+	NSLog(@"DEALLOC: MBURLResponse");
+	[_entries release];
 	[super dealloc];
 }
 
@@ -61,8 +56,7 @@
 	}
 	
 	for (NSDictionary *p in photos) {
-		NSLog(@"Adding item with caption %@", [p objectForKey:@"caption"]);
-		MBPhoto *photo = [[MBPhoto alloc] initWithPhotoId:[[p objectForKey:@"id"] intValue]];
+		MBPhoto *photo = [MBPhoto photoWithPhotoId:[[p objectForKey:@"id"] intValue]];
 		photo.caption = [p objectForKey:@"caption"];
 		photo.user = [p objectForKey:@"user"];
 		photo.thumbURL = [p objectForKey:@"picture_small"];
@@ -76,14 +70,10 @@
 			}
 		}
 		
-		[MBPhoto storePhoto:photo]; /* global cache of photos */
-		[self.entries addObject:photo];
-		
-		[photo release];
+		[_entries addObject:photo];
 	}
 	
 	[dFormater release];
-
 	[parser release];
 	
 	return nil;

@@ -12,24 +12,20 @@
 
 @implementation ShowPictureController
 
--(id)initWithId:(id)pictureId
+-(id)initWithNavigatorURL:(NSURL*)url query:(NSDictionary*)query
 {
 	self = [super init];
 	
-	_photo = [MBPhoto getPhotoById:[pictureId intValue]];
-	if (!_photo) {
-		NSLog(@"Ouch no photo in the global store...");
-		return nil;
+	NSArray *photoList = [query objectForKey:@"photoList"];
+	for (MBPhoto *p in photoList) {
+		NSUInteger myPID = [[query objectForKey:@"photoId"] intValue];
+		if (p.photoId == myPID) {
+			_photo = p;
+			break;
+		}
 	}
 	
-	NSArray *photoList = [MBPhoto getCurrentBlogListCopy];
-	if (!photoList) {
-		NSLog(@"No CurrentBlogList?");
-		return nil;
-	}
-	
-	self.photoSource = [[PhotoSource alloc] initWithPhotos:photoList];
-	[photoList release];
+	self.photoSource = [[[PhotoSource alloc] initWithPhotos:photoList] autorelease];
 	self.centerPhoto = _photo;
 	
 	return self;
@@ -41,17 +37,20 @@
 	UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 						 UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
 	
-	UIBarButtonItem *comments = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose 
-																			   target:self
-																			   action:@selector(comments)] autorelease];
+	UIButton *infoUIButton = [[UIButton buttonWithType:UIButtonTypeInfoLight] autorelease];
+	[infoUIButton addTarget:self action:@selector(photoInfo) forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *info = [[UIBarButtonItem alloc] initWithCustomView:infoUIButton];
 	
-	NSArray *items = [NSArray arrayWithObjects:space, _previousButton, space, _nextButton, space, comments, nil];
+	NSArray *items = [NSArray arrayWithObjects:space, _previousButton, space, _nextButton, space, info, nil];
 	
 	_toolbar.items = items;
 }
 
--(void)viewDidLoad
+-(void)photoInfo
 {
+	MBPhoto *currentPhoto = self.centerPhoto;
+	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:currentPhoto, @"photo", nil];
+	[[TTNavigator navigator] openURL:@"mb://photoinfo" query:dict animated:YES];
 }
 
 -(void)comments
@@ -60,7 +59,7 @@
 }
 
 - (void)dealloc {
-	[self.photoSource release];
+	NSLog(@"DEALLOC: ShowPictureController");
 	[super dealloc];
 }
 

@@ -11,6 +11,7 @@
 
 @interface BlogListController : TTTableViewController {
 	NSString *name;
+	NSAutoreleasePool *_pool;
 }
 @property (nonatomic, copy) NSString *name;
 

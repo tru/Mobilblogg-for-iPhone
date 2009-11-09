@@ -18,6 +18,7 @@
 #import "StartPageController.h"
 #import "GotoUserController.h"
 #import "AboutController.h"
+#import "ShowPictureInfoController.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -32,7 +33,7 @@
 	[URLMap from:@"mb://userconf" toViewController:[UserConfigController class]];
 	
 	[URLMap from:@"mb://listblog/(initWithName:)" toViewController:[BlogListController class]];
-	[URLMap	from:@"mb://picture/(initWithId:)" toViewController:[ShowPictureController class]];
+	[URLMap	from:@"mb://picture?" toViewController:[ShowPictureController class]];
 	[URLMap from:@"mb://searchuser" toViewController:[SearchUserViewController class]];
 	[URLMap from:@"mb://comments/(initWithId:)" toViewController:[CommentViewController class]
 													  transition:UIViewAnimationTransitionFlipFromLeft];
@@ -40,6 +41,8 @@
 	[URLMap from:@"mb://mystartpage" toViewController:[StartPageController class]];
 	[URLMap from:@"mb://gotouser" toViewController:[GotoUserController class]];
 	[URLMap	from:@"mb://about" toViewController:[AboutController class]];
+	[URLMap from:@"mb://photoinfo" toViewController:[ShowPictureInfoController class]
+									     transition:UIViewAnimationTransitionFlipFromLeft];
 	
 	if (![ttnav restoreViewControllers]) {
 		[ttnav openURL:@"mb://root" animated:NO];

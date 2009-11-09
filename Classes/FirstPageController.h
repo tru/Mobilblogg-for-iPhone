@@ -11,7 +11,7 @@
 #import <Three20/Three20.h>
 
 @interface FirstPageController : TTTableViewController {
-
+	NSAutoreleasePool *_pool;
 }
 
 @end

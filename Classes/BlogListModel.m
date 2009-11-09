@@ -60,6 +60,7 @@
 	}
 	
 	url = [url stringByAppendingFormat:@"?%@", [dict gtm_httpArgumentsString]];
+	
 	TTURLRequest *req = [TTURLRequest requestWithURL:url delegate:self];
 	req.cachePolicy = cachePolicy;
 	req.response = responseModel;
@@ -70,7 +71,6 @@
 
 -(void)reset
 {
-	NSLog(@"Reset it");
     [super reset];
 	[bloggName release];
     page = 1;
@@ -79,12 +79,12 @@
 
 -(NSArray *)results
 {
-	NSLog(@"Helo results!");
-    return [[[responseModel entries] copy] autorelease];
+    return [responseModel entries];
 }
 
 -(void)dealloc
 {
+	NSLog(@"DEALLOC: BlogListModel");
     [bloggName release];
     [responseModel release];
     [super dealloc];

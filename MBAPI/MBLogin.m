@@ -90,5 +90,12 @@
 	}
 }
 
+-(void)dealloc
+{
+	NSLog(@"DEALLOC: MBLogin");
+	[_responseData release];
+	[super dealloc];
+}
+
 
 @end

@@ -12,7 +12,7 @@
 
 @implementation BlogListDataSource
 
-+ (NSString *)wordWrapString:(NSString *)string atLength:(NSUInteger)length
++(NSString *)wordWrapString:(NSString *)string atLength:(NSUInteger)length
 {
 	if ([string length] < length) {
 		return string;
@@ -24,23 +24,28 @@
 		len--;
 		space = [str characterAtIndex:len];
 	}
-	
-	NSLog(@"wordwrapped: %@ to %@", string, [string substringToIndex:len]);
-	
+		
 	NSString *retstr = [str substringToIndex:len];
 	[str release];
 	return [retstr stringByPaddingToLength:len+3 withString:@"." startingAtIndex:0];
 }
 
-- (void)tableViewDidLoadModel:(UITableView *)tableView
+-(id)init
+{
+	self = [super init];
+	/*FIXME: FUGLY delux, must be fixed*/
+	[[TTNavigator navigator].URLMap from:[NSString stringWithFormat:@"mb://_topicture/%x/(navigateToPhotos:)", self] toViewController:self];
+	
+	return self;
+}
+
+-(void)tableViewDidLoadModel:(UITableView *)tableView
 {
     [super tableViewDidLoadModel:tableView];
-    
-    NSLog(@"Removing all objects in the table view.");
+
+    /* Clean table first */
     [self.items removeAllObjects];
-	
-	[MBPhoto setCurrentBlogList:[(id<BlogListModelProtocol>)self.model results]];
-	
+		
     for (MBPhoto *photo in [(id<BlogListModelProtocol>)self.model results]) {
 		NSString *caption;
 		if ([photo.caption length] > 25) {
@@ -55,19 +60,28 @@
 		TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:caption
 															 subtitle:subtitle
 															 imageURL:photo.thumbURL
-																  URL:[@"mb://picture/" stringByAppendingFormat:@"%d", photo.photoId]];
+																  URL:[@"mb://_topicture/" stringByAppendingFormat:@"%x/%d", self,photo.photoId]];
         [self.items addObject:item];
 	}
 
-	
-	[self.items addObject:[TTTableMoreButton itemWithText:@"Load more ..."]];
+	[self.items addObject:[TTTableMoreButton itemWithText:NSLocalizedString(@"Load more ...", nil)]];
     
     NSLog(@"Added %lu result objects", (unsigned long)[self.items count]);
 }
 
+-(void)navigateToPhotos:(id)photoId
+{
+	NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:
+						   photoId, @"photoId",
+						   [(id<BlogListModelProtocol>)self.model results], @"photoList",
+						   nil];
+	[[TTNavigator navigator] openURL:@"mb://picture" query:query animated:YES];
+}
+
 -(void)dealloc
 {
-	NSLog(@"BlogListDataSource get's dealloced");
+	NSLog(@"DEALLOC: BlogListDataSource %x", self);
+	[[TTNavigator navigator].URLMap	removeURL:[NSString stringWithFormat:@"mb://_topicture/%x/(navigateToPhotos:)", self]];
 	[super dealloc];
 }
 

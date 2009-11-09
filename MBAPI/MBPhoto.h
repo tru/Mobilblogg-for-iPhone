@@ -30,12 +30,7 @@
 @property (nonatomic, copy) NSString *URL;
 @property (nonatomic, copy) NSDate *date;
 
-+(MBPhoto*)getPhotoById:(NSUInteger)pId;
-+(void)storePhoto:(MBPhoto*)photo;
 -(id)initWithPhotoId:(NSUInteger)pId;
-+(NSArray*)getCurrentBlogListCopy;
-+(void)setCurrentBlogList:(NSArray *)blogList;
-+(void)removePhoto:(MBPhoto *)photo;
-
++(MBPhoto*)photoWithPhotoId:(NSUInteger)pId;
 
 @end

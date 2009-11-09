@@ -10,12 +10,11 @@
 #import <Three20/Three20.h>
 
 @interface MBURLResponse : NSObject <TTURLResponse> {
-	NSMutableArray *entries;
+	NSMutableArray *_entries;
 }
 
 @property (nonatomic,retain) NSMutableArray *entries;
 
-+(id)response;
 -(id)init;
 
 @end

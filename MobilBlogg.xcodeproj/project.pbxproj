@@ -38,6 +38,7 @@
 		6165925C10A80EBD00B1FE8D /* UserConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165925B10A80EBD00B1FE8D /* UserConfigController.m */; };
 		616592FC10A8344000B1FE8D /* GotoUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616592FB10A8344000B1FE8D /* GotoUserController.m */; };
 		6165944810A84A3000B1FE8D /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165944710A84A3000B1FE8D /* AboutController.m */; };
+		616594D010A854A600B1FE8D /* ShowPictureInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
 		61E0D48D10A430A800809C22 /* MBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D48C10A430A800809C22 /* MBLogin.m */; };
@@ -123,6 +124,8 @@
 		616592FB10A8344000B1FE8D /* GotoUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotoUserController.m; sourceTree = "<group>"; };
 		6165944610A84A3000B1FE8D /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
 		6165944710A84A3000B1FE8D /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
+		616594CE10A854A600B1FE8D /* ShowPictureInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPictureInfoController.h; sourceTree = "<group>"; };
+		616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPictureInfoController.m; sourceTree = "<group>"; };
 		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
 		61BE258D1091DAF600D76E03 /* BlogListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListModel.h; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 		61347E8A1093467300DD5DE7 /* PhotoView */ = {
 			isa = PBXGroup;
 			children = (
+				616594CE10A854A600B1FE8D /* ShowPictureInfoController.h */,
+				616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */,
 				61347E861093466D00DD5DE7 /* CommentViewController.h */,
 				61347E871093466D00DD5DE7 /* CommentViewController.m */,
 				61347D9D109339FF00DD5DE7 /* PhotoSource.h */,
@@ -461,6 +466,7 @@
 				6165925C10A80EBD00B1FE8D /* UserConfigController.m in Sources */,
 				616592FC10A8344000B1FE8D /* GotoUserController.m in Sources */,
 				6165944810A84A3000B1FE8D /* AboutController.m in Sources */,
+				616594D010A854A600B1FE8D /* ShowPictureInfoController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

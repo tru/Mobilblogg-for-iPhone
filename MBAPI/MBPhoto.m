@@ -14,63 +14,9 @@
 @synthesize thumbURL = _thumbURL, smallURL = _smallURL, URL = _URL;
 @synthesize date = _date;
 
-static NSMutableDictionary *_photoStore = NULL;
-static NSArray *_currentBlogList = NULL;
-
-+(NSArray *)getCurrentBlogListCopy
++(MBPhoto*)photoWithPhotoId:(NSUInteger)pId
 {
-	NSArray *ret;
-	@synchronized(_currentBlogList)
-	{
-		ret = [_currentBlogList copy];
-	}
-	return ret;
-}
-
-+(void)setCurrentBlogList:(NSArray*)blogList
-{
-	@synchronized(_currentBlogList) {
-		if (_currentBlogList) {
-			NSLog(@"We have a curent blog that we are releasing now!");
-			for (MBPhoto *p in _currentBlogList) {
-				[MBPhoto removePhoto:p];
-				[p release];
-			}
-			[_currentBlogList release];
-		}
-		_currentBlogList = [blogList copy];
-	}
-}
-
-+(MBPhoto *)getPhotoById:(NSUInteger) pId
-{
-	MBPhoto *ret;
-	@synchronized(_photoStore) {
-		if (!_photoStore) {
-			_photoStore = [[NSMutableDictionary alloc] init];
-		}
-	
-		ret = [_photoStore objectForKey:[NSNumber numberWithUnsignedInt:pId]];
-	}
-	return ret;
-}
-
-+(void)removePhoto:(MBPhoto *)photo
-{
-	@synchronized(_photoStore) {
-		[_photoStore removeObjectForKey:[NSNumber numberWithUnsignedInt:photo.photoId]];
-	}
-}
-
-+(void)storePhoto:(MBPhoto *)photo
-{
-	@synchronized(_photoStore) {
-		if (!_photoStore) {
-			_photoStore = [[NSMutableDictionary alloc] init];
-		}
-	
-		[_photoStore setObject:photo forKey:[NSNumber numberWithUnsignedInt:photo.photoId]];
-	}
+	return [[[MBPhoto alloc] initWithPhotoId:pId] autorelease];
 }
 
 -(id)initWithPhotoId:(NSUInteger)pId
@@ -96,7 +42,7 @@ static NSArray *_currentBlogList = NULL;
 
 -(void)dealloc
 {
-	NSLog(@"Destroying MBPhoto %d", _photoId);
+	NSLog(@"DEALLOC: MBPhoto %d", _photoId);
 	[_thumbURL release];
 	[_smallURL release];
 	[_URL release];
