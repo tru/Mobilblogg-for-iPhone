@@ -26,6 +26,8 @@
 	TTTableViewController *searchCtrl = [[TTTableViewController alloc] init];
 	searchCtrl.dataSource = [[SearchUserDataSource alloc] init];
 	self.searchViewController = searchCtrl;
+	_searchController.searchBar.showsCancelButton = NO;
+	_searchController.searchBar.placeholder = NSLocalizedString(@"Search username", nil);
 	self.tableView.tableHeaderView = _searchController.searchBar;
 }
 

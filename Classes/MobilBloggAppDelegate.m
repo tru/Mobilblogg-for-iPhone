@@ -10,6 +10,7 @@
 #import <Three20/Three20.h>
 
 #import "ConfigController.h"
+#import "NewConfigController.h"
 #import "BlogListController.h"
 #import "ShowPictureController.h"
 #import "SearchUserViewController.h"
@@ -23,7 +24,7 @@
 	TTNavigator *ttnav = [TTNavigator navigator];
 	TTURLMap *URLMap = ttnav.URLMap;
 	[URLMap from:@"mb://root" toViewController:[RootController class]];
-	[URLMap from:@"mb://configure" toModalViewController:[ConfigController class]];
+	[URLMap from:@"mb://configure" toModalViewController:[NewConfigController class]];
 	[URLMap from:@"mb://listblog/(initWithName:)" toViewController:[BlogListController class]];
 	[URLMap	from:@"mb://picture/(initWithId:)" toViewController:[ShowPictureController class]];
 	[URLMap from:@"mb://searchuser" toViewController:[SearchUserViewController class]];

@@ -26,8 +26,6 @@
 		61347F791095776500DD5DE7 /* FirstPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347F781095776500DD5DE7 /* FirstPageController.m */; };
 		61347FCE10957E3800DD5DE7 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614462F010901C3D00AD9801 /* RootController.m */; };
 		6134802210960AF200DD5DE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6134801E10960AF200DD5DE7 /* Localizable.strings */; };
-		6134802310960AF200DD5DE7 /* ConfigController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6134802010960AF200DD5DE7 /* ConfigController.xib */; };
-		6134804010960C2E00DD5DE7 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6134803F10960C2E00DD5DE7 /* Three20.bundle */; };
 		6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446291109019E100AD9801 /* NSObject+SBJSON.m */; };
 		6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446293109019E100AD9801 /* NSString+SBJSON.m */; };
 		6144629E109019E100AD9801 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446295109019E100AD9801 /* SBJSON.m */; };
@@ -36,7 +34,8 @@
 		614462A1109019E100AD9801 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6144629B109019E100AD9801 /* SBJsonWriter.m */; };
 		614462E710901B5300AD9801 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 614462E610901B5300AD9801 /* QuartzCore.framework */; };
 		61446323109020A200AD9801 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 614462B510901ADC00AD9801 /* libThree20.a */; };
-		614463D1109034CA00AD9801 /* ConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614463CF109034CA00AD9801 /* ConfigController.m */; };
+		6165922E10A80DC200B1FE8D /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6165922D10A80DC200B1FE8D /* Three20.bundle */; };
+		6165925C10A80EBD00B1FE8D /* NewConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165925B10A80EBD00B1FE8D /* NewConfigController.m */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
 		61E0D48D10A430A800809C22 /* MBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D48C10A430A800809C22 /* MBLogin.m */; };
@@ -96,11 +95,8 @@
 		61347E871093466D00DD5DE7 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		61347F771095776500DD5DE7 /* FirstPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageController.h; sourceTree = "<group>"; };
 		61347F781095776500DD5DE7 /* FirstPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstPageController.m; sourceTree = "<group>"; };
-		6134802110960AF200DD5DE7 /* sv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sv; path = Classes/sv.lproj/ConfigController.xib; sourceTree = "<group>"; };
 		6134802410960AFE00DD5DE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Classes/en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6134802510960AFE00DD5DE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Classes/en.lproj/ConfigController.xib; sourceTree = "<group>"; };
 		6134802610960B6100DD5DE7 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Classes/sv.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6134803F10960C2E00DD5DE7 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		6144628F109019E100AD9801 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		61446290109019E100AD9801 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		61446291109019E100AD9801 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -118,8 +114,9 @@
 		614462E610901B5300AD9801 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		614462EF10901C3D00AD9801 /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
 		614462F010901C3D00AD9801 /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
-		614463CE109034CA00AD9801 /* ConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigController.h; sourceTree = "<group>"; };
-		614463CF109034CA00AD9801 /* ConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigController.m; sourceTree = "<group>"; };
+		6165922D10A80DC200B1FE8D /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
+		6165925A10A80EBD00B1FE8D /* NewConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewConfigController.h; sourceTree = "<group>"; };
+		6165925B10A80EBD00B1FE8D /* NewConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewConfigController.m; sourceTree = "<group>"; };
 		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
 		61BE258D1091DAF600D76E03 /* BlogListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListModel.h; sourceTree = "<group>"; };
@@ -200,9 +197,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6134803F10960C2E00DD5DE7 /* Three20.bundle */,
+				6165922D10A80DC200B1FE8D /* Three20.bundle */,
 				6134801E10960AF200DD5DE7 /* Localizable.strings */,
-				6134802010960AF200DD5DE7 /* ConfigController.xib */,
 				8D1107310486CEB800E47090 /* MobilBlogg-Info.plist */,
 			);
 			name = Resources;
@@ -251,8 +247,8 @@
 				61E0D5AB10A4647E00809C22 /* StartPageController.m */,
 				61347F771095776500DD5DE7 /* FirstPageController.h */,
 				61347F781095776500DD5DE7 /* FirstPageController.m */,
-				614463CE109034CA00AD9801 /* ConfigController.h */,
-				614463CF109034CA00AD9801 /* ConfigController.m */,
+				6165925A10A80EBD00B1FE8D /* NewConfigController.h */,
+				6165925B10A80EBD00B1FE8D /* NewConfigController.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -415,8 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6134802210960AF200DD5DE7 /* Localizable.strings in Resources */,
-				6134802310960AF200DD5DE7 /* ConfigController.xib in Resources */,
-				6134804010960C2E00DD5DE7 /* Three20.bundle in Resources */,
+				6165922E10A80DC200B1FE8D /* Three20.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +431,6 @@
 				614462A0109019E100AD9801 /* SBJsonParser.m in Sources */,
 				614462A1109019E100AD9801 /* SBJsonWriter.m in Sources */,
 				61347FCE10957E3800DD5DE7 /* RootController.m in Sources */,
-				614463D1109034CA00AD9801 /* ConfigController.m in Sources */,
 				61BE24391090B20C00D76E03 /* BlogListController.m in Sources */,
 				61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */,
 				613479811092136800DD5DE7 /* MBURLResponse.m in Sources */,
@@ -454,6 +448,7 @@
 				61E0D48D10A430A800809C22 /* MBLogin.m in Sources */,
 				61E0D4E810A4549800809C22 /* SFHFKeychainUtils.m in Sources */,
 				61E0D5AC10A4647E00809C22 /* StartPageController.m in Sources */,
+				6165925C10A80EBD00B1FE8D /* NewConfigController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,15 +470,6 @@
 				6134802610960B6100DD5DE7 /* sv */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		6134802010960AF200DD5DE7 /* ConfigController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6134802110960AF200DD5DE7 /* sv */,
-				6134802510960AFE00DD5DE7 /* en */,
-			);
-			name = ConfigController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

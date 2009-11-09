@@ -72,16 +72,25 @@
 
 -(void)loginDidFailWithError:(NSError *)err
 {
+	UIAlertView *alert;
 	[_activity removeFromSuperview];
 	self.navigationItem.rightBarButtonItem.enabled = YES;
 	
-	[MBStore removePasswordForUsername:[MBStore getUserName]];
 	
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
-													message:NSLocalizedString(@"Saved credentials are not valid", nil)
-												   delegate:self
-										  cancelButtonTitle:NSLocalizedString(@"Quit", nil)
-										  otherButtonTitles:NSLocalizedString(@"Settings", nil),nil];
+	if ([[err domain] isEqualToString:@"MobilBlogg"] && [err code] == 1) {
+		alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
+										   message:NSLocalizedString(@"Saved credentials are not valid", nil)
+										  delegate:self
+								 cancelButtonTitle:NSLocalizedString(@"Ok", nil)
+								 otherButtonTitles:NSLocalizedString(@"Settings", nil),nil];
+	} else {
+		alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
+										   message:[err localizedDescription]
+										  delegate:self
+								 cancelButtonTitle:NSLocalizedString(@"Ok", nil)
+								 otherButtonTitles:nil];
+
+	}
 
 	[alert show];
 }
@@ -89,7 +98,7 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
 	if (buttonIndex == 0) {
-		
+		/*TODO: make something fancy here later */
 	} else {
 		[[TTNavigator navigator] openURL:@"mb://configure" animated:YES];
 	}

@@ -19,6 +19,7 @@
 {
 	self = [super alloc];
 	
+	
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"login", @"func",
 						  @".api.t", @"template",
@@ -28,6 +29,14 @@
 	
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mobilblogg.nu/o.o.i.s?%@", [dict gtm_httpArgumentsString]]];
 	NSLog(@"Login at URL: %@", url);
+	
+	/* Remove all cookies, we want new ones */
+	NSHTTPCookieStorage *store = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+	NSArray *cookies = [store cookiesForURL:url];
+	for (NSHTTPCookie *c in cookies) {
+		NSLog(@"Removing cookie %@", [c name]);
+		[store deleteCookie:c];
+	}
 	
 	NSURLRequest *req = [NSURLRequest requestWithURL:url];
 	NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:self];
