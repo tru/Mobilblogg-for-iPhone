@@ -106,6 +106,7 @@
 }
 
 - (void)dealloc {
+	[_activity release];
     [super dealloc];
 }
 
@@ -140,6 +141,11 @@
 	[actionSheet dismissAsKeyboard:YES];
 	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 	picker.delegate = self;
+	
+	if ([actionSheet numberOfButtons] == 3 && buttonIndex == 2)
+		return;
+	if ([actionSheet numberOfButtons] == 2 && buttonIndex == 1)
+		return;
 	
 	if (buttonIndex == 0 &&
 		[UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
