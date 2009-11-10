@@ -39,6 +39,7 @@
 		616592FC10A8344000B1FE8D /* GotoUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616592FB10A8344000B1FE8D /* GotoUserController.m */; };
 		6165944810A84A3000B1FE8D /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165944710A84A3000B1FE8D /* AboutController.m */; };
 		616594D010A854A600B1FE8D /* ShowPictureInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */; };
+		619C698B10A9A28F008FB797 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 619C698A10A9A28F008FB797 /* Entitlements.plist */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
 		61E0D48D10A430A800809C22 /* MBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D48C10A430A800809C22 /* MBLogin.m */; };
@@ -126,6 +127,7 @@
 		6165944710A84A3000B1FE8D /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		616594CE10A854A600B1FE8D /* ShowPictureInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPictureInfoController.h; sourceTree = "<group>"; };
 		616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPictureInfoController.m; sourceTree = "<group>"; };
+		619C698A10A9A28F008FB797 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
 		61BE258D1091DAF600D76E03 /* BlogListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListModel.h; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				619C698A10A9A28F008FB797 /* Entitlements.plist */,
 				6165922D10A80DC200B1FE8D /* Three20.bundle */,
 				6134801E10960AF200DD5DE7 /* Localizable.strings */,
 				8D1107310486CEB800E47090 /* MobilBlogg-Info.plist */,
@@ -427,6 +430,7 @@
 			files = (
 				6134802210960AF200DD5DE7 /* Localizable.strings in Resources */,
 				6165922E10A80DC200B1FE8D /* Three20.bundle in Resources */,
+				619C698B10A9A28F008FB797 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,12 +540,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Purple Scout";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3144A298-C71C-4C47-84A1-B5ECF77C4B8A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos3.0;
 			};
 			name = "Release beta";
