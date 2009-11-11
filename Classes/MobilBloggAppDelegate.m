@@ -23,6 +23,10 @@
 @implementation MobilBloggAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+	
+	[[TTURLRequestQueue mainQueue] setMaxContentLength:0];
+	[[TTURLCache sharedCache] setMaxPixelCount:20*320*480];
+	
 	TTNavigator *ttnav = [TTNavigator navigator];
 	TTURLMap *URLMap = ttnav.URLMap;
 	[URLMap from:@"*" toViewController:[TTWebController class]];
