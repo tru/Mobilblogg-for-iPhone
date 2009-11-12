@@ -9,28 +9,40 @@
 #import "BlogListController.h"
 #import "BlogListModel.h"
 #import "BlogListDataSource.h"
-
+#import "MBPhoto.h"
+#import "MBTablePhotoItem.h"
+#import "ShowPictureController.h"
+#import "BlogListThumbsDataSource.h"
 
 @implementation BlogListController
 
-@synthesize name;
-
--(id)initWithName:(NSString*)nameStr
+-(id)initWithArguments:(NSDictionary*)arguments
 {
 	self = [super init];
-	self.name = nameStr;
-	self.title = [NSString stringWithFormat:NSLocalizedString(@"Blog for %@", nil), nameStr];
+	self.title = NSLocalizedString(@"List view", nil);
 	self.variableHeightRows = YES;
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
-																						   target:self 
-																						   action:@selector(refresh)];	
-	_pool = [[NSAutoreleasePool alloc] init];
 	
 	id<TTTableViewDataSource> ds = [BlogListDataSource dataSourceWithItems:nil];
-	ds.model = [[[BlogListModel alloc] initWithBloggName:self.name] autorelease];
+	ds.model = [[[BlogListModel alloc] initWithArguments:arguments] autorelease];
 	self.dataSource = ds;
+	
+	self.tabBarItem = [[UITabBarItem alloc] initWithTitle:self.title image:TTIMAGE(@"bundle://41-picture-frame.png") tag:0];
 
 	return self;
+}
+
+-(void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath
+{
+	if ([object isKindOfClass:[MBTablePhotoItem class]]) {
+		MBPhoto *photo = ((MBTablePhotoItem*)object).photo;
+		ShowPictureController *ctrl = [[[ShowPictureController alloc] init] autorelease];
+		photo.photoSource = [[[BlogListThumbsDataSource alloc] initWithModel:(BlogListModel*)self.dataSource.model] autorelease];
+		ctrl.centerPhoto = photo;
+		NSLog(@"centerPhoto = %d", photo.photoId);
+		[self.navigationController pushViewController:ctrl animated:YES];
+	} else {
+		[super didSelectObject:object atIndexPath:indexPath];
+	}
 }
 
 -(void)refresh
@@ -41,9 +53,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: BlogListController %@", self.name);
-	[_pool drain];
-	[_pool release];
+	NSLog(@"DEALLOC: BlogListController");
 	[super dealloc];
 }
 

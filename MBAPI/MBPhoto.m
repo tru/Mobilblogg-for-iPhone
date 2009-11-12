@@ -40,6 +40,17 @@
   }
 }
 
+/*
+-(NSString*)URLValueWithName:(NSString*)name
+{
+	NSLog(@"URLValueWithName");
+	if ([name isEqualToString:@"TTPhotoViewController"]) {
+		return [NSString stringWithFormat:@"mb://picture/%d", self.photoId];
+	}
+	return nil;
+}
+*/
+
 -(void)dealloc
 {
 	NSLog(@"DEALLOC: MBPhoto %d", _photoId);

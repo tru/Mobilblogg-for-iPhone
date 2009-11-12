@@ -8,13 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
+#import "BlogListModel.h"
 
 @interface BlogListController : TTTableViewController {
-	NSString *name;
-	NSAutoreleasePool *_pool;
 }
-@property (nonatomic, copy) NSString *name;
 
--(id)initWithName:(NSString *)nameStr;
+-(id)initWithArguments:(NSDictionary *)arguments;
 
 @end

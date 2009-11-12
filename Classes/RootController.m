@@ -36,12 +36,12 @@
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 					   NSLocalizedString(@"My pages", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"My Start Page", nil)
-												 URL:@"mb://mystartpage/"],
+												 URL:@"mb://listfunction/listStartpage"],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"My Blog",nil) 
 												 URL:[@"mb://listblog/" stringByAppendingString:[MBStore getUserName]]],
 					   NSLocalizedString(@"MobilBlogg", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Go to User", nil) URL:@"mb://gotouser"],
-					   [TTTableTextItem itemWithText:NSLocalizedString(@"First Page", nil) URL:@"mb://firstpage"],
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"First Page", nil) URL:@"mb://listfunction/listFirstpage"],
 					   NSLocalizedString(@"Application", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Settings", @"Menu item") URL:@"mb://userconfmodal"],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"About", nil) URL:@"mb://about"],

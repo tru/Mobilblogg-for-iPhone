@@ -76,6 +76,8 @@
 	[dFormater release];
 	[parser release];
 	
+	NSLog(@"Data parsed and ready");
+	
 	return nil;
 }
 

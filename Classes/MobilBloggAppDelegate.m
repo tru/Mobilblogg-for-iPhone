@@ -10,15 +10,13 @@
 #import <Three20/Three20.h>
 
 #import "UserConfigController.h"
-#import "BlogListController.h"
 #import "ShowPictureController.h"
 #import "SearchUserViewController.h"
 #import "CommentViewController.h"
-#import "FirstPageController.h"
-#import "StartPageController.h"
 #import "GotoUserController.h"
 #import "AboutController.h"
 #import "ShowPictureInfoController.h"
+#import "BlogListTabController.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -36,13 +34,12 @@
 	[URLMap from:@"mb://userconfmodal" toModalViewController:[UserConfigController class]];
 	[URLMap from:@"mb://userconf" toViewController:[UserConfigController class]];
 	
-	[URLMap from:@"mb://listblog/(initWithName:)" toViewController:[BlogListController class]];
+	[URLMap from:@"mb://listblog/(initWithBloggName:)" toViewController:[BlogListTabController class]];
 	[URLMap	from:@"mb://picture?" toViewController:[ShowPictureController class]];
 	[URLMap from:@"mb://searchuser" toViewController:[SearchUserViewController class]];
 	[URLMap from:@"mb://comments/(initWithId:)" toViewController:[CommentViewController class]
 													  transition:UIViewAnimationTransitionFlipFromLeft];
-	[URLMap	from:@"mb://firstpage" toViewController:[FirstPageController class]];
-	[URLMap from:@"mb://mystartpage" toViewController:[StartPageController class]];
+	[URLMap	from:@"mb://listfunction/(initWithFunction:)" toViewController:[BlogListTabController class]];
 	[URLMap from:@"mb://gotouser" toViewController:[GotoUserController class]];
 	[URLMap	from:@"mb://about" toViewController:[AboutController class]];
 	[URLMap from:@"mb://photoinfo" toViewController:[ShowPictureInfoController class]

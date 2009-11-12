@@ -8,27 +8,21 @@
 
 #import "ShowPictureController.h"
 #import "MBPhoto.h"
-#import "PhotoSource.h"
+#import "BlogListThumbsDataSource.h"
+#import "BlogListModel.h"
 
 @implementation ShowPictureController
 
--(id)initWithNavigatorURL:(NSURL*)url query:(NSDictionary*)query
+-(id)init
 {
 	self = [super init];
-	
-	NSArray *photoList = [query objectForKey:@"photoList"];
-	for (MBPhoto *p in photoList) {
-		NSUInteger myPID = [[query objectForKey:@"photoId"] intValue];
-		if (p.photoId == myPID) {
-			_photo = p;
-			break;
-		}
-	}
-	
-	self.photoSource = [[[PhotoSource alloc] initWithPhotos:photoList] autorelease];
-	self.centerPhoto = _photo;
-	
 	return self;
+}
+
+-(void)updateChrome
+{
+	[super updateChrome];
+	self.navigationItem.rightBarButtonItem = nil;
 }
 
 -(void)loadView
@@ -62,6 +56,5 @@
 	NSLog(@"DEALLOC: ShowPictureController");
 	[super dealloc];
 }
-
 
 @end

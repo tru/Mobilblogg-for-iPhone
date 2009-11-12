@@ -11,17 +11,14 @@
 #import "MBURLResponse.h"
 
 @interface BlogListModel : TTURLRequestModel <TTURLRequestDelegate> {
-	MBURLResponse *responseModel;
-	NSUInteger page;
-	NSString *bloggName;
-	NSString *funcName;
+	MBURLResponse *_response;
+	NSUInteger _page;
+	NSDictionary *_arguments;
 }
 
-@property (nonatomic, copy) NSString *bloggName;
-@property (nonatomic, copy) NSString *funcName;
-
--(id)initWithBloggName:(NSString*)bName;
--(id)initWithFunction:(NSString*)fName;
+-(id)initWithArguments:(NSDictionary *)arguments;
+-(NSUInteger)totalResultsAvailableOnServer;
+-(NSArray*)results;
 
 @end
 
