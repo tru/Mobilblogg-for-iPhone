@@ -15,69 +15,42 @@
 
 @synthesize delegate = _delegate;
 
-+(id)loginWithUsername:(NSString*)username andPassword:(NSString*)password
-{
-	self = [super alloc];
-	
+-(id)initWithUsername:(NSString*)username andPassword:(NSString*)password
+{	
+	self = [super init];
 	
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"login", @"func",
-						  @".api.t", @"template",
 						  username, @"username",
 						  password, @"password",
 						  nil];
 	
-	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mobilblogg.nu/o.o.i.s?%@", [dict gtm_httpArgumentsString]]];
-	NSLog(@"Login at URL: %@", url);
+	_connRoot = [[MBConnectionRoot alloc] initWithArguments:dict];
+	_connRoot.delegate = self;
 	
 	/* Remove all cookies, we want new ones */
 	NSHTTPCookieStorage *store = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-	NSArray *cookies = [store cookiesForURL:url];
+	NSArray *cookies = [store cookiesForURL:_connRoot.url];
 	for (NSHTTPCookie *c in cookies) {
 		NSLog(@"Removing cookie %@", [c name]);
 		[store deleteCookie:c];
 	}
 	
-	NSURLRequest *req = [NSURLRequest requestWithURL:url];
-	NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:self];
-	[conn start];
+	NSLog(@"MBLogin inited");
 	
-	return [self autorelease];
+	return self;
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+-(void)MBConnectionRoot:(MBConnectionRoot *)connection didFailWithError:(NSError *)err
 {
-	NSLog(@"Adding data");
-	if (_responseData) {
-		[_responseData appendData:data];
-	} else {
-		_responseData = [data mutableCopy];
-	}
+	[_delegate loginDidFailWithError:err];
 }
 
--(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+-(void)MBConnectionRoot:(MBConnectionRoot *)connection didFinishWithObject:(id)object
 {
-	[_delegate loginDidFailWithError:error];
-}
-
--(void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-	NSLog(@"We are done!");
-	SBJSON *parser = [[SBJSON alloc] init];
-	
-	NSString *responseBody = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
-	NSLog(@"body = %@", responseBody);
-	NSError *jsonErr;
-	NSArray *response = [parser objectWithString:responseBody error:&jsonErr];
-	
-	NSNumber *num = [[response objectAtIndex:0] objectForKey:@"status"];
-
-	[responseBody release];
-	[parser release];
-	_responseData = nil;
-	
-	if (num && [num intValue] == 1) {
-		NSLog(@"Cool, we managed to login!");
+	NSLog(@"did finish with object!");
+	NSDictionary *dict = [object objectAtIndex:0];
+	if ([[dict objectForKey:@"status"] intValue] == 1) {
 		[_delegate loginDidSucceed];
 	} else {
 		NSDictionary *errDict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -86,14 +59,12 @@
 								 nil];
 		NSError *err = [NSError errorWithDomain:@"mobilblogg" code:1 userInfo:errDict];
 		[_delegate loginDidFailWithError:err];
-
 	}
 }
 
 -(void)dealloc
 {
 	NSLog(@"DEALLOC: MBLogin");
-	[_responseData release];
 	[super dealloc];
 }
 

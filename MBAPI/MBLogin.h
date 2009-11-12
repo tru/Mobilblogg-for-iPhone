@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MBConnectionRoot.h"
 
 @protocol MBLoginDelegateProtocol
 
@@ -15,13 +16,12 @@
 
 @end
 
-@interface MBLogin : NSObject {
+@interface MBLogin : NSObject<MBConnectionRootDelegateProtocol> {
 	id _delegate;
-	NSMutableData *_responseData;
-
+	MBConnectionRoot *_connRoot;
 }
 
-+(id)loginWithUsername:(NSString *)username andPassword:(NSString *)password;
+-(id)initWithUsername:(NSString *)username andPassword:(NSString *)password;
 
 @property (nonatomic,retain) id<MBLoginDelegateProtocol> delegate;
 
