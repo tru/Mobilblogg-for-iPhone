@@ -57,7 +57,7 @@
 	if (!username || !password) {
 		[[TTNavigator navigator] openURL:@"mb://userconfmodal" animated:NO];
 	} else {
-		MBLogin *login = [MBLogin loginWithUsername:username andPassword:password];
+		MBLogin *login = [[MBLogin alloc] initWithUsername:username andPassword:password];
 		login.delegate = self;
 		
 		self.navigationItem.rightBarButtonItem.enabled = NO;

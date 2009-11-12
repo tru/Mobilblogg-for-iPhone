@@ -91,7 +91,7 @@
 -(void)saveSettings
 {
 	NSLog(@"username = %@ and password = %@", _username.text, _password.text);
-	MBLogin *login = [MBLogin loginWithUsername:_username.text andPassword:_password.text];
+	MBLogin *login = [[MBLogin alloc] initWithUsername:_username.text andPassword:_password.text];
 	login.delegate = self;
 	[[self view] addSubview:_activity];
 	[_username resignFirstResponder];
