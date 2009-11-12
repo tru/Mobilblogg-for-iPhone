@@ -40,7 +40,7 @@
 	[super viewWillAppear:animated];
 	if (_firstAppear) {
 		[self.photoSource load:TTURLRequestCachePolicyDefault more:NO];
-		[self.photoSource load:TTURLRequestCachePolicyDefault more:YES];
+		//[self.photoSource load:TTURLRequestCachePolicyDefault more:YES];
 		_firstAppear = NO;
 	}
 
