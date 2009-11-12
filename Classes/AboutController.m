@@ -30,6 +30,8 @@
 					   [TTTableTextItem itemWithText:@"PurpleScout AB" URL:@"http://www.purplescout.com/"],
 					   NSLocalizedString(@"Server side code by:", nil),
 					   [TTTableTextItem itemWithText:@"Henrik Öhman" URL:@"mb://listblog/fivestar"],
+					   NSLocalizedString(@"Application Icon:", nil),
+					   [TTTableTextItem itemWithText:@"Fredrik Johansson" URL:@"mb://listblog/jolt"],
 					   NSLocalizedString(@"BETA testers:", nil),
 					   [TTTableTextItem itemWithText:@"Tester1"],
 					   NSLocalizedString(@"Third party code:", nil),
