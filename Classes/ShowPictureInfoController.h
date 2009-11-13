@@ -10,9 +10,11 @@
 
 #import <Three20/Three20.h>
 #import "MBPhoto.h"
+#import "MBUser.h"
 
-@interface ShowPictureInfoController : TTTableViewController {
+@interface ShowPictureInfoController : TTTableViewController<MBUserDelegateProtocol> {
 	MBPhoto *_photo;
+	TTTableImageItem *_userItem;
 }
 
 @end
