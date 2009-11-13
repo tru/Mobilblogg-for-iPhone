@@ -17,6 +17,7 @@
 #import "AboutController.h"
 #import "ShowPictureInfoController.h"
 #import "BlogListTabController.h"
+#import "ProfileViewController.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -44,6 +45,7 @@
 	[URLMap	from:@"mb://about" toViewController:[AboutController class]];
 	[URLMap from:@"mb://photoinfo" toViewController:[ShowPictureInfoController class]
 									     transition:UIViewAnimationTransitionFlipFromLeft];
+	[URLMap from:@"mb://profile/(initWithUserName:)" toViewController:[ProfileViewController class]];
 	
 	if (![ttnav restoreViewControllers]) {
 		[ttnav openURL:@"mb://root" animated:NO];

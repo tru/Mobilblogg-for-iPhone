@@ -19,23 +19,33 @@
 	self.title = _photo.caption;
 	self.variableHeightRows = YES;
 	self.tableViewStyle = UITableViewStyleGrouped;
+	
 	MBUser *user = [[MBUser alloc] initWithUserName:_photo.user];
 	user.delegate = self;
+	
 	return self;
 }
 
 -(void)createModel
 {
-	
 	_userItem = [TTTableImageItem itemWithText:_photo.user];
+	
 	_userItem.imageStyle = [TTImageStyle styleWithImageURL:nil
-											  defaultImage:nil
+											  defaultImage:TTIMAGE(@"bundle://Three20.bundle/images/empty.png")
 											   contentMode:UIViewContentModeScaleAspectFill
 													  size:CGSizeMake(80, 80) next:TTSTYLE(rounded)];
+	
+	TTTableImageItem *image = [TTTableImageItem itemWithText:_photo.caption];
+	image.imageURL = _photo.URL;
+	image.imageStyle = [TTImageStyle styleWithImageURL:nil
+										  defaultImage:TTIMAGE(@"bundle://Three20.bundle/images/empty.png")
+										   contentMode:UIViewContentModeScaleAspectFill
+												  size:CGSizeMake(80, 80) next:TTSTYLE(rounded)];
+	
 	/*FIXME, don't die here */
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 					   @"Photo",
-					   [TTTableImageItem itemWithText:_photo.caption imageURL:_photo.thumbURL defaultImage:TTIMAGE(@"bundle://Three20.bundle/images/empty.png") URL:nil],
+					   image,
 					   [TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:@"Lång brödtext om vad bilden kanske innehåller, eller bara något annat. Svårt att veta. Innehåller dessutom <br><br>radbryt<br><br> och kanske <b>HTML</b>"]],
 					   [TTTableLongTextItem itemWithText:@"Showed 10 times"],
 					   @"Author",

@@ -24,7 +24,7 @@
 																						   target:self 
 																						   action:@selector(camera)];
 	
-	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 416)
+	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 480)
 												 style:TTActivityLabelStyleBlackBox
 												  text:NSLocalizedString(@"Initializing", nil)];
 	return self;
@@ -61,7 +61,7 @@
 		login.delegate = self;
 		
 		self.navigationItem.rightBarButtonItem.enabled = NO;
-		[[self view] addSubview:_activity];
+		[self.navigationController.view addSubview:_activity];
 	}
 }
 
