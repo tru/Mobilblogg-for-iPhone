@@ -53,6 +53,7 @@
 	
 	if (!photos) {
 		[self printErrorTrace:jsonErr];
+		return jsonErr;
 	}
 	
 	for (NSDictionary *p in photos) {
