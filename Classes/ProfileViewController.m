@@ -36,6 +36,8 @@
 -(void)createModel
 {
 	_userImageItem = [TTTableImageItem itemWithText:_user.name];
+	_userImageItem.imageURL = @"http://mobilblogg.nu/cache/ttf/011086f0e011367f52.gif";
+	
 	_userTextItem = [TTTableStyledTextItem itemWithText:nil];
 
 	_userImageItem.imageStyle = [TTImageStyle styleWithImageURL:nil

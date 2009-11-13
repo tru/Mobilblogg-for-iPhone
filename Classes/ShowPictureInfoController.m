@@ -29,6 +29,7 @@
 -(void)createModel
 {
 	_userItem = [TTTableImageItem itemWithText:_photo.user];
+	_userItem.imageURL = @"http://mobilblogg.nu/cache/ttf/011086f0e011367f52.gif";
 	
 	_userItem.imageStyle = [TTImageStyle styleWithImageURL:nil
 											  defaultImage:TTIMAGE(@"bundle://Three20.bundle/images/empty.png")
