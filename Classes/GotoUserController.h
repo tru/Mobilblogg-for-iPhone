@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
+#import "MBUser.h"
 
-@interface GotoUserController : TTTableViewController {
+@interface GotoUserController : TTTableViewController<MBUserDelegateProtocol> {
 	UITextField *_username;
+	NSMutableDictionary *_users;
 }
 
 @end
