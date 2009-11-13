@@ -600,7 +600,10 @@
 				GCC_PREFIX_HEADER = MobilBlogg_Prefix.pch;
 				HEADER_SEARCH_PATHS = ../three20/src;
 				INFOPLIST_FILE = "MobilBlogg-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = MobilBlogg;
 				SDKROOT = iphoneos3.0;
 			};
