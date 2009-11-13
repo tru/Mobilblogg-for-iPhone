@@ -25,6 +25,15 @@
 	self.navigationItem.rightBarButtonItem = nil;
 }
 
+/* we must set the model to our underlying model here,
+   otherwise we have problems with the protocol within
+   TTPhotoViewController */
+-(void)setCenterPhoto:(id<TTPhoto>)photo
+{
+	[super setCenterPhoto:photo];
+	self.model = [((BlogListThumbsDataSource*)photo.photoSource) underlyingModel];
+}
+
 -(void)loadView
 {
 	[super loadView];
