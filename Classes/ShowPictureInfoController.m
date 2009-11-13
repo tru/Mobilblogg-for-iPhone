@@ -15,6 +15,7 @@
 {
 	self = [super init];
 	_photo = [query objectForKey:@"photo"];
+	[_photo retain];
 	self.title = _photo.caption;
 	self.variableHeightRows = YES;
 	self.tableViewStyle = UITableViewStyleGrouped;
@@ -39,15 +40,8 @@
 					   [TTTableLongTextItem itemWithText:@"Showed 10 times"],
 					   @"Author",
 					   _userItem,
-					   [TTTableTextItem itemWithText:@"User photos"],
-					   [TTTableTextItem itemWithText:@"User profile"],
-					   @"Comments",
-					   [TTTableMessageItem itemWithTitle:@"Cat" 
-												 caption:nil 
-													text:@"hahahahah ser rolig ut faktiskt!" 
-											   timestamp:[NSDate dateWithToday]
-												imageURL:@"http://mobilblogg.nu/cache/ttf/0eeb25b3f0eea52214.jpg"
-													 URL:nil],
+					   [TTTableTextItem itemWithText:@"User photos" URL:[NSString stringWithFormat:@"mb://listblog/%@", _photo.user]],
+					   [TTTableTextItem itemWithText:@"User profile" URL:[NSString stringWithFormat:@"mb://profile/%@", _photo.user]],
 					   nil];
 }
 
@@ -66,6 +60,7 @@
 -(void)dealloc
 {
 	NSLog(@"DEALLOC: ShowPictureInfoController");
+	[_photo release];
 	[super dealloc];
 }
 
