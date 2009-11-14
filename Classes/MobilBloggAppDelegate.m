@@ -32,8 +32,8 @@
 	[URLMap from:@"mb://root" toViewController:[RootController class]];
 	/* we want to open it from the root as a modal controller, and some times from the
 	 configure class as a normal class */
-	[URLMap from:@"mb://userconfmodal" toModalViewController:[UserConfigController class]];
-	[URLMap from:@"mb://userconf" toViewController:[UserConfigController class]];
+	[URLMap from:@"mb://userconfmodal/(initWithDidFail:)" toModalViewController:[UserConfigController class]];
+	[URLMap from:@"mb://userconf/(initWithDidFail:)" toViewController:[UserConfigController class]];
 	
 	[URLMap from:@"mb://listblog/(initWithBloggName:)" toViewController:[BlogListTabController class]];
 	[URLMap	from:@"mb://picture?" toViewController:[ShowPictureController class]];

@@ -26,7 +26,7 @@
 	
 	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 480)
 												 style:TTActivityLabelStyleBlackBox
-												  text:NSLocalizedString(@"Initializing", nil)];
+												  text:NSLocalizedString(@"Logging in...", nil)];
 	return self;
 }
 
@@ -43,7 +43,7 @@
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Go to User", nil) URL:@"mb://gotouser"],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"First Page", nil) URL:@"mb://listfunction/listFirstpage"],
 					   NSLocalizedString(@"Application", nil),
-					   [TTTableTextItem itemWithText:NSLocalizedString(@"Settings", @"Menu item") URL:@"mb://userconfmodal"],
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"Settings", @"Menu item") URL:@"mb://userconfmodal/no"],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"About", nil) URL:@"mb://about"],
 					   nil];
 }
@@ -55,7 +55,7 @@
 	password = [MBStore getPasswordForUsername:username];
 	
 	if (!username || !password) {
-		[[TTNavigator navigator] openURL:@"mb://userconfmodal" animated:NO];
+		[[TTNavigator navigator] openURL:@"mb://userconfmodal/yes" animated:NO];
 	} else {
 		MBLogin *login = [[MBLogin alloc] initWithUsername:username andPassword:password];
 		login.delegate = self;
@@ -101,7 +101,7 @@
 	if (buttonIndex == 0) {
 		/*TODO: make something fancy here later */
 	} else {
-		[[TTNavigator navigator] openURL:@"mb://userconfmodal" animated:YES];
+		[[TTNavigator navigator] openURL:@"mb://userconfmodal/yes" animated:YES];
 	}
 }
 

@@ -11,8 +11,7 @@
 
 @implementation UserConfigController
 
-
--(id)init
+-(id)initWithDidFail:(NSString*)didFail
 {
 	self = [super init];
 	
@@ -22,10 +21,17 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
 																						   target:self 
 																						   action:@selector(saveSettings)];
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+																						  target:self
+																						  action:@selector(cancelSettings)];
 	
-	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 416)
+	if ([didFail isEqualToString:@"yes"]) {
+		self.navigationItem.leftBarButtonItem.enabled = NO;
+	}
+	
+	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 480)
 												 style:TTActivityLabelStyleBlackBox
-												  text:NSLocalizedString(@"Logging in", nil)];
+												  text:NSLocalizedString(@"Logging in...", nil)];
 	
 	[[TTNavigator navigator].URLMap	from:@"mb://_cleardata" toViewController:self selector:@selector(clearData)];
 	return self;
@@ -87,13 +93,18 @@
 	return YES;
 }
 
+-(void)cancelSettings
+{
+	[self dismissModalViewController];
+}
+
 
 -(void)saveSettings
 {
 	NSLog(@"username = %@ and password = %@", _username.text, _password.text);
 	MBLogin *login = [[MBLogin alloc] initWithUsername:_username.text andPassword:_password.text];
 	login.delegate = self;
-	[[self view] addSubview:_activity];
+	[self.navigationController.view addSubview:_activity];
 	[_username resignFirstResponder];
 	[_password resignFirstResponder];
 }
