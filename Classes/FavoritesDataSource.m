@@ -29,11 +29,6 @@
 	
 	[_sections addObject:NSLocalizedString(@"Goto user", nil)];
 	[_items addObject:[NSArray arrayWithObject:inputField]];
-	_itemStyle = [TTImageStyle styleWithImageURL:nil
-									defaultImage:nil
-									 contentMode:UIViewContentModeScaleAspectFill
-											size:CGSizeMake(40, 40)
-											next:TTSTYLE(rounded)];
 
 	
 	[self loadFavorites];
@@ -44,7 +39,12 @@
 -(TTTableImageItem*)favoriteItem:(NSString*)user
 {
 	TTTableImageItem *item = [TTTableImageItem itemWithText:user];
-	item.imageStyle = _itemStyle;
+	item.imageStyle = [TTImageStyle styleWithImageURL:nil
+										 defaultImage:nil
+										  contentMode:UIViewContentModeScaleAspectFill
+												 size:CGSizeMake(40, 40)
+												 next:TTSTYLE(rounded)];
+
 	item.imageURL = @"http://mobilblogg.nu/cache/ttf/011086f0e011367f52.gif";
 	item.URL = [NSString stringWithFormat:@"mb://profile/%@", user];
 	

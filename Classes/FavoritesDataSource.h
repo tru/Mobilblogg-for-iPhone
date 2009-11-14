@@ -20,7 +20,6 @@
 @end
 
 @interface FavoritesDataSource : TTSectionedDataSource<MBUserDelegateProtocol> {
-	TTImageStyle *_itemStyle;
 	id _delegate;
 }
 

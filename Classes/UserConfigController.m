@@ -34,6 +34,7 @@
 												  text:NSLocalizedString(@"Logging in...", nil)];
 	
 	[[TTNavigator navigator].URLMap	from:@"mb://_cleardata" toViewController:self selector:@selector(clearData)];
+	[[TTNavigator navigator].URLMap	from:@"mb://_clearpassword" toViewController:self selector:@selector(clearPassword)];
 	return self;
 }
 
@@ -70,7 +71,9 @@
 					   _password,
 #ifdef DEBUG					   
 					   NSLocalizedString(@"Debug", nil),
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"Clear password", nil) URL:@"mb://_clearpassword"],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Clear stored data", nil) URL:@"mb://_cleardata"],
+
 #endif
 					   nil];
 }
@@ -81,6 +84,14 @@
 	[MBStore removeAllData];
 	[self dismissModalViewController];
 }
+
+-(void)clearPassword
+{
+	NSLog(@"Removing stored password");
+	[MBStore removePassword];
+	[self dismissModalViewController];
+}
+
 
 -(BOOL)textFieldShouldReturn:(UITextField*)field
 {

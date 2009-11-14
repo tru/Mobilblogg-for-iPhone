@@ -14,10 +14,16 @@
 
 +(void)removeAllData
 {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults removeObjectForKey:@"favoriteUsers"];
+	[defaults synchronize];
+}
+
++(void)removePassword
+{
 	[MBStore removePasswordForUsername:[MBStore getUserName]];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults removeObjectForKey:@"username"];
-	[defaults removeObjectForKey:@"previousGotoUsers"];
 	[defaults synchronize];
 }
 
