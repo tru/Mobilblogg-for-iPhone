@@ -29,8 +29,6 @@
 		613479891092138000DD5DE7 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479851092138000DD5DE7 /* GTMNSDictionary+URLArguments.m */; };
 		613479A7109217AA00DD5DE7 /* BlogListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479A6109217AA00DD5DE7 /* BlogListDataSource.m */; };
 		61347A811092417D00DD5DE7 /* ShowPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347A801092417D00DD5DE7 /* ShowPictureController.m */; };
-		61347B78109306EC00DD5DE7 /* SearchUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347B77109306EC00DD5DE7 /* SearchUserViewController.m */; };
-		61347BB31093096B00DD5DE7 /* SearchUserDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347BB21093096B00DD5DE7 /* SearchUserDataSource.m */; };
 		61347D711093352100DD5DE7 /* MBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347D701093352100DD5DE7 /* MBPhoto.m */; };
 		61347E881093466D00DD5DE7 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347E871093466D00DD5DE7 /* CommentViewController.m */; };
 		61347FCE10957E3800DD5DE7 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614462F010901C3D00AD9801 /* RootController.m */; };
@@ -48,6 +46,7 @@
 		616592FC10A8344000B1FE8D /* GotoUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616592FB10A8344000B1FE8D /* GotoUserController.m */; };
 		6165944810A84A3000B1FE8D /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165944710A84A3000B1FE8D /* AboutController.m */; };
 		616594D010A854A600B1FE8D /* ShowPictureInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */; };
+		616BDB5610AEE91D005E82A6 /* FavoritesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 616BDB5510AEE91D005E82A6 /* FavoritesDataSource.m */; };
 		619C698B10A9A28F008FB797 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 619C698A10A9A28F008FB797 /* Entitlements.plist */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
@@ -113,10 +112,6 @@
 		613479A6109217AA00DD5DE7 /* BlogListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListDataSource.m; sourceTree = "<group>"; };
 		61347A7F1092417D00DD5DE7 /* ShowPictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPictureController.h; sourceTree = "<group>"; };
 		61347A801092417D00DD5DE7 /* ShowPictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPictureController.m; sourceTree = "<group>"; };
-		61347B76109306EC00DD5DE7 /* SearchUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUserViewController.h; sourceTree = "<group>"; };
-		61347B77109306EC00DD5DE7 /* SearchUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUserViewController.m; sourceTree = "<group>"; };
-		61347BB11093096B00DD5DE7 /* SearchUserDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUserDataSource.h; sourceTree = "<group>"; };
-		61347BB21093096B00DD5DE7 /* SearchUserDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUserDataSource.m; sourceTree = "<group>"; };
 		61347D701093352100DD5DE7 /* MBPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBPhoto.m; path = MBAPI/MBPhoto.m; sourceTree = "<group>"; };
 		61347D721093352900DD5DE7 /* MBPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBPhoto.h; path = MBAPI/MBPhoto.h; sourceTree = "<group>"; };
 		61347E861093466D00DD5DE7 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
@@ -149,6 +144,9 @@
 		6165944710A84A3000B1FE8D /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		616594CE10A854A600B1FE8D /* ShowPictureInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPictureInfoController.h; sourceTree = "<group>"; };
 		616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPictureInfoController.m; sourceTree = "<group>"; };
+		616BDB5410AEE91D005E82A6 /* FavoritesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesDataSource.h; sourceTree = "<group>"; };
+		616BDB5510AEE91D005E82A6 /* FavoritesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesDataSource.m; sourceTree = "<group>"; };
+		616BDC2A10AEF989005E82A6 /* MBErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBErrorCodes.h; path = MBAPI/MBErrorCodes.h; sourceTree = "<group>"; };
 		619C698A10A9A28F008FB797 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 			children = (
 				61347E8A1093467300DD5DE7 /* PhotoView */,
 				61347B7B1093072800DD5DE7 /* Others */,
-				61347B7A1093071400DD5DE7 /* SearchUser */,
 				61347B79109306F300DD5DE7 /* BloggList */,
 				1D3623240D0F684500981E51 /* MobilBloggAppDelegate.h */,
 				1D3623250D0F684500981E51 /* MobilBloggAppDelegate.m */,
@@ -271,17 +268,6 @@
 			name = BloggList;
 			sourceTree = "<group>";
 		};
-		61347B7A1093071400DD5DE7 /* SearchUser */ = {
-			isa = PBXGroup;
-			children = (
-				61347BB11093096B00DD5DE7 /* SearchUserDataSource.h */,
-				61347BB21093096B00DD5DE7 /* SearchUserDataSource.m */,
-				61347B76109306EC00DD5DE7 /* SearchUserViewController.h */,
-				61347B77109306EC00DD5DE7 /* SearchUserViewController.m */,
-			);
-			name = SearchUser;
-			sourceTree = "<group>";
-		};
 		61347B7B1093072800DD5DE7 /* Others */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +279,8 @@
 				616592FB10A8344000B1FE8D /* GotoUserController.m */,
 				61145AB510ADC55C00DADDD6 /* ProfileViewController.h */,
 				61145AB610ADC55C00DADDD6 /* ProfileViewController.m */,
+				616BDB5410AEE91D005E82A6 /* FavoritesDataSource.h */,
+				616BDB5510AEE91D005E82A6 /* FavoritesDataSource.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -313,6 +301,7 @@
 		61446285109019BF00AD9801 /* MBAPI */ = {
 			isa = PBXGroup;
 			children = (
+				616BDC2A10AEF989005E82A6 /* MBErrorCodes.h */,
 				611456E110ACB1B400DADDD6 /* MBConnectionRoot.h */,
 				611456E210ACB1B400DADDD6 /* MBConnectionRoot.m */,
 				611456D810ACAF1F00DADDD6 /* MBTablePhotoItem.m */,
@@ -494,8 +483,6 @@
 				613479891092138000DD5DE7 /* GTMNSDictionary+URLArguments.m in Sources */,
 				613479A7109217AA00DD5DE7 /* BlogListDataSource.m in Sources */,
 				61347A811092417D00DD5DE7 /* ShowPictureController.m in Sources */,
-				61347B78109306EC00DD5DE7 /* SearchUserViewController.m in Sources */,
-				61347BB31093096B00DD5DE7 /* SearchUserDataSource.m in Sources */,
 				61347D711093352100DD5DE7 /* MBPhoto.m in Sources */,
 				61347E881093466D00DD5DE7 /* CommentViewController.m in Sources */,
 				61E0D48D10A430A800809C22 /* MBLogin.m in Sources */,
@@ -511,6 +498,7 @@
 				611456E010ACAF7100DADDD6 /* MBUser.m in Sources */,
 				611456E310ACB1B400DADDD6 /* MBConnectionRoot.m in Sources */,
 				61145AB710ADC55C00DADDD6 /* ProfileViewController.m in Sources */,
+				616BDB5610AEE91D005E82A6 /* FavoritesDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

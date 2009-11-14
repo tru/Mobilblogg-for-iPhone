@@ -8,6 +8,8 @@
 
 #import "GotoUserController.h"
 #import "MBStore.h"
+#import "FavoritesDataSource.h"
+#import "MBErrorCodes.h"
 
 @implementation GotoUserController
 
@@ -20,67 +22,13 @@
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Go", nil)
 																			   style:UIBarButtonItemStyleDone
 																			  target:self
-																			  action:@selector(gotoUser)] autorelease];
+																			  action:@selector(lookupUser)] autorelease];
 	
 /*	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
 																						   target:self
 																						   action:@selector(closeView)] autorelease];*/
 	self.tableViewStyle = UITableViewStyleGrouped;
 	_users = [[NSMutableDictionary alloc] init];
-	return self;
-}
-
-
--(void)rehashDataSource
-{
-	NSMutableArray *itemsToSource = [[NSMutableArray alloc] init];	
-	NSArray *previousUsers = [MBStore getObjectForKey:@"previousGotoUsers"];
-	TTImageStyle *style = [TTImageStyle styleWithImageURL:nil
-											 defaultImage:nil
-											  contentMode:UIViewContentModeScaleAspectFill
-													 size:CGSizeMake(40, 40)
-													 next:TTSTYLE(rounded)];
-	for (NSString *user in previousUsers) {
-		TTTableImageItem *item = [TTTableImageItem itemWithText:user];
-		item.imageStyle = style;
-		item.imageURL = @"http://mobilblogg.nu/cache/ttf/011086f0e011367f52.gif";
-		item.URL =  [NSString stringWithFormat:@"mb://profile/%@", user];
-		[itemsToSource addObject:item];
-		[_users setObject:item forKey:user];
-		MBUser *mbuser = [[[MBUser alloc] initWithUserName:user] autorelease];
-		mbuser.delegate = self;
-	}
-	
-	self.dataSource = [TTSectionedDataSource dataSourceWithArrays:@"Goto user", 
-					   [NSArray arrayWithObject:_username],
-					   @"Previous users",
-					   itemsToSource,
-					   nil];
-	
-	[itemsToSource release];
-}
-
--(void)MBUserDidReceiveInfo:(MBUser *)user
-{
-	TTTableImageItem *item = [_users objectForKey:user.name];
-	if (item) {
-		item.imageURL = user.avatarURL;
-	}
-	[self.tableView reloadData];
-}
-
--(void)MBUser:(MBUser*)user didFailWithError:(NSError*)err
-{
-	TTTableImageItem *item = [_users objectForKey:user.name];
-	if (item) {
-		item.imageURL = @"http://mobilblogg.nu/cache/ttf/011086f0e011367f52.gif";
-	}
-	[self.tableView reloadData];
-
-}
-
--(void)createModel
-{
 	
 	_username = [[UITextField alloc] init];
 	_username.placeholder = NSLocalizedString(@"Username", nil);
@@ -88,25 +36,79 @@
 	_username.autocorrectionType = UITextAutocorrectionTypeNo;
 	_username.autocapitalizationType = UITextAutocapitalizationTypeNone;
 	
-	[self rehashDataSource];
+	UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//	activity.hidesWhenStopped = NO;
 	
+	_username.leftView = activity;
+	_username.leftViewMode = UITextFieldViewModeAlways;
+	_username.delegate = self;
+	_username.returnKeyType = UIReturnKeySearch;
+	
+	self.dataSource = [[FavoritesDataSource alloc] initWithInputField:_username andDelegate:self];
+	
+
+	return self;
 }
 
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+	return _shouldEnd;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[self lookupUser];
+	return NO;
+}
+	
+-(void)lookupUser {
+	NSLog(@"Lookup user");
+	[((UIActivityIndicatorView*)_username.leftView) startAnimating];
+	[_username resignFirstResponder];
+	MBUser *user = [[MBUser alloc] initWithUserName:_username.text];
+	user.delegate = self;
+}
+
+-(void)MBUserDidReceiveInfo:(MBUser *)user
+{
+	[((UIActivityIndicatorView*)_username.leftView) stopAnimating];
+	self.navigationItem.rightBarButtonItem.enabled = YES;
+	[_username resignFirstResponder];
+	_shouldEnd = YES;
+	[self gotoUser];
+}
+
+-(void)MBUser:(MBUser *)user didFailWithError:(NSError *)err
+{
+	[((UIActivityIndicatorView*)_username.leftView) stopAnimating];
+	if ([err domain] == MobilBloggErrorDomain && [err code] == MobilBloggErrorCodeNoSuchUser) {
+		/* FIXME: Feedback? */
+	}
+	_shouldEnd = NO;
+}
+
+-(void)dataSourceUpdate
+{
+	NSLog(@"Reloading data");
+	[self.tableView reloadData];
+}
+
+-(void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath
+{
+	if ([object isKindOfClass:[TTTableImageItem class]]) {
+		[((FavoritesDataSource*)self.dataSource) goUser:((TTTableImageItem*)object).text];
+	}
+}
 
 -(void)gotoUser
-{
-	NSMutableArray *previousUsers = [NSMutableArray arrayWithArray:[MBStore getObjectForKey:@"previousGotoUsers"]];
-	if (![previousUsers containsObject:_username.text]) {
-		[previousUsers addObject:_username.text];
-	}
-	[MBStore setObject:previousUsers forKey:@"previousGotoUsers"];
+{	
+	[((FavoritesDataSource*)self.dataSource) goUser:_username.text];
 	
 	[_username resignFirstResponder];
-	
-	[[TTNavigator navigator] openURL:[NSString stringWithFormat:@"mb://listblog/%@",_username.text] animated:YES];
+	[[TTNavigator navigator] openURL:[NSString stringWithFormat:@"mb://profile/%@", _username.text] animated:YES];
 	_username.text = nil;
 
-	[self rehashDataSource];
 }
+
 
 @end

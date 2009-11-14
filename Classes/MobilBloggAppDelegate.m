@@ -11,7 +11,6 @@
 
 #import "UserConfigController.h"
 #import "ShowPictureController.h"
-#import "SearchUserViewController.h"
 #import "CommentViewController.h"
 #import "GotoUserController.h"
 #import "AboutController.h"
@@ -37,7 +36,6 @@
 	
 	[URLMap from:@"mb://listblog/(initWithBloggName:)" toViewController:[BlogListTabController class]];
 	[URLMap	from:@"mb://picture?" toViewController:[ShowPictureController class]];
-	[URLMap from:@"mb://searchuser" toViewController:[SearchUserViewController class]];
 	[URLMap from:@"mb://comments/(initWithId:)" toViewController:[CommentViewController class]
 													  transition:UIViewAnimationTransitionFlipFromLeft];
 	[URLMap	from:@"mb://listfunction/(initWithFunction:)" toViewController:[BlogListTabController class]];

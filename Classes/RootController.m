@@ -8,7 +8,7 @@
 
 #import "RootController.h"
 #import "MBStore.h"
-
+#import "MBErrorCodes.h"
 
 @implementation RootController
 
@@ -78,7 +78,7 @@
 	self.navigationItem.rightBarButtonItem.enabled = YES;
 	
 	
-	if ([[err domain] isEqualToString:@"MobilBlogg"] && [err code] == 1) {
+	if ([[err domain] isEqualToString:MobilBloggErrorDomain] && [err code] == MobilBloggErrorCodeInvalidCredentials) {
 		alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
 										   message:NSLocalizedString(@"Saved credentials are not valid", nil)
 										  delegate:self

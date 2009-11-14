@@ -8,6 +8,7 @@
 
 #import "MBUser.h"
 #import "GTMNSDictionary+URLArguments.h"
+#import "MBErrorCodes.h"
 
 @implementation MBUser
 @synthesize name = _name, info = _info, avatarURL = _avatarURL, delegate = _delegate;
@@ -37,6 +38,14 @@
 -(void)MBConnectionRoot:(MBConnectionRoot *)connection didFinishWithObject:(id)object
 {
 	NSDictionary *dict = [object objectAtIndex:0];
+	if ([[dict objectForKey:@"username"] isEqualToString:@""]) {
+		NSError *err = [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeNoSuchUser 
+									   userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+												 NSLocalizedString(@"No such user", nil), NSLocalizedDescriptionKey, nil]];
+		[_delegate MBUser:self didFailWithError:err];
+		return;
+	}
+
 	_info = [[dict objectForKey:@"description"] copy];
 	_avatarURL = [[dict objectForKey:@"avatar"] copy];
 	if ([_avatarURL isEqualToString:@"http://www.mobilblogg.nuno avatar"]) {

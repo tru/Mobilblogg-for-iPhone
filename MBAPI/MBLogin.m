@@ -9,7 +9,7 @@
 #import "MBLogin.h"
 #import "GTMNSDictionary+URLArguments.h"
 #import "JSON.h"
-
+#import "MBErrorCodes.h"
 
 @implementation MBLogin
 
@@ -57,7 +57,7 @@
 								 NSLocalizedString(@"Server rejected credentials", nil), NSLocalizedDescriptionKey,
 								 [NSArray arrayWithObject:NSLocalizedString(@"Try again?", nil)], NSLocalizedRecoveryOptionsErrorKey,
 								 nil];
-		NSError *err = [NSError errorWithDomain:@"mobilblogg" code:1 userInfo:errDict];
+		NSError *err = [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeInvalidCredentials userInfo:errDict];
 		[_delegate loginDidFailWithError:err];
 	}
 }
