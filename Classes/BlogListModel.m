@@ -44,7 +44,7 @@
 	NSLog(@"Created URL: %@", url);
 	
 	TTURLRequest *req = [TTURLRequest requestWithURL:url delegate:self];
-	req.cachePolicy = cachePolicy;
+	req.cachePolicy = TTURLRequestCachePolicyNetwork;
 	req.response = _response;
 	req.httpMethod = @"GET";
 	

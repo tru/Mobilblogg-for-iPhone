@@ -38,11 +38,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	if (_firstAppear) {
-		[self.photoSource load:TTURLRequestCachePolicyDefault more:NO];
+/*	if (_firstAppear) {
+		[self.photoSource load:TTURLRequestCachePolicyNetwork more:NO];
 		//[self.photoSource load:TTURLRequestCachePolicyDefault more:YES];
 		_firstAppear = NO;
-	}
+	}*/
 
 }
 
