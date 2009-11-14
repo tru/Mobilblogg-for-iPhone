@@ -80,10 +80,15 @@
 
 -(void)MBUser:(MBUser *)user didFailWithError:(NSError *)err
 {
-	[((UIActivityIndicatorView*)_username.leftView) stopAnimating];
 	if ([err domain] == MobilBloggErrorDomain && [err code] == MobilBloggErrorCodeNoSuchUser) {
 		/* FIXME: Feedback? */
+	} else if ([err domain] == @"org.brautaset.JSON.ErrorDomain") {
+		/* This means parse error, let's treat it as a real user for now */
+		[self MBUserDidReceiveInfo:user];
 	}
+
+	[((UIActivityIndicatorView*)_username.leftView) stopAnimating];
+	
 	_shouldEnd = NO;
 }
 
