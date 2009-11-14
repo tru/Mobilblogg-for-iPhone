@@ -51,6 +51,8 @@
 					   [TTTableControlItem itemWithCaption:NSLocalizedString(@"Follow",nil) control:[[UISwitch alloc] init]],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"User photos",nil)
 												 URL:[NSString stringWithFormat:@"mb://listblog/%@", _user.name]],
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"Open profile in browser", nil)
+												 URL:[NSString stringWithFormat:@"http://www.mobilblogg.nu/%@", _user.name]],
 						nil];
 					   
 }

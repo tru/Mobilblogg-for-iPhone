@@ -11,6 +11,9 @@
 #import "FavoritesDataSource.h"
 #import "MBErrorCodes.h"
 
+
+/* Subclass of UITextField to be able to set the rightitemrect
+ * to something sane */
 @implementation GotoUserTextField
 
 -(id)init
@@ -31,6 +34,8 @@
 	return self;
 }
 
+/* We want to offset that UIActivityIndicatorView otherwise it looks
+ * like shit */
 -(CGRect)rightViewRectForBounds:(CGRect)bounds
 {
 	CGRect r = [super rightViewRectForBounds:bounds];
@@ -53,9 +58,6 @@
 																			  target:self
 																			  action:@selector(lookupUser)] autorelease];
 	
-/*	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-																						   target:self
-																						   action:@selector(closeView)] autorelease];*/
 	self.tableViewStyle = UITableViewStyleGrouped;
 	_users = [[NSMutableDictionary alloc] init];
 	

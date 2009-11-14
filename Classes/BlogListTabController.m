@@ -19,6 +19,8 @@
 							   @"listBlogg", @"func",
 							   nil];
 	
+	self.title = [NSString stringWithFormat:NSLocalizedString(@"Photos by %@", nil), bloggName];
+	
 	return [self initWithArguments:arguments];
 }
 
@@ -27,6 +29,13 @@
 	NSDictionary *arguments = [NSDictionary dictionaryWithObjectsAndKeys:
 							   functionName, @"func",
 							   nil];
+	
+	if ([functionName isEqualToString:@"listFirstpage"]) {
+		self.title = NSLocalizedString(@"First Page", nil);
+	} else if ([functionName isEqualToString:@"listStartpage"]) {
+		self.title = NSLocalizedString(@"My Start Page", nil);
+	}
+	
 	return [self initWithArguments:arguments];
 }
 
