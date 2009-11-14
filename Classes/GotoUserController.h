@@ -10,6 +10,11 @@
 #import <Three20/Three20.h>
 #import "MBUser.h"
 
+@interface GotoUserTextField : UITextField {
+}
+@end
+
+
 @interface GotoUserController : TTTableViewController<UITextFieldDelegate, MBUserDelegateProtocol> {
 	UITextField *_username;
 	NSMutableDictionary *_users;

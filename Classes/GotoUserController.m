@@ -11,6 +11,35 @@
 #import "FavoritesDataSource.h"
 #import "MBErrorCodes.h"
 
+@implementation GotoUserTextField
+
+-(id)init
+{
+	self = [super init];
+	self.placeholder = NSLocalizedString(@"Username", nil);
+	self.keyboardType = UIKeyboardTypeEmailAddress;
+	self.autocorrectionType = UITextAutocorrectionTypeNo;
+	self.autocapitalizationType = UITextAutocapitalizationTypeNone;
+	
+	UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//	activity.hidesWhenStopped = NO;
+	
+	self.rightView = activity;
+	self.rightViewMode = UITextFieldViewModeAlways;
+	self.returnKeyType = UIReturnKeySearch;
+
+	return self;
+}
+
+-(CGRect)rightViewRectForBounds:(CGRect)bounds
+{
+	CGRect r = [super rightViewRectForBounds:bounds];
+	return CGRectOffset(r, -10, 0);
+}
+
+@end
+
+
 @implementation GotoUserController
 
 -(id)init
@@ -30,22 +59,10 @@
 	self.tableViewStyle = UITableViewStyleGrouped;
 	_users = [[NSMutableDictionary alloc] init];
 	
-	_username = [[UITextField alloc] init];
-	_username.placeholder = NSLocalizedString(@"Username", nil);
-	_username.keyboardType = UIKeyboardTypeEmailAddress;
-	_username.autocorrectionType = UITextAutocorrectionTypeNo;
-	_username.autocapitalizationType = UITextAutocapitalizationTypeNone;
-	
-	UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//	activity.hidesWhenStopped = NO;
-	
-	_username.leftView = activity;
-	_username.leftViewMode = UITextFieldViewModeAlways;
+	_username = [[GotoUserTextField alloc] init];
 	_username.delegate = self;
-	_username.returnKeyType = UIReturnKeySearch;
 	
 	self.dataSource = [[FavoritesDataSource alloc] initWithInputField:_username andDelegate:self];
-	
 
 	return self;
 }
@@ -63,7 +80,7 @@
 	
 -(void)lookupUser {
 	NSLog(@"Lookup user");
-	[((UIActivityIndicatorView*)_username.leftView) startAnimating];
+	[((UIActivityIndicatorView*)_username.rightView) startAnimating];
 	[_username resignFirstResponder];
 	MBUser *user = [[MBUser alloc] initWithUserName:_username.text];
 	user.delegate = self;
@@ -71,7 +88,7 @@
 
 -(void)MBUserDidReceiveInfo:(MBUser *)user
 {
-	[((UIActivityIndicatorView*)_username.leftView) stopAnimating];
+	[((UIActivityIndicatorView*)_username.rightView) stopAnimating];
 	self.navigationItem.rightBarButtonItem.enabled = YES;
 	[_username resignFirstResponder];
 	_shouldEnd = YES;
@@ -87,7 +104,7 @@
 		[self MBUserDidReceiveInfo:user];
 	}
 
-	[((UIActivityIndicatorView*)_username.leftView) stopAnimating];
+	[((UIActivityIndicatorView*)_username.rightView) stopAnimating];
 	
 	_shouldEnd = NO;
 }
