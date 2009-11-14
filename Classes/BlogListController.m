@@ -46,6 +46,11 @@
 	}
 }
 
+/* Since we have our own object MBTablePhotoItem and pop in our
+ * own ShowPictureController when they are selected we need to
+ * tell the controller not to open the dummy URL we have for these
+ * items.
+ */
 -(BOOL)shouldOpenURL:(NSString *)URL
 {
 	if ([URL isEqualToString:@"mb://foobar"]) {

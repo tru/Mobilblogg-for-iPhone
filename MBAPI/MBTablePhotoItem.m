@@ -48,6 +48,12 @@
 	[_photo retain];
 
 	self = [super init];
+	/* Note: We must set the URL here, otherwise we won't get the nice
+	 * > arrow at the end of the item and we don't get visual feedback
+	 * when someone is selecting an item.
+	 * For this to work the controller have to ignore the mb://foobar
+	 * URL. see BlogListController:shouldOpenURL:
+	 */
 	self.URL = @"mb://foobar";
 	self.accessoryURL = nil;
 	self.text = caption;
