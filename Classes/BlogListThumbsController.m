@@ -27,6 +27,7 @@
 	self.navigationBarStyle = UIStatusBarStyleDefault;
 	self.statusBarStyle = UIStatusBarStyleDefault;
 	self.wantsFullScreenLayout = NO;
+	self.hidesBottomBarWhenPushed = NO;
 	
 	self.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Thumb view", nil) image:TTIMAGE(@"bundle://42-photos.png") tag:1];
 	
