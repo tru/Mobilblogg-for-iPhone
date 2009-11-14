@@ -48,7 +48,7 @@
 	[_photo retain];
 
 	self = [super init];
-	self.URL = nil;
+	self.URL = @"mb://foobar";
 	self.accessoryURL = nil;
 	self.text = caption;
 	self.subtitle = subtitle;

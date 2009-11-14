@@ -33,6 +33,7 @@
 
 -(void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath
 {
+	NSLog(@"helo!");
 	if ([object isKindOfClass:[MBTablePhotoItem class]]) {
 		MBPhoto *photo = ((MBTablePhotoItem*)object).photo;
 		ShowPictureController *ctrl = [[[ShowPictureController alloc] init] autorelease];
@@ -43,6 +44,15 @@
 	} else {
 		[super didSelectObject:object atIndexPath:indexPath];
 	}
+}
+
+-(BOOL)shouldOpenURL:(NSString *)URL
+{
+	if ([URL isEqualToString:@"mb://foobar"]) {
+		return NO;
+	}
+	
+	return YES;
 }
 
 -(void)refresh
