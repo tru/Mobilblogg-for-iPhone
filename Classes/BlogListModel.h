@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
-#import "MBURLResponse.h"
+#import "MBBlogListResponse.h"
 
 @interface BlogListModel : TTURLRequestModel <TTURLRequestDelegate> {
-	MBURLResponse *_response;
+	MBBlogListResponse *_response;
 	NSUInteger _page;
 	NSDictionary *_arguments;
 }

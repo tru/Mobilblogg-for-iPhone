@@ -9,7 +9,6 @@
 #import "BlogListModel.h"
 #import "GTMNSDictionary+URLArguments.h"
 
-
 @implementation BlogListModel
 
 #define kMBAPIProtocol "http://"
@@ -21,7 +20,7 @@
 	_page = 1;
 	_arguments = arguments;
 	[_arguments retain];
-	_response = [[MBURLResponse alloc] init];
+	_response = [[MBBlogListResponse alloc] init];
 	return self;
 }
 

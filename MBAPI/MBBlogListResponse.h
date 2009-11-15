@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
 
-@interface MBURLResponse : NSObject <TTURLResponse> {
+@interface MBBlogListResponse : NSObject <TTURLResponse> {
 	NSMutableArray *_entries;
 }
 

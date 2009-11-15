@@ -6,11 +6,11 @@
 //  Copyright 2009 Purple Scout. All rights reserved.
 //
 
-#import "MBURLResponse.h"
+#import "MBBlogListResponse.h"
 #import "JSON.h"
 #import "MBPhoto.h"
 
-@implementation MBURLResponse
+@implementation MBBlogListResponse
 @synthesize entries = _entries;
 
 -(id)init
