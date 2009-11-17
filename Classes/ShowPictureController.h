@@ -14,6 +14,5 @@
 	MBPhoto *_photo;
 }
 
--(id)initWithNavigatorURL:(NSURL*)url query:(NSDictionary*)query;
 
 @end

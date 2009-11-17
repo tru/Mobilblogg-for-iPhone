@@ -13,6 +13,7 @@
 
 @protocol MBUserDelegateProtocol
 
+@optional
 -(void)MBUserDidReceiveInfo:(MBUser*)user;
 -(void)MBUser:(MBUser*)user didFailWithError:(NSError*)err;
 

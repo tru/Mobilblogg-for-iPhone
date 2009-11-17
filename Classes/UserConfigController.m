@@ -113,7 +113,7 @@
 -(void)saveSettings
 {
 	NSLog(@"username = %@ and password = %@", _username.text, _password.text);
-	MBLogin *login = [[MBLogin alloc] initWithUsername:_username.text andPassword:_password.text];
+	MBLogin *login = [[[MBLogin alloc] initWithUsername:_username.text andPassword:_password.text] autorelease];
 	login.delegate = self;
 	[self.navigationController.view addSubview:_activity];
 	[_username resignFirstResponder];
@@ -139,6 +139,7 @@
 										 cancelButtonTitle:[[err localizedRecoveryOptions] objectAtIndex:0]
 										 otherButtonTitles:nil];
 	[alview show];
+	[alview release];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex

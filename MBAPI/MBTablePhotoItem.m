@@ -60,6 +60,7 @@
 	self.subtitle = subtitle;
 	self.defaultImage = TTIMAGE(@"bundle://Three20.bundle/images/empty.png");
 	self.imageURL = photo.URL;
+	//self.accessoryURL = [NSString stringWithFormat:@"mb://comments/%d", photo.photoId];
 	
 	return self;
 }

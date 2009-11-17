@@ -31,6 +31,7 @@
 -(void)setCenterPhoto:(id<TTPhoto>)photo
 {
 	[super setCenterPhoto:photo];
+	_photo = photo;
 	self.model = [((BlogListThumbsDataSource*)photo.photoSource) underlyingModel];
 }
 
@@ -40,11 +41,12 @@
 	UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 						 UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
 	
-	UIButton *infoUIButton = [[UIButton buttonWithType:UIButtonTypeInfoLight] autorelease];
+	UIButton *infoUIButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
 	[infoUIButton addTarget:self action:@selector(photoInfo) forControlEvents:UIControlEventTouchUpInside];
-	UIBarButtonItem *info = [[UIBarButtonItem alloc] initWithCustomView:infoUIButton];
+	UIBarButtonItem *info = [[[UIBarButtonItem alloc] initWithCustomView:infoUIButton] autorelease];
+	UIBarButtonItem *comment = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(comments)] autorelease];
 	
-	NSArray *items = [NSArray arrayWithObjects:space, _previousButton, space, _nextButton, space, info, nil];
+	NSArray *items = [NSArray arrayWithObjects:comment, space, _previousButton, space, _nextButton, space, info, nil];
 	
 	_toolbar.items = items;
 }
@@ -58,6 +60,7 @@
 
 -(void)comments
 {
+	NSLog(@"%d", _photo.photoId);
 	[[TTNavigator navigator] openURL:[@"mb://comments/" stringByAppendingFormat:@"%d",_photo.photoId] animated:YES];
 }
 

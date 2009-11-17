@@ -84,7 +84,7 @@
 	NSLog(@"Lookup user");
 	[((UIActivityIndicatorView*)_username.rightView) startAnimating];
 	[_username resignFirstResponder];
-	MBUser *user = [[MBUser alloc] initWithUserName:_username.text];
+	MBUser *user = [[[MBUser alloc] initWithUserName:_username.text] autorelease];
 	user.delegate = self;
 }
 

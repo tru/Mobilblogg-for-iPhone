@@ -48,7 +48,7 @@
 	self.dataSource = [TTListDataSource dataSourceWithObjects:
 					   _userImageItem,
 					   _userTextItem,
-					   [TTTableControlItem itemWithCaption:NSLocalizedString(@"Follow",nil) control:[[UISwitch alloc] init]],
+					   [TTTableControlItem itemWithCaption:NSLocalizedString(@"Follow",nil) control:[[[UISwitch alloc] init] autorelease] ],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"User photos",nil)
 												 URL:[NSString stringWithFormat:@"mb://listblog/%@", _user.name]],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Open profile in browser", nil)
@@ -60,7 +60,7 @@
 -(void)MBUserDidReceiveInfo:(MBUser *)user
 {
 	_userImageItem.imageURL = _user.avatarURL;
-	_userTextItem.text = [TTStyledText textFromXHTML:_user.info];
+	_userTextItem.text = [TTStyledText textFromXHTML:[user.info stringByReplacingOccurrencesOfString:@"<br>" withString:@"<br/>"]];
 	[self.tableView reloadData];
 	[_activity removeFromSuperview];
 }

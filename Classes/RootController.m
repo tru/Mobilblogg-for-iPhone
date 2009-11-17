@@ -57,7 +57,7 @@
 	if (!username || !password) {
 		[[TTNavigator navigator] openURL:@"mb://userconfmodal/yes" animated:NO];
 	} else {
-		MBLogin *login = [[MBLogin alloc] initWithUsername:username andPassword:password];
+		MBLogin *login = [[[MBLogin alloc] initWithUsername:username andPassword:password] autorelease];
 		login.delegate = self;
 		
 		self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -94,6 +94,7 @@
 	}
 
 	[alert show];
+	[alert release];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -139,13 +140,15 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	[actionSheet dismissAsKeyboard:YES];
-	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-	picker.delegate = self;
 	
 	if ([actionSheet numberOfButtons] == 3 && buttonIndex == 2)
 		return;
 	if ([actionSheet numberOfButtons] == 2 && buttonIndex == 1)
 		return;
+
+	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+	picker.delegate = self;
+
 	
 	if (buttonIndex == 0 &&
 		[UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {

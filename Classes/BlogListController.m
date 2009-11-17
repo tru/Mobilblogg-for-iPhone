@@ -33,13 +33,11 @@
 
 -(void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath
 {
-	NSLog(@"helo!");
 	if ([object isKindOfClass:[MBTablePhotoItem class]]) {
 		MBPhoto *photo = ((MBTablePhotoItem*)object).photo;
 		ShowPictureController *ctrl = [[[ShowPictureController alloc] init] autorelease];
 		photo.photoSource = [[[BlogListThumbsDataSource alloc] initWithModel:(BlogListModel*)self.dataSource.model] autorelease];
 		ctrl.centerPhoto = photo;
-		NSLog(@"centerPhoto = %d", photo.photoId);
 		[self.navigationController pushViewController:ctrl animated:YES];
 	} else {
 		[super didSelectObject:object atIndexPath:indexPath];

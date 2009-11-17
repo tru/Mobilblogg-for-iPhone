@@ -23,7 +23,7 @@
 		611456E310ACB1B400DADDD6 /* MBConnectionRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 611456E210ACB1B400DADDD6 /* MBConnectionRoot.m */; };
 		61145AB710ADC55C00DADDD6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61145AB610ADC55C00DADDD6 /* ProfileViewController.m */; };
 		61145AFB10ADCAA100DADDD6 /* usericon.png in Resources */ = {isa = PBXBuildFile; fileRef = 61145AFA10ADCAA100DADDD6 /* usericon.png */; };
-		613479811092136800DD5DE7 /* MBURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6134797D1092136800DD5DE7 /* MBURLResponse.m */; };
+		613479811092136800DD5DE7 /* MBBlogListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6134797D1092136800DD5DE7 /* MBBlogListResponse.m */; };
 		613479821092136800DD5DE7 /* MBStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6134797F1092136800DD5DE7 /* MBStore.m */; };
 		613479881092138000DD5DE7 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479831092138000DD5DE7 /* GTMNSString+URLArguments.m */; };
 		613479891092138000DD5DE7 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479851092138000DD5DE7 /* GTMNSDictionary+URLArguments.m */; };
@@ -33,6 +33,9 @@
 		61347E881093466D00DD5DE7 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61347E871093466D00DD5DE7 /* CommentViewController.m */; };
 		61347FCE10957E3800DD5DE7 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614462F010901C3D00AD9801 /* RootController.m */; };
 		6134802210960AF200DD5DE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6134801E10960AF200DD5DE7 /* Localizable.strings */; };
+		613A375810B0839500A91801 /* MBCommentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 613A375710B0839500A91801 /* MBCommentResponse.m */; };
+		613A376510B086B900A91801 /* MBComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 613A376410B086B900A91801 /* MBComment.m */; };
+		613A379510B0896A00A91801 /* CommentDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 613A379410B0896A00A91801 /* CommentDataSource.m */; };
 		6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446291109019E100AD9801 /* NSObject+SBJSON.m */; };
 		6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446293109019E100AD9801 /* NSString+SBJSON.m */; };
 		6144629E109019E100AD9801 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446295109019E100AD9801 /* SBJSON.m */; };
@@ -50,6 +53,8 @@
 		619C698B10A9A28F008FB797 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 619C698A10A9A28F008FB797 /* Entitlements.plist */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
+		61CFC88D10B08E38008FEBF2 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CFC88C10B08E38008FEBF2 /* CommentModel.m */; };
+		61CFC95110B1B5DC008FEBF2 /* MBCommentItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CFC95010B1B5DC008FEBF2 /* MBCommentItemCell.m */; };
 		61E0D48D10A430A800809C22 /* MBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D48C10A430A800809C22 /* MBLogin.m */; };
 		61E0D4E810A4549800809C22 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */; };
 		61E0D50610A4567E00809C22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E0D50510A4567E00809C22 /* Security.framework */; };
@@ -90,8 +95,8 @@
 		6114534F10AC4ED400DADDD6 /* BlogListThumbsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListThumbsDataSource.h; sourceTree = "<group>"; };
 		6114535010AC4ED400DADDD6 /* BlogListThumbsDataSource.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = BlogListThumbsDataSource.m; sourceTree = "<group>"; };
 		6114544210AC61B800DADDD6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		611456D810ACAF1F00DADDD6 /* MBTablePhotoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBTablePhotoItem.m; path = MBAPI/MBTablePhotoItem.m; sourceTree = SOURCE_ROOT; };
-		611456D910ACAF1F00DADDD6 /* MBTablePhotoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBTablePhotoItem.h; path = MBAPI/MBTablePhotoItem.h; sourceTree = SOURCE_ROOT; };
+		611456D810ACAF1F00DADDD6 /* MBTablePhotoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBTablePhotoItem.m; path = MBAPI/MBTablePhotoItem.m; sourceTree = "<group>"; };
+		611456D910ACAF1F00DADDD6 /* MBTablePhotoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBTablePhotoItem.h; path = MBAPI/MBTablePhotoItem.h; sourceTree = "<group>"; };
 		611456DE10ACAF7100DADDD6 /* MBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBUser.h; path = MBAPI/MBUser.h; sourceTree = "<group>"; };
 		611456DF10ACAF7100DADDD6 /* MBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBUser.m; path = MBAPI/MBUser.m; sourceTree = "<group>"; };
 		611456E110ACB1B400DADDD6 /* MBConnectionRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBConnectionRoot.h; path = MBAPI/MBConnectionRoot.h; sourceTree = "<group>"; };
@@ -99,8 +104,8 @@
 		61145AB510ADC55C00DADDD6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		61145AB610ADC55C00DADDD6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		61145AFA10ADCAA100DADDD6 /* usericon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usericon.png; sourceTree = SOURCE_ROOT; };
-		6134797D1092136800DD5DE7 /* MBURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBURLResponse.m; path = MBAPI/MBURLResponse.m; sourceTree = "<group>"; };
-		6134797E1092136800DD5DE7 /* MBURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBURLResponse.h; path = MBAPI/MBURLResponse.h; sourceTree = "<group>"; };
+		6134797D1092136800DD5DE7 /* MBBlogListResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBBlogListResponse.m; path = MBAPI/MBBlogListResponse.m; sourceTree = "<group>"; };
+		6134797E1092136800DD5DE7 /* MBBlogListResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBBlogListResponse.h; path = MBAPI/MBBlogListResponse.h; sourceTree = "<group>"; };
 		6134797F1092136800DD5DE7 /* MBStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBStore.m; path = MBAPI/MBStore.m; sourceTree = "<group>"; };
 		613479801092136800DD5DE7 /* MBStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBStore.h; path = MBAPI/MBStore.h; sourceTree = "<group>"; };
 		613479831092138000DD5DE7 /* GTMNSString+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GTMNSString+URLArguments.m"; path = "GTM/GTMNSString+URLArguments.m"; sourceTree = "<group>"; };
@@ -118,6 +123,12 @@
 		61347E871093466D00DD5DE7 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		6134802410960AFE00DD5DE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Classes/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6134802610960B6100DD5DE7 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Classes/sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		613A375610B0839500A91801 /* MBCommentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBCommentResponse.h; path = MBAPI/MBCommentResponse.h; sourceTree = "<group>"; };
+		613A375710B0839500A91801 /* MBCommentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBCommentResponse.m; path = MBAPI/MBCommentResponse.m; sourceTree = "<group>"; };
+		613A376310B086B900A91801 /* MBComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBComment.h; path = MBAPI/MBComment.h; sourceTree = "<group>"; };
+		613A376410B086B900A91801 /* MBComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBComment.m; path = MBAPI/MBComment.m; sourceTree = "<group>"; };
+		613A379310B0896A00A91801 /* CommentDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDataSource.h; sourceTree = "<group>"; };
+		613A379410B0896A00A91801 /* CommentDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDataSource.m; sourceTree = "<group>"; };
 		6144628F109019E100AD9801 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		61446290109019E100AD9801 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		61446291109019E100AD9801 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -152,6 +163,10 @@
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
 		61BE258D1091DAF600D76E03 /* BlogListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListModel.h; sourceTree = "<group>"; };
 		61BE258E1091DAF600D76E03 /* BlogListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListModel.m; sourceTree = "<group>"; };
+		61CFC88B10B08E38008FEBF2 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		61CFC88C10B08E38008FEBF2 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		61CFC94F10B1B5DC008FEBF2 /* MBCommentItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBCommentItemCell.h; path = MBAPI/MBCommentItemCell.h; sourceTree = "<group>"; };
+		61CFC95010B1B5DC008FEBF2 /* MBCommentItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBCommentItemCell.m; path = MBAPI/MBCommentItemCell.m; sourceTree = "<group>"; };
 		61E0D48B10A430A800809C22 /* MBLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBLogin.h; path = MBAPI/MBLogin.h; sourceTree = "<group>"; };
 		61E0D48C10A430A800809C22 /* MBLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBLogin.m; path = MBAPI/MBLogin.m; sourceTree = "<group>"; };
 		61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = SFHFKeychainUtils/SFHFKeychainUtils.m; sourceTree = SOURCE_ROOT; };
@@ -288,34 +303,38 @@
 		61347E8A1093467300DD5DE7 /* PhotoView */ = {
 			isa = PBXGroup;
 			children = (
+				613A378B10B0892A00A91801 /* Comments */,
 				616594CE10A854A600B1FE8D /* ShowPictureInfoController.h */,
 				616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */,
-				61347E861093466D00DD5DE7 /* CommentViewController.h */,
-				61347E871093466D00DD5DE7 /* CommentViewController.m */,
 				61347A7F1092417D00DD5DE7 /* ShowPictureController.h */,
 				61347A801092417D00DD5DE7 /* ShowPictureController.m */,
 			);
 			name = PhotoView;
 			sourceTree = "<group>";
 		};
+		613A378B10B0892A00A91801 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				61CFC88B10B08E38008FEBF2 /* CommentModel.h */,
+				61CFC88C10B08E38008FEBF2 /* CommentModel.m */,
+				61347E861093466D00DD5DE7 /* CommentViewController.h */,
+				61347E871093466D00DD5DE7 /* CommentViewController.m */,
+				613A379310B0896A00A91801 /* CommentDataSource.h */,
+				613A379410B0896A00A91801 /* CommentDataSource.m */,
+			);
+			name = Comments;
+			sourceTree = "<group>";
+		};
 		61446285109019BF00AD9801 /* MBAPI */ = {
 			isa = PBXGroup;
 			children = (
+				61CFC8EE10B123CE008FEBF2 /* Utils */,
+				61CFC8ED10B123B5008FEBF2 /* Photos */,
+				61CFC8EC10B12371008FEBF2 /* Comments */,
+				61CFC8EB10B12358008FEBF2 /* Users */,
 				616BDC2A10AEF989005E82A6 /* MBErrorCodes.h */,
 				611456E110ACB1B400DADDD6 /* MBConnectionRoot.h */,
 				611456E210ACB1B400DADDD6 /* MBConnectionRoot.m */,
-				611456D810ACAF1F00DADDD6 /* MBTablePhotoItem.m */,
-				611456D910ACAF1F00DADDD6 /* MBTablePhotoItem.h */,
-				61347D721093352900DD5DE7 /* MBPhoto.h */,
-				61347D701093352100DD5DE7 /* MBPhoto.m */,
-				6134797D1092136800DD5DE7 /* MBURLResponse.m */,
-				6134797E1092136800DD5DE7 /* MBURLResponse.h */,
-				6134797F1092136800DD5DE7 /* MBStore.m */,
-				613479801092136800DD5DE7 /* MBStore.h */,
-				61E0D48B10A430A800809C22 /* MBLogin.h */,
-				61E0D48C10A430A800809C22 /* MBLogin.m */,
-				611456DE10ACAF7100DADDD6 /* MBUser.h */,
-				611456DF10ACAF7100DADDD6 /* MBUser.m */,
 			);
 			name = MBAPI;
 			sourceTree = "<group>";
@@ -369,6 +388,52 @@
 				613479871092138000DD5DE7 /* GTMDefines.h */,
 			);
 			name = GTM;
+			sourceTree = "<group>";
+		};
+		61CFC8EB10B12358008FEBF2 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				611456DE10ACAF7100DADDD6 /* MBUser.h */,
+				611456DF10ACAF7100DADDD6 /* MBUser.m */,
+			);
+			name = Users;
+			sourceTree = "<group>";
+		};
+		61CFC8EC10B12371008FEBF2 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				613A376310B086B900A91801 /* MBComment.h */,
+				613A376410B086B900A91801 /* MBComment.m */,
+				613A375610B0839500A91801 /* MBCommentResponse.h */,
+				613A375710B0839500A91801 /* MBCommentResponse.m */,
+				61CFC94F10B1B5DC008FEBF2 /* MBCommentItemCell.h */,
+				61CFC95010B1B5DC008FEBF2 /* MBCommentItemCell.m */,
+			);
+			name = Comments;
+			sourceTree = "<group>";
+		};
+		61CFC8ED10B123B5008FEBF2 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				611456D910ACAF1F00DADDD6 /* MBTablePhotoItem.h */,
+				611456D810ACAF1F00DADDD6 /* MBTablePhotoItem.m */,
+				61347D721093352900DD5DE7 /* MBPhoto.h */,
+				61347D701093352100DD5DE7 /* MBPhoto.m */,
+				6134797D1092136800DD5DE7 /* MBBlogListResponse.m */,
+				6134797E1092136800DD5DE7 /* MBBlogListResponse.h */,
+			);
+			name = Photos;
+			sourceTree = "<group>";
+		};
+		61CFC8EE10B123CE008FEBF2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6134797F1092136800DD5DE7 /* MBStore.m */,
+				613479801092136800DD5DE7 /* MBStore.h */,
+				61E0D48B10A430A800809C22 /* MBLogin.h */,
+				61E0D48C10A430A800809C22 /* MBLogin.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		61E0D4E510A4548400809C22 /* SFHFKeychainUtils */ = {
@@ -477,7 +542,7 @@
 				61347FCE10957E3800DD5DE7 /* RootController.m in Sources */,
 				61BE24391090B20C00D76E03 /* BlogListController.m in Sources */,
 				61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */,
-				613479811092136800DD5DE7 /* MBURLResponse.m in Sources */,
+				613479811092136800DD5DE7 /* MBBlogListResponse.m in Sources */,
 				613479821092136800DD5DE7 /* MBStore.m in Sources */,
 				613479881092138000DD5DE7 /* GTMNSString+URLArguments.m in Sources */,
 				613479891092138000DD5DE7 /* GTMNSDictionary+URLArguments.m in Sources */,
@@ -499,6 +564,11 @@
 				611456E310ACB1B400DADDD6 /* MBConnectionRoot.m in Sources */,
 				61145AB710ADC55C00DADDD6 /* ProfileViewController.m in Sources */,
 				616BDB5610AEE91D005E82A6 /* FavoritesDataSource.m in Sources */,
+				613A375810B0839500A91801 /* MBCommentResponse.m in Sources */,
+				613A376510B086B900A91801 /* MBComment.m in Sources */,
+				613A379510B0896A00A91801 /* CommentDataSource.m in Sources */,
+				61CFC88D10B08E38008FEBF2 /* CommentModel.m in Sources */,
+				61CFC95110B1B5DC008FEBF2 /* MBCommentItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

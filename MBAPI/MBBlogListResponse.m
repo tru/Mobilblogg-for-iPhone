@@ -9,6 +9,7 @@
 #import "MBBlogListResponse.h"
 #import "JSON.h"
 #import "MBPhoto.h"
+#import "MBErrorCodes.h"
 
 @implementation MBBlogListResponse
 @synthesize entries = _entries;
@@ -53,12 +54,26 @@
 	
 	if (!photos) {
 		[self printErrorTrace:jsonErr];
+		[dFormater release];
+		[parser release];
 		return jsonErr;
 	}
 	
+	
 	for (NSDictionary *p in photos) {
+		
+		if ([p objectForKey:@"error"]) {
+			NSError *err = [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeServer 
+										   userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+													 [p objectForKey:@"error"], NSLocalizedDescriptionKey, nil]];
+			[dFormater release];
+			[parser release];
+			
+			return err;
+		}
+		
 		MBPhoto *photo = [MBPhoto photoWithPhotoId:[[p objectForKey:@"id"] intValue]];
-		photo.caption = [p objectForKey:@"caption"];
+		photo.caption = [[p objectForKey:@"caption"] stringByReplacingOccurrencesOfString:@"<br>" withString:@""];
 		photo.user = [p objectForKey:@"user"];
 		photo.thumbURL = [p objectForKey:@"picture_small"];
 		photo.smallURL = [p objectForKey:@"picture_large"];

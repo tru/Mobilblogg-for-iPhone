@@ -10,3 +10,4 @@
 #define MobilBloggErrorDomain @"MobilBlogg"
 #define MobilBloggErrorCodeInvalidCredentials 1
 #define MobilBloggErrorCodeNoSuchUser 2
+#define MobilBloggErrorCodeServer 3

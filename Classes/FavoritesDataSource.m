@@ -48,7 +48,7 @@
 	item.imageURL = @"http://mobilblogg.nu/cache/ttf/011086f0e011367f52.gif";
 	item.URL = [NSString stringWithFormat:@"mb://profile/%@", user];
 	
-	FavoriteUser *fuser = [[FavoriteUser alloc] initWithUserName:user];
+	FavoriteUser *fuser = [[[FavoriteUser alloc] initWithUserName:user] autorelease];
 	fuser.userItem = item;
 	fuser.delegate = self;
 	
@@ -72,13 +72,14 @@
 -(void)loadFavorites
 {
 	NSArray *favorites = [MBStore getObjectForKey:@"favoriteUsers"];
-	
-	NSMutableArray *favoritesList = [[NSMutableArray alloc] init];
-	
+
 	/* Add section header */
 	if (!favorites || ([favorites count] < 1))
 		return;
-		
+
+	NSMutableArray *favoritesList = [[NSMutableArray alloc] init];
+
+	
 	if ([_sections count] < 2) {
 		[_sections addObject:NSLocalizedString(@"Favorite users", nil)];
 	}

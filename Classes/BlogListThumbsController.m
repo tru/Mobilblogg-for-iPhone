@@ -19,7 +19,7 @@
 	
 	self.title = NSLocalizedString(@"Thumb view", nil);
 	_bmodel = [[[BlogListModel alloc] initWithArguments:arguments] autorelease];
-	BlogListThumbsDataSource *ds = [[BlogListThumbsDataSource alloc] initWithModel:_bmodel];
+	BlogListThumbsDataSource *ds = [[[BlogListThumbsDataSource alloc] initWithModel:_bmodel] autorelease];
 
 	[self setPhotoSource:ds];
 	self.model = [ds underlyingModel];

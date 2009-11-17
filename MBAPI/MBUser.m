@@ -48,9 +48,6 @@
 
 	_info = [[dict objectForKey:@"description"] copy];
 	_avatarURL = [[dict objectForKey:@"avatar"] copy];
-	if ([_avatarURL isEqualToString:@"http://www.mobilblogg.nuno avatar"]) {
-		_avatarURL = @"http://mobilblogg.nu/cache/ttf/011086f0e011367f52.gif";
-	}
 	[_delegate MBUserDidReceiveInfo:self];
 }
 

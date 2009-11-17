@@ -38,7 +38,7 @@
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-	NSLog(@"Adding data");
+	//NSLog(@"Adding data");
 	if (_data) {
 		[_data appendData:data];
 	} else {
@@ -54,11 +54,11 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-	NSLog(@"We are done!");
+	//NSLog(@"We are done!");
 	SBJSON *parser = [[SBJSON alloc] init];
 	
 	NSString *responseBody = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-	NSLog(@"body = %@", responseBody);
+	//NSLog(@"body = %@", responseBody);
 	NSError *jsonErr;
 	NSArray *response = [parser objectWithString:responseBody error:&jsonErr];
 	

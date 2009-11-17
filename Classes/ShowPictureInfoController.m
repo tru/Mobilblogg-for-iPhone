@@ -20,7 +20,7 @@
 	self.variableHeightRows = YES;
 	self.tableViewStyle = UITableViewStyleGrouped;
 	
-	MBUser *user = [[MBUser alloc] initWithUserName:_photo.user];
+	MBUser *user = [[[MBUser alloc] initWithUserName:_photo.user] autorelease];
 	user.delegate = self;
 	
 	return self;
