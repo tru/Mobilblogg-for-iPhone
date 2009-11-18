@@ -10,6 +10,7 @@
 #import "MBPhoto.h"
 #import "BlogListThumbsDataSource.h"
 #import "BlogListModel.h"
+#import "PhotoViewController.h"
 
 @implementation ShowPictureController
 
@@ -33,6 +34,11 @@
 	[super setCenterPhoto:photo];
 	_photo = photo;
 	self.model = [((BlogListThumbsDataSource*)photo.photoSource) underlyingModel];
+}
+
+-(id)createPhotoView
+{
+	return [[PhotoViewController alloc] init];
 }
 
 -(void)loadView

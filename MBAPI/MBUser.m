@@ -40,16 +40,20 @@
 	NSDictionary *dict = [object objectAtIndex:0];
 	NSString *err = [dict objectForKey:@"error"];
 	if (err && [err isEqualToString:@"user not found"]) {
-		NSError *err = [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeNoSuchUser 
-									   userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-												 NSLocalizedString(@"No such user", nil), NSLocalizedDescriptionKey, nil]];
-		[_delegate MBUser:self didFailWithError:err];
+		if ([_delegate respondsToSelector:@selector(MBUser:didFailWithError:)]) {
+			NSError *err = [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeNoSuchUser 
+										   userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+													 NSLocalizedString(@"No such user", nil), NSLocalizedDescriptionKey, nil]];
+			[_delegate MBUser:self didFailWithError:err];
+		}
 		return;
 	} else if (err) {
-		NSError *err = [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeServer 
-									   userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-												 err, NSLocalizedDescriptionKey, nil]];
-		[_delegate MBUser:self didFailWithError:err];
+		if ([_delegate respondsToSelector:@selector(MBUser:didFailWithError:)]) {
+			NSError *err = [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeServer 
+										   userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+													 err, NSLocalizedDescriptionKey, nil]];
+			[_delegate MBUser:self didFailWithError:err];
+		}
 		return;
 	}
 

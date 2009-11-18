@@ -55,6 +55,7 @@
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
 		61CFC88D10B08E38008FEBF2 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CFC88C10B08E38008FEBF2 /* CommentModel.m */; };
 		61CFC95110B1B5DC008FEBF2 /* MBCommentItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CFC95010B1B5DC008FEBF2 /* MBCommentItemCell.m */; };
+		61D99AD210B3364D00A5525A /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D99AD110B3364D00A5525A /* PhotoViewController.m */; };
 		61E0D48D10A430A800809C22 /* MBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D48C10A430A800809C22 /* MBLogin.m */; };
 		61E0D4E810A4549800809C22 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */; };
 		61E0D50610A4567E00809C22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E0D50510A4567E00809C22 /* Security.framework */; };
@@ -167,6 +168,8 @@
 		61CFC88C10B08E38008FEBF2 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
 		61CFC94F10B1B5DC008FEBF2 /* MBCommentItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBCommentItemCell.h; path = MBAPI/MBCommentItemCell.h; sourceTree = "<group>"; };
 		61CFC95010B1B5DC008FEBF2 /* MBCommentItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBCommentItemCell.m; path = MBAPI/MBCommentItemCell.m; sourceTree = "<group>"; };
+		61D99AD010B3364D00A5525A /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		61D99AD110B3364D00A5525A /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		61E0D48B10A430A800809C22 /* MBLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBLogin.h; path = MBAPI/MBLogin.h; sourceTree = "<group>"; };
 		61E0D48C10A430A800809C22 /* MBLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBLogin.m; path = MBAPI/MBLogin.m; sourceTree = "<group>"; };
 		61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = SFHFKeychainUtils/SFHFKeychainUtils.m; sourceTree = SOURCE_ROOT; };
@@ -308,6 +311,8 @@
 				616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */,
 				61347A7F1092417D00DD5DE7 /* ShowPictureController.h */,
 				61347A801092417D00DD5DE7 /* ShowPictureController.m */,
+				61D99AD010B3364D00A5525A /* PhotoViewController.h */,
+				61D99AD110B3364D00A5525A /* PhotoViewController.m */,
 			);
 			name = PhotoView;
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				613A379510B0896A00A91801 /* CommentDataSource.m in Sources */,
 				61CFC88D10B08E38008FEBF2 /* CommentModel.m in Sources */,
 				61CFC95110B1B5DC008FEBF2 /* MBCommentItemCell.m in Sources */,
+				61D99AD210B3364D00A5525A /* PhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
