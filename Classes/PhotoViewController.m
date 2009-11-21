@@ -45,7 +45,7 @@
 	
 }
 
--(TTStyle*)myPhotoCaption:(UITextAlignment)align andAlpha:(CGFloat)alph
+-(TTStyle*)userCaptionStyle:(UITextAlignment)align andAlpha:(CGFloat)alph
 {
   return
     [TTSolidFillStyle styleWithColor:[UIColor colorWithWhite:0 alpha:alph] next:
@@ -60,15 +60,12 @@
 
 -(void)setHidesExtras:(BOOL)hidesExtras
 {
-	//[super setHidesExtras:hideExtras];
 	_captionLabel.alpha = 1;
 }
 
 -(void)setHidesCaption:(BOOL)hidesCaption
 {
 	_hidesCaption = hidesCaption;
-//	[UIView beginAnimations:nil context:nil];
-//	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
 	if (hidesCaption) {
 		CGRect r = _userCaption.frame;
 		r.origin.y = floor((self.bounds.size.height / 2) - (TTScreenBounds().size.height/2));
@@ -89,28 +86,27 @@
 		_captionLabel.frame = r;
 
 	}
-//	[UIView	commitAnimations];
 }
 
 -(void)showCaption:(NSString*)caption
 {
-	NSLog(@"Show caption called");
 	[super showCaption:caption];
-	if (!_userCaptionRight) {
-		_userCaptionRight = [[TTLabel alloc] init];
-		_userCaptionRight.opaque = NO;
-		_userCaptionRight.style = [self myPhotoCaption:UITextAlignmentRight andAlpha:0];
-//		_userCaptionRight.alpha = _hidesCaption ? 0 : 1;
-		[self addSubview:_userCaptionRight];
 
-	}
 	if (!_userCaption) {
 		_userCaption = [[TTLabel alloc] init];
 		_userCaption.opaque = NO;
-		_userCaption.style = [self myPhotoCaption:UITextAlignmentLeft andAlpha:0.5];
-//		_userCaption.alpha = _hidesCaption ? 0 : 1;
+		_userCaption.style = [self userCaptionStyle:UITextAlignmentLeft andAlpha:0.5];
 		[self addSubview:_userCaption];
 	}
+
+	if (!_userCaptionRight) {
+		_userCaptionRight = [[TTLabel alloc] init];
+		_userCaptionRight.opaque = NO;
+		_userCaptionRight.style = [self userCaptionStyle:UITextAlignmentRight andAlpha:0];
+		[self addSubview:_userCaptionRight];
+
+	}
+
 	_captionLabel.alpha = 1;
 	_userCaption.text = ((MBPhoto*)_photo).user;
 	_userCaptionRight.text = [((MBPhoto*)_photo).date formatRelativeTime];
