@@ -66,8 +66,8 @@
 
 -(void)comments
 {
-	NSLog(@"%d", _photo.photoId);
-	[[TTNavigator navigator] openURL:[@"mb://comments/" stringByAppendingFormat:@"%d",_photo.photoId] animated:YES];
+	MBPhoto *p = (MBPhoto*)_centerPhoto;
+	[[TTNavigator navigator] openURL:[@"mb://comments/" stringByAppendingFormat:@"%d",p.photoId] animated:YES];
 }
 
 - (void)dealloc {
