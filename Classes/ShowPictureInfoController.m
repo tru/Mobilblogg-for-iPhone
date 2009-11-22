@@ -43,17 +43,24 @@
 										   contentMode:UIViewContentModeScaleAspectFill
 												  size:CGSizeMake(80, 80) next:TTSTYLE(rounded)];
 	
-	/*FIXME, don't die here */
-	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
-					   @"Photo",
-					   image,
-					   [TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:@"Lång brödtext om vad bilden kanske innehåller, eller bara något annat. Svårt att veta. Innehåller dessutom <br><br>radbryt<br><br> och kanske <b>HTML</b>"]],
-					   [TTTableLongTextItem itemWithText:@"Showed 10 times"],
-					   @"Author",
-					   _userItem,
-					   [TTTableTextItem itemWithText:@"User photos" URL:[NSString stringWithFormat:@"mb://listblog/%@", _photo.user]],
-					   [TTTableTextItem itemWithText:@"User profile" URL:[NSString stringWithFormat:@"mb://profile/%@", _photo.user]],
-					   nil];
+	NSMutableArray *items = [NSMutableArray arrayWithObject:image];
+	
+	if (_photo.body.length) {
+		TTTableStyledTextItem *bodyItem = nil;
+		NSString *body = [_photo.body stringByReplacingOccurrencesOfString:@"<br>" withString:@"<br/>"];
+		bodyItem = [TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:body]];
+		[items addObject:bodyItem];
+	}
+	[items addObject:[TTTableLongTextItem itemWithText:@"Showed 10 times"]];
+	
+	NSArray *author = [NSArray arrayWithObjects:
+								_userItem,
+								[TTTableTextItem itemWithText:@"User photos" URL:[NSString stringWithFormat:@"mb://listblog/%@", _photo.user]],
+								[TTTableTextItem itemWithText:@"User profile" URL:[NSString stringWithFormat:@"mb://profile/%@", _photo.user]],
+								nil];
+
+	
+	self.dataSource = [TTSectionedDataSource dataSourceWithArrays:@"Photo", items, @"Author", author, nil];
 }
 
 -(void)MBUserDidReceiveInfo:(MBUser *)user

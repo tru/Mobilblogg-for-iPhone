@@ -21,6 +21,8 @@
 	NSString *_caption;
 	NSString *_user;
 	NSDate *_date;
+	NSUInteger _numcomments;
+	NSString *_body;
 }
 
 @property (nonatomic, copy) NSString *user;
@@ -29,6 +31,8 @@
 @property (nonatomic, copy) NSString *thumbURL;
 @property (nonatomic, copy) NSString *URL;
 @property (nonatomic, copy) NSDate *date;
+@property (nonatomic, copy) NSString *body;
+@property (nonatomic) NSUInteger numcomments;
 
 -(id)initWithPhotoId:(NSUInteger)pId;
 +(MBPhoto*)photoWithPhotoId:(NSUInteger)pId;

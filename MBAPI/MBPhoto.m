@@ -12,7 +12,7 @@
 
 @synthesize photoSource = _photoSource, size = _size, index = _index, caption = _caption, user = _user, photoId = _photoId;
 @synthesize thumbURL = _thumbURL, smallURL = _smallURL, URL = _URL;
-@synthesize date = _date;
+@synthesize date = _date, body = _body, numcomments = _numcomments;
 
 +(MBPhoto*)photoWithPhotoId:(NSUInteger)pId
 {
@@ -60,6 +60,7 @@
 	[_caption release];
 	[_user release];
 	[_date release];
+	[_body release];
 	[super dealloc];
 }
 

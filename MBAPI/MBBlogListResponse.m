@@ -78,6 +78,8 @@
 		photo.thumbURL = [p objectForKey:@"picture_small"];
 		photo.smallURL = [p objectForKey:@"picture_large"];
 		photo.URL = [p objectForKey:@"picture_large"];
+		photo.body = [p objectForKey:@"body"];
+		photo.numcomments = [[p objectForKey:@"nbr_comments"] intValue];
 		NSString *dateStr = [p objectForKey:@"createdate"];
 		if (dateStr) {
 			photo.date = [dFormater dateFromString:[p objectForKey:@"createdate"]];
