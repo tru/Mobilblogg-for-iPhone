@@ -16,6 +16,7 @@
 {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults removeObjectForKey:@"favoriteUsers"];
+	[defaults removeObjectForKey:@"hideCaption"];
 	[defaults synchronize];
 }
 
@@ -32,6 +33,19 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setObject:object forKey:key];
 	[defaults synchronize];
+}
+
++(void)setBool:(BOOL)booly forKey:(NSString*)key
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setBool:booly forKey:key];
+	[defaults synchronize];
+}
+
++(BOOL)getBoolForKey:(NSString*)key
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	return [defaults boolForKey:key];
 }
 
 +(id)getObjectForKey:(NSString*)key

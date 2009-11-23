@@ -62,13 +62,24 @@
 	_password.returnKeyType = UIReturnKeyDone;
 	_username.delegate = self;
 	
+	_alwaysShowCaptionSwitch = [[[UISwitch alloc] init] autorelease];
+	
+	if ([MBStore getBoolForKey:@"hideCaptions"]) {
+		_alwaysShowCaptionSwitch.on = NO;
+	} else {
+		_alwaysShowCaptionSwitch.on = YES;
+	}
+	[_alwaysShowCaptionSwitch addTarget:self action:@selector(switchAlwaysShowCaption) forControlEvents:UIControlEventValueChanged];
+	TTTableControlItem *alwaysShowCaption = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Always show caption", nil)
+																		control:_alwaysShowCaptionSwitch];
 	
 		
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
-					   NSLocalizedString(@"Username", nil),
+					   NSLocalizedString(@"Credentials", nil),
 					   _username,
-					   NSLocalizedString(@"Password", nil),
 					   _password,
+					   NSLocalizedString(@"Interface", nil),
+					   alwaysShowCaption,
 #ifdef DEBUG					   
 					   NSLocalizedString(@"Debug", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Clear password", nil) URL:@"mb://_clearpassword"],
@@ -76,6 +87,11 @@
 
 #endif
 					   nil];
+}
+
+-(void)switchAlwaysShowCaption
+{
+	[MBStore setBool:!_alwaysShowCaptionSwitch.on forKey:@"hideCaptions"];
 }
 
 -(void)clearData

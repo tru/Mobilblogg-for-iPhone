@@ -8,6 +8,7 @@
 
 #import "PhotoViewController.h"
 #import "MBPhoto.h"
+#import "MBStore.h"
 
 @implementation PhotoViewController
 
@@ -107,7 +108,17 @@
 -(void)setHidesCaption:(BOOL)hidesCaption
 {
 	_hidesCaption = hidesCaption;
-	[self moveCaptions];
+	
+	if ([MBStore getBoolForKey:@"hideCaptions"] && _hidesCaption) {
+		_captionLabel.alpha = 0;
+		_userCaption.alpha = 0;
+		_userCaptionRight.alpha = 0;
+	} else {
+		_captionLabel.alpha = 1;
+		_userCaption.alpha = 1;
+		_userCaptionRight.alpha = 1;
+		[self moveCaptions];
+	}
 }
 
 -(void)showCaption:(NSString*)caption
@@ -129,9 +140,16 @@
 
 	}
 
-	_captionLabel.alpha = 1;
 	_userCaption.text = ((MBPhoto*)_photo).user;
 	_userCaptionRight.text = [((MBPhoto*)_photo).date formatRelativeTime];
+	
+	if ([MBStore getBoolForKey:@"hideCaptions"] && _hidesCaption) {
+		_captionLabel.alpha = 0;
+		_userCaption.alpha = 0;
+		_userCaptionRight.alpha = 0;
+	} else {
+		_captionLabel.alpha = 1;
+	}
 }
 
 -(void)dealloc

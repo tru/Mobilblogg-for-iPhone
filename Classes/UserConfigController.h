@@ -15,6 +15,7 @@
 	TTActivityLabel *_activity;
 	UITextField *_username;
 	UITextField *_password;
+	UISwitch *_alwaysShowCaptionSwitch;
 	BOOL _fromConfig;
 }
 
