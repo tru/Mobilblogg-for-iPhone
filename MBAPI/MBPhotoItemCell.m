@@ -66,8 +66,15 @@ static const NSInteger kMessageTextLineCount = 2;
 		
 		_commentView = [[CommentIconView alloc] initWithNumComments:0 andColorBlack:YES];
 		[self addSubview:_commentView];
+		[_commentView addTarget:self action:@selector(gotoComments) forControlEvents:UIControlEventTouchUpInside];
 	}
 	return self;
+}
+
+-(void)gotoComments
+{
+	NSString *url = [NSString stringWithFormat:@"mb://comments/%d", ((MBPhoto*)_item).photoId];
+	TTOpenURL(url);
 }
 
 - (void)dealloc {
@@ -131,10 +138,7 @@ static const NSInteger kMessageTextLineCount = 2;
 		if (photo.URL) {
 			self.imageView2.URL = photo.URL;
 		}
-		if (photo.numcomments) {
-			_commentView.numberComments = photo.numcomments;
-		}
-		
+		_commentView.numberComments = photo.numcomments;
 	}
 }
 
