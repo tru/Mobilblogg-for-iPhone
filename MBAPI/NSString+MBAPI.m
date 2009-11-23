@@ -13,15 +13,19 @@
 
 -(NSString *)wordWrapToLength:(NSUInteger)length
 {
-	if ([self length] < length) {
+	if ([self length] <= length) {
 		return self;
 	}
 	NSMutableString *str = [self mutableCopy];
 	char space = [str characterAtIndex:length];
 	NSUInteger len = length;
-	while (space != ' ') {
+	while (space != ' ' && len) {
 		len--;
 		space = [str characterAtIndex:len];
+	}
+	
+	if (len == 0) {
+		len = length;
 	}
 		
 	NSString *retstr = [str substringToIndex:len];
