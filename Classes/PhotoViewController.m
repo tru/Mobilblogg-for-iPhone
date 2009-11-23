@@ -88,7 +88,20 @@
 
 -(void)setHidesExtras:(BOOL)hidesExtras
 {
-	_captionLabel.alpha = 1;
+	if (!hidesExtras) {
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationDuration:TT_FAST_TRANSITION_DURATION];
+	}
+	_hidesExtras = hidesExtras;
+	_statusSpinner.alpha = _hidesExtras ? 0 : 1;
+	_statusLabel.alpha = _hidesExtras ? 0 : 1;
+	_captionLabel.alpha = _hidesExtras ? 0 : 1;
+	_userCaption.alpha = _hidesExtras ? 0 : 1;
+	_userCaptionRight.alpha = _hidesExtras ? 0 : 1;
+	if (!hidesExtras) {
+		[UIView commitAnimations];
+	}
+	
 }
 
 -(void)setHidesCaption:(BOOL)hidesCaption
