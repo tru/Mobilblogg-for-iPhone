@@ -19,31 +19,59 @@
 	return self;
 }
 
--(void)layoutSubviews
+-(void)moveCaptions
 {
-	[super layoutSubviews];
-	
 	CGRect screenBounds = TTScreenBounds();
 	CGFloat textWidth = screenBounds.size.width;
 	CGFloat rightUnderBar = (self.height/2)-(screenBounds.size.height/2) + TTBarsHeight();
 	CGFloat left = (self.width/2)-(screenBounds.size.width/2);
 	
+	
+	CGFloat userCaptionY;
+	
+	if (_hidesCaption) {
+		userCaptionY = rightUnderBar - TTBarsHeight();
+	} else {
+		userCaptionY = rightUnderBar;
+	}
+	
+	NSLog(@"userCaptionY = %f", userCaptionY);
+	
 	if (_userCaption.text.length) {
 		CGSize captionSize = [_userCaption sizeThatFits:CGSizeMake(textWidth, 0)];
-		_userCaption.frame = CGRectMake(left, rightUnderBar, textWidth, captionSize.height);
-
+		_userCaption.frame = CGRectMake(left, userCaptionY, textWidth, captionSize.height);
 	} else {
 		_userCaption.frame = CGRectZero;
 	}
+	
 	if (_userCaptionRight.text.length) {
 		CGSize captionSize = [_userCaptionRight sizeThatFits:CGSizeMake(textWidth, 0)];
-		_userCaptionRight.frame = CGRectMake(left, rightUnderBar, textWidth, captionSize.height);
-
+		_userCaptionRight.frame = CGRectMake(left, userCaptionY, textWidth, captionSize.height);
 	} else {
 		_userCaptionRight.frame = CGRectZero;
 	}
 	
+	CGRect r;
+	
+	if (_hidesCaption) {
+		r = _captionLabel.frame;
+		r.origin.y = floor(self.bounds.size.height + ((TTScreenBounds().size.height/2)-(self.bounds.size.height/2)) - _captionLabel.frame.size.height);
+		_captionLabel.frame = r;
+	} else {
+		r = _captionLabel.frame;
+		r.origin.y = (self.bounds.size.height / 2) + floor(TTScreenBounds().size.height/2 - (_captionLabel.frame.size.height+TTToolbarHeight()));
+		_captionLabel.frame = r;
+	}
+
+	
 }
+
+-(void)layoutSubviews
+{
+	[super layoutSubviews];
+	[self moveCaptions];
+}
+
 
 -(TTStyle*)userCaptionStyle:(UITextAlignment)align andAlpha:(CGFloat)alph
 {
@@ -66,26 +94,7 @@
 -(void)setHidesCaption:(BOOL)hidesCaption
 {
 	_hidesCaption = hidesCaption;
-	if (hidesCaption) {
-		CGRect r = _userCaption.frame;
-		r.origin.y = floor((self.bounds.size.height / 2) - (TTScreenBounds().size.height/2));
-		_userCaption.frame = r;
-		_userCaptionRight.frame = r;
-		
-		r = _captionLabel.frame;
-		r.origin.y = floor(self.bounds.size.height + ((TTScreenBounds().size.height/2)-(self.bounds.size.height/2)) - _captionLabel.frame.size.height);
-		_captionLabel.frame = r;
-	} else {
-		CGRect r = _userCaption.frame;
-		r.origin.y = (self.bounds.size.height / 2) - (TTScreenBounds().size.height/2) + TTBarsHeight();
-		_userCaption.frame = r;
-		_userCaptionRight.frame = r;
-		
-		r = _captionLabel.frame;
-		r.origin.y = (self.bounds.size.height / 2) + floor(TTScreenBounds().size.height/2 - (_captionLabel.frame.size.height+TTToolbarHeight()));
-		_captionLabel.frame = r;
-
-	}
+	[self moveCaptions];
 }
 
 -(void)showCaption:(NSString*)caption
