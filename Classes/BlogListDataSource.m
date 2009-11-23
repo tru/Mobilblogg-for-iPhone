@@ -29,8 +29,6 @@
 	if (([self.items count] % 10) == 0) {
 		[self.items addObject:[TTTableMoreButton itemWithText:NSLocalizedString(@"Load more ...", nil)]];
 	}
-    
-    NSLog(@"Added %lu result objects", (unsigned long)[self.items count]);
 }
 
 -(Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {

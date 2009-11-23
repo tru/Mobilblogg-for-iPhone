@@ -29,7 +29,6 @@
         [self.items addObject:comment];
 	}
 	
-    NSLog(@"Added %lu comment objects", (unsigned long)[self.items count]);
 }
 
 -(void)MBUserDidReceiveInfo:(MBUser *)user

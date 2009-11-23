@@ -58,7 +58,7 @@
 	SBJSON *parser = [[SBJSON alloc] init];
 	
 	NSString *responseBody = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-	NSLog(@"body = %@", responseBody);
+//	NSLog(@"body = %@", responseBody);
 	NSError *jsonErr;
 	NSArray *response = [parser objectWithString:responseBody error:&jsonErr];
 	

@@ -51,7 +51,7 @@
 		bodyItem = [TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:body]];
 		[items addObject:bodyItem];
 	}
-	[items addObject:[TTTableLongTextItem itemWithText:@"Showed 10 times"]];
+	[items addObject:[TTTableLongTextItem itemWithText:NSLocalizedString(@"Showed 10 times", nil)]];
 	
 	NSArray *author = [NSArray arrayWithObjects:
 								_userItem,

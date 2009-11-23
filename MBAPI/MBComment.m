@@ -21,7 +21,6 @@
 
 -(id)initWithUserName:(NSString*)userName
 {
-	NSLog(@"MBComment %@ inited", userName);
 	self = [super init];
 	_padding = UIEdgeInsetsMake(6, 6, 6, 6);
 	_user = [userName copy];

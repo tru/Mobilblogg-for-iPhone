@@ -32,8 +32,6 @@
 					   [TTTableTextItem itemWithText:@"Henrik Öhman" URL:@"mb://listblog/fivestar"],
 					   NSLocalizedString(@"Application Icon:", nil),
 					   [TTTableTextItem itemWithText:@"Fredrik Johansson" URL:@"mb://listblog/jolt"],
-					   NSLocalizedString(@"BETA testers:", nil),
-					   [TTTableTextItem itemWithText:@"Tester1"],
 					   NSLocalizedString(@"Third party code:", nil),
 					   [TTTableTextItem itemWithText:@"Three20 by Joe Hewitt" URL:@"http://github.com/joehewitt/three20"],
 					   [TTTableTextItem itemWithText:@"SBJSON by Stig Brautaset" URL:@"http://code.google.com/p/json-framework/"],

@@ -39,9 +39,7 @@
 						  nil];
 	[dict addEntriesFromDictionary:_arguments];
 	url = [url stringByAppendingFormat:@"?%@", [dict gtm_httpArgumentsString]];
-	
-	NSLog(@"Created URL: %@", url);
-	
+		
 	TTURLRequest *req = [TTURLRequest requestWithURL:url delegate:self];
 	req.cachePolicy = TTURLRequestCachePolicyNetwork;
 	req.response = _response;

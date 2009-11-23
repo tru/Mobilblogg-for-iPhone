@@ -16,7 +16,7 @@
 - (id)initWithModel:(BlogListModel *)theModel
 {
     if ((self = [super init])) {
-        albumTitle = @"Photos";
+        albumTitle = NSLocalizedString(@"Photos", nil);
         model = [theModel retain];
     }
     return self;
