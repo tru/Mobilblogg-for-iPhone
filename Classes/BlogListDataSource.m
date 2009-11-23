@@ -9,7 +9,7 @@
 #import "BlogListDataSource.h"
 #import "BlogListModel.h"
 #import "MBPhoto.h"
-#import "MBTablePhotoItem.h"
+#import "MBPhotoItemCell.h"
 
 @implementation BlogListDataSource
 
@@ -22,9 +22,8 @@
 		
 	NSUInteger index = 0;
     for (MBPhoto *photo in [(id<BlogListModelProtocol>)self.model results]) {
-		MBTablePhotoItem *item = [[[MBTablePhotoItem alloc] initWithMBPhoto:photo] autorelease];
 		photo.index = index ++;
-        [self.items addObject:item];
+        [self.items addObject:[photo retain]];
 	}
 	
 	if (([self.items count] % 10) == 0) {
@@ -32,6 +31,14 @@
 	}
     
     NSLog(@"Added %lu result objects", (unsigned long)[self.items count]);
+}
+
+-(Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {
+	if ([object isKindOfClass:[MBPhoto class]]) {
+		return [MBPhotoItemCell class];
+	} else {
+		return [super tableView:tableView cellClassForObject:object];
+	}
 }
 
 -(void)dealloc

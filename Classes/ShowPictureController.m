@@ -11,6 +11,7 @@
 #import "BlogListThumbsDataSource.h"
 #import "BlogListModel.h"
 #import "PhotoViewController.h"
+#import "CommentIconView.h"
 
 @implementation ShowPictureController
 
@@ -41,18 +42,29 @@
 	return [[PhotoViewController alloc] init];
 }
 
+-(void)didMoveToPhoto:(id<TTPhoto>)photo fromPhoto:(id<TTPhoto>)fromPhoto
+{
+	MBPhoto *p = (MBPhoto*)photo;
+	_commentIcon.numberComments = p.numcomments; 
+}
+
 -(void)loadView
 {
 	[super loadView];
+	MBPhoto *p = (MBPhoto*)_centerPhoto;
+	
 	UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 						 UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
 	
 	UIButton *infoUIButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
 	[infoUIButton addTarget:self action:@selector(photoInfo) forControlEvents:UIControlEventTouchUpInside];
 	UIBarButtonItem *info = [[[UIBarButtonItem alloc] initWithCustomView:infoUIButton] autorelease];
-	UIBarButtonItem *comment = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(comments)] autorelease];
+
+	_commentIcon = [[CommentIconView alloc] initWithNumComments:p.numcomments];
+	UIBarButtonItem *cmt = [[[UIBarButtonItem alloc] initWithCustomView:_commentIcon] autorelease];
+	[_commentIcon addTarget:self action:@selector(comments) forControlEvents:UIControlEventTouchUpInside];
 	
-	NSArray *items = [NSArray arrayWithObjects:comment, space, _previousButton, space, _nextButton, space, info, nil];
+	NSArray *items = [NSArray arrayWithObjects:cmt, space, _previousButton, space, _nextButton, space, info, nil];
 	
 	_toolbar.items = items;
 }
@@ -72,6 +84,7 @@
 
 - (void)dealloc {
 	NSLog(@"DEALLOC: ShowPictureController");
+	[_commentIcon release];
 	[super dealloc];
 }
 

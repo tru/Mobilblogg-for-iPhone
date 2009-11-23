@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Three20/Three20.h>
 #import "MBPhoto.h"
+#import "CommentIconView.h"
 
 @interface ShowPictureController : TTPhotoViewController {
 	MBPhoto *_photo;
+	CommentIconView *_commentIcon;
 }
 
 

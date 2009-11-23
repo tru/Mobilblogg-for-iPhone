@@ -10,7 +10,6 @@
 #import "BlogListModel.h"
 #import "BlogListDataSource.h"
 #import "MBPhoto.h"
-#import "MBTablePhotoItem.h"
 #import "ShowPictureController.h"
 #import "BlogListThumbsDataSource.h"
 
@@ -33,8 +32,8 @@
 
 -(void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath
 {
-	if ([object isKindOfClass:[MBTablePhotoItem class]]) {
-		MBPhoto *photo = ((MBTablePhotoItem*)object).photo;
+	if ([object isKindOfClass:[MBPhoto class]]) {
+		MBPhoto *photo = ((MBPhoto*)object);
 		ShowPictureController *ctrl = [[[ShowPictureController alloc] init] autorelease];
 		photo.photoSource = [[[BlogListThumbsDataSource alloc] initWithModel:(BlogListModel*)self.dataSource.model] autorelease];
 		ctrl.centerPhoto = photo;

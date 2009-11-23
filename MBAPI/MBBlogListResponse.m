@@ -43,8 +43,10 @@
 - (NSError*)request:(TTURLRequest*)request processResponse:(NSHTTPURLResponse*)response data:(id)data
 {
 	SBJSON *parser = [[SBJSON alloc] init];
-	
 	NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+//	NSLog(@"body = %@", responseBody);
+
 	NSError *jsonErr;
 	NSArray *photos = [parser objectWithString:responseBody error:&jsonErr];
 	NSDateFormatter *dFormater = [[NSDateFormatter alloc] init];
