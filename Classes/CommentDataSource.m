@@ -56,7 +56,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: CommentDataSource %x", self);
+	TTDINFO(@"DEALLOC: CommentDataSource %x", self);
 	[super dealloc];
 }
 

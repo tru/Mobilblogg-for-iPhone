@@ -41,7 +41,7 @@
 
 -(id)initWithArguments:(NSDictionary*)arguments
 {
-	NSLog(@"Init of BlogListTabController");
+	TTDINFO(@"Init of BlogListTabController");
 	self = [super init];
 	_pool = [[NSAutoreleasePool alloc] init];
 	_list = [[BlogListController alloc] initWithArguments:arguments];
@@ -71,7 +71,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: BlogListTabController shutting down");
+	TTDINFO(@"DEALLOC: BlogListTabController shutting down");
 	[_list release];
 	[_photos release];
 	[_pool drain];

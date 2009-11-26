@@ -14,7 +14,7 @@
 
 -(id)init
 {
-	NSLog(@"CommentResponse got called");
+	TTDINFO(@"CommentResponse got called");
 	self = [super init];
 	_comments = [[NSMutableArray alloc] init];
 	return self;
@@ -22,7 +22,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: MBCommentResponse");
+	TTDINFO(@"DEALLOC: MBCommentResponse");
 	[_comments release];
 	[super dealloc];
 }
@@ -52,7 +52,7 @@
 		
 		NSString *strip = [[c objectForKey:@"comment"] stringByReplacingOccurrencesOfString:@"<br>" withString:@"<br/>"];
 		TTStyledText *txt = [TTStyledText textFromXHTML:strip];
-		NSLog(@"our text is = %@", strip);
+		TTDINFO(@"our text is = %@", strip);
 		comment.comment = txt;
 		comment.commentPlain = [c objectForKey:@"comment"];
 						
@@ -60,7 +60,7 @@
 		if (dateStr) {
 			comment.date = [dFormater dateFromString:[c objectForKey:@"createdate"]];
 			if (!comment.date) {
-				NSLog(@"Date parsing fail %@", [c objectForKey:@"createdate"]);
+				TTDINFO(@"Date parsing fail %@", [c objectForKey:@"createdate"]);
 			}
 		}
 		
@@ -71,7 +71,7 @@
 	[dFormater release];
 	[parser release];
 	
-	NSLog(@"Data parsed and ready");
+	TTDINFO(@"Data parsed and ready");
 	
 	return nil;
 }

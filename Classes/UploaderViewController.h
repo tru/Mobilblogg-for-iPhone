@@ -21,6 +21,7 @@
 	UIImage *_image;
 	NSString *_imageURL;
 	NSString *_secretWord;
+	NSOperationQueue *_queue;
 	BOOL _uploading;
 }
 

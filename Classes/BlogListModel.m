@@ -72,7 +72,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: BlogListModel");
+	TTDINFO(@"DEALLOC: BlogListModel");
     [_response release];
     [super dealloc];
 }

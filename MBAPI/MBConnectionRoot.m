@@ -9,6 +9,7 @@
 #import "MBConnectionRoot.h"
 #import "GTMNSDictionary+URLArguments.h"
 #import "JSON.h"
+#import <Three20/Three20.h>
 
 @implementation MBConnectionRoot
 
@@ -27,7 +28,7 @@
 	[args addEntriesFromDictionary:arguments];
 
 	_url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mobilblogg.nu/o.o.i.s?%@", [args gtm_httpArgumentsString]]];
-	NSLog(@"Connection Root at URL: %@", _url);
+	TTDINFO(@"Connection Root at URL: %@", _url);
 	
 	NSURLRequest *req = [NSURLRequest requestWithURL:_url];
 	NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:self];
@@ -38,7 +39,7 @@
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-	//NSLog(@"Adding data");
+	//TTDINFO(@"Adding data");
 	if (_data) {
 		[_data appendData:data];
 	} else {
@@ -48,17 +49,17 @@
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-	NSLog(@"MBConnectionRoot fail");
+	TTDINFO(@"MBConnectionRoot fail");
 	[_delegate MBConnectionRoot:self didFailWithError:error];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-	//NSLog(@"We are done!");
+	//TTDINFO(@"We are done!");
 	SBJSON *parser = [[SBJSON alloc] init];
 	
 	NSString *responseBody = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-//	NSLog(@"body = %@", responseBody);
+//	TTDINFO(@"body = %@", responseBody);
 	NSError *jsonErr;
 	NSArray *response = [parser objectWithString:responseBody error:&jsonErr];
 	
@@ -75,7 +76,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: MBConnectionRoot");
+	TTDINFO(@"DEALLOC: MBConnectionRoot");
 	[_data release];
 	[super dealloc];
 }

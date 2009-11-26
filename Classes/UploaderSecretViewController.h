@@ -16,6 +16,8 @@
 	NSString *_secWord;
 }
 
+-(void)SecretControllerIsDone:(UploaderSecretViewController*)secretCtrl;
+
 @property (nonatomic, retain) id delegate;
 @property (nonatomic, readonly, copy) NSString *secretWord;
 

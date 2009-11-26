@@ -30,7 +30,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: MBComment");
+	TTDINFO(@"DEALLOC: MBComment");
 	[_comment release];
 	[_user release];
 	[_date release];

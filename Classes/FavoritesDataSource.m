@@ -65,7 +65,7 @@
 -(void)MBUser:(MBUser *)user didFailWithError:(NSError *)err
 {
 	if ([err domain] == MobilBloggErrorDomain && [err code] == MobilBloggErrorCodeNoSuchUser) {
-		NSLog(@"No user %@", user.name);
+		TTDINFO(@"No user %@", user.name);
 	}
 }
 

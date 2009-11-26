@@ -36,7 +36,7 @@
 		userCaptionY = rightUnderBar;
 	}
 	
-	NSLog(@"userCaptionY = %f", userCaptionY);
+	TTDINFO(@"userCaptionY = %f", userCaptionY);
 	
 	if (_userCaption.text.length) {
 		CGSize captionSize = [_userCaption sizeThatFits:CGSizeMake(textWidth, 0)];

@@ -96,14 +96,14 @@
 
 -(void)clearData
 {
-	NSLog(@"Removing stored data");
+	TTDINFO(@"Removing stored data");
 	[MBStore removeAllData];
 	[self dismissModalViewController];
 }
 
 -(void)clearPassword
 {
-	NSLog(@"Removing stored password");
+	TTDINFO(@"Removing stored password");
 	[MBStore removePassword];
 	[self dismissModalViewController];
 }
@@ -128,7 +128,7 @@
 
 -(void)saveSettings
 {
-	NSLog(@"username = %@ and password = %@", _username.text, _password.text);
+	TTDINFO(@"username = %@ and password = %@", _username.text, _password.text);
 	MBLogin *login = [[[MBLogin alloc] initWithUsername:_username.text andPassword:_password.text] autorelease];
 	login.delegate = self;
 	[self.navigationController.view addSubview:_activity];

@@ -32,13 +32,13 @@
 	[responseBody release];
 	
 	if (jsonErr) {
-		NSLog(@"Error in JSON parsing!");
+		TTDINFO(@"Error in JSON parsing!");
 		return [jsonErr retain];
 	}
 	
 	NSInteger i = [[[arr objectAtIndex:0] objectForKey:@"imgid"] intValue];
 	if (i == -1) {
-		NSLog(@"We failed!");
+		TTDINFO(@"We failed!");
 		return [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeServer userInfo:nil];
 	}
 	
@@ -54,11 +54,11 @@
 {
 	self = [super init];
 	self.title = NSLocalizedString(@"Upload photo", nil);
-	_image = [img retain];
 	self.tableViewStyle = UITableViewStyleGrouped;
 	self.autoresizesForKeyboard = YES;
 	self.variableHeightRows = YES;
 	_uploading = NO;
+	_queue = [[NSOperationQueue alloc] init];
 	
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Upload", nil) 
 																			   style:UIBarButtonItemStyleDone
@@ -66,27 +66,50 @@
 																			  action:@selector(upload)] autorelease];
 	
 	self.navigationItem.rightBarButtonItem.enabled = NO;
-		
-	TTLOGSIZE(_image.size);
-	if (_image.size.width > 640) {
-		UIImage *resizedImg = [MBImageUtils imageWithImage:_image scaledToSize:CGSizeMake(640, 480)];
-		[_image release];
-		_image = resizedImg;
-	}
 	
-	_imageURL = [[TTURLCache sharedCache] storeTemporaryImage:_image toDisk:NO];
 
-	[[TTNavigator navigator].URLMap from:@"mb://_editimg" toObject:self selector:@selector(openIMG)];
-	
 	CGFloat ax = self.tableView.bounds.size.height - 50;
-	
 	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, ax, self.tableView.bounds.size.width, 50)
 												 style:TTActivityLabelStyleBlackBox
-												  text:NSLocalizedString(@"Upload...", nil)];
+												  text:NSLocalizedString(@"Resizing image...", nil)];
 	_activity.smoothesProgress = YES;
-//	[self.view addSubview:_activity];
+	[self.view addSubview:_activity];
+	_activity.alpha = 0.0;
+
+	
+	if (img.size.width > 800) {
+		MBImageScaleOperation *op = [[MBImageScaleOperation alloc] initWithImage:img andTargetSize:CGSizeMake(800, 640)];
+		op.delegate = self;
+		[_queue addOperation:op];
+		[op release];
+		_activity.alpha = 1.0;
+	} else {
+		_imageURL = [[TTURLCache sharedCache] storeTemporaryImage:img toDisk:NO];
+	}
+	
+	[[TTNavigator navigator].URLMap from:@"mb://_editimg" toObject:self selector:@selector(openIMG)];
+	
+	_image = [img retain];
 	
 	return self;
+}
+
+-(void)imageResized:(UIImage*)img
+{
+	TTDINFO(@"Image resized!");
+	[_image release];
+	_image = [img retain];
+
+	
+	_imageURL = [[TTURLCache sharedCache] storeTemporaryImage:img toDisk:NO];
+	_imageItem.imageURL = _imageURL;
+	[self.tableView reloadData];
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+	_activity.alpha = 0.0;
+	[UIView commitAnimations];
+	
 }
 
 -(void)dealloc
@@ -98,6 +121,7 @@
 	[_bodyField release];
 	[_secretWord release];
 	[_imageURL release];
+	[_queue release];
 	[[TTNavigator navigator].URLMap removeURL:@"mb://_editimg"];
 	[super dealloc];
 }
@@ -134,8 +158,6 @@
 	request.httpMethod = @"POST";
 	[request send];
 	
-	[self.view addSubview:_activity];
-	_activity.progress = 0.0;
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 	self.navigationItem.leftBarButtonItem.enabled = NO;
 	_uploading = YES;
@@ -147,6 +169,15 @@
 	if ([_bodyField isFirstResponder]) {
 		[_captionField resignFirstResponder];
 	}
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+	[self.view addSubview:_activity];
+	_activity.text = NSLocalizedString(@"Uploading image...", nil);
+	_activity.progress = 0.0;
+	_activity.alpha = 1.0;
+	[UIView commitAnimations];
+
 }
 
 -(void)upload
@@ -154,7 +185,7 @@
 	_secretWord = [MBStore getObjectForKey:@"secretWord"];
 	if (!_secretWord) {
 		UINavigationController *navCtrl = [[[UINavigationController alloc] init] autorelease];
-		UploaderSecretViewController *secretCtrl = [[UploaderSecretViewController alloc] init];
+		UploaderSecretViewController *secretCtrl = [[[UploaderSecretViewController alloc] init] autorelease];
 		secretCtrl.delegate = self;
 		[navCtrl pushViewController:secretCtrl animated:NO];
 		
@@ -164,13 +195,13 @@
 	}
 }
 
--(void)SecrectControllerIsDone:(UploaderSecretViewController*)secretCtrl
+-(void)SecretControllerIsDone:(UploaderSecretViewController*)secretCtrl
 {
 	if ([secretCtrl.secretWord length] < 1) {
 		[self dismissModalViewControllerAnimated:YES];
 	}
 	_secretWord = secretCtrl.secretWord;
-	NSLog(@"Secret word = %@", _secretWord);
+	TTDINFO(@"Secret word = %@", _secretWord);
 
 	[self doUpload];
 }
@@ -188,6 +219,7 @@
 	}
 	alert.delegate = self;
 	[alert show];
+	[alert release];
 }
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -196,9 +228,13 @@
 		_uploading = NO;
 		self.navigationItem.rightBarButtonItem.enabled = YES;
 		self.navigationItem.leftBarButtonItem.enabled = YES;
-		[_activity removeFromSuperview];
 		_secretWord = nil;
 		[MBStore setObject:nil forKey:@"secretWord"];
+		
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+		_activity.alpha = 0.0;
+		[UIView commitAnimations];
 	} else {
 		[self dismissModalViewControllerAnimated:YES];
 	}
@@ -206,7 +242,7 @@
 
 -(void)requestDidUploadData:(TTURLRequest*)request
 {
-	NSLog(@"Uploaded %d", request.totalBytesLoaded);
+	TTDINFO(@"Uploaded %d", request.totalBytesLoaded);
 	_activity.progress = request.totalBytesLoaded / request.totalBytesExpected;
 }
 
@@ -230,7 +266,11 @@
 													   size:[MBImageUtils imageSize:_image.size withAspect:CGSizeMake(150.0, 150.0)]
 													   next:TTSTYLE(rounded)];
 
-	_imageItem.imageURL = _imageURL;
+	if (_imageURL) {
+		_imageItem.imageURL = _imageURL;
+	} else {
+		_imageItem.imageURL = @"bundle://Three20.bundle/images/empty.png";
+	}
 
 	
 	_captionField = [[UITextField alloc] init];
@@ -250,7 +290,7 @@
 					   
 }
 
-#define LOGRECT(r) NSLog(@"%f %f %f %f", r.origin.x, r.origin.y, r.size.width, r.size.height);
+#define LOGRECT(r) TTDINFO(@"%f %f %f %f", r.origin.x, r.origin.y, r.size.width, r.size.height);
 
 -(void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath
 {

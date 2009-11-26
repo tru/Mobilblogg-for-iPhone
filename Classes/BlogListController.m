@@ -59,13 +59,13 @@
 
 -(void)refresh
 {
-	NSLog(@"Refreshing");
+	TTDINFO(@"Refreshing");
 	[self reload];
 }
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: BlogListController");
+	TTDINFO(@"DEALLOC: BlogListController");
 	[super dealloc];
 }
 

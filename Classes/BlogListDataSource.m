@@ -41,7 +41,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: BlogListDataSource %x", self);
+	TTDINFO(@"DEALLOC: BlogListDataSource %x", self);
 	[[TTNavigator navigator].URLMap	removeURL:[NSString stringWithFormat:@"mb://_topicture/%x/(navigateToPhotos:)", self]];
 	[super dealloc];
 }

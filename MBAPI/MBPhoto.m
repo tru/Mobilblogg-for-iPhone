@@ -43,7 +43,7 @@
 /*
 -(NSString*)URLValueWithName:(NSString*)name
 {
-	NSLog(@"URLValueWithName");
+	TTDINFO(@"URLValueWithName");
 	if ([name isEqualToString:@"TTPhotoViewController"]) {
 		return [NSString stringWithFormat:@"mb://picture/%d", self.photoId];
 	}
@@ -53,7 +53,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: MBPhoto %d", _photoId);
+	TTDINFO(@"DEALLOC: MBPhoto %d", _photoId);
 	[_thumbURL release];
 	[_smallURL release];
 	[_URL release];

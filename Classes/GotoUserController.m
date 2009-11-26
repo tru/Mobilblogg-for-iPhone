@@ -81,7 +81,7 @@
 }
 	
 -(void)lookupUser {
-	NSLog(@"Lookup user");
+	TTDINFO(@"Lookup user");
 	[((UIActivityIndicatorView*)_username.rightView) startAnimating];
 	[_username resignFirstResponder];
 	MBUser *user = [[[MBUser alloc] initWithUserName:_username.text] autorelease];
@@ -113,7 +113,7 @@
 
 -(void)dataSourceUpdate
 {
-	NSLog(@"Reloading data");
+	TTDINFO(@"Reloading data");
 	[self.tableView reloadData];
 }
 

@@ -10,6 +10,8 @@
 #import <Security/Security.h>
 #import "SFHFKeychainUtils.h"
 
+#import <Three20/Three20.h>
+
 @implementation MBStore
 
 +(void)removeAllData
@@ -76,7 +78,7 @@
 							   error:&err];
 	
 	if (err) {
-		NSLog(@"Couldn't store password!");
+		TTDINFO(@"Couldn't store password!");
 	}
 }
 
@@ -87,7 +89,7 @@
 												andServiceName:@"MobilBlogg"
 														 error:&err];
 	if (err) {
-		NSLog(@"No password found or error");
+		TTDINFO(@"No password found or error");
 	}
 	
 	return pass;
@@ -98,7 +100,7 @@
 	NSError *err;
 	[SFHFKeychainUtils deleteItemForUsername:username andServiceName:@"MobilBlogg" error:&err];
 	if (err) {
-		NSLog(@"RemovePassword failed!");
+		TTDINFO(@"RemovePassword failed!");
 	}
 }
 

@@ -35,7 +35,7 @@
 								 nil];
 	url = [url stringByAppendingFormat:@"?%@", [dict gtm_httpArgumentsString]];
 	
-	NSLog(@"Created URL: %@", url);
+	TTDINFO(@"Created URL: %@", url);
 	
 	TTURLRequest *req = [TTURLRequest requestWithURL:url delegate:self];
 	req.cachePolicy = TTURLRequestCachePolicyNetwork;
@@ -47,7 +47,7 @@
 
 -(void)reset
 {
-	NSLog(@"Reset!");
+	TTDINFO(@"Reset!");
     [super reset];
     [[_response comments] removeAllObjects];
 }
@@ -64,7 +64,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: CommentModel");
+	TTDINFO(@"DEALLOC: CommentModel");
     [_response release];
     [super dealloc];
 }

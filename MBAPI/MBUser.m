@@ -9,6 +9,7 @@
 #import "MBUser.h"
 #import "GTMNSDictionary+URLArguments.h"
 #import "MBErrorCodes.h"
+#import <Three20/Three20.h>
 
 @implementation MBUser
 @synthesize name = _name, info = _info, avatarURL = _avatarURL, delegate = _delegate;
@@ -26,7 +27,7 @@
 	_conn = [[MBConnectionRoot alloc] initWithArguments:args];
 	_conn.delegate = self;
 
-	NSLog(@"MBUser inited %@", _name);
+	TTDINFO(@"MBUser inited %@", _name);
 	return self;
 }
 
@@ -49,10 +50,11 @@
 		return;
 	} else if (err) {
 		if ([_delegate respondsToSelector:@selector(MBUser:didFailWithError:)]) {
-			NSError *err = [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeServer 
-										   userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-													 err, NSLocalizedDescriptionKey, nil]];
-			[_delegate MBUser:self didFailWithError:err];
+			NSError *reterr = [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeServer 
+											  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+														err, NSLocalizedDescriptionKey,
+														nil]];
+			[_delegate MBUser:self didFailWithError:reterr];
 		}
 		return;
 	}
@@ -64,7 +66,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: MBUser");
+	TTDINFO(@"DEALLOC: MBUser");
 	[_name release];
 	[_info release];
 	[_avatarURL release];

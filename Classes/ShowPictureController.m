@@ -39,7 +39,7 @@
 
 -(id)createPhotoView
 {
-	return [[PhotoViewController alloc] init];
+	return [[[PhotoViewController alloc] init] autorelease];
 }
 
 -(void)didMoveToPhoto:(id<TTPhoto>)photo fromPhoto:(id<TTPhoto>)fromPhoto
@@ -83,7 +83,7 @@
 }
 
 - (void)dealloc {
-	NSLog(@"DEALLOC: ShowPictureController");
+	TTDINFO(@"DEALLOC: ShowPictureController");
 	[_commentIcon release];
 	[super dealloc];
 }

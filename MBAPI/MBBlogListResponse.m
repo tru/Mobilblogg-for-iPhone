@@ -16,7 +16,7 @@
 
 -(id)init
 {
-	NSLog(@"Response got called");
+	TTDINFO(@"Response got called");
 	self = [super init];
 	_entries = [[NSMutableArray alloc] init];
 	return self;
@@ -24,17 +24,17 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: MBURLResponse");
+	TTDINFO(@"DEALLOC: MBURLResponse");
 	[_entries release];
 	[super dealloc];
 }
 
 -(void)printErrorTrace:(NSError*)err
 {
-	NSLog(@"Error tranceback:");
+	TTDINFO(@"Error tranceback:");
 	NSError *node = err;
 	while (node) {
-		NSLog(@"  %@", [node localizedDescription]);
+		TTDINFO(@"  %@", [node localizedDescription]);
 		node = [[node userInfo] objectForKey:NSUnderlyingErrorKey];
 	}
 }
@@ -45,7 +45,7 @@
 	SBJSON *parser = [[SBJSON alloc] init];
 	NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
-//	NSLog(@"body = %@", responseBody);
+//	TTDINFO(@"body = %@", responseBody);
 
 	NSError *jsonErr;
 	NSArray *photos = [parser objectWithString:responseBody error:&jsonErr];
@@ -86,7 +86,7 @@
 		if (dateStr) {
 			photo.date = [dFormater dateFromString:[p objectForKey:@"createdate"]];
 			if (!photo.date) {
-				NSLog(@"Date parsing fail %@", [p objectForKey:@"createdate"]);
+				TTDINFO(@"Date parsing fail %@", [p objectForKey:@"createdate"]);
 			}
 		}
 		
@@ -96,7 +96,7 @@
 	[dFormater release];
 	[parser release];
 	
-	NSLog(@"Data parsed and ready");
+	TTDINFO(@"Data parsed and ready");
 	
 	return nil;
 }

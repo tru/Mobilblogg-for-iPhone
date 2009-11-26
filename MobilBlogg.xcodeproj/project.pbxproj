@@ -362,6 +362,7 @@
 		61446285109019BF00AD9801 /* MBAPI */ = {
 			isa = PBXGroup;
 			children = (
+				61855DCA10BEB95E002D304E /* Additions */,
 				61CFC8EE10B123CE008FEBF2 /* Utils */,
 				61CFC8ED10B123B5008FEBF2 /* Photos */,
 				61CFC8EC10B12371008FEBF2 /* Comments */,
@@ -412,6 +413,15 @@
 				61855A2E10BC7833002D304E /* UploaderDataSource.m */,
 			);
 			name = Uploader;
+			sourceTree = "<group>";
+		};
+		61855DCA10BEB95E002D304E /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				61D99E2910BAA5F900A5525A /* NSString+MBAPI.h */,
+				61D99E2A10BAA5F900A5525A /* NSString+MBAPI.m */,
+			);
+			name = Additions;
 			sourceTree = "<group>";
 		};
 		61BE25771090CA5900D76E03 /* Externals */ = {
@@ -481,8 +491,6 @@
 				613479801092136800DD5DE7 /* MBStore.h */,
 				61E0D48B10A430A800809C22 /* MBLogin.h */,
 				61E0D48C10A430A800809C22 /* MBLogin.m */,
-				61D99E2910BAA5F900A5525A /* NSString+MBAPI.h */,
-				61D99E2A10BAA5F900A5525A /* NSString+MBAPI.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";

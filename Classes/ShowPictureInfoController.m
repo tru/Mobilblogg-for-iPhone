@@ -65,19 +65,19 @@
 
 -(void)MBUserDidReceiveInfo:(MBUser *)user
 {
-	NSLog(@"User info! %@", user.avatarURL);
+	TTDINFO(@"User info! %@", user.avatarURL);
 	_userItem.imageURL = user.avatarURL;
 	[self.tableView reloadData];
 }
 
 -(void)MBUser:(MBUser *)user didFailWithError:(NSError *)err
 {
-	NSLog(@"MBUser fail!");
+	TTDINFO(@"MBUser fail!");
 }
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: ShowPictureInfoController");
+	TTDINFO(@"DEALLOC: ShowPictureInfoController");
 	[_photo release];
 	[super dealloc];
 }

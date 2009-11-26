@@ -10,6 +10,7 @@
 #import "GTMNSDictionary+URLArguments.h"
 #import "JSON.h"
 #import "MBErrorCodes.h"
+#import <Three20/Three20.h>
 
 @implementation MBLogin
 
@@ -32,11 +33,11 @@
 	NSHTTPCookieStorage *store = [NSHTTPCookieStorage sharedHTTPCookieStorage];
 	NSArray *cookies = [store cookiesForURL:_connRoot.url];
 	for (NSHTTPCookie *c in cookies) {
-		NSLog(@"Removing cookie %@", [c name]);
+		TTDINFO(@"Removing cookie %@", [c name]);
 		[store deleteCookie:c];
 	}
 	
-	NSLog(@"MBLogin inited");
+	TTDINFO(@"MBLogin inited");
 	
 	return self;
 }
@@ -48,7 +49,7 @@
 
 -(void)MBConnectionRoot:(MBConnectionRoot *)connection didFinishWithObject:(id)object
 {
-	NSLog(@"did finish with object!");
+	TTDINFO(@"did finish with object!");
 	NSDictionary *dict = [object objectAtIndex:0];
 	if ([[dict objectForKey:@"status"] intValue] == 1) {
 		[_delegate loginDidSucceed];
@@ -64,7 +65,7 @@
 
 -(void)dealloc
 {
-	NSLog(@"DEALLOC: MBLogin");
+	TTDINFO(@"DEALLOC: MBLogin");
 	[super dealloc];
 }
 

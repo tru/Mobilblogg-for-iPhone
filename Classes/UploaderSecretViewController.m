@@ -32,8 +32,8 @@
 		[MBStore setObject:_secretWord.text forKey:@"secretWord"];
 	}
 	[self dismissModalViewControllerAnimated:YES];
-	if ([_delegate respondsToSelector:@selector(SecrectControllerIsDone:)]) {
-		[_delegate SecrectControllerIsDone:self];
+	if ([_delegate respondsToSelector:@selector(SecretControllerIsDone:)]) {
+		[_delegate SecretControllerIsDone:self];
 	}
 }
 
@@ -61,6 +61,10 @@
 	[_secretWord release];
 	[_save release];
 	[super dealloc];
+}
+
+-(void)SecretControllerIsDone:(UploaderSecretViewController *)secretCtrl
+{
 }
 
 @end
