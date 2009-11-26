@@ -129,7 +129,7 @@
 	[((FavoritesDataSource*)self.dataSource) goUser:_username.text];
 	
 	[_username resignFirstResponder];
-	[[TTNavigator navigator] openURL:[NSString stringWithFormat:@"mb://profile/%@", _username.text] animated:YES];
+	TTOpenURL([NSString stringWithFormat:@"mb://profile/%@", _username.text]);
 	_username.text = nil;
 
 }

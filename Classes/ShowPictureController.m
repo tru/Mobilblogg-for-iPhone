@@ -79,7 +79,7 @@
 -(void)comments
 {
 	MBPhoto *p = (MBPhoto*)_centerPhoto;
-	[[TTNavigator navigator] openURL:[@"mb://comments/" stringByAppendingFormat:@"%d",p.photoId] animated:YES];
+	TTOpenURL([@"mb://comments/" stringByAppendingFormat:@"%d",p.photoId]);
 }
 
 - (void)dealloc {

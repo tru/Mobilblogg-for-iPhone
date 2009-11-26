@@ -17,6 +17,7 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults removeObjectForKey:@"favoriteUsers"];
 	[defaults removeObjectForKey:@"hideCaption"];
+	[defaults removeObjectForKey:@"secretWord"];
 	[defaults synchronize];
 }
 

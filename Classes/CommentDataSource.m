@@ -50,6 +50,10 @@
 	}
 }
 
+-(void)dataSourceUpdate
+{
+}
+
 -(void)dealloc
 {
 	NSLog(@"DEALLOC: CommentDataSource %x", self);

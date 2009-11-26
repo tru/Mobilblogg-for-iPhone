@@ -49,6 +49,9 @@
 		6165944810A84A3000B1FE8D /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165944710A84A3000B1FE8D /* AboutController.m */; };
 		616594D010A854A600B1FE8D /* ShowPictureInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */; };
 		616BDB5610AEE91D005E82A6 /* FavoritesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 616BDB5510AEE91D005E82A6 /* FavoritesDataSource.m */; };
+		61855A2F10BC7833002D304E /* UploaderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855A2E10BC7833002D304E /* UploaderDataSource.m */; };
+		61855C7F10BE9037002D304E /* UploaderSecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855C7E10BE9037002D304E /* UploaderSecretViewController.m */; };
+		61855D5110BEA720002D304E /* MBImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855D4F10BEA720002D304E /* MBImageUtils.m */; };
 		619C698B10A9A28F008FB797 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 619C698A10A9A28F008FB797 /* Entitlements.plist */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
@@ -60,6 +63,7 @@
 		61D99DD210BAA04300A5525A /* MBPhotoItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D99DD110BAA04300A5525A /* MBPhotoItemCell.m */; };
 		61D99E2B10BAA5F900A5525A /* NSString+MBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D99E2A10BAA5F900A5525A /* NSString+MBAPI.m */; };
 		61D99E4D10BAA83C00A5525A /* 08-chatblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D99E4C10BAA83C00A5525A /* 08-chatblack.png */; };
+		61D99F7510BBA91B00A5525A /* UploaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D99F7410BBA91B00A5525A /* UploaderViewController.m */; };
 		61E0D48D10A430A800809C22 /* MBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D48C10A430A800809C22 /* MBLogin.m */; };
 		61E0D4E810A4549800809C22 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */; };
 		61E0D50610A4567E00809C22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E0D50510A4567E00809C22 /* Security.framework */; };
@@ -161,6 +165,13 @@
 		616BDB5410AEE91D005E82A6 /* FavoritesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesDataSource.h; sourceTree = "<group>"; };
 		616BDB5510AEE91D005E82A6 /* FavoritesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesDataSource.m; sourceTree = "<group>"; };
 		616BDC2A10AEF989005E82A6 /* MBErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBErrorCodes.h; path = MBAPI/MBErrorCodes.h; sourceTree = "<group>"; };
+		6185581110BBB50C002D304E /* libm.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libm.dylib; path = usr/lib/libm.dylib; sourceTree = SDKROOT; };
+		61855A2D10BC7833002D304E /* UploaderDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploaderDataSource.h; sourceTree = "<group>"; };
+		61855A2E10BC7833002D304E /* UploaderDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderDataSource.m; sourceTree = "<group>"; };
+		61855C7D10BE9037002D304E /* UploaderSecretViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploaderSecretViewController.h; sourceTree = "<group>"; };
+		61855C7E10BE9037002D304E /* UploaderSecretViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderSecretViewController.m; sourceTree = "<group>"; };
+		61855D4F10BEA720002D304E /* MBImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBImageUtils.m; path = MBAPI/MBImageUtils.m; sourceTree = SOURCE_ROOT; };
+		61855D5010BEA720002D304E /* MBImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBImageUtils.h; path = MBAPI/MBImageUtils.h; sourceTree = SOURCE_ROOT; };
 		619C698A10A9A28F008FB797 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
@@ -180,6 +191,8 @@
 		61D99E2910BAA5F900A5525A /* NSString+MBAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MBAPI.h"; path = "MBAPI/NSString+MBAPI.h"; sourceTree = "<group>"; };
 		61D99E2A10BAA5F900A5525A /* NSString+MBAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MBAPI.m"; path = "MBAPI/NSString+MBAPI.m"; sourceTree = "<group>"; };
 		61D99E4C10BAA83C00A5525A /* 08-chatblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chatblack.png"; sourceTree = SOURCE_ROOT; };
+		61D99F7310BBA91B00A5525A /* UploaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploaderViewController.h; sourceTree = "<group>"; };
+		61D99F7410BBA91B00A5525A /* UploaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderViewController.m; sourceTree = "<group>"; };
 		61E0D48B10A430A800809C22 /* MBLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBLogin.h; path = MBAPI/MBLogin.h; sourceTree = "<group>"; };
 		61E0D48C10A430A800809C22 /* MBLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBLogin.m; path = MBAPI/MBLogin.m; sourceTree = "<group>"; };
 		61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = SFHFKeychainUtils/SFHFKeychainUtils.m; sourceTree = SOURCE_ROOT; };
@@ -208,6 +221,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				61855A3010BC78A8002D304E /* Uploader */,
 				61347E8A1093467300DD5DE7 /* PhotoView */,
 				61347B7B1093072800DD5DE7 /* Others */,
 				61347B79109306F300DD5DE7 /* BloggList */,
@@ -237,6 +251,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				6185581110BBB50C002D304E /* libm.dylib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -386,6 +401,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		61855A3010BC78A8002D304E /* Uploader */ = {
+			isa = PBXGroup;
+			children = (
+				61855C7D10BE9037002D304E /* UploaderSecretViewController.h */,
+				61855C7E10BE9037002D304E /* UploaderSecretViewController.m */,
+				61D99F7310BBA91B00A5525A /* UploaderViewController.h */,
+				61D99F7410BBA91B00A5525A /* UploaderViewController.m */,
+				61855A2D10BC7833002D304E /* UploaderDataSource.h */,
+				61855A2E10BC7833002D304E /* UploaderDataSource.m */,
+			);
+			name = Uploader;
+			sourceTree = "<group>";
+		};
 		61BE25771090CA5900D76E03 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +475,8 @@
 		61CFC8EE10B123CE008FEBF2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				61855D4F10BEA720002D304E /* MBImageUtils.m */,
+				61855D5010BEA720002D304E /* MBImageUtils.h */,
 				6134797F1092136800DD5DE7 /* MBStore.m */,
 				613479801092136800DD5DE7 /* MBStore.h */,
 				61E0D48B10A430A800809C22 /* MBLogin.h */,
@@ -595,6 +625,10 @@
 				61D99C9210B9B5F500A5525A /* CommentIconView.m in Sources */,
 				61D99DD210BAA04300A5525A /* MBPhotoItemCell.m in Sources */,
 				61D99E2B10BAA5F900A5525A /* NSString+MBAPI.m in Sources */,
+				61D99F7510BBA91B00A5525A /* UploaderViewController.m in Sources */,
+				61855A2F10BC7833002D304E /* UploaderDataSource.m in Sources */,
+				61855C7F10BE9037002D304E /* UploaderSecretViewController.m in Sources */,
+				61855D5110BEA720002D304E /* MBImageUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +664,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobilBlogg_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TTMAXLOGLEVEL=TTLOGLEVEL_INFO";
 				HEADER_SEARCH_PATHS = ../three20/src;
 				INFOPLIST_FILE = "MobilBlogg-Info.plist";
 				OTHER_CFLAGS = "-DDEBUG";
@@ -667,6 +702,7 @@
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
@@ -682,6 +718,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobilBlogg_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TTMAXLOGLEVEL=TTLOGLEVEL_INFO";
 				HEADER_SEARCH_PATHS = ../three20/src;
 				INFOPLIST_FILE = "MobilBlogg-Info.plist";
 				OTHER_LDFLAGS = (

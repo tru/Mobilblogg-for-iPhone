@@ -16,4 +16,6 @@
 
 @property (nonatomic,retain) id delegate;
 
+-(void)dataSourceUpdate;
+
 @end

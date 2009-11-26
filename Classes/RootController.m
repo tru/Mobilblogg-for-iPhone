@@ -9,6 +9,7 @@
 #import "RootController.h"
 #import "MBStore.h"
 #import "MBErrorCodes.h"
+#import "UploaderViewController.h"
 
 @implementation RootController
 
@@ -29,7 +30,6 @@
 												  text:NSLocalizedString(@"Logging in...", nil)];
 	return self;
 }
-
 
 - (void)createModel
 {
@@ -55,7 +55,7 @@
 	password = [MBStore getPasswordForUsername:username];
 	
 	if (!username || !password) {
-		[[TTNavigator navigator] openURL:@"mb://userconfmodal/yes" animated:NO];
+		TTOpenURL(@"mb://userconfmodal/yes");
 	} else {
 		MBLogin *login = [[[MBLogin alloc] initWithUsername:username andPassword:password] autorelease];
 		login.delegate = self;
@@ -102,7 +102,7 @@
 	if (buttonIndex == 0) {
 		/*TODO: make something fancy here later */
 	} else {
-		[[TTNavigator navigator] openURL:@"mb://userconfmodal/yes" animated:YES];
+		TTOpenURL(@"mb://userconfmodal/yes");
 	}
 }
 
@@ -175,11 +175,15 @@
 													   delegate:nil
 											  cancelButtonTitle:NSLocalizedString(@"Ok, beem me up!", nil)
 											  otherButtonTitles:nil];
-		[img release];
+		//[img release];
 		[alert release];
 		return;
 	}
 	
+	UploaderViewController *up = [[UploaderViewController alloc] initWithUIImage:img];
+	[self.navigationController pushViewController:up animated:YES];
+	[up release];
+	//[img release];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
