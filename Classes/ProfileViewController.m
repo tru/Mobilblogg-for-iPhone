@@ -24,13 +24,9 @@
 	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 416)
 												 style:TTActivityLabelStyleBlackBox
 												  text:NSLocalizedString(@"Loading...", nil)];
+	[self.view addSubview:_activity];
 	
 	return self;
-}
-
--(void)viewDidLoad
-{
-	[self.view addSubview:_activity];
 }
 
 -(void)createModel
@@ -62,12 +58,20 @@
 	_userImageItem.imageURL = _user.avatarURL;
 	_userTextItem.text = [TTStyledText textFromXHTML:[user.info stringByReplacingOccurrencesOfString:@"<br>" withString:@"<br/>"]];
 	[self.tableView reloadData];
-	[_activity removeFromSuperview];
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+	_activity.alpha = 0.0;
+	[UIView commitAnimations];
+	
 }
 
 -(void)MBUser:(MBUser *)user didFailWithError:(NSError *)err
 {
-	[_activity removeFromSuperview];
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+	_activity.alpha = 0.0;
+	[UIView commitAnimations];
 }
 
 -(void)dealloc

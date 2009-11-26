@@ -32,11 +32,18 @@
 	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 480)
 												 style:TTActivityLabelStyleBlackBox
 												  text:NSLocalizedString(@"Logging in...", nil)];
-	
+	_activity.alpha = 0.0;
+
 	[[TTNavigator navigator].URLMap	from:@"mb://_cleardata" toViewController:self selector:@selector(clearData)];
 	[[TTNavigator navigator].URLMap	from:@"mb://_clearpassword" toViewController:self selector:@selector(clearPassword)];
 	return self;
 }
+
+-(void)viewDidLoad
+{
+	[self.navigationController.view addSubview:_activity];
+}
+
 
 -(void)createModel
 {
@@ -128,26 +135,45 @@
 
 -(void)saveSettings
 {
-	TTDINFO(@"username = %@ and password = %@", _username.text, _password.text);
-	MBLogin *login = [[[MBLogin alloc] initWithUsername:_username.text andPassword:_password.text] autorelease];
-	login.delegate = self;
-	[self.navigationController.view addSubview:_activity];
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+	[UIView setAnimationDidStopSelector:@selector(animationDidStop)];
+	[UIView setAnimationDelegate:self];
+	_activity.alpha = 1.0;
+	[UIView commitAnimations];
+	
 	[_username resignFirstResponder];
 	[_password resignFirstResponder];
 }
 
+-(void)animationDidStop
+{
+	TTDINFO(@"username = %@ and password = %@", _username.text, _password.text);
+	MBLogin *login = [[[MBLogin alloc] initWithUsername:_username.text andPassword:_password.text] autorelease];
+	login.delegate = self;
+}
+
 -(void)loginDidSucceed
 {
+	TTDINFO(@"Login successful!");
 	[MBStore saveUserName:_username.text];
 	[MBStore savePassword:_password.text forUsername:_username.text];
 		
-	[_activity removeFromSuperview];
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+	_activity.alpha = 0.0;
+	[UIView commitAnimations];
+
 	[self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)loginDidFailWithError:(NSError *)err
 {
-	[_activity removeFromSuperview];
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+	_activity.alpha = 0.0;
+	[UIView commitAnimations];
 
 	UIAlertView *alview = [[UIAlertView alloc] initWithTitle:@"Login Failed"
 												   message:[err localizedDescription]

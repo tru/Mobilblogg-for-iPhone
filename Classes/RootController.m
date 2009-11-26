@@ -28,6 +28,7 @@
 	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 480)
 												 style:TTActivityLabelStyleBlackBox
 												  text:NSLocalizedString(@"Logging in...", nil)];
+	_activity.alpha = 0.0;
 	return self;
 }
 
@@ -48,7 +49,8 @@
 					   nil];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
 	NSString *username, *password;
 	
 	username = [MBStore getUserName];
@@ -57,24 +59,36 @@
 	if (!username || !password) {
 		TTOpenURL(@"mb://userconfmodal/yes");
 	} else {
-		MBLogin *login = [[[MBLogin alloc] initWithUsername:username andPassword:password] autorelease];
-		login.delegate = self;
 		
 		self.navigationItem.rightBarButtonItem.enabled = NO;
 		[self.navigationController.view addSubview:_activity];
+		
+		_activity.alpha = 1.0;
+
+		MBLogin *login = [[[MBLogin alloc] initWithUsername:username andPassword:password] autorelease];
+		login.delegate = self;
+
 	}
 }
 
 -(void)loginDidSucceed
 {
-	[_activity removeFromSuperview];
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+	_activity.alpha = 0.0;
+	[UIView commitAnimations];
 	self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 -(void)loginDidFailWithError:(NSError *)err
 {
 	UIAlertView *alert;
-	[_activity removeFromSuperview];
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+	_activity.alpha = 0.0;
+	[UIView commitAnimations];
+
 	self.navigationItem.rightBarButtonItem.enabled = YES;
 	
 	
