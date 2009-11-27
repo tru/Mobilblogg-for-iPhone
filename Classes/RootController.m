@@ -24,6 +24,9 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera 
 																						   target:self 
 																						   action:@selector(camera)];
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout", nil)
+																			 style:UIBarButtonItemStylePlain target:self
+																			action:@selector(logout)];
 	
 	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 480)
 												 style:TTActivityLabelStyleBlackBox
@@ -113,6 +116,14 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+	if ([alertView.title isEqualToString:NSLocalizedString(@"Logout?", nil)]) {
+		if (buttonIndex != 0) {
+			[MBStore removePassword];
+			TTOpenURL(@"mb://userconfmodal/yes");
+		}
+		
+		return;
+	}
 	if (buttonIndex == 0) {
 		/*TODO: make something fancy here later */
 	} else {
@@ -123,6 +134,17 @@
 - (void)dealloc {
 	[_activity release];
     [super dealloc];
+}
+
+-(void)logout
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Logout?", nil)
+													message:NSLocalizedString(@"Do you really want to logout?", nil)
+												   delegate:self
+										  cancelButtonTitle:NSLocalizedString(@"Forget it", nil)
+										  otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
+	[alert show];
+	[alert release];
 }
 
 
