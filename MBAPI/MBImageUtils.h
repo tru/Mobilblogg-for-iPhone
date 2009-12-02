@@ -31,7 +31,5 @@
 @interface MBImageUtils : NSObject
 
 +(CGSize)imageSize:(CGSize)currentSize withAspect:(CGSize)targetSize;
-//+(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
-+(UIImage*)image:(UIImage*)image scaledToSize:(CGSize)newSize;
 
 @end

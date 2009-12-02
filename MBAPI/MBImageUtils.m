@@ -25,7 +25,10 @@
 
 -(void)main
 {
-	UIImage *ret = [MBImageUtils image:_image scaledToSize:_size];
+	CGSize siz = [MBImageUtils imageSize:_image.size withAspect:CGSizeMake(800, 600)];
+	TTLOGSIZE(siz);
+	UIImage *ret = [_image transformWidth:siz.width height:siz.height rotate:YES];
+	TTLOGSIZE(ret.size);
 	[_delegate performSelectorOnMainThread:@selector(imageResized:) withObject:ret waitUntilDone:YES];
 	[ret release];
 }
@@ -54,92 +57,5 @@
 	
 	return CGSizeMake(newWidth, newHeight);
 }
-
-static inline double radians (double degrees) {return degrees * M_PI/180;}
-
-+(UIImage*)image:(UIImage*)image scaledToSize:(CGSize)newSize
-{
-	CGSize targetSize = [MBImageUtils imageSize:image.size withAspect:newSize];
-	
-	CGFloat targetWidth = targetSize.width;
-	CGFloat targetHeight = targetSize.height;
-	
-	CGImageRef imageRef = [image CGImage];
-	CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
-	CGColorSpaceRef colorSpaceInfo = CGImageGetColorSpace(imageRef);
-	
-	if (bitmapInfo == kCGImageAlphaNone) {
-		bitmapInfo = kCGImageAlphaNoneSkipLast;
-	}
-	
-	CGContextRef bitmap;
-	
-	if (image.imageOrientation == UIImageOrientationUp || image.imageOrientation == UIImageOrientationDown) {
-		bitmap = CGBitmapContextCreate(NULL,
-									   targetWidth,
-									   targetHeight,
-									   CGImageGetBitsPerComponent(imageRef),
-									   CGImageGetBytesPerRow(imageRef),
-									   colorSpaceInfo,
-									   bitmapInfo);
-		
-	} else {
-		bitmap = CGBitmapContextCreate(NULL,
-									   targetHeight,
-									   targetWidth,
-									   CGImageGetBitsPerComponent(imageRef),
-									   CGImageGetBytesPerRow(imageRef),
-									   colorSpaceInfo,
-									   bitmapInfo);
-		
-	}       
-	
-	if (image.imageOrientation == UIImageOrientationLeft) {
-		CGContextRotateCTM (bitmap, radians(90));
-		CGContextTranslateCTM (bitmap, 0, -targetHeight);
-		
-	} else if (image.imageOrientation == UIImageOrientationRight) {
-		CGContextRotateCTM (bitmap, radians(-90));
-		CGContextTranslateCTM (bitmap, -targetWidth, 0);
-		
-	} else if (image.imageOrientation == UIImageOrientationUp) {
-		// NOTHING
-	} else if (image.imageOrientation == UIImageOrientationDown) {
-		CGContextTranslateCTM (bitmap, targetWidth, targetHeight);
-		CGContextRotateCTM (bitmap, radians(-180.));
-	}
-	
-	CGContextDrawImage(bitmap, CGRectMake(0, 0, targetWidth, targetHeight), imageRef);
-	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
-	UIImage* newImage = [UIImage imageWithCGImage:ref];
-	
-	CGContextRelease(bitmap);
-	CGImageRelease(ref);
-	
-	return newImage; 
-}
-
-#if 0
-+(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
-{
-	CGSize calcSize = [MBImageUtils imageSize:image.size withAspect:newSize];
-		
-	// Create a graphics image context
-	UIGraphicsBeginImageContext(calcSize);
-	
-	// Tell the old image to draw in this new context, with the desired
-	// new size
-	[image drawInRect:CGRectMake(0,0,calcSize.width,calcSize.height)];
-	
-	// Get the new image from the context
-	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-	
-	// End the context
-	UIGraphicsEndImageContext();
-	
-	// Return the new image.
-	return newImage;
-}
-#endif
 
 @end
