@@ -19,11 +19,11 @@
 	
 	self.title = NSLocalizedString(@"Thumb view", nil);
 	_bmodel = [[[BlogListModel alloc] initWithArguments:arguments] autorelease];
-	BlogListThumbsDataSource *ds = [[[BlogListThumbsDataSource alloc] initWithModel:_bmodel] autorelease];
+	BlogListThumbsDataSource *ds = [[BlogListThumbsDataSource alloc] initWithModel:_bmodel];
 
 	[self setPhotoSource:ds];
-	self.model = [ds underlyingModel];
 	
+	self.model = [ds underlyingModel];
 	self.navigationBarStyle = UIStatusBarStyleDefault;
 	self.statusBarStyle = UIStatusBarStyleDefault;
 	self.wantsFullScreenLayout = NO;
@@ -32,7 +32,8 @@
 	self.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Thumb view", nil) image:TTIMAGE(@"bundle://42-photos.png") tag:1];
 	
 	_firstAppear = YES;
-	
+
+	[ds release];
 	return self;
 }
 

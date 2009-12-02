@@ -24,7 +24,7 @@
 
 -(void)dealloc
 {
-	TTDINFO(@"DEALLOC: MBURLResponse");
+	TTDINFO(@"DEALLOC: MBBlogListResponse");
 	[_entries release];
 	[super dealloc];
 }

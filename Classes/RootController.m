@@ -15,6 +15,7 @@
 
 - (id)init {
 	self = [super init];
+	TTDINFO(@"ALLOC: RootController");
 	
 	self.title = @"MobilBlogg.nu";
 	self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)

@@ -16,7 +16,7 @@
 - (id)initWithModel:(BlogListModel *)theModel
 {
     if ((self = [super init])) {
-        albumTitle = NSLocalizedString(@"Photos", nil);
+        albumTitle = [NSLocalizedString(@"Photos", nil) copy];
         model = [theModel retain];
     }
     return self;
@@ -100,6 +100,7 @@
 
 - (void)dealloc
 {
+	TTDINFO(@"DEALLOC: BlogListThumbsDataSource");
     [model release];
     [albumTitle release];
     [super dealloc];
