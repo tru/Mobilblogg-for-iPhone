@@ -33,6 +33,7 @@
 	NSURLRequest *req = [NSURLRequest requestWithURL:_url];
 	NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:self];
 	[conn start];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	
 	return self;
 }
@@ -70,8 +71,9 @@
 		[_delegate MBConnectionRoot:self didFailWithError:jsonErr];
 		return;
 	}
-	
 	[_delegate MBConnectionRoot:self didFinishWithObject:response];
+	
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 -(void)dealloc
