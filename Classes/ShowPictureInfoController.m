@@ -51,7 +51,7 @@
 		bodyItem = [TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:body]];
 		[items addObject:bodyItem];
 	}
-	[items addObject:[TTTableLongTextItem itemWithText:NSLocalizedString(@"Showed 10 times", nil)]];
+	[items addObject:[TTTableLongTextItem itemWithText:[NSString stringWithFormat:NSLocalizedString(@"Taken at %@", nil), [_photo.date formatDateTime]]]];
 	
 	NSArray *author = [NSArray arrayWithObjects:
 								_userItem,
