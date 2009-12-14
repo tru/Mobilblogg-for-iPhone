@@ -8,7 +8,7 @@
 
 #import "MBUser.h"
 #import "GTMNSDictionary+URLArguments.h"
-#import "MBErrorCodes.h"
+#import "MBGlobal.h"
 #import <Three20/Three20.h>
 
 @implementation MBUser

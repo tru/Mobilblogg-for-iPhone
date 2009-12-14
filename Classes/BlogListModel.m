@@ -8,11 +8,9 @@
 
 #import "BlogListModel.h"
 #import "GTMNSDictionary+URLArguments.h"
+#import "MBGlobal.h"
 
 @implementation BlogListModel
-
-#define kMBAPIProtocol "http://"
-#define kMBAPIHost "www.mobilblogg.nu/o.o.i.s" //&func=listBlogg&user=tru&page=1"
 
 -(id)initWithArguments:(NSDictionary*)arguments
 {
@@ -32,9 +30,9 @@
 		[_response.entries removeAllObjects];
 	}
 	
-	NSString *url = [NSString stringWithFormat:@"%s%s", kMBAPIProtocol, kMBAPIHost];
+	NSString *url = [NSString stringWithFormat:@"%s%s", kMobilBloggHTTPProtocol, kMobilBloggHTTPBasePath];
 	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-						  @".api.t", @"template",
+						  kMobilBloggTemplateName, @"template",
 						  [NSString stringWithFormat:@"%lu",_page], @"page",
 						  nil];
 	[dict addEntriesFromDictionary:_arguments];

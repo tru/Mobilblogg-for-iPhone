@@ -8,7 +8,7 @@
 
 #import "FavoritesDataSource.h"
 #import "MBStore.h"
-#import "MBErrorCodes.h"
+#import "MBGlobal.h"
 
 
 @implementation FavoriteUser

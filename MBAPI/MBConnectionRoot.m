@@ -10,6 +10,7 @@
 #import "GTMNSDictionary+URLArguments.h"
 #import "JSON.h"
 #import <Three20/Three20.h>
+#import "MBGlobal.h"
 
 @implementation MBConnectionRoot
 
@@ -22,12 +23,12 @@
 	_data = nil;
 	
 	NSMutableDictionary *args = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-								 @".api.t", @"template",
+								 kMobilBloggTemplateName, @"template",
 								 nil];
 	
 	[args addEntriesFromDictionary:arguments];
 
-	_url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mobilblogg.nu/o.o.i.s?%@", [args gtm_httpArgumentsString]]];
+	_url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", kMobilBloggHTTPProtocol, kMobilBloggHTTPBasePath, [args gtm_httpArgumentsString]]];
 	TTDINFO(@"Connection Root at URL: %@", _url);
 	
 	NSURLRequest *req = [NSURLRequest requestWithURL:_url];

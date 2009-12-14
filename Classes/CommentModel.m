@@ -9,9 +9,8 @@
 #import "CommentModel.h"
 #import "MBCommentResponse.h"
 #import "GTMNSDictionary+URLArguments.h"
+#import "MBGlobal.h"
 
-#define kMBAPIProtocol "http://"
-#define kMBAPIHost "www.mobilblogg.nu/o.o.i.s" //&func=listBlogg&user=tru&page=1"
 
 @implementation CommentModel
 
@@ -27,9 +26,9 @@
 {
 	[_response.comments removeAllObjects];
 
-	NSString *url = [NSString stringWithFormat:@"%s%s", kMBAPIProtocol, kMBAPIHost];
+	NSString *url = [NSString stringWithFormat:@"%s%s", kMobilBloggHTTPProtocol, kMobilBloggHTTPBasePath];
 	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-								 @".api.t", @"template",
+								 kMobilBloggTemplateName, @"template",
 								 @"listComments", @"func",
 								 [NSString stringWithFormat:@"%d", _photoId], @"imgid",
 								 nil];

@@ -79,14 +79,28 @@
 	[_alwaysShowCaptionSwitch addTarget:self action:@selector(switchAlwaysShowCaption) forControlEvents:UIControlEventValueChanged];
 	TTTableControlItem *alwaysShowCaption = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Always show caption", nil)
 																		control:_alwaysShowCaptionSwitch];
+
+	
+	_savePhoto = [[[UISwitch alloc] init] autorelease];
+	
+	if ([MBStore getBoolForKey:@"savePhotos"]) {
+		_savePhoto.on = NO;
+	} else {
+		_savePhoto.on = YES;
+	}
+	[_savePhoto	addTarget:self action:@selector(switchSavePhoto) forControlEvents:UIControlEventValueChanged];
+
+	TTTableControlItem *savePhotoToLibrary = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Save photo", nil)
+																		 control:_savePhoto];
 	
 		
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 					   NSLocalizedString(@"Credentials", nil),
 					   _username,
 					   _password,
-					   NSLocalizedString(@"Interface", nil),
+					   NSLocalizedString(@"Application", nil),
 					   alwaysShowCaption,
+					   savePhotoToLibrary,
 #ifdef DEBUG					   
 					   NSLocalizedString(@"Debug", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Clear password", nil) URL:@"mb://_clearpassword"],
@@ -99,6 +113,11 @@
 -(void)switchAlwaysShowCaption
 {
 	[MBStore setBool:!_alwaysShowCaptionSwitch.on forKey:@"hideCaptions"];
+}
+
+-(void)switchSavePhoto
+{
+	[MBStore setBool:!_savePhoto.on forKey:@"savePhotos"];
 }
 
 -(void)clearData

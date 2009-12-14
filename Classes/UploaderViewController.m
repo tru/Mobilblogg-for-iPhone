@@ -13,7 +13,7 @@
 #import "MBPhoto.h"
 #import "MBStore.h"
 #import "MBImageUtils.h"
-#import "MBErrorCodes.h"
+#import "MBGlobal.h"
 
 #import "JSON.h"
 
@@ -139,13 +139,13 @@
 		body = @"";
 	}
 	
-	TTURLRequest *request = [TTURLRequest requestWithURL:@"http://www.mobilblogg.nu/o.o.i.s"
+	TTURLRequest *request = [TTURLRequest requestWithURL:[NSString stringWithFormat:@"%@%@", kMobilBloggHTTPProtocol, kMobilBloggHTTPBasePath]
 												delegate:self];
 	//request.charsetForMultipart = NSISOLatin1StringEncoding;
 	request.response = [[[UploadResponse alloc] init] autorelease];
 	
 	[request.parameters addEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
-												  @".api.t", @"template",
+												  kMobilBloggTemplateName, @"template",
 												  @"upload", @"func",
 												  _captionField.text, @"header",
 												  body, @"text",

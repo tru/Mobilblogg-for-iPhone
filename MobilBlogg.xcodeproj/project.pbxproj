@@ -164,7 +164,7 @@
 		616594CF10A854A600B1FE8D /* ShowPictureInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPictureInfoController.m; sourceTree = "<group>"; };
 		616BDB5410AEE91D005E82A6 /* FavoritesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesDataSource.h; sourceTree = "<group>"; };
 		616BDB5510AEE91D005E82A6 /* FavoritesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesDataSource.m; sourceTree = "<group>"; };
-		616BDC2A10AEF989005E82A6 /* MBErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBErrorCodes.h; path = MBAPI/MBErrorCodes.h; sourceTree = "<group>"; };
+		616BDC2A10AEF989005E82A6 /* MBGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBGlobal.h; path = MBAPI/MBGlobal.h; sourceTree = "<group>"; };
 		6185581110BBB50C002D304E /* libm.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libm.dylib; path = usr/lib/libm.dylib; sourceTree = SDKROOT; };
 		61855A2D10BC7833002D304E /* UploaderDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploaderDataSource.h; sourceTree = "<group>"; };
 		61855A2E10BC7833002D304E /* UploaderDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderDataSource.m; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 				61CFC8ED10B123B5008FEBF2 /* Photos */,
 				61CFC8EC10B12371008FEBF2 /* Comments */,
 				61CFC8EB10B12358008FEBF2 /* Users */,
-				616BDC2A10AEF989005E82A6 /* MBErrorCodes.h */,
+				616BDC2A10AEF989005E82A6 /* MBGlobal.h */,
 				611456E110ACB1B400DADDD6 /* MBConnectionRoot.h */,
 				611456E210ACB1B400DADDD6 /* MBConnectionRoot.m */,
 			);

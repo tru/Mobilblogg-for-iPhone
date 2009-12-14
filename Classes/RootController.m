@@ -8,7 +8,7 @@
 
 #import "RootController.h"
 #import "MBStore.h"
-#import "MBErrorCodes.h"
+#import "MBGlobal.h"
 #import "UploaderViewController.h"
 
 @implementation RootController
@@ -215,6 +215,10 @@
 		//[img release];
 		[alert release];
 		return;
+	}
+	
+	if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+		
 	}
 	
 	UploaderViewController *up = [[UploaderViewController alloc] initWithUIImage:img];

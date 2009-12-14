@@ -9,7 +9,7 @@
 #import "MBLogin.h"
 #import "GTMNSDictionary+URLArguments.h"
 #import "JSON.h"
-#import "MBErrorCodes.h"
+#import "MBGlobal.h"
 #import <Three20/Three20.h>
 
 @implementation MBLogin

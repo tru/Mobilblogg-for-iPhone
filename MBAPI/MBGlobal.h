@@ -1,5 +1,5 @@
 /*
- *  MBErrorCodes.h
+ *  MBGlobal.h
  *  MobilBlogg
  *
  *  Created by Tobias Rundström on 2009-11-14.
@@ -11,3 +11,7 @@
 #define MobilBloggErrorCodeInvalidCredentials 1
 #define MobilBloggErrorCodeNoSuchUser 2
 #define MobilBloggErrorCodeServer 3
+
+#define kMobilBloggHTTPProtocol @"http://"
+#define kMobilBloggHTTPBasePath @"api.mobilblogg.nu/o.o.i.s"
+#define kMobilBloggTemplateName @".api.t"

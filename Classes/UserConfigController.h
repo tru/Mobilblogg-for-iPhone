@@ -16,6 +16,7 @@
 	UITextField *_username;
 	UITextField *_password;
 	UISwitch *_alwaysShowCaptionSwitch;
+	UISwitch *_savePhoto;
 	BOOL _fromConfig;
 }
 

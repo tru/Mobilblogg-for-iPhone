@@ -9,7 +9,7 @@
 #import "GotoUserController.h"
 #import "MBStore.h"
 #import "FavoritesDataSource.h"
-#import "MBErrorCodes.h"
+#import "MBGlobal.h"
 
 
 /* Subclass of UITextField to be able to set the rightitemrect

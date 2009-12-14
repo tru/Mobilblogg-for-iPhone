@@ -9,7 +9,7 @@
 #import "MBBlogListResponse.h"
 #import "JSON.h"
 #import "MBPhoto.h"
-#import "MBErrorCodes.h"
+#import "MBGlobal.h"
 
 @implementation MBBlogListResponse
 @synthesize entries = _entries;
