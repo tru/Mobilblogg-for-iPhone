@@ -35,6 +35,7 @@
 		613A375810B0839500A91801 /* MBCommentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 613A375710B0839500A91801 /* MBCommentResponse.m */; };
 		613A376510B086B900A91801 /* MBComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 613A376410B086B900A91801 /* MBComment.m */; };
 		613A379510B0896A00A91801 /* CommentDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 613A379410B0896A00A91801 /* CommentDataSource.m */; };
+		613C7BEC10D644750049D1CB /* MBSalt.m in Sources */ = {isa = PBXBuildFile; fileRef = 613C7BEB10D644750049D1CB /* MBSalt.m */; };
 		6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446291109019E100AD9801 /* NSObject+SBJSON.m */; };
 		6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446293109019E100AD9801 /* NSString+SBJSON.m */; };
 		6144629E109019E100AD9801 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446295109019E100AD9801 /* SBJSON.m */; };
@@ -136,6 +137,8 @@
 		613A376410B086B900A91801 /* MBComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBComment.m; path = MBAPI/MBComment.m; sourceTree = "<group>"; };
 		613A379310B0896A00A91801 /* CommentDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDataSource.h; sourceTree = "<group>"; };
 		613A379410B0896A00A91801 /* CommentDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDataSource.m; sourceTree = "<group>"; };
+		613C7BEA10D644750049D1CB /* MBSalt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBSalt.h; path = MBAPI/MBSalt.h; sourceTree = "<group>"; };
+		613C7BEB10D644750049D1CB /* MBSalt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBSalt.m; path = MBAPI/MBSalt.m; sourceTree = "<group>"; };
 		6144628F109019E100AD9801 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		61446290109019E100AD9801 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		61446291109019E100AD9801 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -485,6 +488,8 @@
 		61CFC8EE10B123CE008FEBF2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				613C7BEA10D644750049D1CB /* MBSalt.h */,
+				613C7BEB10D644750049D1CB /* MBSalt.m */,
 				61855D4F10BEA720002D304E /* MBImageUtils.m */,
 				61855D5010BEA720002D304E /* MBImageUtils.h */,
 				6134797F1092136800DD5DE7 /* MBStore.m */,
@@ -637,6 +642,7 @@
 				61855A2F10BC7833002D304E /* UploaderDataSource.m in Sources */,
 				61855C7F10BE9037002D304E /* UploaderSecretViewController.m in Sources */,
 				61855D5110BEA720002D304E /* MBImageUtils.m in Sources */,
+				613C7BEC10D644750049D1CB /* MBSalt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

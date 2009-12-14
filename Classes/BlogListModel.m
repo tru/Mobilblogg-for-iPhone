@@ -30,7 +30,7 @@
 		[_response.entries removeAllObjects];
 	}
 	
-	NSString *url = [NSString stringWithFormat:@"%s%s", kMobilBloggHTTPProtocol, kMobilBloggHTTPBasePath];
+	NSString *url = [NSString stringWithFormat:@"%@%@", kMobilBloggHTTPProtocol, kMobilBloggHTTPBasePath];
 	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 						  kMobilBloggTemplateName, @"template",
 						  [NSString stringWithFormat:@"%lu",_page], @"page",

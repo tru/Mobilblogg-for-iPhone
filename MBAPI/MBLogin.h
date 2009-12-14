@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MBConnectionRoot.h"
+#import "MBSalt.h"
 
 @protocol MBLoginDelegateProtocol
 
@@ -16,12 +17,16 @@
 
 @end
 
-@interface MBLogin : NSObject<MBConnectionRootDelegateProtocol> {
+@interface MBLogin : NSObject<MBConnectionRootDelegateProtocol,MBSaltDelegateProtocol> {
 	id _delegate;
 	MBConnectionRoot *_connRoot;
+	NSString *_password;
+	NSString *_username;
+	NSString *_passwordHash;
 }
 
 -(id)initWithUsername:(NSString *)username andPassword:(NSString *)password;
+-(void)doLogin;
 
 @property (nonatomic,retain) id<MBLoginDelegateProtocol> delegate;
 

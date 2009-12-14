@@ -28,7 +28,7 @@
 	
 	[args addEntriesFromDictionary:arguments];
 
-	_url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", kMobilBloggHTTPProtocol, kMobilBloggHTTPBasePath, [args gtm_httpArgumentsString]]];
+	_url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?%@", kMobilBloggHTTPProtocol, kMobilBloggHTTPBasePath, [args gtm_httpArgumentsString]]];
 	TTDINFO(@"Connection Root at URL: %@", _url);
 	
 	NSURLRequest *req = [NSURLRequest requestWithURL:_url];
@@ -61,7 +61,7 @@
 	SBJSON *parser = [[SBJSON alloc] init];
 	
 	NSString *responseBody = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-//	TTDINFO(@"body = %@", responseBody);
+	TTDINFO(@"body = %@", responseBody);
 	NSError *jsonErr;
 	NSArray *response = [parser objectWithString:responseBody error:&jsonErr];
 	
@@ -69,6 +69,7 @@
 	[responseBody release];
 	
 	if (!response) {
+		TTDINFO(@"parse error");
 		[_delegate MBConnectionRoot:self didFailWithError:jsonErr];
 		return;
 	}

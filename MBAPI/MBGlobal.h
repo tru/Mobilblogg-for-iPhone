@@ -11,6 +11,7 @@
 #define MobilBloggErrorCodeInvalidCredentials 1
 #define MobilBloggErrorCodeNoSuchUser 2
 #define MobilBloggErrorCodeServer 3
+#define MobilBloggErrorCodeInvalidSalt 4
 
 #define kMobilBloggHTTPProtocol @"http://"
 #define kMobilBloggHTTPBasePath @"api.mobilblogg.nu/o.o.i.s"

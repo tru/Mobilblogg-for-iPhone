@@ -11,6 +11,9 @@
 #import "JSON.h"
 #import "MBGlobal.h"
 #import <Three20/Three20.h>
+#import <Security/Security.h>
+#import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonCryptor.h>
 
 @implementation MBLogin
 
@@ -19,11 +22,52 @@
 -(id)initWithUsername:(NSString*)username andPassword:(NSString*)password
 {	
 	self = [super init];
+
+	/* store these for later use */
+	_password = [password copy];
+	_username = [username copy];
 	
+	/* First we need the salt */
+	MBSalt *salt = [[MBSalt alloc] initWithUsername:_username];
+	salt.delegate = self;
+	[salt release];
+
+	return self;
+}
+
+-(void)saltDidSucceed:(NSString *)salt
+{
+	TTDINFO(@"Have salt: %@", salt);
+
+	/* concat salt and password */
+	NSData *mySecStr = [[salt stringByAppendingString:_password] dataUsingEncoding:NSASCIIStringEncoding];
+	
+	/* now we can do SHA-1 on it */
+	uint8_t digest[CC_SHA1_DIGEST_LENGTH] = {0};
+	char finaldigest[CC_SHA1_DIGEST_LENGTH * 2 + 1] = {0};
+	
+	CC_SHA1(mySecStr.bytes, mySecStr.length, digest);
+	
+	/* make the digest into a hexformat */
+	for(int i=0; i<CC_SHA1_DIGEST_LENGTH; i++) {
+		sprintf(finaldigest+i*2,"%02x", digest[i]);
+	}
+	
+	_passwordHash = [NSString stringWithCString:finaldigest encoding:NSASCIIStringEncoding];
+	[self doLogin];
+}
+
+-(void)saltDidFailWithError:(NSError *)err
+{
+	[_delegate loginDidFailWithError:err];
+}
+	
+-(void)doLogin
+{
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"login", @"func",
-						  username, @"username",
-						  password, @"password",
+						  _username, @"username",
+						  _passwordHash, @"password",
 						  nil];
 	
 	_connRoot = [[MBConnectionRoot alloc] initWithArguments:dict];
@@ -38,8 +82,6 @@
 	}
 	
 	TTDINFO(@"MBLogin inited");
-	
-	return self;
 }
 
 -(void)MBConnectionRoot:(MBConnectionRoot *)connection didFailWithError:(NSError *)err
@@ -66,6 +108,8 @@
 -(void)dealloc
 {
 	TTDINFO(@"DEALLOC: MBLogin");
+	[_password release];
+	[_username release];
 	[super dealloc];
 }
 
