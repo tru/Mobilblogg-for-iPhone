@@ -44,7 +44,7 @@
 	self.dataSource = [TTListDataSource dataSourceWithObjects:
 					   _userImageItem,
 					   _userTextItem,
-					   [TTTableControlItem itemWithCaption:NSLocalizedString(@"Follow",nil) control:[[[UISwitch alloc] init] autorelease] ],
+					   //[TTTableControlItem itemWithCaption:NSLocalizedString(@"Follow",nil) control:[[[UISwitch alloc] init] autorelease] ],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"User photos",nil)
 												 URL:[NSString stringWithFormat:@"mb://listblog/%@", _user.name]],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Open profile in browser", nil)
