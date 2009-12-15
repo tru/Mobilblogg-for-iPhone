@@ -9,9 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
 
+@interface CommentPostController : TTPostController
+@end
 
-@interface CommentViewController : TTTableViewController {
+@interface CommentPostResponse : NSObject<TTURLResponse>
+@end
+
+@interface CommentViewController : TTTableViewController<TTPostControllerDelegate,TTURLRequestDelegate> {
 	NSUInteger _photoId;
+	CommentPostController *_postCtrl;
 }
 -(id)initWithId:(id)pId;
 

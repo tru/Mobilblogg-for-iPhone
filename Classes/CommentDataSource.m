@@ -54,6 +54,11 @@
 {
 }
 
+-(NSUInteger)totalComments
+{
+	return [self.items count];
+}
+
 -(void)dealloc
 {
 	TTDINFO(@"DEALLOC: CommentDataSource %x", self);
