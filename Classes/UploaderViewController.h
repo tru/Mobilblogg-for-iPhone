@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
 
+#import "UploaderPermViewController.h"
+
 @interface UploadResponse : NSObject<TTURLResponse>
 @end
 
@@ -17,11 +19,13 @@
 	TTTableImageItem *_imageItem;
 	UITextField *_captionField;
 	UITextField *_bodyField;
+	UITextField *_permField;
 	TTActivityLabel *_activity;
 	UIImage *_image;
 	NSString *_imageURL;
 	NSString *_secretWord;
 	NSOperationQueue *_queue;
+	UploaderPermViewController *_permCtrl;
 	BOOL _uploading;
 }
 

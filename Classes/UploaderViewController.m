@@ -9,6 +9,7 @@
 #import "UploaderViewController.h"
 #import "UploaderDataSource.h"
 #import "UploaderSecretViewController.h"
+#import "UploaderPermViewController.h"
 
 #import "MBPhoto.h"
 #import "MBStore.h"
@@ -90,7 +91,7 @@
 	[[TTNavigator navigator].URLMap from:@"mb://_editimg" toObject:self selector:@selector(openIMG)];
 	
 	_image = [img retain];
-	
+		
 	return self;
 }
 
@@ -120,8 +121,10 @@
 	[_captionField release];
 	[_bodyField release];
 	[_secretWord release];
+	[_permField release];
 	[_imageURL release];
 	[_queue release];
+	[_permCtrl release];
 	[[TTNavigator navigator].URLMap removeURL:@"mb://_editimg"];
 	[super dealloc];
 }
@@ -153,6 +156,7 @@
 												  [@"/files/" stringByAppendingString:[MBStore getUserName]], @"path",
 												  @"ladda_upp", @"wtd",
 												  _image, @"image",
+												  _permCtrl.selectedValue, @"rights",
 												  nil]];
 	
 	request.httpMethod = @"POST";
@@ -258,6 +262,9 @@
 
 -(void)createModel
 {
+	_permCtrl = [[UploaderPermViewController alloc] init];
+	_permCtrl.delegate = self;
+	
 	_imageItem = [TTTableImageItem itemWithText:nil];
 //	_imageItem.URL = @"mb://_editimg";
 	_imageItem.imageStyle = [TTImageStyle styleWithImageURL:nil
@@ -274,27 +281,56 @@
 
 	
 	_captionField = [[UITextField alloc] init];
-	_captionField.placeholder = NSLocalizedString(@"Caption", nil);
 	_captionField.enabled = NO;
 	
 	_bodyField = [[UITextField alloc] init];
 	_bodyField.enabled = NO;
-	_bodyField.placeholder = NSLocalizedString(@"Body text", nil);
-	_bodyField.frame = CGRectMake(0, 0, self.tableView.bounds.size.width, 160);
+	
+	_permField = [[UITextField alloc] init];
+	_permField.text = _permCtrl.selectedName;
+	_permField.enabled = NO;
+	
+	TTTableControlItem *cf = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Caption:", nil) control:_captionField];
+	TTTableControlItem *bf = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Body text:", nil) control:_bodyField];
+	TTTableControlItem *pf = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Visible to:", nil) control:_permField];
 	
 	self.dataSource = [UploaderDataSource dataSourceWithObjects:
-					   _captionField,
 					   _imageItem,
-					   _bodyField,
+					   cf,
+					   bf,
+					   pf,
 					   nil];
 					   
 }
 
 #define LOGRECT(r) TTDINFO(@"%f %f %f %f", r.origin.x, r.origin.y, r.size.width, r.size.height);
 
+-(void)didSelectPermValue:(UploaderPermViewController*)permview
+{
+	_permField.text = permview.selectedName;
+	[MBStore setObject:_permCtrl.selectedValue forKey:@"permissionValue"];
+}
+
 -(void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath
 {
 	if (_uploading) {
+		return;
+	}
+	
+	if (![object isKindOfClass:[TTTableControlItem class]]) {
+		return;
+	}
+	
+	id control = ((TTTableControlItem*)object).control;
+	
+	
+	if (control == _permField) {
+		UINavigationController *navCtrl = [[[UINavigationController alloc] init] autorelease];
+		[navCtrl pushViewController:_permCtrl animated:NO];
+
+		[self presentModalViewController:navCtrl animated:YES];
+		//[navCtrl release];
+		
 		return;
 	}
 	
@@ -303,7 +339,7 @@
 	NSString *text;
 	NSDictionary *dict;
 
-	if (object == _captionField) {
+	if (control == _captionField) {
 		text = _captionField.text ? _captionField.text : @"";
 		
 		dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -312,7 +348,7 @@
 				text, @"text",
 				nil];
 						  
-	} else if (object == _bodyField) {
+	} else if (control == _bodyField) {
 		text = _bodyField.text ? _bodyField.text : @"";
 		
 		dict = [NSDictionary dictionaryWithObjectsAndKeys:

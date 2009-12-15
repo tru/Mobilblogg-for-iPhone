@@ -36,6 +36,7 @@
 		613A376510B086B900A91801 /* MBComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 613A376410B086B900A91801 /* MBComment.m */; };
 		613A379510B0896A00A91801 /* CommentDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 613A379410B0896A00A91801 /* CommentDataSource.m */; };
 		613C7BEC10D644750049D1CB /* MBSalt.m in Sources */ = {isa = PBXBuildFile; fileRef = 613C7BEB10D644750049D1CB /* MBSalt.m */; };
+		613C7CCF10D66E4E0049D1CB /* UploaderPermViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613C7CCE10D66E4E0049D1CB /* UploaderPermViewController.m */; };
 		6144629C109019E100AD9801 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446291109019E100AD9801 /* NSObject+SBJSON.m */; };
 		6144629D109019E100AD9801 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446293109019E100AD9801 /* NSString+SBJSON.m */; };
 		6144629E109019E100AD9801 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 61446295109019E100AD9801 /* SBJSON.m */; };
@@ -139,6 +140,8 @@
 		613A379410B0896A00A91801 /* CommentDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDataSource.m; sourceTree = "<group>"; };
 		613C7BEA10D644750049D1CB /* MBSalt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBSalt.h; path = MBAPI/MBSalt.h; sourceTree = "<group>"; };
 		613C7BEB10D644750049D1CB /* MBSalt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBSalt.m; path = MBAPI/MBSalt.m; sourceTree = "<group>"; };
+		613C7CCD10D66E4E0049D1CB /* UploaderPermViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploaderPermViewController.h; sourceTree = "<group>"; };
+		613C7CCE10D66E4E0049D1CB /* UploaderPermViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderPermViewController.m; sourceTree = "<group>"; };
 		6144628F109019E100AD9801 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		61446290109019E100AD9801 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		61446291109019E100AD9801 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -408,6 +411,8 @@
 		61855A3010BC78A8002D304E /* Uploader */ = {
 			isa = PBXGroup;
 			children = (
+				613C7CCD10D66E4E0049D1CB /* UploaderPermViewController.h */,
+				613C7CCE10D66E4E0049D1CB /* UploaderPermViewController.m */,
 				61855C7D10BE9037002D304E /* UploaderSecretViewController.h */,
 				61855C7E10BE9037002D304E /* UploaderSecretViewController.m */,
 				61D99F7310BBA91B00A5525A /* UploaderViewController.h */,
@@ -643,6 +648,7 @@
 				61855C7F10BE9037002D304E /* UploaderSecretViewController.m in Sources */,
 				61855D5110BEA720002D304E /* MBImageUtils.m in Sources */,
 				613C7BEC10D644750049D1CB /* MBSalt.m in Sources */,
+				613C7CCF10D66E4E0049D1CB /* UploaderPermViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
