@@ -88,7 +88,7 @@ static const CGFloat kDefaultMessageImageHeight = 34;
 	CGFloat top = kSmallMargin;
 	
 	if (_titleLabel.text.length) {
-		_titleLabel.frame = CGRectMake(left, top, width, _titleLabel.font.lineHeight);
+		_titleLabel.frame = CGRectMake(left, top, width, _titleLabel.font.ttLineHeight);
 		top += _titleLabel.height;
 	} else {
 		_titleLabel.frame = CGRectZero;

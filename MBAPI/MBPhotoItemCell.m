@@ -34,9 +34,9 @@ static const NSInteger kMessageTextLineCount = 2;
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
 	MBPhoto* item = object;
 	
-	CGFloat height = TTSTYLEVAR(tableFont).lineHeight + kVPadding*2;
+	CGFloat height = TTSTYLEVAR(tableFont).ttLineHeight + kVPadding*2;
 	if (item.user) {
-		height += TTSTYLEVAR(font).lineHeight;
+		height += TTSTYLEVAR(font).ttLineHeight;
 	}
 	
 	return height;
@@ -100,8 +100,8 @@ static const NSInteger kMessageTextLineCount = 2;
 	}
 	
 	if (self.detailTextLabel.text.length) {
-		CGFloat textHeight = self.textLabel.font.lineHeight;
-		CGFloat subtitleHeight = self.detailTextLabel.font.lineHeight;
+		CGFloat textHeight = self.textLabel.font.ttLineHeight;
+		CGFloat subtitleHeight = self.detailTextLabel.font.ttLineHeight;
 		CGFloat paddingY = floor((height - (textHeight + subtitleHeight))/2);
 		
 		self.textLabel.frame = CGRectMake(left, paddingY, width, textHeight);
