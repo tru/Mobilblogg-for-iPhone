@@ -80,7 +80,7 @@
 	TTTableControlItem *alwaysShowCaption = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Always show caption", nil)
 																		control:_alwaysShowCaptionSwitch];
 
-	
+#if 0
 	_savePhoto = [[[UISwitch alloc] init] autorelease];
 	
 	if ([MBStore getBoolForKey:@"savePhotos"]) {
@@ -92,7 +92,7 @@
 
 	TTTableControlItem *savePhotoToLibrary = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Save photo", nil)
 																		 control:_savePhoto];
-	
+#endif
 		
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 					   NSLocalizedString(@"Credentials", nil),
@@ -100,7 +100,7 @@
 					   _password,
 					   NSLocalizedString(@"Application", nil),
 					   alwaysShowCaption,
-					   savePhotoToLibrary,
+//					   savePhotoToLibrary,
 #ifdef DEBUG					   
 					   NSLocalizedString(@"Debug", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Clear password", nil) URL:@"mb://_clearpassword"],
