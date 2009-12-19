@@ -20,4 +20,6 @@
 	BOOL _fromConfig;
 }
 
+-(void)saveSettings;
+
 @end

@@ -17,6 +17,7 @@
 #import "ShowPictureInfoController.h"
 #import "BlogListTabController.h"
 #import "ProfileViewController.h"
+#import "ConfigurationController.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -29,6 +30,7 @@
 	TTURLMap *URLMap = ttnav.URLMap;
 	[URLMap from:@"*" toViewController:[TTWebController class]];
 	[URLMap from:@"mb://root" toViewController:[RootController class]];
+	[URLMap from:@"mb://configuration" toViewController:[ConfigurationController class]];
 	/* we want to open it from the root as a modal controller, and some times from the
 	 configure class as a normal class */
 	[URLMap from:@"mb://userconfmodal/(initWithDidFail:)" toModalViewController:[UserConfigController class]];
