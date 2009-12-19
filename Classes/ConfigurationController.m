@@ -15,7 +15,7 @@
 -(id)init
 {
 	self = [super init];
-	self.title = NSLocalizedString(@"Configuration", nil);
+	self.title = NSLocalizedString(@"Settings", nil);
 	self.tableViewStyle = UITableViewStyleGrouped;
 	
 	[[TTNavigator navigator].URLMap	from:@"mb://_cleardata" toViewController:self selector:@selector(clearData)];
