@@ -33,7 +33,7 @@
 					   NSLocalizedString(@"Application Icon:", nil),
 					   [TTTableTextItem itemWithText:@"Fredrik Johansson" URL:@"mb://listblog/jolt"],
 					   NSLocalizedString(@"Third party code:", nil),
-					   [TTTableTextItem itemWithText:@"Three20 by Joe Hewitt" URL:@"http://github.com/joehewitt/three20"],
+					   [TTTableTextItem itemWithText:@"Three20 by Facebook" URL:@"http://github.com/facebook/three20"],
 					   [TTTableTextItem itemWithText:@"SBJSON by Stig Brautaset" URL:@"http://code.google.com/p/json-framework/"],
 					   [TTTableTextItem itemWithText:@"SFHFKeychainUtils by Buzz Andersen" URL:@"http://github.com/ldandersen/scifihifi-iphone"],
 					   [TTTableTextItem itemWithText:@"Google Mac Toolbox by Google Inc" URL:@"http://code.google.com/p/google-toolbox-for-mac/"],
