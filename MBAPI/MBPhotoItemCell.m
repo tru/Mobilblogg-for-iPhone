@@ -124,8 +124,11 @@ static const NSInteger kMessageTextLineCount = 2;
 		
 		MBPhoto* photo = object;
 		if (photo.caption.length) {
-			self.textLabel.text = [photo.caption wordWrapToLength:25];
+			self.textLabel.text = [photo.caption wordWrapToLength:23];
+		} else {
+			self.textLabel.text = @"";
 		}
+		
 		if (photo.user.length) {
 			NSMutableString *subtitle = [NSMutableString stringWithFormat:@"By: %@", photo.user];
 			if (photo.date) {
@@ -133,6 +136,8 @@ static const NSInteger kMessageTextLineCount = 2;
 			}
 			
 			self.detailTextLabel.text = subtitle;
+		} else {
+			self.detailTextLabel.text = NSLocalizedString(@"No user", nil);
 		}
 		self.imageView2.defaultImage = TTIMAGE(@"bundle://Three20.bundle/images/empty.png");
 		if (photo.URL) {
