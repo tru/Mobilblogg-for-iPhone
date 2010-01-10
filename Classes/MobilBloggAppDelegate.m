@@ -23,6 +23,8 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
+	application.applicationIconBadgeNumber = 0;
+	
 	[[TTURLRequestQueue mainQueue] setMaxContentLength:0];
 	//[[TTURLCache sharedCache] setMaxPixelCount:20*320*480];
 	
@@ -50,8 +52,32 @@
 	if (![ttnav restoreViewControllers]) {
 		[ttnav openURL:@"mb://root" animated:NO];
 	}
+#ifdef TARGET_OS_IPHONE
+	[application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert];
+#endif
+}
+
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+	NSMutableString *token = [[NSMutableString alloc] init];
+    const unsigned char *devTokenBytes = [deviceToken bytes];
+	for (int i = 0; i < [deviceToken length]; i++)
+		[token appendFormat:@"%02X", devTokenBytes[i]];
+	TTDINFO("Registered with APNS! device token: %@", token);
 	
 }
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Failed to register with Push notification", nil)
+													message:[error localizedDescription]
+												   delegate:nil
+										  cancelButtonTitle:NSLocalizedString(@"Ok", nil)
+										  otherButtonTitles:nil];
+	
+	[alert show];
+}
+
 
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
 	[[TTNavigator navigator] openURL:URL.absoluteString animated:NO];
