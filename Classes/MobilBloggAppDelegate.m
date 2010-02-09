@@ -52,9 +52,8 @@
 	if (![ttnav restoreViewControllers]) {
 		[ttnav openURL:@"mb://root" animated:NO];
 	}
-#ifdef TARGET_OS_IPHONE
+
 	[application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert];
-#endif
 }
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -69,6 +68,12 @@
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
+	if ([error code] == 3010) {
+		/* we are in the simulator, let's just ignore the error */
+		return;
+	}
+	
+	/* genuine error, let's display it to the user */
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Failed to register with Push notification", nil)
 													message:[error localizedDescription]
 												   delegate:nil
