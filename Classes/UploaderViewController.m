@@ -40,9 +40,22 @@
 	}
 	
 	NSInteger i = [[[arr objectAtIndex:0] objectForKey:@"imgid"] intValue];
-	if (i == -1) {
+ 	if (i == -1) {
 		TTDINFO(@"We failed!");
-		return [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeServer userInfo:nil];
+		return [NSError errorWithDomain:MobilBloggErrorDomain 
+								   code:MobilBloggErrorCodeServer
+							   userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+										 NSLocalizedString(@"Wrong secret word!", nil), NSLocalizedDescriptionKey,
+										 nil]
+				];
+	} else if (i == -2) {
+		TTDINFO(@"Error string from server");
+		return [NSError errorWithDomain:MobilBloggErrorDomain
+								   code:MobilBloggErrorCodeServer
+							   userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+										 [[arr objectAtIndex:0] objectForKey:@"error"], NSLocalizedDescriptionKey,
+										 nil]
+				];
 	}
 	
 	return nil;
@@ -216,13 +229,8 @@
 {
 	UIAlertView *alert = [[UIAlertView alloc] init];
 	alert.title = NSLocalizedString(@"Upload failed!", nil);
-	if ([error.domain isEqualToString:MobilBloggErrorDomain]) {
-		alert.message = NSLocalizedString(@"Most likely your secretword was rejected. Try again", nil);
-		[alert addButtonWithTitle:NSLocalizedString(@"Ok!", nil)];
-	} else {
-		alert.message = [error localizedDescription];
-		[alert addButtonWithTitle:NSLocalizedString(@"Ok!", nil)];
-	}
+	alert.message = [error localizedDescription];
+	[alert addButtonWithTitle:NSLocalizedString(@"Ok!", nil)];
 	alert.delegate = self;
 	[alert show];
 	[alert release];
@@ -230,19 +238,21 @@
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	if ([alertView.message isEqualToString:NSLocalizedString(@"Most likely your secretword was rejected. Try again", nil)]) {
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
+	_activity.alpha = 0.0;
+	[UIView commitAnimations];
+
+	if ([alertView.message isEqualToString:NSLocalizedString(@"Wrong secret word!", nil)]) {
 		_uploading = NO;
 		self.navigationItem.rightBarButtonItem.enabled = YES;
 		self.navigationItem.leftBarButtonItem.enabled = YES;
 		_secretWord = nil;
 		[MBStore setObject:nil forKey:@"secretWord"];
 		
-		[UIView beginAnimations:nil context:nil];
-		[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
-		_activity.alpha = 0.0;
-		[UIView commitAnimations];
 	} else {
-		[self dismissModalViewControllerAnimated:YES];
+		TTDINFO("Closing window");
+		[self.navigationController popViewControllerAnimated:YES];
 	}
 }
 
