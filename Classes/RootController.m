@@ -38,6 +38,7 @@
 
 - (void)createModel
 {
+	TTDINFO("createModel called from RootController");
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 					   NSLocalizedString(@"My pages", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"My Start Page", nil)
@@ -230,6 +231,13 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
 	[picker dismissModalViewControllerAnimated:YES];
+}
+
+- (void)didReceiveMemoryWarning
+{
+	/* default here is to dealloc the table, I don't want that so
+	 * let's just ignore the signal */
+	TTDINFO(@"RootController got memoryWarning");
 }
 
 @end
