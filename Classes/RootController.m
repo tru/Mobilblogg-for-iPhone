@@ -56,65 +56,8 @@
 
 - (void)viewDidLoad
 {
-	NSString *username, *password;
-	
-	username = [MBStore getUserName];
-	password = [MBStore getPasswordForUsername:username];
-	
-	if (!username || !password) {
-		TTOpenURL(@"mb://userconfmodal/yes");
-	} else {
-		
-		self.navigationItem.rightBarButtonItem.enabled = NO;
-		[self.navigationController.view addSubview:_activity];
-		
-		_activity.alpha = 1.0;
-
-		MBLogin *login = [[[MBLogin alloc] initWithUsername:username andPassword:password] autorelease];
-		login.delegate = self;
-
-	}
 }
 
--(void)loginDidSucceed
-{
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
-	_activity.alpha = 0.0;
-	[UIView commitAnimations];
-	self.navigationItem.rightBarButtonItem.enabled = YES;
-}
-
--(void)loginDidFailWithError:(NSError *)err
-{
-	UIAlertView *alert;
-	
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
-	_activity.alpha = 0.0;
-	[UIView commitAnimations];
-
-	self.navigationItem.rightBarButtonItem.enabled = YES;
-	
-	
-	if ([[err domain] isEqualToString:MobilBloggErrorDomain] && [err code] == MobilBloggErrorCodeInvalidCredentials) {
-		alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
-										   message:NSLocalizedString(@"Saved credentials are not valid", nil)
-										  delegate:self
-								 cancelButtonTitle:NSLocalizedString(@"Ok", nil)
-								 otherButtonTitles:NSLocalizedString(@"Settings", nil),nil];
-	} else {
-		alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
-										   message:[err localizedDescription]
-										  delegate:self
-								 cancelButtonTitle:NSLocalizedString(@"Ok", nil)
-								 otherButtonTitles:nil];
-
-	}
-
-	[alert show];
-	[alert release];
-}
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {

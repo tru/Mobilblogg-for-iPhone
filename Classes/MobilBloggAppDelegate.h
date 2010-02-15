@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RootController.h"
+#import "MBLogin.h"
 
-@interface MobilBloggAppDelegate : NSObject <UIApplicationDelegate> {
+@interface MobilBloggAppDelegate : NSObject <UIApplicationDelegate,MBLoginDelegateProtocol> {
 }
 
 @end

@@ -18,6 +18,9 @@
 #import "BlogListTabController.h"
 #import "ProfileViewController.h"
 #import "ConfigurationController.h"
+#import "MBLogin.h"
+#import "MBGlobal.h"
+#import "MBStore.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -29,6 +32,8 @@
 	//[[TTURLCache sharedCache] setMaxPixelCount:20*320*480];
 	
 	TTNavigator *ttnav = [TTNavigator navigator];
+//	ttnav.persistenceMode = TTNavigatorPersistenceModeTop;
+	
 	TTURLMap *URLMap = ttnav.URLMap;
 	[URLMap from:@"*" toViewController:[TTWebController class]];
 	[URLMap from:@"mb://root" toViewController:[RootController class]];
@@ -49,12 +54,56 @@
 									     transition:UIViewAnimationTransitionFlipFromLeft];
 	[URLMap from:@"mb://profile/(initWithUserName:)" toViewController:[ProfileViewController class]];
 	
-	if (![ttnav restoreViewControllers]) {
-		[ttnav openURL:@"mb://root" animated:NO];
+	NSString *username, *password;
+	
+	username = [MBStore getUserName];
+	password = [MBStore getPasswordForUsername:username];
+	
+	if (!username || !password) {
+		[ttnav openURL:@"mb://userconfmodal/yes" parent:@"mb://root" animated:NO];
+	} else {
+		MBLogin *login = [[[MBLogin alloc] initWithUsername:username andPassword:password] autorelease];
+		login.delegate = self;
+		
+		//if (![ttnav restoreViewControllers]) {
+			[ttnav openURL:@"mb://root" animated:NO];
+		//}		
 	}
 
-	[application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert];
+	[application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert];	
 }
+
+#pragma mark login
+
+-(void)loginDidSucceed
+{
+	TTDINFO("yay");
+}
+
+-(void)loginDidFailWithError:(NSError *)err
+{
+	UIAlertView *alert;
+	
+	if ([[err domain] isEqualToString:MobilBloggErrorDomain] && [err code] == MobilBloggErrorCodeInvalidCredentials) {
+		alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
+										   message:NSLocalizedString(@"Saved credentials are not valid", nil)
+										  delegate:self
+								 cancelButtonTitle:NSLocalizedString(@"Ok", nil)
+								 otherButtonTitles:NSLocalizedString(@"Settings", nil),nil];
+	} else {
+		alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
+										   message:[err localizedDescription]
+										  delegate:self
+								 cancelButtonTitle:NSLocalizedString(@"Ok", nil)
+								 otherButtonTitles:nil];
+
+	}
+
+	[alert show];
+	[alert release];
+}
+
+#pragma mark APNS
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
@@ -83,6 +132,7 @@
 	[alert show];
 }
 
+#pragma mark app
 
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
 	[[TTNavigator navigator] openURL:URL.absoluteString animated:NO];

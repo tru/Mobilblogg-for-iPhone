@@ -21,8 +21,8 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.90</string>
+	<string>1.1b1</string>
 	<key>LSRequiresIPhoneOS</key>
-	<false/>
+	<true/>
 </dict>
 </plist>
