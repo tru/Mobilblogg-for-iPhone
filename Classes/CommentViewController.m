@@ -97,6 +97,8 @@
 	
 	_postCtrl = [[CommentPostController alloc] initWithNavigatorURL:nil query:dict];
 	_postCtrl.delegate = self;
+	self.popupViewController = _postCtrl;
+	_postCtrl.superController = self;
 	
 	[_postCtrl showInView:self.tableView animated:YES];
 }
@@ -139,6 +141,11 @@
 																[NSString stringWithFormat:@"%d", _photoId], @"photoId",
 																nil]
 	 ];
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+	return TTIsSupportedOrientation(toInterfaceOrientation);
 }
 
 -(void)didLoadModel:(BOOL)firstTime

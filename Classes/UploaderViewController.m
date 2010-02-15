@@ -372,7 +372,10 @@
 	
 	TTPostController *post = [[TTPostController alloc] initWithNavigatorURL:nil query:dict];
 	post.delegate = self;
-	[post showInView:self.navigationController.view animated:YES];
+	self.popupViewController = post;
+	post.superController = self;
+	[post showInView:self.view animated:YES];
+	[post release];
 
 }
 
