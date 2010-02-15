@@ -35,8 +35,9 @@
 	
 	NSUInteger num = _photo.numcomments;
 	TTDINFO("Setting number of comments to %d", num);
-	_commentIcon.numberComments = num + 1;
-	_photo.numcomments = num + 1;
+	
+	/* kind of sheer luck this works :) */
+	_commentIcon.numberComments = num;
 }
 
 -(void)updateChrome
