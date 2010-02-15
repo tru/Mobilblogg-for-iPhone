@@ -29,6 +29,8 @@
 	NSError *jsonErr = nil;
 	NSArray *arr = [jsonParser objectWithString:responseBody error:&jsonErr];
 	
+	TTDINFO("json reponse: %@", responseBody);
+	
 	[jsonParser release];
 	[responseBody release];
 	
@@ -88,7 +90,7 @@
 		_imageURL = [[TTURLCache sharedCache] storeTemporaryImage:img toDisk:NO];
 	}
 	
-	[[TTNavigator navigator].URLMap from:@"mb://_editimg" toObject:self selector:@selector(openIMG)];
+//	[[TTNavigator navigator].URLMap from:@"mb://_editimg" toObject:self selector:@selector(openIMG)];
 	
 	_image = [img retain];
 		
@@ -219,7 +221,7 @@
 		[alert addButtonWithTitle:NSLocalizedString(@"Ok!", nil)];
 	} else {
 		alert.message = [error localizedDescription];
-		[alert addButtonWithTitle:[error localizedRecoverySuggestion]];
+		[alert addButtonWithTitle:NSLocalizedString(@"Ok!", nil)];
 	}
 	alert.delegate = self;
 	[alert show];
@@ -252,12 +254,8 @@
 
 -(void)requestDidFinishLoad:(TTURLRequest*)request;
 {
+	TTDINFO("done with upload!");
 	[self.navigationController popViewControllerAnimated:YES];
-}
-
--(id)openIMG
-{
-	return nil;
 }
 
 -(void)createModel
