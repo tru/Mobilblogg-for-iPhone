@@ -130,6 +130,15 @@
 -(void)requestDidFinishLoad:(TTURLRequest *)request
 {
 	[self reload];
+	
+	TTDINFO("Posting notification");
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"commentSentForPhotoId" 
+														object:nil 
+													  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+																[NSString stringWithFormat:@"%d", _photoId], @"photoId",
+																nil]
+	 ];
 }
 
 -(void)didLoadModel:(BOOL)firstTime

@@ -18,7 +18,25 @@
 -(id)init
 {
 	self = [super init];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotNotification:) name:@"commentSentForPhotoId" object:nil];
 	return self;
+}
+
+- (void)gotNotification:(NSNotification*)notif
+{
+	NSDictionary *dict = [notif userInfo];
+	NSInteger photoId = [[dict objectForKey:@"photoId"] intValue];
+	
+	TTDINFO("Got notification for photoId %d, my is %d", photoId, _photo.photoId);
+	if (photoId != _photo.photoId)
+	{
+		return;
+	}
+	
+	NSUInteger num = _photo.numcomments;
+	TTDINFO("Setting number of comments to %d", num);
+	_commentIcon.numberComments = num + 1;
+	_photo.numcomments = num + 1;
 }
 
 -(void)updateChrome
@@ -45,6 +63,7 @@
 -(void)didMoveToPhoto:(id<TTPhoto>)photo fromPhoto:(id<TTPhoto>)fromPhoto
 {
 	MBPhoto *p = (MBPhoto*)photo;
+	_photo = p;
 	_commentIcon.numberComments = p.numcomments; 
 }
 
@@ -85,6 +104,7 @@
 - (void)dealloc {
 	TTDINFO(@"DEALLOC: ShowPictureController");
 	[_commentIcon release];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[super dealloc];
 }
 

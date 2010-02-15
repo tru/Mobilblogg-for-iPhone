@@ -14,6 +14,7 @@
 @interface MBPhotoItemCell : TTTableLinkedItemCell {
 	CommentIconView *_commentView;
 	TTImageView *_imageView2;
+	MBPhoto	*_photo;
 }
 
 @property(nonatomic,readonly,retain) UILabel* subtitleLabel;

@@ -60,6 +60,7 @@
 -(void)setNumberComments:(NSUInteger)numb
 {
 	_commentLabel.text = [NSString stringWithFormat:@"%d", numb];
+	_numberComments = numb;
 }
 
 -(void)layoutSubviews

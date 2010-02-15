@@ -67,8 +67,19 @@ static const NSInteger kMessageTextLineCount = 2;
 		_commentView = [[CommentIconView alloc] initWithNumComments:0 andColorBlack:YES];
 		[self addSubview:_commentView];
 		[_commentView addTarget:self action:@selector(gotoComments) forControlEvents:UIControlEventTouchUpInside];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateComments:) name:@"commentSentForPhotoId" object:nil];
 	}
 	return self;
+}
+
+-(void)updateComments:(NSNotification*)notif
+{
+	NSInteger photoId = [[[notif userInfo] objectForKey:@"photoId"] intValue];
+	if (photoId == _photo.photoId) {
+		_commentView.numberComments += 1;
+		_photo.numcomments += 1;
+	}
 }
 
 -(void)gotoComments
@@ -79,6 +90,7 @@ static const NSInteger kMessageTextLineCount = 2;
 
 - (void)dealloc {
 	TT_RELEASE_SAFELY(_imageView2);
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[super dealloc];
 }
 
@@ -144,6 +156,7 @@ static const NSInteger kMessageTextLineCount = 2;
 			self.imageView2.URL = photo.URL;
 		}
 		_commentView.numberComments = photo.numcomments;
+		_photo = photo;
 	}
 }
 
