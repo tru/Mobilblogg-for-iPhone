@@ -19,9 +19,9 @@
 	self.numberComments = numberComments;
 	_image = [[TTImageView alloc] init];
 	if (black) {
-		_image.image = TTIMAGE(@"bundle://08-chatblack.png");
+		_image.urlPath = @"bundle://08-chatblack.png";
 	} else {
-		_image.image = TTIMAGE(@"bundle://08-chat.png");
+		_image.urlPath = @"bundle://08-chat.png";
 	}
 	_image.autoresizesToImage = YES;
 	_image.userInteractionEnabled = NO;

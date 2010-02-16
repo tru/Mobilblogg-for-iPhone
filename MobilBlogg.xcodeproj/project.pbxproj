@@ -54,6 +54,7 @@
 		61855A2F10BC7833002D304E /* UploaderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855A2E10BC7833002D304E /* UploaderDataSource.m */; };
 		61855C7F10BE9037002D304E /* UploaderSecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855C7E10BE9037002D304E /* UploaderSecretViewController.m */; };
 		61855D5110BEA720002D304E /* MBImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855D4F10BEA720002D304E /* MBImageUtils.m */; };
+		618E634E1129E00400DEC30C /* MBPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 618E634D1129E00400DEC30C /* MBPush.m */; };
 		619C698B10A9A28F008FB797 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 619C698A10A9A28F008FB797 /* Entitlements.plist */; };
 		61B96E1E10DD309D0089C99B /* ConfigurationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B96E1D10DD309D0089C99B /* ConfigurationController.m */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
@@ -186,6 +187,8 @@
 		61855C7E10BE9037002D304E /* UploaderSecretViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderSecretViewController.m; sourceTree = "<group>"; };
 		61855D4F10BEA720002D304E /* MBImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBImageUtils.m; path = MBAPI/MBImageUtils.m; sourceTree = SOURCE_ROOT; };
 		61855D5010BEA720002D304E /* MBImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBImageUtils.h; path = MBAPI/MBImageUtils.h; sourceTree = SOURCE_ROOT; };
+		618E634C1129E00400DEC30C /* MBPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBPush.h; path = MBAPI/MBPush.h; sourceTree = "<group>"; };
+		618E634D1129E00400DEC30C /* MBPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBPush.m; path = MBAPI/MBPush.m; sourceTree = "<group>"; };
 		619C698A10A9A28F008FB797 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		61B96E1C10DD309D0089C99B /* ConfigurationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationController.h; sourceTree = "<group>"; };
 		61B96E1D10DD309D0089C99B /* ConfigurationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationController.m; sourceTree = "<group>"; };
@@ -514,6 +517,8 @@
 				613479801092136800DD5DE7 /* MBStore.h */,
 				61E0D48B10A430A800809C22 /* MBLogin.h */,
 				61E0D48C10A430A800809C22 /* MBLogin.m */,
+				618E634C1129E00400DEC30C /* MBPush.h */,
+				618E634D1129E00400DEC30C /* MBPush.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -670,6 +675,7 @@
 				613C7BEC10D644750049D1CB /* MBSalt.m in Sources */,
 				613C7CCF10D66E4E0049D1CB /* UploaderPermViewController.m in Sources */,
 				61B96E1E10DD309D0089C99B /* ConfigurationController.m in Sources */,
+				618E634E1129E00400DEC30C /* MBPush.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

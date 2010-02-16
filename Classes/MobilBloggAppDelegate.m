@@ -21,6 +21,7 @@
 #import "MBLogin.h"
 #import "MBGlobal.h"
 #import "MBStore.h"
+#import "MBPush.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -70,7 +71,7 @@
 		//}		
 	}
 
-	[application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert];	
+	//[application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert];	
 }
 
 #pragma mark login
@@ -112,6 +113,8 @@
 	for (int i = 0; i < [deviceToken length]; i++)
 		[token appendFormat:@"%02X", devTokenBytes[i]];
 	TTDINFO("Registered with APNS! device token: %@", token);
+	NSString *username = [MBStore getUserName];
+	[[MBPush alloc] initWithUsername:username andToken:token];
 	
 }
 
@@ -132,7 +135,7 @@
 	[alert show];
 }
 
-#pragma mark app
+#pragma mark -
 
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
 	[[TTNavigator navigator] openURL:URL.absoluteString animated:NO];
