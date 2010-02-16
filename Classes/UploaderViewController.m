@@ -88,7 +88,7 @@
 	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, ax, self.tableView.bounds.size.width, 50)
 												 style:TTActivityLabelStyleBlackBox
 												  text:NSLocalizedString(@"Resizing image...", nil)];
-	_activity.smoothesProgress = YES;
+	_activity.smoothesProgress = NO;
 	[self.view addSubview:_activity];
 	_activity.alpha = 0.0;
 
@@ -260,6 +260,9 @@
 {
 	TTDINFO(@"Uploaded %d", request.totalBytesLoaded);
 	_activity.progress = request.totalBytesLoaded / request.totalBytesExpected;
+	if (_activity.progress == 1) {
+		_activity.text = NSLocalizedString(@"Waiting for server response...", nil);
+	}
 }
 
 -(void)requestDidFinishLoad:(TTURLRequest*)request;
