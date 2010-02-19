@@ -12,6 +12,16 @@
 
 @implementation ConfigurationController
 
++(void)redirectConsoleLogToDocumentFolder
+{
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                       NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths objectAtIndex:0];
+  NSString *logPath = [documentsDirectory
+                       stringByAppendingPathComponent:@"console.log"];
+  freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
+}
+
 -(id)init
 {
 	self = [super init];
@@ -28,6 +38,7 @@
 {
 	
 	_alwaysShowCaptionSwitch = [[[UISwitch alloc] init] autorelease];
+	_debugLogSwitch = [[[UISwitch alloc] init] autorelease];
 	
 	if ([MBStore getBoolForKey:@"hideCaptions"]) {
 		_alwaysShowCaptionSwitch.on = NO;
@@ -38,31 +49,26 @@
 	TTTableControlItem *alwaysShowCaption = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Always show caption", nil)
 																		control:_alwaysShowCaptionSwitch];
 
-#if 0
-	_savePhoto = [[[UISwitch alloc] init] autorelease];
-	
-	if ([MBStore getBoolForKey:@"savePhotos"]) {
-		_savePhoto.on = NO;
+	if ([MBStore getBoolForKey:@"debugLog"]) {
+		_debugLogSwitch.on = YES;
 	} else {
-		_savePhoto.on = YES;
+		_debugLogSwitch.on = NO;
 	}
-	[_savePhoto	addTarget:self action:@selector(switchSavePhoto) forControlEvents:UIControlEventValueChanged];
-
-	TTTableControlItem *savePhotoToLibrary = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Save photo", nil)
-																		 control:_savePhoto];
-#endif
-	
+	[_debugLogSwitch addTarget:self action:@selector(switchDebugLog) forControlEvents:UIControlEventValueChanged];
+	TTTableControlItem *debugLogItem = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Enable debug log", nil)
+																		control:_debugLogSwitch];
 	
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 					   NSLocalizedString(@"Credentials", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Configure credentials", nil) URL:@"mb://userconfmodal/no"],
 					   NSLocalizedString(@"Application", nil),
 					   alwaysShowCaption,
-#ifdef DEBUG					   
+#ifdef DEBUGBUILD					   
 					   NSLocalizedString(@"Debug", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Clear password", nil) URL:@"mb://_clearpassword"],
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Clear stored data", nil) URL:@"mb://_cleardata"],
-
+					   debugLogItem,
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"Show debug log", nil) URL:@"mb://debuglog"],
 #endif
 					   nil];
 					   
@@ -73,9 +79,21 @@
 	[MBStore setBool:!_alwaysShowCaptionSwitch.on forKey:@"hideCaptions"];
 }
 
--(void)switchSavePhoto
+-(void)switchDebugLog
 {
-	[MBStore setBool:!_savePhoto.on forKey:@"savePhotos"];
+	NSLog(@"debuglog switch! %d", _debugLogSwitch.on);
+	[MBStore setBool:_debugLogSwitch.on forKey:@"debugLog"];
+	if (_debugLogSwitch.on) {
+		[ConfigurationController redirectConsoleLogToDocumentFolder];
+	} else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Please restart!", nil)
+														message:NSLocalizedString(@"When disabling the log you need to restart the application", nil)
+													   delegate:nil
+											  cancelButtonTitle:NSLocalizedString(@"OK", nil)
+											  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+	}
 }
 
 -(void)clearData

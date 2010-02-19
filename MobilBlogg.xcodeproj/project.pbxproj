@@ -55,6 +55,7 @@
 		61855C7F10BE9037002D304E /* UploaderSecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855C7E10BE9037002D304E /* UploaderSecretViewController.m */; };
 		61855D5110BEA720002D304E /* MBImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855D4F10BEA720002D304E /* MBImageUtils.m */; };
 		618E634E1129E00400DEC30C /* MBPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 618E634D1129E00400DEC30C /* MBPush.m */; };
+		6194A215112EF0E40096BAA9 /* DebugLogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6194A214112EF0E40096BAA9 /* DebugLogView.m */; };
 		619C698B10A9A28F008FB797 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 619C698A10A9A28F008FB797 /* Entitlements.plist */; };
 		61B96E1E10DD309D0089C99B /* ConfigurationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B96E1D10DD309D0089C99B /* ConfigurationController.m */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
@@ -189,6 +190,8 @@
 		61855D5010BEA720002D304E /* MBImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBImageUtils.h; path = MBAPI/MBImageUtils.h; sourceTree = SOURCE_ROOT; };
 		618E634C1129E00400DEC30C /* MBPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBPush.h; path = MBAPI/MBPush.h; sourceTree = "<group>"; };
 		618E634D1129E00400DEC30C /* MBPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBPush.m; path = MBAPI/MBPush.m; sourceTree = "<group>"; };
+		6194A213112EF0E40096BAA9 /* DebugLogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLogView.h; sourceTree = "<group>"; };
+		6194A214112EF0E40096BAA9 /* DebugLogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLogView.m; sourceTree = "<group>"; };
 		619C698A10A9A28F008FB797 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		61B96E1C10DD309D0089C99B /* ConfigurationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationController.h; sourceTree = "<group>"; };
 		61B96E1D10DD309D0089C99B /* ConfigurationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationController.m; sourceTree = "<group>"; };
@@ -335,6 +338,8 @@
 		61347B7B1093072800DD5DE7 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				6194A213112EF0E40096BAA9 /* DebugLogView.h */,
+				6194A214112EF0E40096BAA9 /* DebugLogView.m */,
 				61B96E1C10DD309D0089C99B /* ConfigurationController.h */,
 				61B96E1D10DD309D0089C99B /* ConfigurationController.m */,
 				6165944610A84A3000B1FE8D /* AboutController.h */,
@@ -676,6 +681,7 @@
 				613C7CCF10D66E4E0049D1CB /* UploaderPermViewController.m in Sources */,
 				61B96E1E10DD309D0089C99B /* ConfigurationController.m in Sources */,
 				618E634E1129E00400DEC30C /* MBPush.m in Sources */,
+				6194A215112EF0E40096BAA9 /* DebugLogView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,7 +720,10 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "TTMAXLOGLEVEL=TTLOGLEVEL_INFO";
 				HEADER_SEARCH_PATHS = ../three20/src;
 				INFOPLIST_FILE = "MobilBlogg-Info.plist";
-				OTHER_CFLAGS = "-DDEBUG";
+				OTHER_CFLAGS = (
+					"-DDEBUGBUILD",
+					"-DDEBUG",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -753,7 +762,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BC88EAAF-84B2-4718-B453-30680B08A2F2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D7B3CEDB-A26C-4ADB-ACCD-74BD4F0D0591";
 				SDKROOT = iphoneos3.0;
 			};
 			name = "Release beta";
@@ -768,6 +777,10 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "TTMAXLOGLEVEL=TTLOGLEVEL_INFO";
 				HEADER_SEARCH_PATHS = ../three20/src;
 				INFOPLIST_FILE = "MobilBlogg-Info.plist";
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"-DDEBUGBUILD",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",

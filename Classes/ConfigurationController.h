@@ -11,8 +11,10 @@
 
 @interface ConfigurationController : TTTableViewController {
 	UISwitch *_alwaysShowCaptionSwitch;
-	UISwitch *_savePhoto;
+	UISwitch *_debugLogSwitch;
 }
+
++(void)redirectConsoleLogToDocumentFolder;
 
 -(id)init;
 

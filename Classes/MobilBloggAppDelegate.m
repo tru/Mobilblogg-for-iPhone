@@ -22,6 +22,7 @@
 #import "MBGlobal.h"
 #import "MBStore.h"
 #import "MBPush.h"
+#import "DebugLogView.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -54,6 +55,7 @@
 	[URLMap from:@"mb://photoinfo" toViewController:[ShowPictureInfoController class]
 									     transition:UIViewAnimationTransitionFlipFromLeft];
 	[URLMap from:@"mb://profile/(initWithUserName:)" toViewController:[ProfileViewController class]];
+	[URLMap from:@"mb://debuglog" toViewController:[DebugLogView class]];
 	
 	NSString *username, *password;
 	
@@ -69,6 +71,10 @@
 		//if (![ttnav restoreViewControllers]) {
 			[ttnav openURL:@"mb://root" animated:NO];
 		//}		
+	}
+	
+	if ([MBStore getBoolForKey:@"debugLog"]) {
+		[ConfigurationController redirectConsoleLogToDocumentFolder];
 	}
 
 	//[application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert];	
