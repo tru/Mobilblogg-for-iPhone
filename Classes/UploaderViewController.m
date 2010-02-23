@@ -115,6 +115,7 @@
 	TTDINFO(@"Image resized!");
 	[_image release];
 	_image = [img retain];
+	TTLOGSIZE(img.size);
 
 	
 	_imageURL = [[TTURLCache sharedCache] storeTemporaryImage:img toDisk:NO];
@@ -162,20 +163,25 @@
 	//request.charsetForMultipart = NSISOLatin1StringEncoding;
 	request.response = [[[UploadResponse alloc] init] autorelease];
 	
+	if (!_image) {
+		TTDINFO("TRASIGT!");
+	}
+	
 	[request.parameters addEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
 												  kMobilBloggTemplateName, @"template",
 												  @"upload", @"func",
 												  _captionField.text, @"header",
 												  body, @"text",
-												  _secretWord, @"secretword",
+												  _secretWord ? _secretWord : @"", @"secretword",
 												  [@"/files/" stringByAppendingString:[MBStore getUserName]], @"path",
 												  @"ladda_upp", @"wtd",
 												  _image, @"image",
-												  _permCtrl.selectedValue, @"rights",
+												  _permCtrl.selectedValue ? _permCtrl.selectedValue : @"", @"rights",
 												  nil]];
 	
 	request.httpMethod = @"POST";
 	[request send];
+	TTDINFO("Sent request %d", request.totalBytesExpected);
 	
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 	self.navigationItem.leftBarButtonItem.enabled = NO;
@@ -267,7 +273,7 @@
 
 -(void)requestDidFinishLoad:(TTURLRequest*)request;
 {
-	TTDINFO("done with upload!");
+	TTDINFO("done with upload! %d", request.totalBytesLoaded);
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
