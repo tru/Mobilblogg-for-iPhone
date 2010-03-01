@@ -55,11 +55,6 @@
 					   nil];
 }
 
-- (void)viewDidLoad
-{
-}
-
-
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
 	if ([alertView.title isEqualToString:NSLocalizedString(@"Logout?", nil)]) {

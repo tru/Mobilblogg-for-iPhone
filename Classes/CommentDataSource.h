@@ -14,7 +14,7 @@
 	id _delegate;
 }
 
-@property (nonatomic,retain) id delegate;
+@property (nonatomic,assign) id delegate;
 @property (nonatomic, readonly) NSUInteger totalComments;
 
 -(void)dataSourceUpdate;

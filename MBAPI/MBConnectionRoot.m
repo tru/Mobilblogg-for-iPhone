@@ -82,6 +82,9 @@
 {
 	TTDINFO(@"DEALLOC: MBConnectionRoot");
 	[_data release];
+	if (_delegate) {
+		[_delegate release];
+	}
 	[super dealloc];
 }
 

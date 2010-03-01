@@ -28,9 +28,9 @@
 	_username = [username copy];
 	
 	/* First we need the salt */
-	MBSalt *salt = [[MBSalt alloc] initWithUsername:_username];
-	salt.delegate = self;
-	[salt release];
+	_salt = [[MBSalt alloc] initWithUsername:_username];
+	_salt.delegate = self;
+	[_salt release];
 
 	return self;
 }
@@ -72,6 +72,7 @@
 	
 	_connRoot = [[MBConnectionRoot alloc] initWithArguments:dict];
 	_connRoot.delegate = self;
+	[_connRoot release];
 	
 	/* Remove all cookies, we want new ones */
 	NSHTTPCookieStorage *store = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -110,6 +111,9 @@
 	TTDINFO(@"DEALLOC: MBLogin");
 	[_password release];
 	[_username release];
+	if (_delegate) {
+		[_delegate release];
+	}
 	[super dealloc];
 }
 

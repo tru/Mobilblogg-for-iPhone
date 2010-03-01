@@ -23,6 +23,7 @@
 	NSString *_password;
 	NSString *_username;
 	NSString *_passwordHash;
+	MBSalt *_salt;
 }
 
 -(id)initWithUsername:(NSString *)username andPassword:(NSString *)password;

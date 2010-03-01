@@ -15,6 +15,8 @@
 		610608FD10AB5E5700927027 /* BlogListTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 610608FC10AB5E5700927027 /* BlogListTabController.m */; };
 		6113CEAA1135987400DA1ECD /* UploaderImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6113CEA91135987400DA1ECD /* UploaderImageCell.m */; };
 		6113D00811380CDF00DA1ECD /* PhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6113D00711380CDF00DA1ECD /* PhotoPickerController.m */; };
+		6113D267113BFB1300DA1ECD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6113D266113BFB1300DA1ECD /* Default.png */; };
+		6113D26E113BFB5300DA1ECD /* StartupScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6113D26D113BFB5300DA1ECD /* StartupScreenController.m */; };
 		6114531C10AC438800DADDD6 /* 41-picture-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 6114531A10AC438800DADDD6 /* 41-picture-frame.png */; };
 		6114531D10AC438800DADDD6 /* 42-photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6114531B10AC438800DADDD6 /* 42-photos.png */; };
 		6114534210AC4CE400DADDD6 /* BlogListThumbsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114534110AC4CE400DADDD6 /* BlogListThumbsController.m */; };
@@ -115,6 +117,9 @@
 		6113CEA91135987400DA1ECD /* UploaderImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderImageCell.m; sourceTree = "<group>"; };
 		6113D00611380CDF00DA1ECD /* PhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPickerController.h; sourceTree = "<group>"; };
 		6113D00711380CDF00DA1ECD /* PhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPickerController.m; sourceTree = "<group>"; };
+		6113D266113BFB1300DA1ECD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		6113D26C113BFB5300DA1ECD /* StartupScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupScreenController.h; sourceTree = "<group>"; };
+		6113D26D113BFB5300DA1ECD /* StartupScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupScreenController.m; sourceTree = "<group>"; };
 		6114531A10AC438800DADDD6 /* 41-picture-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "41-picture-frame.png"; path = "Classes/41-picture-frame.png"; sourceTree = "<group>"; };
 		6114531B10AC438800DADDD6 /* 42-photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "42-photos.png"; path = "Classes/42-photos.png"; sourceTree = "<group>"; };
 		6114534010AC4CE400DADDD6 /* BlogListThumbsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListThumbsController.h; sourceTree = "<group>"; };
@@ -296,6 +301,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6113D266113BFB1300DA1ECD /* Default.png */,
 				61D99E4C10BAA83C00A5525A /* 08-chatblack.png */,
 				61D99C8510B9B2B100A5525A /* 08-chat.png */,
 				61145AFA10ADCAA100DADDD6 /* usericon.png */,
@@ -358,6 +364,8 @@
 				61145AB610ADC55C00DADDD6 /* ProfileViewController.m */,
 				616BDB5410AEE91D005E82A6 /* FavoritesDataSource.h */,
 				616BDB5510AEE91D005E82A6 /* FavoritesDataSource.m */,
+				6113D26C113BFB5300DA1ECD /* StartupScreenController.h */,
+				6113D26D113BFB5300DA1ECD /* StartupScreenController.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -632,6 +640,7 @@
 				61145AFB10ADCAA100DADDD6 /* usericon.png in Resources */,
 				61D99C8610B9B2B100A5525A /* 08-chat.png in Resources */,
 				61D99E4D10BAA83C00A5525A /* 08-chatblack.png in Resources */,
+				6113D267113BFB1300DA1ECD /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +703,7 @@
 				6194A215112EF0E40096BAA9 /* DebugLogView.m in Sources */,
 				6113CEAA1135987400DA1ECD /* UploaderImageCell.m in Sources */,
 				6113D00811380CDF00DA1ECD /* PhotoPickerController.m in Sources */,
+				6113D26E113BFB5300DA1ECD /* StartupScreenController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

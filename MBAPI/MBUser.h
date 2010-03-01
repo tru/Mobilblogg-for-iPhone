@@ -33,6 +33,6 @@
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *avatarURL;
 @property (nonatomic, copy, readonly) NSString *info;
-@property (nonatomic, retain) id<MBUserDelegateProtocol> delegate;
+@property (nonatomic, assign) id<MBUserDelegateProtocol> delegate;
 
 @end

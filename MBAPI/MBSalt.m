@@ -24,6 +24,7 @@
 	
 	_connRoot = [[MBConnectionRoot alloc] initWithArguments:dict];
 	_connRoot.delegate = self;
+	[_connRoot release];
 	
 	TTDINFO(@"MBSalt inited");
 	return self;
@@ -52,6 +53,9 @@
 -(void)dealloc
 {
 	TTDINFO(@"DEALLOC: MBSalt");
+	if (_delegate) {
+		[_delegate release];
+	}
 	[super dealloc];
 }
 

@@ -24,6 +24,7 @@
 #import "MBPush.h"
 #import "DebugLogView.h"
 #import "UploaderViewController.h"
+#import "StartupScreenController.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -39,6 +40,7 @@
 	
 	TTURLMap *URLMap = ttnav.URLMap;
 	[URLMap from:@"*" toViewController:[TTWebController class]];
+	[URLMap from:@"mb://startup" toViewController:[StartupScreenController class]];
 	[URLMap from:@"mb://root" toViewController:[RootController class]];
 	[URLMap from:@"mb://configuration" toViewController:[ConfigurationController class]];
 	/* we want to open it from the root as a modal controller, and some times from the
@@ -59,63 +61,16 @@
 	[URLMap from:@"mb://debuglog" toViewController:[DebugLogView class]];
 	[URLMap from:@"mb://upload" toViewController:[UploaderViewController class]];
 	
-	NSString *username, *password;
-	
-	username = [MBStore getUserName];
-	password = [MBStore getPasswordForUsername:username];
-	
-	TTURLAction *ac = [TTURLAction actionWithURLPath:@""];
-	
-	if (!username || !password) {
-		[ac setUrlPath:@"mb://userconfmodal/yes"];
-		[ac setParentURLPath:@"mb://root"];
-	} else {
-		MBLogin *login = [[[MBLogin alloc] initWithUsername:username andPassword:password] autorelease];
-		login.delegate = self;
-		
-		//if (![ttnav restoreViewControllers]) {
-		[ac setUrlPath:@"mb://root"];
-		//}		
-	}
-
-	[ttnav openURLAction:ac];
 	
 	if ([MBStore getBoolForKey:@"debugLog"]) {
 		[ConfigurationController redirectConsoleLogToDocumentFolder];
 	}
+	
+	[ttnav openURLAction:[TTURLAction actionWithURLPath:@"mb://startup"]];
 
 	//[application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert];	
 }
 
-#pragma mark login
-
--(void)loginDidSucceed
-{
-	TTDINFO("yay");
-}
-
--(void)loginDidFailWithError:(NSError *)err
-{
-	UIAlertView *alert;
-	
-	if ([[err domain] isEqualToString:MobilBloggErrorDomain] && [err code] == MobilBloggErrorCodeInvalidCredentials) {
-		alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
-										   message:NSLocalizedString(@"Saved credentials are not valid", nil)
-										  delegate:self
-								 cancelButtonTitle:NSLocalizedString(@"Ok", nil)
-								 otherButtonTitles:NSLocalizedString(@"Settings", nil),nil];
-	} else {
-		alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
-										   message:[err localizedDescription]
-										  delegate:self
-								 cancelButtonTitle:NSLocalizedString(@"Ok", nil)
-								 otherButtonTitles:nil];
-
-	}
-
-	[alert show];
-	[alert release];
-}
 
 #pragma mark APNS
 

@@ -45,7 +45,7 @@
 	SBJSON *parser = [[SBJSON alloc] init];
 	NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
-//	TTDINFO(@"body = %@", responseBody);
+	TTDINFO(@"body = %@", responseBody);
 
 	NSError *jsonErr;
 	NSArray *photos = [parser objectWithString:responseBody error:&jsonErr];
