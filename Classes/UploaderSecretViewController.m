@@ -58,6 +58,7 @@
 
 -(void)dealloc
 {
+	TTDINFO(@"DEALLOC: UploaderSecretViewController");
 	[_secretWord release];
 	[_save release];
 	[super dealloc];

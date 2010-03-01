@@ -10,6 +10,7 @@
 #import "MBStore.h"
 #import "MBGlobal.h"
 #import "UploaderViewController.h"
+#import "PhotoPickerController.h"
 
 @implementation RootController
 
@@ -127,54 +128,24 @@
 	if ([actionSheet numberOfButtons] == 2 && buttonIndex == 1)
 		return;
 
-	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-	picker.delegate = self;
+	TTURLAction *action = [TTURLAction actionWithURLPath:@""];
+	[action applyAnimated:YES];
 
+	BOOL camera = NO;
 	
 	if (buttonIndex == 0 &&
 		[UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+		camera = YES;
 	} else {
-		picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+		camera = NO;
 	}
 	
-	[self presentModalViewController:picker animated:YES];
-	[picker release];
+	PhotoPickerController *pickCtrl = [[PhotoPickerController alloc] initWithCamera:camera];
+	[self presentModalViewController:pickCtrl animated:YES];
+	[pickCtrl release];
+	
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-	[picker dismissModalViewControllerAnimated:YES];
-	
-	UIImage *img = [info objectForKey:UIImagePickerControllerEditedImage];
-	if (!img) {
-		img = [info objectForKey:UIImagePickerControllerOriginalImage];
-	}
-	if (!img) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No image?", nil)
-														message:NSLocalizedString(@"We have no image here, grave error", nil)
-													   delegate:nil
-											  cancelButtonTitle:NSLocalizedString(@"Ok, beem me up!", nil)
-											  otherButtonTitles:nil];
-		//[img release];
-		[alert release];
-		return;
-	}
-	
-	if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-		
-	}
-	
-	UploaderViewController *up = [[UploaderViewController alloc] initWithUIImage:img];
-	[self.navigationController pushViewController:up animated:YES];
-	[up release];
-	//[img release];
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-	[picker dismissModalViewControllerAnimated:YES];
-}
 
 - (void)didReceiveMemoryWarning
 {

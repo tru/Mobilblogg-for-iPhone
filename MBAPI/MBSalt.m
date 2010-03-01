@@ -41,7 +41,8 @@
 		[_delegate saltDidSucceed:[dict objectForKey:@"salt"]];
 	} else {
 		NSDictionary *errDict = [NSDictionary dictionaryWithObjectsAndKeys:
-								 NSLocalizedString(@"No salt", nil), NSLocalizedDescriptionKey,
+								 NSLocalizedString(@"Couldn't find user", nil), NSLocalizedDescriptionKey,
+								 [NSArray arrayWithObjects:NSLocalizedString(@"Ok", nil), nil], NSLocalizedRecoveryOptionsErrorKey,
 								 nil];
 		NSError *err = [NSError errorWithDomain:MobilBloggErrorDomain code:MobilBloggErrorCodeInvalidSalt userInfo:errDict];
 		[_delegate saltDidFailWithError:err];

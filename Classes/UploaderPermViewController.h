@@ -41,8 +41,10 @@
 	id _delegate;
 }
 
-@property (nonatomic,readonly,copy) NSString *selectedValue;
-@property (nonatomic,readonly,copy) NSString *selectedName;
-@property (nonatomic,retain) id delegate;
++(NSString*)getCurrentPermValue;
++(NSString*)getCurrentPermValueText;
++(NSString*)getPermValueText:(NSString *)permValue;
+
+@property (nonatomic,assign) id delegate;
 
 @end

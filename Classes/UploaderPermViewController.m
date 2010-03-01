@@ -73,6 +73,37 @@
 
 @synthesize delegate = _delegate;
 
++(NSString*)getCurrentPermValue
+{
+	NSString *permValue = [MBStore getObjectForKey:@"permissionValue"];
+	if (!permValue) {
+		permValue = @"";
+	}
+	return permValue;
+}
+
++(NSString*)getPermValueText:(NSString*)permValue
+{
+	if (!permValue || [permValue isEqualToString:@""]) {
+		return NSLocalizedString(@"All", nil);
+	} else if ([permValue isEqualToString:@"blog"]) {
+		return NSLocalizedString(@"All (excluded from first page)", nil);
+	} else if ([permValue isEqualToString:@"members"]) {
+		return NSLocalizedString(@"Members", nil);
+	} else if ([permValue isEqualToString:@"friends"]) {
+		return NSLocalizedString(@"Friends", nil);
+	} else if ([permValue isEqualToString:@"private"]) {
+		return NSLocalizedString(@"Private (only me)", nil);
+	} else {
+		return NSLocalizedString(@"Unknown permission", nil);
+	}
+}
+
++(NSString*)getCurrentPermValueText
+{
+	return [UploaderPermViewController getPermValueText:[UploaderPermViewController getCurrentPermValue]];
+}
+
 -(id)init
 {
 	self = [super init];
@@ -82,16 +113,17 @@
 																						   target:self action:@selector(cancel)] autorelease];
 
 	self.dataSource = [UploaderPermDataSource dataSourceWithObjects:
-					   [UploaderPermItem itemWithText:NSLocalizedString(@"All", nil) andValue:@""],
-					   [UploaderPermItem itemWithText:NSLocalizedString(@"All (excluded from first page)", nil) andValue:@"blog"],
-					   [UploaderPermItem itemWithText:NSLocalizedString(@"Members", nil) andValue:@"members"],
-					   [UploaderPermItem itemWithText:NSLocalizedString(@"Friends", nil) andValue:@"friends"],
-					   [UploaderPermItem itemWithText:NSLocalizedString(@"Private (only me)", nil) andValue:@"private"],
+					   [UploaderPermItem itemWithText:[UploaderPermViewController getPermValueText:@""] andValue:@""],
+					   [UploaderPermItem itemWithText:[UploaderPermViewController getPermValueText:@"blog"] andValue:@"blog"],
+					   [UploaderPermItem itemWithText:[UploaderPermViewController getPermValueText:@"members"] andValue:@"members"],
+					   [UploaderPermItem itemWithText:[UploaderPermViewController getPermValueText:@"friends"] andValue:@"friends"],
+					   [UploaderPermItem itemWithText:[UploaderPermViewController getPermValueText:@"private"] andValue:@"private"],
 					   nil
 					   ];
+	
 	NSString *selValue = [MBStore getObjectForKey:@"permissionValue"];
 	TTDINFO(@"selValue = %@", selValue);
-	if (!selValue) {
+	if (!selValue || [selValue isEqualToString:@""]) {
 		[((UploaderPermDataSource*)self.dataSource) setCheckMark:0];
 	} else if ([selValue isEqualToString:@"blog"]) {
 		[((UploaderPermDataSource*)self.dataSource) setCheckMark:1];
@@ -111,19 +143,22 @@
 
 -(void)timeOut
 {
+	TTDINFO("In timeout!");
 	[self.tableView reloadData];
 
-	[self dismissModalViewControllerAnimated:YES];
-
 	if ([_delegate respondsToSelector:@selector(didSelectPermValue:)]) {
-		[_delegate performSelector:@selector(didSelectPermValue:) withObject:self];
+		TTDINFO(@"PermValue is %@ when sending it to the delegate", [UploaderPermViewController getCurrentPermValueText]);
+		[_delegate performSelector:@selector(didSelectPermValue:) withObject:[UploaderPermViewController getCurrentPermValueText]];
 	}
-	
+
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath
 {
 	[((UploaderPermDataSource*)self.dataSource) setCheckMark:indexPath.row];
+	[MBStore setObject:((UploaderPermDataSource*)self.dataSource).currentItem.value forKey:@"permissionValue"];
+	TTDINFO(@"Setting permValue to %@", ((UploaderPermDataSource*)self.dataSource).currentItem.value);
 	NSTimer *tm = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(timeOut) userInfo:nil repeats:NO];
 	[[NSRunLoop mainRunLoop] addTimer:tm forMode:NSDefaultRunLoopMode];
 }
@@ -137,19 +172,15 @@
 	return YES;
 }
 
--(NSString*)selectedValue
-{
-	return ((UploaderPermDataSource*)self.dataSource).currentItem.value;
-}
-
--(NSString*)selectedName
-{
-	return ((UploaderPermDataSource*)self.dataSource).currentItem.text;
-}
-
 -(void)cancel
 {
 	[self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)dealloc
+{
+	TTDINFO(@"DEALLOC: UploadPermViewController");
+	[super dealloc];
 }
 
 @end

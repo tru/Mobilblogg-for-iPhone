@@ -93,7 +93,10 @@
 {
 	MBPhoto *currentPhoto = self.centerPhoto;
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:currentPhoto, @"photo", nil];
-	[[TTNavigator navigator] openURL:@"mb://photoinfo" query:dict animated:YES];
+	TTURLAction *action = [TTURLAction actionWithURLPath:@"mb://photoinfo"];
+	[action applyAnimated:YES];
+	[action setQuery:dict];
+	[[TTNavigator navigator] openURLAction:action];
 }
 
 -(void)comments

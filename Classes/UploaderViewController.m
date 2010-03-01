@@ -16,6 +16,8 @@
 #import "MBImageUtils.h"
 #import "MBGlobal.h"
 
+#import "UploaderImageCell.h"
+
 #import "JSON.h"
 
 #include <math.h>
@@ -29,7 +31,7 @@
 	NSError *jsonErr = nil;
 	NSArray *arr = [jsonParser objectWithString:responseBody error:&jsonErr];
 	
-	TTDINFO("json reponse: %@", responseBody);
+//	TTDINFO("json reponse: %@", responseBody);
 	
 	[jsonParser release];
 	[responseBody release];
@@ -66,16 +68,16 @@
 
 @implementation UploaderViewController
 
--(id)initWithUIImage:(UIImage*)img
+-(id)initWithNavigatorURL:(NSURL*)url query:(NSDictionary*)dict
 {
 	self = [super init];
+	_pool = [[NSAutoreleasePool alloc] init];
+	TTDINFO("Upload photo init");
+	UIImage *img = [dict objectForKey:@"image"];
 	self.title = NSLocalizedString(@"Upload photo", nil);
-	self.tableViewStyle = UITableViewStyleGrouped;
 	self.autoresizesForKeyboard = YES;
 	self.variableHeightRows = YES;
 	_uploading = NO;
-	_queue = [[NSOperationQueue alloc] init];
-	
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Upload", nil) 
 																			   style:UIBarButtonItemStyleDone
 																			  target:self
@@ -91,57 +93,49 @@
 	_activity.smoothesProgress = NO;
 	[self.view addSubview:_activity];
 	_activity.alpha = 0.0;
-
+	
+	_imageItem = [[[UploaderImageItem alloc] init] autorelease];
+	UIImage *defImg = TTIMAGE(@"bundle://Three20.bundle/images/empty.png");
+	_imageItem.image = defImg;
 	
 	if (img.size.width > 800) {
+		NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 		MBImageScaleOperation *op = [[MBImageScaleOperation alloc] initWithImage:img andTargetSize:CGSizeMake(800, 640)];
 		op.delegate = self;
-		[_queue addOperation:op];
+		[queue addOperation:op];
+		[queue release];
 		[op release];
 		_activity.alpha = 1.0;
 	} else {
-		_imageURL = [[TTURLCache sharedCache] storeTemporaryImage:img toDisk:NO];
+		_imageItem.image = img;
 	}
 	
 //	[[TTNavigator navigator].URLMap from:@"mb://_editimg" toObject:self selector:@selector(openIMG)];
-	
-	_image = [img retain];
-		
+			
 	return self;
 }
 
 -(void)imageResized:(UIImage*)img
 {
-	TTDINFO(@"Image resized!");
-	[_image release];
-	_image = [img retain];
-	TTLOGSIZE(img.size);
-
+//	TTDINFO(@"Image resized!");
+//	TTLOGSIZE(img.size);
+	_imageItem.image = img;
+	//[img retain];
 	
-	_imageURL = [[TTURLCache sharedCache] storeTemporaryImage:img toDisk:NO];
-	_imageItem.imageURL = _imageURL;
 	[self.tableView reloadData];
 	
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
 	_activity.alpha = 0.0;
 	[UIView commitAnimations];
-	
 }
 
 -(void)dealloc
 {
 	TTDINFO(@"DEALLOC: UploadViewController");
-	[_image release];
+	[_pool drain];
+	[_pool release];
 	[_activity release];
-	[_captionField release];
-	[_bodyField release];
-	[_secretWord release];
-	[_permField release];
-	[_imageURL release];
-	[_queue release];
-	[_permCtrl release];
-	[[TTNavigator navigator].URLMap removeURL:@"mb://_editimg"];
 	[super dealloc];
 }
 
@@ -158,14 +152,21 @@
 		body = @"";
 	}
 	
+	if (!_imageItem.image || _imageItem.image.size.width < 1) {
+		UIAlertView *alert = [[UIAlertView alloc] init];
+		alert.title = NSLocalizedString(@"No image found!!", nil);
+		alert.message = NSLocalizedString(@"This is a fatal error and you need to report it to the developer!", nil);
+		[alert addButtonWithTitle:NSLocalizedString(@"Ok!", nil)];
+//		alert.delegate = self;
+		[alert show];
+		[alert release];
+		return;
+	}
+	
 	TTURLRequest *request = [TTURLRequest requestWithURL:[NSString stringWithFormat:@"%@%@", kMobilBloggHTTPProtocol, kMobilBloggHTTPBasePath]
 												delegate:self];
 	//request.charsetForMultipart = NSISOLatin1StringEncoding;
 	request.response = [[[UploadResponse alloc] init] autorelease];
-	
-	if (!_image) {
-		TTDINFO("TRASIGT!");
-	}
 	
 	[request.parameters addEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
 												  kMobilBloggTemplateName, @"template",
@@ -175,13 +176,13 @@
 												  _secretWord ? _secretWord : @"", @"secretword",
 												  [@"/files/" stringByAppendingString:[MBStore getUserName]], @"path",
 												  @"ladda_upp", @"wtd",
-												  _image, @"image",
-												  _permCtrl.selectedValue ? _permCtrl.selectedValue : @"", @"rights",
+												  _imageItem.image, @"image",
+												  [UploaderPermViewController getCurrentPermValue], @"rights",
 												  nil]];
 	
 	request.httpMethod = @"POST";
 	[request send];
-	TTDINFO("Sent request %d", request.totalBytesExpected);
+//	TTDINFO("Sent request %d", request.totalBytesExpected);
 	
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 	self.navigationItem.leftBarButtonItem.enabled = NO;
@@ -209,12 +210,14 @@
 {
 	_secretWord = [MBStore getObjectForKey:@"secretWord"];
 	if (!_secretWord) {
-		UINavigationController *navCtrl = [[[UINavigationController alloc] init] autorelease];
-		UploaderSecretViewController *secretCtrl = [[[UploaderSecretViewController alloc] init] autorelease];
+		UINavigationController *navCtrl = [[UINavigationController alloc] init];
+		UploaderSecretViewController *secretCtrl = [[UploaderSecretViewController alloc] init];
 		secretCtrl.delegate = self;
 		[navCtrl pushViewController:secretCtrl animated:NO];
+		[secretCtrl release];
 		
 		[self presentModalViewController:navCtrl animated:YES];
+		[navCtrl release];
 	} else {
 		[self doUpload];
 	}
@@ -226,7 +229,7 @@
 		[self dismissModalViewControllerAnimated:YES];
 	}
 	_secretWord = secretCtrl.secretWord;
-	TTDINFO(@"Secret word = %@", _secretWord);
+//	TTDINFO(@"Secret word = %@", _secretWord);
 
 	[self doUpload];
 }
@@ -264,7 +267,7 @@
 
 -(void)requestDidUploadData:(TTURLRequest*)request
 {
-	TTDINFO(@"Uploaded %d", request.totalBytesLoaded);
+//	TTDINFO(@"Uploaded %d", request.totalBytesLoaded);
 	_activity.progress = request.totalBytesLoaded / request.totalBytesExpected;
 	if (_activity.progress == 1) {
 		_activity.text = NSLocalizedString(@"Waiting for server response...", nil);
@@ -274,29 +277,11 @@
 -(void)requestDidFinishLoad:(TTURLRequest*)request;
 {
 	TTDINFO("done with upload! %d", request.totalBytesLoaded);
-	[self.navigationController popViewControllerAnimated:YES];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)createModel
 {
-	_permCtrl = [[UploaderPermViewController alloc] init];
-	_permCtrl.delegate = self;
-	
-	_imageItem = [TTTableImageItem itemWithText:nil];
-//	_imageItem.URL = @"mb://_editimg";
-	_imageItem.imageStyle = [TTImageStyle styleWithImageURL:nil
-											   defaultImage:nil
-												contentMode:UIViewContentModeScaleAspectFill
-													   size:[MBImageUtils imageSize:_image.size withAspect:CGSizeMake(150.0, 150.0)]
-													   next:TTSTYLE(rounded)];
-
-	if (_imageURL) {
-		_imageItem.imageURL = _imageURL;
-	} else {
-		_imageItem.imageURL = @"bundle://Three20.bundle/images/empty.png";
-	}
-
-	
 	_captionField = [[UITextField alloc] init];
 	_captionField.enabled = NO;
 	
@@ -304,12 +289,16 @@
 	_bodyField.enabled = NO;
 	
 	_permField = [[UITextField alloc] init];
-	_permField.text = _permCtrl.selectedName;
+	_permField.text = [UploaderPermViewController getCurrentPermValueText];
 	_permField.enabled = NO;
 	
 	TTTableControlItem *cf = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Caption:", nil) control:_captionField];
 	TTTableControlItem *bf = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Body text:", nil) control:_bodyField];
 	TTTableControlItem *pf = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Visible to:", nil) control:_permField];
+	
+	[_captionField release];
+	[_bodyField release];
+	[_permField release];
 	
 	self.dataSource = [UploaderDataSource dataSourceWithObjects:
 					   _imageItem,
@@ -320,12 +309,9 @@
 					   
 }
 
-#define LOGRECT(r) TTDINFO(@"%f %f %f %f", r.origin.x, r.origin.y, r.size.width, r.size.height);
-
--(void)didSelectPermValue:(UploaderPermViewController*)permview
+-(void)didSelectPermValue:(NSString*)permText
 {
-	_permField.text = permview.selectedName;
-	[MBStore setObject:_permCtrl.selectedValue forKey:@"permissionValue"];
+	_permField.text = permText;
 }
 
 -(void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath
@@ -342,11 +328,14 @@
 	
 	
 	if (control == _permField) {
-		UINavigationController *navCtrl = [[[UINavigationController alloc] init] autorelease];
-		[navCtrl pushViewController:_permCtrl animated:NO];
+		UploaderPermViewController *permCtrl = [[UploaderPermViewController alloc] init];
+		permCtrl.delegate = self;
+		UINavigationController *navCtrl = [[UINavigationController alloc] init];
+		[navCtrl pushViewController:permCtrl animated:NO];
+		[permCtrl release];
 
 		[self presentModalViewController:navCtrl animated:YES];
-		//[navCtrl release];
+		[navCtrl release];
 		
 		return;
 	}
@@ -385,8 +374,19 @@
 	post.superController = self;
 	[post showInView:self.view animated:YES];
 	[post release];
-
+	_showingPostCtrl = YES;
 }
+
+/*
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+	TTDINFO("shouldAutorotate?");
+	if (_showingPostCtrl) {
+		return YES;
+	} else {
+		return NO;
+	}
+}*/
 
 -(BOOL)postController:(TTPostController*)postController willPostText:(NSString*)text
 {
@@ -399,6 +399,7 @@
 	} else if ([postController.navigationItem.title isEqualToString:NSLocalizedString(@"Add body", nil)]) {
 		_bodyField.text = text;
 	}
+	_showingPostCtrl = NO;
 	return YES;
 }
 

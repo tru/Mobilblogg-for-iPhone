@@ -9,14 +9,5 @@
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
 
-@interface UploaderImageCell : TTTableLinkedItemCell {
-	TTImageView *_imageView2;
-	CGSize _imageSize;
-}
-
-@property (retain, nonatomic, readonly) TTImageView *imageView2;
-
-@end
-
 @interface UploaderDataSource : TTListDataSource
 @end

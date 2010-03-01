@@ -10,25 +10,25 @@
 #import <Three20/Three20.h>
 
 #import "UploaderPermViewController.h"
+#import "UploaderImageCell.h"
 
 @interface UploadResponse : NSObject<TTURLResponse>
 @end
 
 
 @interface UploaderViewController : TTTableViewController<TTPostControllerDelegate, TTURLRequestDelegate> {
-	TTTableImageItem *_imageItem;
+	UploaderImageItem *_imageItem;
 	UITextField *_captionField;
 	UITextField *_bodyField;
 	UITextField *_permField;
 	TTActivityLabel *_activity;
-	UIImage *_image;
-	NSString *_imageURL;
-	NSString *_secretWord;
-	NSOperationQueue *_queue;
-	UploaderPermViewController *_permCtrl;
 	BOOL _uploading;
+	BOOL _showingPostCtrl;
+	NSAutoreleasePool *_pool;
+	NSString *_secretWord;
 }
 
--(id)initWithUIImage:(UIImage *)img;
+-(id)initWithNavigatorURL:(NSURL *)url query:(NSDictionary *)dict;
+-(void)didSelectPermValue:(NSString *)permText;
 
 @end

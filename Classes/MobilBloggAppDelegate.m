@@ -23,6 +23,7 @@
 #import "MBStore.h"
 #import "MBPush.h"
 #import "DebugLogView.h"
+#import "UploaderViewController.h"
 
 @implementation MobilBloggAppDelegate
 
@@ -56,22 +57,28 @@
 									     transition:UIViewAnimationTransitionFlipFromLeft];
 	[URLMap from:@"mb://profile/(initWithUserName:)" toViewController:[ProfileViewController class]];
 	[URLMap from:@"mb://debuglog" toViewController:[DebugLogView class]];
+	[URLMap from:@"mb://upload" toViewController:[UploaderViewController class]];
 	
 	NSString *username, *password;
 	
 	username = [MBStore getUserName];
 	password = [MBStore getPasswordForUsername:username];
 	
+	TTURLAction *ac = [TTURLAction actionWithURLPath:@""];
+	
 	if (!username || !password) {
-		[ttnav openURL:@"mb://userconfmodal/yes" parent:@"mb://root" animated:NO];
+		[ac setUrlPath:@"mb://userconfmodal/yes"];
+		[ac setParentURLPath:@"mb://root"];
 	} else {
 		MBLogin *login = [[[MBLogin alloc] initWithUsername:username andPassword:password] autorelease];
 		login.delegate = self;
 		
 		//if (![ttnav restoreViewControllers]) {
-			[ttnav openURL:@"mb://root" animated:NO];
+		[ac setUrlPath:@"mb://root"];
 		//}		
 	}
+
+	[ttnav openURLAction:ac];
 	
 	if ([MBStore getBoolForKey:@"debugLog"]) {
 		[ConfigurationController redirectConsoleLogToDocumentFolder];
@@ -144,7 +151,7 @@
 #pragma mark -
 
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
-	[[TTNavigator navigator] openURL:URL.absoluteString animated:NO];
+	[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
 	return YES;
 }
 

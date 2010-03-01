@@ -26,11 +26,9 @@
 -(void)main
 {
 	CGSize siz = [MBImageUtils imageSize:_image.size withAspect:CGSizeMake(800, 600)];
-	TTLOGSIZE(siz);
 	UIImage *ret = [_image transformWidth:siz.width height:siz.height rotate:YES];
-	TTLOGSIZE(ret.size);
+	TTDINFO(@"NSOperation is done with the image!");
 	[_delegate performSelectorOnMainThread:@selector(imageResized:) withObject:ret waitUntilDone:YES];
-	[ret release];
 }
 
 -(void)dealloc

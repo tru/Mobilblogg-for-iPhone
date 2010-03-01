@@ -23,7 +23,7 @@
 
 -(id)initWithImage:(UIImage*)image andTargetSize:(CGSize)targetSize;
 
-@property (nonatomic, retain) id delegate;
+@property (nonatomic, assign) id delegate;
 
 @end
 

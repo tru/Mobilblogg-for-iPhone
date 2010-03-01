@@ -12,9 +12,8 @@
 
 
 @interface RootController : TTTableViewController<UIActionSheetDelegate,
-												  UINavigationControllerDelegate,
-												  UIImagePickerControllerDelegate,
-												  MBLoginDelegateProtocol>{
+												  UINavigationControllerDelegate
+												  >{
 	TTActivityLabel *_activity;
 }
 
