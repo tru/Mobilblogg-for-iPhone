@@ -8,6 +8,8 @@
 
 #import "MBImageUtils.h"
 #import <Three20/Three20.h>
+#import "EXF.h"
+#import "EXFUtils.h"
 
 #include <math.h>
 
@@ -55,5 +57,77 @@
 	
 	return CGSizeMake(newWidth, newHeight);
 }
+
+// Helper methods for location conversion 
++(NSMutableArray*)createLocArray:(double)val{ 
+    val = fabs(val); 
+    NSMutableArray* array = [[NSMutableArray alloc] init]; 
+    double deg = (int)val; 
+    [array addObject:[NSNumber numberWithDouble:deg]]; 
+    val = val - deg; 
+    val = val * 60; 
+    double minutes = (int) val; 
+    [array addObject:[NSNumber numberWithDouble:minutes]]; 
+    val = val - minutes; 
+    val = val * 60; 
+    double seconds = val; 
+    [array addObject:[NSNumber numberWithDouble:seconds]]; 
+    return array; 
+} 
+
++(void)populateGPS:(EXFGPSLoc*)gpsLoc andLocarray:(NSArray*)locArray{ 
+    long numDenumArray[2]; 
+    long* arrPtr = numDenumArray; 
+    [EXFUtils convertRationalToFraction:&arrPtr :[locArray objectAtIndex:0]]; 
+    EXFraction* fract = [[EXFraction alloc] initWith:numDenumArray[0]:numDenumArray[1]]; 
+    gpsLoc.degrees = fract; 
+    [fract release]; 
+    [EXFUtils convertRationalToFraction:&arrPtr :[locArray objectAtIndex:1]]; 
+    fract = [[EXFraction alloc] initWith:numDenumArray[0] :numDenumArray[1]]; 
+    gpsLoc.minutes = fract; 
+    [fract release]; 
+    [EXFUtils convertRationalToFraction:&arrPtr :[locArray objectAtIndex:2]]; 
+    fract = [[EXFraction alloc] initWith:numDenumArray[0] :numDenumArray[1]]; 
+    gpsLoc.seconds = fract; 
+    [fract release];
+}
+
++(NSData*) geotagImage:(UIImage*)image withLocation:(CLLocation*)imageLocation {
+    NSData* jpegData =  UIImageJPEGRepresentation(image, 0.8);
+    EXFJpeg* jpegScanner = [[EXFJpeg alloc] init];
+    [jpegScanner scanImageData: jpegData];
+    EXFMetaData* exifMetaData = jpegScanner.exifMetaData;
+    // end of helper methods 
+    // adding GPS data to the Exif object 
+    NSMutableArray* locArray = [self createLocArray:imageLocation.coordinate.latitude]; 
+    EXFGPSLoc* gpsLoc = [[EXFGPSLoc alloc] init]; 
+    [self populateGPS:gpsLoc andLocarray:locArray]; 
+    [exifMetaData addTagValue:gpsLoc forKey:[NSNumber numberWithInt:EXIF_GPSLatitude] ]; 
+    [gpsLoc release]; 
+    [locArray release]; 
+    locArray = [self createLocArray:imageLocation.coordinate.longitude]; 
+    gpsLoc = [[EXFGPSLoc alloc] init]; 
+    [self populateGPS:gpsLoc andLocarray:locArray]; 
+    [exifMetaData addTagValue:gpsLoc forKey:[NSNumber numberWithInt:EXIF_GPSLongitude] ]; 
+    [gpsLoc release]; 
+    [locArray release];
+    NSString* ref;
+    if (imageLocation.coordinate.latitude <0.0)
+        ref = @"S"; 
+    else
+        ref =@"N"; 
+    [exifMetaData addTagValue: ref forKey:[NSNumber numberWithInt:EXIF_GPSLatitudeRef] ]; 
+    if (imageLocation.coordinate.longitude <0.0)
+        ref = @"W"; 
+    else
+        ref =@"E"; 
+    [exifMetaData addTagValue: ref forKey:[NSNumber numberWithInt:EXIF_GPSLongitudeRef] ]; 
+    NSMutableData* taggedJpegData = [[NSMutableData alloc] init];
+    [jpegScanner populateImageData:taggedJpegData];
+    [jpegScanner release];
+    return [taggedJpegData autorelease];
+}
+
+
 
 @end

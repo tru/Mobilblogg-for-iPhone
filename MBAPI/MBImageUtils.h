@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @protocol MBImageScaleOperationDelegateProtocol
 
@@ -31,5 +32,6 @@
 @interface MBImageUtils : NSObject
 
 +(CGSize)imageSize:(CGSize)currentSize withAspect:(CGSize)targetSize;
++(NSData*)geotagImage:(UIImage *)image withLocation:(CLLocation*)imageLlocation;
 
 @end

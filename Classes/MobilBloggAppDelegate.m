@@ -39,6 +39,8 @@
 
 @implementation MobilBloggAppDelegate
 
+BOOL gLogging = FALSE;
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
 	application.applicationIconBadgeNumber = 0;

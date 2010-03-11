@@ -28,6 +28,8 @@
 		611456E310ACB1B400DADDD6 /* MBConnectionRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 611456E210ACB1B400DADDD6 /* MBConnectionRoot.m */; };
 		61145AB710ADC55C00DADDD6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61145AB610ADC55C00DADDD6 /* ProfileViewController.m */; };
 		61145AFB10ADCAA100DADDD6 /* usericon.png in Resources */ = {isa = PBXBuildFile; fileRef = 61145AFA10ADCAA100DADDD6 /* usericon.png */; };
+		612DB7841149464A00B4A2A9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612DB7831149464A00B4A2A9 /* CoreLocation.framework */; };
+		612DB828114958B300B4A2A9 /* libiphone-exif.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 612DB7C711494AF400B4A2A9 /* libiphone-exif.a */; };
 		613479811092136800DD5DE7 /* MBBlogListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6134797D1092136800DD5DE7 /* MBBlogListResponse.m */; };
 		613479821092136800DD5DE7 /* MBStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6134797F1092136800DD5DE7 /* MBStore.m */; };
 		613479881092138000DD5DE7 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 613479831092138000DD5DE7 /* GTMNSString+URLArguments.m */; };
@@ -81,6 +83,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		612DB7C611494AF400B4A2A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 612DB7BF11494AF400B4A2A9 /* iphoneExif.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AF1F78C40E0A7F030023CDE4 /* libiphone-exif.a */;
+			remoteInfo = exifLib;
+		};
+		612DB7F411494C9300B4A2A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 612DB7BF11494AF400B4A2A9 /* iphoneExif.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AFC2C7870DD4A90D004A4357 /* exifLib */;
+			remoteInfo = exifLib;
+		};
 		613C7F5110D77CD00049D1CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 614462AD10901ADC00AD9801 /* Three20.xcodeproj */;
@@ -139,6 +155,8 @@
 		61145AB510ADC55C00DADDD6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		61145AB610ADC55C00DADDD6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		61145AFA10ADCAA100DADDD6 /* usericon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usericon.png; sourceTree = SOURCE_ROOT; };
+		612DB7831149464A00B4A2A9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		612DB7BF11494AF400B4A2A9 /* iphoneExif.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iphoneExif.xcodeproj; path = "iphone-exif/iphoneExif.xcodeproj"; sourceTree = "<group>"; };
 		6134797D1092136800DD5DE7 /* MBBlogListResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBBlogListResponse.m; path = MBAPI/MBBlogListResponse.m; sourceTree = "<group>"; };
 		6134797E1092136800DD5DE7 /* MBBlogListResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBBlogListResponse.h; path = MBAPI/MBBlogListResponse.h; sourceTree = "<group>"; };
 		6134797F1092136800DD5DE7 /* MBStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBStore.m; path = MBAPI/MBStore.m; sourceTree = "<group>"; };
@@ -244,12 +262,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				612DB828114958B300B4A2A9 /* libiphone-exif.a in Frameworks */,
 				61446323109020A200AD9801 /* libThree20.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				614462E710901B5300AD9801 /* QuartzCore.framework in Frameworks */,
 				61E0D50610A4567E00809C22 /* Security.framework in Frameworks */,
+				612DB7841149464A00B4A2A9 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +311,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				6185581110BBB50C002D304E /* libm.dylib */,
+				612DB7831149464A00B4A2A9 /* CoreLocation.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -332,6 +353,22 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		612DB7BE11494AE000B4A2A9 /* iphone-exif */ = {
+			isa = PBXGroup;
+			children = (
+				612DB7BF11494AF400B4A2A9 /* iphoneExif.xcodeproj */,
+			);
+			name = "iphone-exif";
+			sourceTree = "<group>";
+		};
+		612DB7C011494AF400B4A2A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				612DB7C711494AF400B4A2A9 /* libiphone-exif.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		61347B79109306F300DD5DE7 /* BloggList */ = {
@@ -482,6 +519,7 @@
 		61BE25771090CA5900D76E03 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				612DB7BE11494AE000B4A2A9 /* iphone-exif */,
 				61E0D4E510A4548400809C22 /* SFHFKeychainUtils */,
 				61BE25901091DE7500D76E03 /* GTM */,
 				6144628E109019E100AD9801 /* JSON */,
@@ -578,6 +616,7 @@
 			);
 			dependencies = (
 				614463221090208100AD9801 /* PBXTargetDependency */,
+				612DB7F511494C9300B4A2A9 /* PBXTargetDependency */,
 			);
 			name = MobilBlogg;
 			productName = MobilBlogg;
@@ -606,6 +645,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 612DB7C011494AF400B4A2A9 /* Products */;
+					ProjectRef = 612DB7BF11494AF400B4A2A9 /* iphoneExif.xcodeproj */;
+				},
+				{
 					ProductGroup = 614462AE10901ADC00AD9801 /* Products */;
 					ProjectRef = 614462AD10901ADC00AD9801 /* Three20.xcodeproj */;
 				},
@@ -618,6 +661,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		612DB7C711494AF400B4A2A9 /* libiphone-exif.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libiphone-exif.a";
+			remoteRef = 612DB7C611494AF400B4A2A9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		613C7F5210D77CD00049D1CB /* UnitTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -720,6 +770,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		612DB7F511494C9300B4A2A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = exifLib;
+			targetProxy = 612DB7F411494C9300B4A2A9 /* PBXContainerItemProxy */;
+		};
 		614463221090208100AD9801 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Three20;
@@ -750,7 +805,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobilBlogg_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TTMAXLOGLEVEL=TTLOGLEVEL_INFO";
-				HEADER_SEARCH_PATHS = ../three20/src;
+				HEADER_SEARCH_PATHS = (
+					"iphone-exif/Classes",
+					../three20/src,
+				);
 				INFOPLIST_FILE = "MobilBlogg-Info.plist";
 				OTHER_CFLAGS = (
 					"-DDEBUGBUILD",
@@ -772,7 +830,10 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobilBlogg_Prefix.pch;
-				HEADER_SEARCH_PATHS = ../three20/src;
+				HEADER_SEARCH_PATHS = (
+					"iphone-exif/Classes",
+					../three20/src,
+				);
 				INFOPLIST_FILE = "MobilBlogg-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -807,7 +868,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobilBlogg_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TTMAXLOGLEVEL=TTLOGLEVEL_INFO";
-				HEADER_SEARCH_PATHS = ../three20/src;
+				HEADER_SEARCH_PATHS = (
+					"iphone-exif/Classes",
+					../three20/src,
+				);
 				INFOPLIST_FILE = "MobilBlogg-Info.plist";
 				OTHER_CFLAGS = (
 					"-DDEBUG",
@@ -846,7 +910,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobilBlogg_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				HEADER_SEARCH_PATHS = ../three20/src;
+				HEADER_SEARCH_PATHS = (
+					"iphone-exif/Classes",
+					../three20/src,
+				);
 				INFOPLIST_FILE = "MobilBlogg-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",

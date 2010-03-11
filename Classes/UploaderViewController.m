@@ -20,6 +20,11 @@
 
 #import "JSON.h"
 
+#import "EXF.h"
+
+
+#import <CoreLocation/CoreLocation.h>
+
 #include <math.h>
 
 @implementation UploadResponse
@@ -136,6 +141,9 @@
 	[_pool drain];
 	[_pool release];
 	[_activity release];
+	if (_locationManager) {
+		[_locationManager release];
+	}
 	[super dealloc];
 }
 
@@ -163,6 +171,14 @@
 		return;
 	}
 	
+	NSData *imageData = nil;
+	
+	if (_locationField.on && _locationManager && _locationManager.location) {		
+		imageData = [MBImageUtils geotagImage:_imageItem.image withLocation:_locationManager.location];
+	} else {
+		imageData = UIImageJPEGRepresentation(_imageItem.image, 1.0);
+	}
+	
 	TTURLRequest *request = [TTURLRequest requestWithURL:[NSString stringWithFormat:@"%@%@", kMobilBloggHTTPProtocol, kMobilBloggHTTPBasePath]
 												delegate:self];
 	//request.charsetForMultipart = NSISOLatin1StringEncoding;
@@ -176,9 +192,10 @@
 												  _secretWord ? _secretWord : @"", @"secretword",
 												  [@"/files/" stringByAppendingString:[MBStore getUserName]], @"path",
 												  @"ladda_upp", @"wtd",
-												  _imageItem.image, @"image",
 												  [UploaderPermViewController getCurrentPermValue], @"rights",
 												  nil]];
+	
+	[request addFile:imageData mimeType:@"image/jpeg" fileName:@"image.jpg"];
 	
 	request.httpMethod = @"POST";
 	[request send];
@@ -292,21 +309,63 @@
 	_permField.text = [UploaderPermViewController getCurrentPermValueText];
 	_permField.enabled = NO;
 	
+	_locationField = [UISwitch new];
+	_locationField.on = [MBStore getBoolForKey:@"useLocation"];
+	[_locationField addTarget:self action:@selector(switchLocation) forControlEvents:UIControlEventValueChanged];
+	
 	TTTableControlItem *cf = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Caption:", nil) control:_captionField];
 	TTTableControlItem *bf = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Body text:", nil) control:_bodyField];
 	TTTableControlItem *pf = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Visible to:", nil) control:_permField];
+	TTTableControlItem *lf = [TTTableControlItem itemWithCaption:NSLocalizedString(@"Add location", nil) control:_locationField];
 	
 	[_captionField release];
 	[_bodyField release];
 	[_permField release];
+	[_locationField release];
 	
 	self.dataSource = [UploaderDataSource dataSourceWithObjects:
 					   _imageItem,
 					   cf,
 					   bf,
 					   pf,
+					   lf,
 					   nil];
+	
+/*	[cf release];
+	[bf release];
+	[pf release];
+	[lf release];*/
+	
+	if (_locationField.on) {
+		[self resolveLocation];
+	}
 					   
+}
+
+-(void)switchLocation
+{
+	[MBStore setBool:_locationField.on forKey:@"useLocation"];
+	if (_locationField.on) {
+		[self resolveLocation];
+	} else {
+		if (_locationManager) {
+			[_locationManager stopUpdatingLocation];
+		}
+	}
+}
+
+-(void)resolveLocation
+{
+	_locationManager = [CLLocationManager new];
+	_locationManager.delegate = self;
+	_locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+		
+	[_locationManager startUpdatingLocation];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+	NSLog(@"New location ... %@", [newLocation description]);
 }
 
 -(void)didSelectPermValue:(NSString*)permText
