@@ -30,7 +30,7 @@
 	imgView.urlPath = @"bundle://Default.png";
 	self.view = imgView;
 	
-	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 185, 320, 40) style:TTActivityLabelStyleGray];
+	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 150, 320, 40) style:TTActivityLabelStyleGray];
 	[self.view addSubview:_activity];
 	_activity.text = NSLocalizedString(@"Initializing...", nil);
 	_activity.alpha = 0.0;

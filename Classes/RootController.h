@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <Three20/Three20.h>
 #import "MBLogin.h"
+#import "MBUser.h"
 
 
 @interface RootController : TTTableViewController<UIActionSheetDelegate,
-												  UINavigationControllerDelegate
-												  >{
+												  UINavigationControllerDelegate,
+												  MBUserDelegateProtocol>{
 	TTActivityLabel *_activity;
+	TTTableImageItem *_myblog;
+	TTTableImageItem *_startpage;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;

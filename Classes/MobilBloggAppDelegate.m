@@ -26,6 +26,17 @@
 #import "UploaderViewController.h"
 #import "StartupScreenController.h"
 
+@implementation MobilBloggStyleSheet
+
+-(UIColor*)navigationBarTintColor
+{
+	return [UIColor mbColor];
+}
+
+@end
+
+
+
 @implementation MobilBloggAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -60,7 +71,8 @@
 	[URLMap from:@"mb://profile/(initWithUserName:)" toViewController:[ProfileViewController class]];
 	[URLMap from:@"mb://debuglog" toViewController:[DebugLogView class]];
 	[URLMap from:@"mb://upload" toViewController:[UploaderViewController class]];
-	
+
+	[TTStyleSheet setGlobalStyleSheet:[[[MobilBloggStyleSheet alloc] init] autorelease]];
 	
 	if ([MBStore getBoolForKey:@"debugLog"]) {
 		[ConfigurationController redirectConsoleLogToDocumentFolder];

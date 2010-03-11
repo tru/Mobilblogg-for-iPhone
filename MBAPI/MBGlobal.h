@@ -7,6 +7,9 @@
  *
  */
 
+#import "UIColor+MBAPI.h"
+#import "NSString+MBAPI.h"
+
 #define MobilBloggErrorDomain @"MobilBlogg"
 #define MobilBloggErrorCodeInvalidCredentials 1
 #define MobilBloggErrorCodeNoSuchUser 2

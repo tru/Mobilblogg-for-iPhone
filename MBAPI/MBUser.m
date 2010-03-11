@@ -71,6 +71,9 @@
 	[_info release];
 	[_avatarURL release];
 	[_conn release];
+	if (_delegate) {
+		[_delegate release];
+	}
 	[super dealloc];
 }
 

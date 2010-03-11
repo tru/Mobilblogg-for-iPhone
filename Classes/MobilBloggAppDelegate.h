@@ -10,6 +10,12 @@
 #import "RootController.h"
 #import "MBLogin.h"
 
+@interface MobilBloggStyleSheet : TTDefaultStyleSheet {
+}
+-(UIColor*)navigationBarTintColor;
+@end
+
+
 @interface MobilBloggAppDelegate : NSObject <UIApplicationDelegate,MBLoginDelegateProtocol> {
 }
 

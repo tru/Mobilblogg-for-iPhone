@@ -9,6 +9,7 @@
 #import "RootController.h"
 #import "MBStore.h"
 #import "MBGlobal.h"
+#import "MBUser.h"
 #import "UploaderViewController.h"
 #import "PhotoPickerController.h"
 
@@ -22,37 +23,75 @@
 	self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
 																			  style:UIBarButtonItemStyleBordered 
 																			 target:nil action:nil] autorelease];
-	self.tableViewStyle = UITableViewStyleGrouped;
+//	self.tableViewStyle = UITableViewStyleGrouped;
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera 
 																						   target:self 
 																						   action:@selector(camera)];
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout", nil)
 																			 style:UIBarButtonItemStylePlain target:self
 																			action:@selector(logout)];
-	
-	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 480)
-												 style:TTActivityLabelStyleBlackBox
-												  text:NSLocalizedString(@"Logging in...", nil)];
-	_activity.alpha = 0.0;
+
+	self.navigationBarTintColor = [UIColor mbColor];
+
 	return self;
 }
 
 - (void)createModel
 {
+	MBUser *user = [[MBUser alloc] initWithUserName:[MBStore getUserName]];
+	user.delegate = self;
+	[user release];
+	
+	TTImageStyle *style = [TTImageStyle styleWithImageURL:nil
+											 defaultImage:nil
+											  contentMode:UIViewContentModeScaleAspectFill
+													 size:CGSizeMake(40, 40)
+													 next:TTSTYLE(rounded)];
+
+	_startpage = [TTTableImageItem itemWithText:NSLocalizedString(@"My Start Page", nil)
+									   imageURL:@"http://mobilblogg.nu/cache/ttf/011086f0e011367f52.gif"
+								   defaultImage:nil
+									 imageStyle:style
+											URL:@"mb://listfunction/listStartpage"];
+	
+	_myblog = [TTTableImageItem itemWithText:NSLocalizedString(@"My Blog", nil)
+									imageURL:@"http://mobilblogg.nu/cache/ttf/011086f0e011367f52.gif"
+								defaultImage:nil
+								  imageStyle:style
+										 URL:[@"mb://listblog/" stringByAppendingString:[MBStore getUserName]]];
+	
 	TTDINFO("createModel called from RootController");
 	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 					   NSLocalizedString(@"My pages", nil),
-					   [TTTableTextItem itemWithText:NSLocalizedString(@"My Start Page", nil)
-												 URL:@"mb://listfunction/listStartpage"],
-					   [TTTableTextItem itemWithText:NSLocalizedString(@"My Blog",nil) 
-												 URL:[@"mb://listblog/" stringByAppendingString:[MBStore getUserName]]],
+					   _startpage,
+					   _myblog,
 					   NSLocalizedString(@"MobilBlogg", nil),
-					   [TTTableTextItem itemWithText:NSLocalizedString(@"Go to User", nil) URL:@"mb://gotouser"],
-					   [TTTableTextItem itemWithText:NSLocalizedString(@"First Page", nil) URL:@"mb://listfunction/listFirstpage"],
-					   NSLocalizedString(@"Application", nil),
+					   [TTTableImageItem itemWithText:NSLocalizedString(@"Go to User", nil)
+											 imageURL:@"bundle://Icon.png"
+										 defaultImage:nil
+										   imageStyle:style
+												  URL:@"mb://gotouser"],
+					   [TTTableImageItem itemWithText:NSLocalizedString(@"First Page", nil)
+											 imageURL:@"bundle://Icon.png"
+										 defaultImage:nil
+										   imageStyle:style
+												  URL:@"mb://listfunction/listFirstpage"],
+
+/*					   NSLocalizedString(@"Application", nil),
 					   [TTTableTextItem itemWithText:NSLocalizedString(@"Settings", @"Menu item") URL:@"mb://configuration"],
-					   [TTTableTextItem itemWithText:NSLocalizedString(@"About", nil) URL:@"mb://about"],
+					   [TTTableTextItem itemWithText:NSLocalizedString(@"About", nil) URL:@"mb://about"],*/
 					   nil];
+}
+
+-(void)MBUserDidReceiveInfo:(MBUser*)user
+{
+	_myblog.imageURL = user.avatarURL;
+	_startpage.imageURL = user.avatarURL;
+	[self.tableView reloadData];
+}
+
+-(void)MBUser:(MBUser *)user didFailWithError:(NSError *)err
+{
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
