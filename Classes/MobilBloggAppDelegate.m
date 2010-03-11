@@ -17,12 +17,10 @@
 #import "ShowPictureInfoController.h"
 #import "BlogListTabController.h"
 #import "ProfileViewController.h"
-#import "ConfigurationController.h"
 #import "MBLogin.h"
 #import "MBGlobal.h"
 #import "MBStore.h"
 #import "MBPush.h"
-#import "DebugLogView.h"
 #import "UploaderViewController.h"
 #import "StartupScreenController.h"
 
@@ -55,7 +53,6 @@ BOOL gLogging = FALSE;
 	[URLMap from:@"*" toViewController:[TTWebController class]];
 	[URLMap from:@"mb://startup" toViewController:[StartupScreenController class]];
 	[URLMap from:@"mb://root" toViewController:[RootController class]];
-	[URLMap from:@"mb://configuration" toViewController:[ConfigurationController class]];
 	/* we want to open it from the root as a modal controller, and some times from the
 	 configure class as a normal class */
 	[URLMap from:@"mb://userconfmodal/(initWithDidFail:)" toModalViewController:[UserConfigController class]];
@@ -71,14 +68,9 @@ BOOL gLogging = FALSE;
 	[URLMap from:@"mb://photoinfo" toViewController:[ShowPictureInfoController class]
 									     transition:UIViewAnimationTransitionFlipFromLeft];
 	[URLMap from:@"mb://profile/(initWithUserName:)" toViewController:[ProfileViewController class]];
-	[URLMap from:@"mb://debuglog" toViewController:[DebugLogView class]];
 	[URLMap from:@"mb://upload" toViewController:[UploaderViewController class]];
 
 	[TTStyleSheet setGlobalStyleSheet:[[[MobilBloggStyleSheet alloc] init] autorelease]];
-	
-	if ([MBStore getBoolForKey:@"debugLog"]) {
-		[ConfigurationController redirectConsoleLogToDocumentFolder];
-	}
 	
 	[ttnav openURLAction:[TTURLAction actionWithURLPath:@"mb://startup"]];
 

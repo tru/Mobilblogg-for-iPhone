@@ -16,7 +16,7 @@
 @end
 
 
-@interface MobilBloggAppDelegate : NSObject <UIApplicationDelegate,MBLoginDelegateProtocol> {
+@interface MobilBloggAppDelegate : NSObject <UIApplicationDelegate> {
 }
 
 @end

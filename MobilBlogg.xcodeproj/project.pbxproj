@@ -63,9 +63,7 @@
 		61855C7F10BE9037002D304E /* UploaderSecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855C7E10BE9037002D304E /* UploaderSecretViewController.m */; };
 		61855D5110BEA720002D304E /* MBImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855D4F10BEA720002D304E /* MBImageUtils.m */; };
 		618E634E1129E00400DEC30C /* MBPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 618E634D1129E00400DEC30C /* MBPush.m */; };
-		6194A215112EF0E40096BAA9 /* DebugLogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6194A214112EF0E40096BAA9 /* DebugLogView.m */; };
 		619C698B10A9A28F008FB797 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 619C698A10A9A28F008FB797 /* Entitlements.plist */; };
-		61B96E1E10DD309D0089C99B /* ConfigurationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B96E1D10DD309D0089C99B /* ConfigurationController.m */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
 		61BE258F1091DAF600D76E03 /* BlogListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE258E1091DAF600D76E03 /* BlogListModel.m */; };
 		61CFC88D10B08E38008FEBF2 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CFC88C10B08E38008FEBF2 /* CommentModel.m */; };
@@ -224,11 +222,7 @@
 		61855D5010BEA720002D304E /* MBImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBImageUtils.h; path = MBAPI/MBImageUtils.h; sourceTree = SOURCE_ROOT; };
 		618E634C1129E00400DEC30C /* MBPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBPush.h; path = MBAPI/MBPush.h; sourceTree = "<group>"; };
 		618E634D1129E00400DEC30C /* MBPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBPush.m; path = MBAPI/MBPush.m; sourceTree = "<group>"; };
-		6194A213112EF0E40096BAA9 /* DebugLogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLogView.h; sourceTree = "<group>"; };
-		6194A214112EF0E40096BAA9 /* DebugLogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLogView.m; sourceTree = "<group>"; };
 		619C698A10A9A28F008FB797 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		61B96E1C10DD309D0089C99B /* ConfigurationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationController.h; sourceTree = "<group>"; };
-		61B96E1D10DD309D0089C99B /* ConfigurationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationController.m; sourceTree = "<group>"; };
 		61BE24371090B20C00D76E03 /* BlogListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListController.h; sourceTree = "<group>"; };
 		61BE24381090B20C00D76E03 /* BlogListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogListController.m; sourceTree = "<group>"; };
 		61BE258D1091DAF600D76E03 /* BlogListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListModel.h; sourceTree = "<group>"; };
@@ -355,14 +349,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		612DB7BE11494AE000B4A2A9 /* iphone-exif */ = {
-			isa = PBXGroup;
-			children = (
-				612DB7BF11494AF400B4A2A9 /* iphoneExif.xcodeproj */,
-			);
-			name = "iphone-exif";
-			sourceTree = "<group>";
-		};
 		612DB7C011494AF400B4A2A9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,10 +379,6 @@
 		61347B7B1093072800DD5DE7 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				6194A213112EF0E40096BAA9 /* DebugLogView.h */,
-				6194A214112EF0E40096BAA9 /* DebugLogView.m */,
-				61B96E1C10DD309D0089C99B /* ConfigurationController.h */,
-				61B96E1D10DD309D0089C99B /* ConfigurationController.m */,
 				6165944610A84A3000B1FE8D /* AboutController.h */,
 				6165944710A84A3000B1FE8D /* AboutController.m */,
 				6165925A10A80EBD00B1FE8D /* UserConfigController.h */,
@@ -519,11 +501,11 @@
 		61BE25771090CA5900D76E03 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
-				612DB7BE11494AE000B4A2A9 /* iphone-exif */,
 				61E0D4E510A4548400809C22 /* SFHFKeychainUtils */,
 				61BE25901091DE7500D76E03 /* GTM */,
 				6144628E109019E100AD9801 /* JSON */,
 				614462AD10901ADC00AD9801 /* Three20.xcodeproj */,
+				612DB7BF11494AF400B4A2A9 /* iphoneExif.xcodeproj */,
 			);
 			name = Externals;
 			sourceTree = "<group>";
@@ -757,9 +739,7 @@
 				61855D5110BEA720002D304E /* MBImageUtils.m in Sources */,
 				613C7BEC10D644750049D1CB /* MBSalt.m in Sources */,
 				613C7CCF10D66E4E0049D1CB /* UploaderPermViewController.m in Sources */,
-				61B96E1E10DD309D0089C99B /* ConfigurationController.m in Sources */,
 				618E634E1129E00400DEC30C /* MBPush.m in Sources */,
-				6194A215112EF0E40096BAA9 /* DebugLogView.m in Sources */,
 				6113CEAA1135987400DA1ECD /* UploaderImageCell.m in Sources */,
 				6113D00811380CDF00DA1ECD /* PhotoPickerController.m in Sources */,
 				6113D26E113BFB5300DA1ECD /* StartupScreenController.m in Sources */,
