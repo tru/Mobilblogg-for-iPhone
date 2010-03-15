@@ -41,9 +41,20 @@
 		return;
 	}
 	
+	TTDINFO(@"Saving image...");
+	if (self.sourceType == UIImagePickerControllerSourceTypeCamera) {
+		UIImageWriteToSavedPhotosAlbum(img, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+	} else {
+		[self image:img didFinishSavingWithError:nil contextInfo:nil];
+	}
+}
+
+-(void)image:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)context
+{
+	TTDINFO(@"Done saving image!");
 	TTURLAction *action = [TTURLAction actionWithURLPath:@"mb://upload"];
 	[action applyAnimated:YES];
-	[action applyQuery:[NSDictionary dictionaryWithObjectsAndKeys:img, @"image", nil]];
+	[action applyQuery:[NSDictionary dictionaryWithObjectsAndKeys:image, @"image", nil]];
 	[[TTNavigator navigator] openURLAction:action];
 	//[self dismissModalViewControllerAnimated:YES];
 }

@@ -13,5 +13,6 @@
 }
 
 -(id)initWithCamera:(BOOL)camera;
+-(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)context;
 
 @end
