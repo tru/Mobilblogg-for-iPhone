@@ -8,6 +8,7 @@
 
 #import "MBPhotoItemCell.h"
 #import "NSString+MBAPI.h"
+#import "MBImageUtils.h"
 
 static const CGFloat kHPadding = 10;
 static const CGFloat kVPadding = 10;
@@ -33,13 +34,8 @@ static const NSInteger kMessageTextLineCount = 2;
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
 	MBPhoto* item = object;
-	
-	CGFloat height = TTSTYLEVAR(tableFont).ttLineHeight + kVPadding*2;
-	if (item.user) {
-		height += TTSTYLEVAR(font).ttLineHeight;
-	}
-	
-	return height;
+		
+	return 220;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,14 +48,14 @@ static const NSInteger kMessageTextLineCount = 2;
 		self.textLabel.font = TTSTYLEVAR(tableFont);
 		self.textLabel.textColor = TTSTYLEVAR(textColor);
 		self.textLabel.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
-		self.textLabel.textAlignment = UITextAlignmentLeft;
+		self.textLabel.textAlignment = UITextAlignmentCenter;
 		self.textLabel.lineBreakMode = UILineBreakModeTailTruncation;
 		self.textLabel.adjustsFontSizeToFitWidth = YES;
 		
 		self.detailTextLabel.font = TTSTYLEVAR(font);
 		self.detailTextLabel.textColor = TTSTYLEVAR(tableSubTextColor);
 		self.detailTextLabel.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
-		self.detailTextLabel.textAlignment = UITextAlignmentLeft;
+		self.detailTextLabel.textAlignment = UITextAlignmentCenter;
 		self.detailTextLabel.contentMode = UIViewContentModeTop;
 		self.detailTextLabel.lineBreakMode = UILineBreakModeTailTruncation;
 		self.detailTextLabel.numberOfLines = kMessageTextLineCount;
@@ -105,25 +101,28 @@ static const NSInteger kMessageTextLineCount = 2;
 	CGFloat left = 0;
 	
 	if (_imageView2) {
-		_imageView2.frame = CGRectMake(0, 0, height, height);
+		_imageView2.frame = CGRectMake(kSmallMargin + ((self.contentView.width/2) - (75)), kVPadding + self.textLabel.font.ttLineHeight, 150, 130);
 		left = _imageView2.right + kSmallMargin;
 	} else {
 		left = kHPadding;
 	}
 	
+	CGFloat textHeight = 0;
+	CGFloat	subtitleHeight = 0;
+	
 	if (self.detailTextLabel.text.length) {
-		CGFloat textHeight = self.textLabel.font.ttLineHeight;
-		CGFloat subtitleHeight = self.detailTextLabel.font.ttLineHeight;
+		textHeight = self.textLabel.font.ttLineHeight;
+		subtitleHeight = self.detailTextLabel.font.ttLineHeight;
 		CGFloat paddingY = floor((height - (textHeight + subtitleHeight))/2);
 		
-		self.textLabel.frame = CGRectMake(left, paddingY, width, textHeight);
-		self.detailTextLabel.frame = CGRectMake(left, self.textLabel.bottom, width, subtitleHeight);
+		self.textLabel.frame = CGRectMake(kMargin, kSmallMargin, self.contentView.width - (kSmallMargin*2), textHeight);
+		self.detailTextLabel.frame = CGRectMake(kMargin, (kSmallMargin*2) + 130 + textHeight, self.contentView.width - (kSmallMargin *2), subtitleHeight);
 	} else {
 		self.textLabel.frame = CGRectMake(_imageView2.right + kSmallMargin, 0, width, height);
 		self.detailTextLabel.frame = CGRectZero;
 	}
 	
-	_commentView.frame = CGRectMake(width+20+(kSmallMargin*2), (height/2)-9, 20, 18);
+	_commentView.frame = CGRectMake(width+20+(kSmallMargin*2), (kSmallMargin*3) + 130 + textHeight + subtitleHeight, 90, 22);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
