@@ -18,7 +18,6 @@
 		6113D267113BFB1300DA1ECD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6113D266113BFB1300DA1ECD /* Default.png */; };
 		6113D26E113BFB5300DA1ECD /* StartupScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6113D26D113BFB5300DA1ECD /* StartupScreenController.m */; };
 		6113D49E113C611700DA1ECD /* UIColor+MBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6113D49D113C611700DA1ECD /* UIColor+MBAPI.m */; };
-		6113D4C6113C667200DA1ECD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6113D4C5113C667200DA1ECD /* Settings.bundle */; };
 		6114531C10AC438800DADDD6 /* 41-picture-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 6114531A10AC438800DADDD6 /* 41-picture-frame.png */; };
 		6114531D10AC438800DADDD6 /* 42-photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6114531B10AC438800DADDD6 /* 42-photos.png */; };
 		6114534210AC4CE400DADDD6 /* BlogListThumbsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114534110AC4CE400DADDD6 /* BlogListThumbsController.m */; };
@@ -140,7 +139,6 @@
 		6113D26D113BFB5300DA1ECD /* StartupScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupScreenController.m; sourceTree = "<group>"; };
 		6113D49C113C611700DA1ECD /* UIColor+MBAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+MBAPI.h"; path = "MBAPI/UIColor+MBAPI.h"; sourceTree = "<group>"; };
 		6113D49D113C611700DA1ECD /* UIColor+MBAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MBAPI.m"; path = "MBAPI/UIColor+MBAPI.m"; sourceTree = "<group>"; };
-		6113D4C5113C667200DA1ECD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		6114531A10AC438800DADDD6 /* 41-picture-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "41-picture-frame.png"; path = "Classes/41-picture-frame.png"; sourceTree = "<group>"; };
 		6114531B10AC438800DADDD6 /* 42-photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "42-photos.png"; path = "Classes/42-photos.png"; sourceTree = "<group>"; };
 		6114534010AC4CE400DADDD6 /* BlogListThumbsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogListThumbsController.h; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 				1D3623250D0F684500981E51 /* MobilBloggAppDelegate.m */,
 				614462EF10901C3D00AD9801 /* RootController.h */,
 				614462F010901C3D00AD9801 /* RootController.m */,
-				6113D4C5113C667200DA1ECD /* Settings.bundle */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -689,7 +686,6 @@
 				61D99C8610B9B2B100A5525A /* 08-chat.png in Resources */,
 				61D99E4D10BAA83C00A5525A /* 08-chatblack.png in Resources */,
 				6113D267113BFB1300DA1ECD /* Default.png in Resources */,
-				6113D4C6113C667200DA1ECD /* Settings.bundle in Resources */,
 				618850D7114EC7DB000A1E29 /* commentView.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
