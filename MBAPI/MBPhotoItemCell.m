@@ -33,9 +33,8 @@ static const NSInteger kMessageTextLineCount = 2;
 // TTTableViewCell class public
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
-	MBPhoto* item = object;
 		
-	return 220;
+	return 225;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +59,7 @@ static const NSInteger kMessageTextLineCount = 2;
 		self.detailTextLabel.lineBreakMode = UILineBreakModeTailTruncation;
 		self.detailTextLabel.numberOfLines = kMessageTextLineCount;
 		
-		_commentView = [[CommentIconView alloc] initWithNumComments:0 andColorBlack:YES];
+		_commentView = [[CommentLabel alloc] initWithNumberOfComments:0];
 		[self addSubview:_commentView];
 		[_commentView addTarget:self action:@selector(gotoComments) forControlEvents:UIControlEventTouchUpInside];
 		
@@ -73,7 +72,7 @@ static const NSInteger kMessageTextLineCount = 2;
 {
 	NSInteger photoId = [[[notif userInfo] objectForKey:@"photoId"] intValue];
 	if (photoId == _photo.photoId) {
-		_commentView.numberComments += 1;
+		_commentView.numberOfComments += 1;
 		_photo.numcomments += 1;
 	}
 }
@@ -122,7 +121,7 @@ static const NSInteger kMessageTextLineCount = 2;
 		self.detailTextLabel.frame = CGRectZero;
 	}
 	
-	_commentView.frame = CGRectMake(width+20+(kSmallMargin*2), (kSmallMargin*3) + 130 + textHeight + subtitleHeight, 90, 22);
+	_commentView.frame = CGRectMake(kSmallMargin + ((self.contentView.width/2) - (109/2)), (kVPadding*2) + 130 + textHeight + subtitleHeight, 109, 22);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -154,7 +153,7 @@ static const NSInteger kMessageTextLineCount = 2;
 		if (photo.URL) {
 			self.imageView2.URL = photo.URL;
 		}
-		_commentView.numberComments = photo.numcomments;
+		_commentView.numberOfComments = photo.numcomments;
 		_photo = photo;
 	}
 }

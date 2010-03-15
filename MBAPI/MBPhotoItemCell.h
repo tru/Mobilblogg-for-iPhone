@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
 #import "MBPhoto.h"
-#import "CommentIconView.h"
+#import "CommentLabel.h"
 
 @interface MBPhotoItemCell : TTTableLinkedItemCell {
-	CommentIconView *_commentView;
+	CommentLabel *_commentView;
 	TTImageView *_imageView2;
 	MBPhoto	*_photo;
 }

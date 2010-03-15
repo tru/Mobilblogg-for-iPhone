@@ -58,11 +58,11 @@ BOOL gLogging = FALSE;
 	[URLMap from:@"mb://userconfmodal/(initWithDidFail:)" toModalViewController:[UserConfigController class]];
 	[URLMap from:@"mb://userconf/(initWithDidFail:)" toViewController:[UserConfigController class]];
 	
-	[URLMap from:@"mb://listblog/(initWithBloggName:)" toViewController:[BlogListTabController class]];
+	[URLMap from:@"mb://listblog/(initWithBloggName:)" toViewController:[BlogListController class]];
 	[URLMap	from:@"mb://picture?" toViewController:[ShowPictureController class]];
 	[URLMap from:@"mb://comments/(initWithId:)" toViewController:[CommentViewController class]
 													  transition:UIViewAnimationTransitionFlipFromLeft];
-	[URLMap	from:@"mb://listfunction/(initWithFunction:)" toViewController:[BlogListTabController class]];
+	[URLMap	from:@"mb://listfunction/(initWithFunction:)" toViewController:[BlogListController class]];
 	[URLMap from:@"mb://gotouser" toViewController:[GotoUserController class]];
 	[URLMap	from:@"mb://about" toViewController:[AboutController class]];
 	[URLMap from:@"mb://photoinfo" toViewController:[ShowPictureInfoController class]

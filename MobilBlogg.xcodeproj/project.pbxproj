@@ -62,6 +62,8 @@
 		61855A2F10BC7833002D304E /* UploaderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855A2E10BC7833002D304E /* UploaderDataSource.m */; };
 		61855C7F10BE9037002D304E /* UploaderSecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855C7E10BE9037002D304E /* UploaderSecretViewController.m */; };
 		61855D5110BEA720002D304E /* MBImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61855D4F10BEA720002D304E /* MBImageUtils.m */; };
+		6188509A114EC150000A1E29 /* CommentLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61885099114EC150000A1E29 /* CommentLabel.m */; };
+		618850D7114EC7DB000A1E29 /* commentView.png in Resources */ = {isa = PBXBuildFile; fileRef = 618850D6114EC7DB000A1E29 /* commentView.png */; };
 		618E634E1129E00400DEC30C /* MBPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 618E634D1129E00400DEC30C /* MBPush.m */; };
 		619C698B10A9A28F008FB797 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 619C698A10A9A28F008FB797 /* Entitlements.plist */; };
 		61BE24391090B20C00D76E03 /* BlogListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BE24381090B20C00D76E03 /* BlogListController.m */; };
@@ -220,6 +222,9 @@
 		61855C7E10BE9037002D304E /* UploaderSecretViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderSecretViewController.m; sourceTree = "<group>"; };
 		61855D4F10BEA720002D304E /* MBImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBImageUtils.m; path = MBAPI/MBImageUtils.m; sourceTree = SOURCE_ROOT; };
 		61855D5010BEA720002D304E /* MBImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBImageUtils.h; path = MBAPI/MBImageUtils.h; sourceTree = SOURCE_ROOT; };
+		61885098114EC150000A1E29 /* CommentLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentLabel.h; sourceTree = "<group>"; };
+		61885099114EC150000A1E29 /* CommentLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentLabel.m; sourceTree = "<group>"; };
+		618850D6114EC7DB000A1E29 /* commentView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentView.png; sourceTree = "<group>"; };
 		618E634C1129E00400DEC30C /* MBPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBPush.h; path = MBAPI/MBPush.h; sourceTree = "<group>"; };
 		618E634D1129E00400DEC30C /* MBPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBPush.m; path = MBAPI/MBPush.m; sourceTree = "<group>"; };
 		619C698A10A9A28F008FB797 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
@@ -322,6 +327,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				618850D6114EC7DB000A1E29 /* commentView.png */,
 				6113D266113BFB1300DA1ECD /* Default.png */,
 				61D99E4C10BAA83C00A5525A /* 08-chatblack.png */,
 				61D99C8510B9B2B100A5525A /* 08-chat.png */,
@@ -414,6 +420,8 @@
 			children = (
 				61D99C9010B9B5F500A5525A /* CommentIconView.h */,
 				61D99C9110B9B5F500A5525A /* CommentIconView.m */,
+				61885098114EC150000A1E29 /* CommentLabel.h */,
+				61885099114EC150000A1E29 /* CommentLabel.m */,
 				61CFC88B10B08E38008FEBF2 /* CommentModel.h */,
 				61CFC88C10B08E38008FEBF2 /* CommentModel.m */,
 				61347E861093466D00DD5DE7 /* CommentViewController.h */,
@@ -682,6 +690,7 @@
 				61D99E4D10BAA83C00A5525A /* 08-chatblack.png in Resources */,
 				6113D267113BFB1300DA1ECD /* Default.png in Resources */,
 				6113D4C6113C667200DA1ECD /* Settings.bundle in Resources */,
+				618850D7114EC7DB000A1E29 /* commentView.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +753,7 @@
 				6113D00811380CDF00DA1ECD /* PhotoPickerController.m in Sources */,
 				6113D26E113BFB5300DA1ECD /* StartupScreenController.m in Sources */,
 				6113D49E113C611700DA1ECD /* UIColor+MBAPI.m in Sources */,
+				6188509A114EC150000A1E29 /* CommentLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

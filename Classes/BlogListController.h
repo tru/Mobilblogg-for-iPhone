@@ -14,5 +14,7 @@
 }
 
 -(id)initWithArguments:(NSDictionary *)arguments;
+-(id)initWithBloggName:(NSString *)bloggName;
+-(id)initWithFunction:(NSString *)functionName;
 
 @end

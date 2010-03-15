@@ -45,7 +45,7 @@
 	TTImageStyle *style = [TTImageStyle styleWithImageURL:nil
 											 defaultImage:nil
 											  contentMode:UIViewContentModeScaleAspectFill
-													 size:CGSizeMake(40, 40)
+													 size:CGSizeMake(25, 25)
 													 next:TTSTYLE(rounded)];
 
 	_startpage = [TTTableImageItem itemWithText:NSLocalizedString(@"My Start Page", nil)
