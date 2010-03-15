@@ -83,6 +83,22 @@
 					   nil];
 }
 
+-(void)loadView
+{
+	[super loadView];
+	self.navigationController.view.alpha = 0.0;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:0.2];
+	[UIView setAnimationDuration:0.8];
+	self.navigationController.view.alpha = 1.0;
+	[UIView	commitAnimations];
+}
+
 -(void)MBUserDidReceiveInfo:(MBUser*)user
 {
 	_myblog.imageURL = user.avatarURL;

@@ -85,14 +85,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 612DB7BF11494AF400B4A2A9 /* iphoneExif.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = AF1F78C40E0A7F030023CDE4 /* libiphone-exif.a */;
+			remoteGlobalIDString = AF1F78C40E0A7F030023CDE4;
 			remoteInfo = exifLib;
 		};
 		612DB7F411494C9300B4A2A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 612DB7BF11494AF400B4A2A9 /* iphoneExif.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = AFC2C7870DD4A90D004A4357 /* exifLib */;
+			remoteGlobalIDString = AFC2C7870DD4A90D004A4357;
 			remoteInfo = exifLib;
 		};
 		613C7F5110D77CD00049D1CB /* PBXContainerItemProxy */ = {

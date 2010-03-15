@@ -69,7 +69,8 @@
 -(void)loginDidSucceed
 {
 	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDelay:TT_FLIP_TRANSITION_DURATION];
+	[UIView	setAnimationDelay:TT_FLIP_TRANSITION_DURATION];
+	[UIView setAnimationDuration:0.5];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationDidStop)];
 	self.view.alpha = 0.0;
@@ -79,10 +80,10 @@
 -(void)animationDidStop
 {
 	TTDINFO("Fade done!");
-	[self.navigationController setNavigationBarHidden:NO animated:YES];
+	[self.navigationController setNavigationBarHidden:NO animated:NO];
 	TTURLAction *ac = [TTURLAction actionWithURLPath:@"mb://root"];
 	[ac setParentURLPath:nil];
-	[ac applyAnimated:YES];
+	[ac applyAnimated:NO];
 	[[TTNavigator navigator] openURLAction:ac];
 }
 
