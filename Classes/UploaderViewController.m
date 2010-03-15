@@ -120,6 +120,12 @@
 	return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
 -(void)imageResized:(UIImage*)img
 {
 //	TTDINFO(@"Image resized!");
