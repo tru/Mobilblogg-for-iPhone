@@ -107,6 +107,7 @@ BOOL gLogging = FALSE;
 										  otherButtonTitles:nil];
 	
 	[alert show];
+	[alert release];
 }
 
 #pragma mark -
