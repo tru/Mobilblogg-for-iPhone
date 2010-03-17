@@ -24,12 +24,12 @@
 																			  style:UIBarButtonItemStyleBordered 
 																			 target:nil action:nil] autorelease];
 //	self.tableViewStyle = UITableViewStyleGrouped;
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera 
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera 
 																						   target:self 
-																						   action:@selector(camera)];
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout", nil)
+																						   action:@selector(camera)] autorelease];
+	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout", nil)
 																			 style:UIBarButtonItemStylePlain target:self
-																			action:@selector(logout)];
+																			action:@selector(logout)] autorelease];
 
 	self.navigationBarTintColor = [UIColor mbColor];
 
@@ -128,6 +128,7 @@
 }
 
 - (void)dealloc {
+	TTDINFO(@"DEALLOC: RootController");
 	[_activity release];
     [super dealloc];
 }
@@ -196,12 +197,13 @@
 	
 }
 
-
+#if 0
 - (void)didReceiveMemoryWarning
 {
 	/* default here is to dealloc the table, I don't want that so
 	 * let's just ignore the signal */
 	TTDINFO(@"RootController got memoryWarning");
 }
+#endif
 
 @end
