@@ -128,10 +128,7 @@
 
 -(void)imageResized:(UIImage*)img
 {
-//	TTDINFO(@"Image resized!");
-//	TTLOGSIZE(img.size);
 	_imageItem.image = img;
-	//[img retain];
 	
 	[self.tableView reloadData];
 	
@@ -350,6 +347,7 @@
 
 -(void)switchLocation
 {
+	TTDINFO("switchLocation!");
 	[MBStore setBool:_locationField.on forKey:@"useLocation"];
 	if (_locationField.on) {
 		[self resolveLocation];
@@ -360,11 +358,15 @@
 	}
 }
 
+#pragma mark CCLocation
+
 -(void)resolveLocation
 {
-	_locationManager = [CLLocationManager new];
-	_locationManager.delegate = self;
-	_locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+	if (!_locationManager) {
+		_locationManager = [CLLocationManager new];
+		_locationManager.delegate = self;
+		_locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+	}
 		
 	[_locationManager startUpdatingLocation];
 }
@@ -372,6 +374,15 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
 	NSLog(@"New location ... %@", [newLocation description]);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+	if ([error code] == kCLErrorDenied) {
+		/* denied access by the user */
+		[_locationField setOn:NO animated:YES];
+	}
+	[MBStore setBool:_locationField.on forKey:@"useLocation"];
 }
 
 -(void)didSelectPermValue:(NSString*)permText
