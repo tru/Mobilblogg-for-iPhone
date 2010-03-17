@@ -17,7 +17,7 @@
 -(id)initWithUserName:(NSString*)userName
 {
 	self = [super init];
-	_name = userName;
+	_name = [userName copy];
 	
 	NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"profile", @"func",
@@ -26,6 +26,7 @@
 	
 	_conn = [[MBConnectionRoot alloc] initWithArguments:args];
 	_conn.delegate = self;
+	[_conn release];
 
 	TTDINFO(@"MBUser inited %@", _name);
 	return self;
@@ -70,7 +71,6 @@
 	[_name release];
 	[_info release];
 	[_avatarURL release];
-	[_conn release];
 	if (_delegate) {
 		[_delegate release];
 	}
