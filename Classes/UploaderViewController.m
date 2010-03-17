@@ -94,7 +94,7 @@
 	CGFloat ax = self.tableView.bounds.size.height - 50;
 	_activity = [[TTActivityLabel alloc] initWithFrame:CGRectMake(0, ax, self.tableView.bounds.size.width, 50)
 												 style:TTActivityLabelStyleBlackBox
-												  text:NSLocalizedString(@"Resizing image...", nil)];
+												  text:NSLocalizedString(@"Working...", nil)];
 	_activity.smoothesProgress = NO;
 	[self.view addSubview:_activity];
 	_activity.alpha = 0.0;
@@ -103,21 +103,37 @@
 	UIImage *defImg = TTIMAGE(@"bundle://Three20.bundle/images/empty.png");
 	_imageItem.image = defImg;
 	
-	if (img.size.width > 800) {
-		NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-		MBImageScaleOperation *op = [[MBImageScaleOperation alloc] initWithImage:img andTargetSize:CGSizeMake(800, 640)];
-		op.delegate = self;
-		[queue addOperation:op];
-		[queue release];
-		[op release];
+	NSString *fromCamera = [dict objectForKey:@"fromCamera"];
+	if ([fromCamera isEqualToString:@"yes"]) {
+		UIImageWriteToSavedPhotosAlbum(img, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+		_activity.text = NSLocalizedString(@"Saving image...", nil);
 		_activity.alpha = 1.0;
 	} else {
-		_imageItem.image = img;
+		[self image:img didFinishSavingWithError:nil contextInfo:nil];
 	}
+	
 	
 //	[[TTNavigator navigator].URLMap from:@"mb://_editimg" toObject:self selector:@selector(openIMG)];
 			
 	return self;
+}
+
+-(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)context
+{
+	if (image.size.width > 800) {
+		NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+		MBImageScaleOperation *op = [[MBImageScaleOperation alloc] initWithImage:image andTargetSize:CGSizeMake(800, 640)];
+		op.delegate = self;
+		[queue addOperation:op];
+		[queue release];
+		[op release];
+		_activity.text = NSLocalizedString(@"Resizing image...", nil);
+		_activity.alpha = 1.0;
+	} else {
+		_imageItem.image = image;
+		[self activityRemove];
+	}
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -128,10 +144,15 @@
 
 -(void)imageResized:(UIImage*)img
 {
+	[self activityRemove];
 	_imageItem.image = img;
 	
 	[self.tableView reloadData];
 	
+}
+
+-(void)activityRemove
+{
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
 	_activity.alpha = 0.0;
@@ -267,11 +288,7 @@
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
-	_activity.alpha = 0.0;
-	[UIView commitAnimations];
-
+	[self activityRemove];
 	if ([alertView.message isEqualToString:NSLocalizedString(@"Wrong secret word!", nil)]) {
 		_uploading = NO;
 		self.navigationItem.rightBarButtonItem.enabled = YES;

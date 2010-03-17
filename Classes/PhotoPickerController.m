@@ -40,23 +40,15 @@
 		[alert release];
 		return;
 	}
-	
-	if (self.sourceType == UIImagePickerControllerSourceTypeCamera) {
-		TTDINFO(@"Saving image...");
-		UIImageWriteToSavedPhotosAlbum(img, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-	} else {
-		[self image:img didFinishSavingWithError:nil contextInfo:nil];
-	}
-}
 
--(void)image:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)context
-{
-	TTDINFO(@"Done saving image!");
 	TTURLAction *action = [TTURLAction actionWithURLPath:@"mb://upload"];
 	[action applyAnimated:YES];
-	[action applyQuery:[NSDictionary dictionaryWithObjectsAndKeys:image, @"image", nil]];
+	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+						  img, @"image",
+						  self.sourceType == UIImagePickerControllerSourceTypeCamera ? @"yes" : @"no", @"fromCamera",
+						  nil];
+	[action applyQuery:dict];
 	[[TTNavigator navigator] openURLAction:action];
-	//[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

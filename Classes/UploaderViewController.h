@@ -37,5 +37,7 @@
 -(id)initWithNavigatorURL:(NSURL *)url query:(NSDictionary *)dict;
 -(void)didSelectPermValue:(NSString *)permText;
 -(void)resolveLocation;
+-(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)context;
+-(void)activityRemove;
 
 @end
