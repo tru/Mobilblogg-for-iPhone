@@ -41,8 +41,8 @@
 		return;
 	}
 	
-	TTDINFO(@"Saving image...");
 	if (self.sourceType == UIImagePickerControllerSourceTypeCamera) {
+		TTDINFO(@"Saving image...");
 		UIImageWriteToSavedPhotosAlbum(img, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 	} else {
 		[self image:img didFinishSavingWithError:nil contextInfo:nil];
