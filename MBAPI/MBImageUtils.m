@@ -37,6 +37,9 @@
 {
 	TTDINFO(@"DEALLOC: MBImageScaleOperation");
 	[_image release];
+	if (_delegate) {
+		[_delegate release];
+	}
 	[super dealloc];
 }
 
