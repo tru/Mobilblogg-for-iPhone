@@ -19,7 +19,7 @@
 @end
 
 
-@interface UploaderViewController : TTTableViewController<TTPostControllerDelegate, TTURLRequestDelegate,CLLocationManagerDelegate> {
+@interface UploaderViewController : TTTableViewController<TTPostControllerDelegate,TTURLRequestDelegate,CLLocationManagerDelegate> {
 	UploaderImageItem *_imageItem;
 	UITextField *_captionField;
 	UITextField *_bodyField;
@@ -27,7 +27,6 @@
 	UISwitch *_locationField;
 	TTActivityLabel *_activity;
 	BOOL _uploading;
-	BOOL _showingPostCtrl;
 	NSAutoreleasePool *_pool;
 	NSString *_secretWord;
 	

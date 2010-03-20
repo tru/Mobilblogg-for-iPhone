@@ -83,6 +83,13 @@
 	self.autoresizesForKeyboard = YES;
 	self.variableHeightRows = YES;
 	_uploading = NO;
+
+	
+	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+																							target:self
+																							action:@selector(cancel)] autorelease];
+
+	
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Upload", nil) 
 																			   style:UIBarButtonItemStyleDone
 																			  target:self
@@ -118,6 +125,11 @@
 	return self;
 }
 
+-(void)cancel
+{
+	[self dismissModalViewControllerAnimated:YES];	
+}
+
 -(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)context
 {
 	if (image.size.width > 800) {
@@ -130,6 +142,7 @@
 		_activity.text = NSLocalizedString(@"Resizing image...", nil);
 		_activity.alpha = 1.0;
 	} else {
+		self.navigationItem.rightBarButtonItem.enabled = YES;
 		_imageItem.image = image;
 		[self activityRemove];
 	}
@@ -146,6 +159,7 @@
 {
 	[self activityRemove];
 	_imageItem.image = img;
+	self.navigationItem.rightBarButtonItem.enabled = YES;
 	
 	[self.tableView reloadData];
 	
@@ -211,7 +225,7 @@
 	[request.parameters addEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
 												  kMobilBloggTemplateName, @"template",
 												  @"upload", @"func",
-												  _captionField.text, @"header",
+												  _captionField.text ? _captionField.text : @"", @"header",
 												  body, @"text",
 												  _secretWord ? _secretWord : @"", @"secretword",
 												  [@"/files/" stringByAppendingString:[MBStore getUserName]], @"path",
@@ -226,7 +240,6 @@
 //	TTDINFO("Sent request %d", request.totalBytesExpected);
 	
 	self.navigationItem.rightBarButtonItem.enabled = NO;
-	self.navigationItem.leftBarButtonItem.enabled = NO;
 	_uploading = YES;
 	
 	if ([_captionField isFirstResponder]) {
@@ -291,8 +304,6 @@
 	[self activityRemove];
 	if ([alertView.message isEqualToString:NSLocalizedString(@"Wrong secret word!", nil)]) {
 		_uploading = NO;
-		self.navigationItem.rightBarButtonItem.enabled = YES;
-		self.navigationItem.leftBarButtonItem.enabled = YES;
 		_secretWord = nil;
 		[MBStore setObject:nil forKey:@"secretWord"];
 		
@@ -467,42 +478,28 @@
 	post.superController = self;
 	[post showInView:self.view animated:YES];
 	[post release];
-	_showingPostCtrl = YES;
 }
 
-/*
+
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-	TTDINFO("shouldAutorotate?");
-	if (_showingPostCtrl) {
-		return YES;
-	} else {
-		return NO;
-	}
-}*/
+	return TTIsSupportedOrientation(toInterfaceOrientation);
+}
 
 -(BOOL)postController:(TTPostController*)postController willPostText:(NSString*)text
 {
 	/* wow, the matching here is butt ugly */
 	if ([postController.navigationItem.title isEqualToString:NSLocalizedString(@"Add caption", nil)]) {
 		_captionField.text = text;
-		if ([text length] > 0) {
-			self.navigationItem.rightBarButtonItem.enabled = YES;
-		}
 	} else if ([postController.navigationItem.title isEqualToString:NSLocalizedString(@"Add body", nil)]) {
 		_bodyField.text = text;
 	}
-	_showingPostCtrl = NO;
 	return YES;
 }
 
 -(CGRect)postController:(TTPostController*)postController willAnimateTowards:(CGRect)rect
 {
-//	CGRect r = [self.tableView rectForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-//	CGRect trans = [self.navigationController.view convertRect:r fromView:self.tableView];
-
 	return rect;
-	
 }
 
 @end
