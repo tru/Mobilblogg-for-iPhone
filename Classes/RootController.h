@@ -18,6 +18,7 @@
 	TTActivityLabel *_activity;
 	TTTableImageItem *_myblog;
 	TTTableImageItem *_startpage;
+	BOOL _doneFirstTime;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;

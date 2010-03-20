@@ -32,6 +32,8 @@
 																			action:@selector(logout)] autorelease];
 
 	self.navigationBarTintColor = [UIColor mbColor];
+	
+	_doneFirstTime = NO;
 
 	return self;
 }
@@ -86,17 +88,22 @@
 -(void)loadView
 {
 	[super loadView];
-	self.navigationController.view.alpha = 0.0;
+	if (!_doneFirstTime) {
+		self.navigationController.view.alpha = 0.0;
+	}
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-	[super viewWillAppear:animated];
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDelay:0.2];
-	[UIView setAnimationDuration:0.8];
-	self.navigationController.view.alpha = 1.0;
-	[UIView	commitAnimations];
+	if (!_doneFirstTime) {
+		[super viewWillAppear:animated];
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationDelay:0.2];
+		[UIView setAnimationDuration:0.8];
+		self.navigationController.view.alpha = 1.0;
+		[UIView	commitAnimations];
+		_doneFirstTime = YES;
+	}
 }
 
 -(void)MBUserDidReceiveInfo:(MBUser*)user
