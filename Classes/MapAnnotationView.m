@@ -17,6 +17,8 @@
 	if (self) {
 		TTDINFO(@"MapAnnotationView");
 		self.canShowCallout = YES;
+		self.animatesDrop = YES;
+		self.pinColor = MKPinAnnotationColorPurple;
 	}
 	return self;
 }

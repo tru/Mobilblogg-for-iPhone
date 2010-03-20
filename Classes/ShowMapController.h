@@ -9,11 +9,13 @@
 #import <MapKit/MapKit.h>
 #import <Three20/Three20.h>
 #import "ShowMapView.h"
+#import "MBPhoto.h"
 
 
 @interface ShowMapController : TTViewController<MKMapViewDelegate> {
 	MKMapView *_mapView;
 	NSArray *_photos;
+	MBPhoto *_centerPhoto;
 }
 
 @end

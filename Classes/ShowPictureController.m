@@ -19,7 +19,19 @@
 {
 	self = [super init];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotNotification:) name:@"commentSentForPhotoId" object:nil];
+	
+	
 	return self;
+}
+
+-(void)showMap
+{
+	TTURLAction *ac = [TTURLAction actionWithURLPath:@"mb://map"];
+	BlogListModel *model = (BlogListModel*)self.model;
+	NSArray *photos = [model results];
+	[ac applyQuery:[NSDictionary dictionaryWithObjectsAndKeys:photos, @"photos", _photo, @"centerPhoto", nil]];
+	[ac applyAnimated:YES];
+	[[TTNavigator navigator] openURLAction:ac];
 }
 
 - (void)gotNotification:(NSNotification*)notif
@@ -43,7 +55,11 @@
 -(void)updateChrome
 {
 	[super updateChrome];
-	self.navigationItem.rightBarButtonItem = nil;
+	//self.navigationItem.rightBarButtonItem = nil;
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Show map", nil)
+																			   style:UIBarButtonItemStyleBordered
+																			  target:self
+																			  action:@selector(showMap)] autorelease];
 }
 
 /* we must set the model to our underlying model here,
@@ -52,7 +68,7 @@
 -(void)setCenterPhoto:(id<TTPhoto>)photo
 {
 	[super setCenterPhoto:photo];
-	_photo = photo;
+	_photo = (MBPhoto*)photo;
 	self.model = [((BlogListThumbsDataSource*)photo.photoSource) underlyingModel];
 }
 

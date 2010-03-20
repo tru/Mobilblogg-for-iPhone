@@ -18,10 +18,22 @@
 	
 	if (self) {
 		_photos = [query objectForKey:@"photos"];
+		_centerPhoto = [query objectForKey:@"centerPhoto"];
+		self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+																								target:self
+																								action:@selector(done)] autorelease];
+		
+		self.title = NSLocalizedString(@"Photos on map", nil);
 		[_photos retain];
+		[_centerPhoto retain];
 	}
 	
 	return self;
+}
+
+-(void)done
+{
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)loadView
@@ -78,17 +90,43 @@
 	centerCo.latitude = centerCo.latitude / annotations;
 	
 	MKCoordinateRegion region;
-	region.center = centerCo;
-	region.span.longitudeDelta = (maxlong - minlong) * 1.5;
-	region.span.latitudeDelta = (maxlat - minlat) * 1.5;
+	if (_centerPhoto) {
+		region.center = _centerPhoto.coordinate;
+		region.span.longitudeDelta = 0.1;
+		region.span.latitudeDelta = 0.1;
+	} else {
+		region.center = centerCo;
+		region.span.longitudeDelta = (maxlong - minlong) * 1.5;
+		region.span.latitudeDelta = (maxlat - minlat) * 1.5;
+	}
 		
 	[_mapView setRegion:region animated:YES];
-	
+}
+
+-(void)mapView:(MKMapView*)mapView didAddAnnotationViews:(NSArray *)views
+{
+	for (MKAnnotationView *annView in views) {
+		MBPhoto *p = (MBPhoto*)annView.annotation;
+		if (_centerPhoto.photoId == p.photoId) {
+			TTDINFO(@"Setting center photo");
+			[mapView selectAnnotation:annView.annotation animated:NO];
+		}
+	}
 }
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-	return [[MapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
+	MBPhoto *p = (MBPhoto*)annotation;	
+	NSString *ident = [NSString stringWithFormat:@"%d", p.photoId];
+	
+	TTDINFO(@"View for annotation %@", ident);
+	
+	MKAnnotationView *view = [mapView dequeueReusableAnnotationViewWithIdentifier:ident];
+	if (!view) {
+		view = [[MapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ident];
+	}
+		
+	return view;
 }
 
 -(void)dealloc
@@ -96,6 +134,9 @@
 	TTDINFO(@"DEALLOC: ShowMapController");
 	[_mapView release];
 	[_photos release];
+	if (_centerPhoto) {
+		[_centerPhoto release];
+	}
 	[super dealloc];
 }
 

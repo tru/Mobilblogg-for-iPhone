@@ -70,8 +70,8 @@ BOOL gLogging = FALSE;
 									     transition:UIViewAnimationTransitionFlipFromLeft];
 	[URLMap from:@"mb://profile/(initWithUserName:)" toViewController:[ProfileViewController class]];
 	[URLMap from:@"mb://upload" toViewController:[UploaderViewController class]];
-	[URLMap	from:@"mb://map" toViewController:[ShowMapController class]];
-
+	[URLMap	from:@"mb://map" toModalViewController:[ShowMapController class]];
+	
 	[TTStyleSheet setGlobalStyleSheet:[[[MobilBloggStyleSheet alloc] init] autorelease]];
 	
 	[ttnav openURLAction:[TTURLAction actionWithURLPath:@"mb://startup"]];

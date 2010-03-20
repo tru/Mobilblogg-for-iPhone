@@ -286,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				61855A3010BC78A8002D304E /* Uploader */,
+				61885420115511BB000A1E29 /* MapView */,
 				61347E8A1093467300DD5DE7 /* PhotoView */,
 				61347B7B1093072800DD5DE7 /* Others */,
 				61347B79109306F300DD5DE7 /* BloggList */,
@@ -373,7 +374,6 @@
 		61347B79109306F300DD5DE7 /* BloggList */ = {
 			isa = PBXGroup;
 			children = (
-				61885420115511BB000A1E29 /* MapView */,
 				6114534F10AC4ED400DADDD6 /* BlogListThumbsDataSource.h */,
 				6114535010AC4ED400DADDD6 /* BlogListThumbsDataSource.m */,
 				6114534010AC4CE400DADDD6 /* BlogListThumbsController.h */,
