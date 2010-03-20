@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 #import <Three20/Three20.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface MBPhoto : NSObject<TTPhoto> {
+@interface MBPhoto : NSObject<TTPhoto,MKAnnotation> {
 	id<TTPhotoSource> _photoSource;
 	NSUInteger _photoId;
 	NSString *_thumbURL;
@@ -23,6 +25,7 @@
 	NSDate *_date;
 	NSUInteger _numcomments;
 	NSString *_body;
+	CLLocation *_location;
 }
 
 @property (nonatomic, copy) NSString *user;
@@ -33,6 +36,13 @@
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, copy) NSString *body;
 @property (nonatomic) NSUInteger numcomments;
+@property (nonatomic, retain) CLLocation *location;
+
+#pragma mark MKAnnotation
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+
+-(NSString*)title;
+-(NSString*)subtitle;
 
 -(id)initWithPhotoId:(NSUInteger)pId;
 +(MBPhoto*)photoWithPhotoId:(NSUInteger)pId;

@@ -7,12 +7,14 @@
 //
 
 #import "MBPhoto.h"
+#import "NSString+MBAPI.h"
 
 @implementation MBPhoto
 
 @synthesize photoSource = _photoSource, size = _size, index = _index, caption = _caption, user = _user, photoId = _photoId;
 @synthesize thumbURL = _thumbURL, smallURL = _smallURL, URL = _URL;
 @synthesize date = _date, body = _body, numcomments = _numcomments;
+@synthesize location = _location;
 
 +(MBPhoto*)photoWithPhotoId:(NSUInteger)pId
 {
@@ -51,6 +53,41 @@
 }
 */
 
+-(CLLocationCoordinate2D)coordinate
+{
+	if (_location) {
+		return _location.coordinate;
+	} else {
+		CLLocationCoordinate2D ret;
+		ret.longitude = -122.030731;
+		ret.latitude = 37.331688;
+		return ret;
+	}
+}
+
+-(NSString*)title
+{
+	if (self.caption.length) {
+		return [self.caption wordWrapToLength:23];
+	} else {
+		return @"";
+	}
+}
+
+-(NSString*)subtitle
+{
+	if (self.user.length) {
+		NSMutableString *subtitle = [NSMutableString stringWithFormat:@"By: %@", self.user];
+		if (self.date) {
+			[subtitle appendFormat:@" - %@", [self.date formatRelativeTime]];
+		}
+		
+		return subtitle;
+	} else {
+		return NSLocalizedString(@"No user", nil);
+	}
+}
+
 -(void)dealloc
 {
 	TTDINFO(@"DEALLOC: MBPhoto %d", _photoId);
@@ -61,6 +98,9 @@
 	[_user release];
 	[_date release];
 	[_body release];
+	if (_location) {
+		[_location release];
+	}
 	[super dealloc];
 }
 

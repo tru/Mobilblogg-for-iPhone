@@ -133,22 +133,9 @@ static const NSInteger kMessageTextLineCount = 2;
 		_item = [object retain];
 		
 		MBPhoto* photo = object;
-		if (photo.caption.length) {
-			self.textLabel.text = [photo.caption wordWrapToLength:23];
-		} else {
-			self.textLabel.text = @"";
-		}
+		self.textLabel.text = photo.title;
+		self.detailTextLabel.text = photo.subtitle;
 		
-		if (photo.user.length) {
-			NSMutableString *subtitle = [NSMutableString stringWithFormat:@"By: %@", photo.user];
-			if (photo.date) {
-				[subtitle appendFormat:@" - %@", [photo.date formatRelativeTime]];
-			}
-			
-			self.detailTextLabel.text = subtitle;
-		} else {
-			self.detailTextLabel.text = NSLocalizedString(@"No user", nil);
-		}
 		self.imageView2.defaultImage = TTIMAGE(@"bundle://Three20.bundle/images/empty.png");
 		if (photo.URL) {
 			self.imageView2.URL = photo.URL;

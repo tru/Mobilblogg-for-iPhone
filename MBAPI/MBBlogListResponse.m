@@ -90,6 +90,19 @@
 			}
 		}
 		
+		NSString *longLat = [p objectForKey:@"gpsposition"];
+		if (longLat && ![longLat isEqualToString:@""]) {
+			NSArray *comp = [longLat componentsSeparatedByString:@", "];
+			if ([comp count] != 2) {
+				TTDINFO(@"Couldn't parse longLat string %@", longLat);
+			} else {
+				CLLocation *location = [[CLLocation alloc] initWithLatitude:[[comp objectAtIndex:0] floatValue] longitude:[[comp objectAtIndex:1] floatValue]];
+				photo.location = location;
+				TTDINFO(@"Location %f %f", location.coordinate.longitude, location.coordinate.latitude);
+				[location release];
+			}
+		}
+		
 		[_entries addObject:photo];
 	}
 	

@@ -12,6 +12,7 @@
 #import "MBPhoto.h"
 #import "ShowPictureController.h"
 #import "BlogListThumbsDataSource.h"
+#import "ShowMapController.h"
 
 @implementation BlogListController
 
@@ -42,6 +43,10 @@
 	return [self initWithArguments:arguments];
 }
 
+-(void)dataSourceDidFinishLoading
+{
+	self.navigationItem.rightBarButtonItem.enabled = YES;
+}
 
 -(id)initWithArguments:(NSDictionary*)arguments
 {
@@ -52,10 +57,28 @@
 	id<TTTableViewDataSource> ds = [BlogListDataSource dataSourceWithItems:nil];
 	ds.model = [[[BlogListModel alloc] initWithArguments:arguments] autorelease];
 	self.dataSource = ds;
+	((BlogListDataSource*)ds).tableCtrl = self;
 	
-	self.tabBarItem = [[UITabBarItem alloc] initWithTitle:self.title image:TTIMAGE(@"bundle://41-picture-frame.png") tag:0];
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Show map", nil)
+																			   style:UIBarButtonItemStyleBordered
+																			  target:self
+																			  action:@selector(showMap)] autorelease];
+	self.navigationItem.rightBarButtonItem.enabled = NO;
+	
+//	self.tabBarItem = [[UITabBarItem alloc] initWithTitle:self.title image:TTIMAGE(@"bundle://41-picture-frame.png") tag:0];
 
 	return self;
+}
+
+-(void)showMap
+{
+	TTURLAction *ac = [[TTURLAction alloc] initWithURLPath:@"mb://map"];
+	BlogListModel *model = (BlogListModel*)self.dataSource.model;
+	NSArray *photos = [model results];
+	
+	[ac applyQuery:[NSDictionary dictionaryWithObject:photos forKey:@"photos"]];
+	[ac applyAnimated:YES];
+	[[TTNavigator navigator] openURLAction:ac];
 }
 
 -(void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath

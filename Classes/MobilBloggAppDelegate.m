@@ -23,6 +23,7 @@
 #import "MBPush.h"
 #import "UploaderViewController.h"
 #import "StartupScreenController.h"
+#import "ShowMapController.h"
 
 @implementation MobilBloggStyleSheet
 
@@ -69,6 +70,7 @@ BOOL gLogging = FALSE;
 									     transition:UIViewAnimationTransitionFlipFromLeft];
 	[URLMap from:@"mb://profile/(initWithUserName:)" toViewController:[ProfileViewController class]];
 	[URLMap from:@"mb://upload" toViewController:[UploaderViewController class]];
+	[URLMap	from:@"mb://map" toViewController:[ShowMapController class]];
 
 	[TTStyleSheet setGlobalStyleSheet:[[[MobilBloggStyleSheet alloc] init] autorelease]];
 	

@@ -12,6 +12,7 @@
 #import "MBPhotoItemCell.h"
 
 @implementation BlogListDataSource
+@synthesize tableCtrl = _tableCtrl;
 
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
@@ -29,6 +30,11 @@
 	if (([self.items count] % 10) == 0) {
 		[self.items addObject:[TTTableMoreButton itemWithText:NSLocalizedString(@"Load more ...", nil)]];
 	}
+	
+	if (self.tableCtrl) {
+		[self.tableCtrl performSelector:@selector(dataSourceDidFinishLoading)];
+	}
+	
 }
 
 -(Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {
@@ -43,6 +49,9 @@
 {
 	TTDINFO(@"DEALLOC: BlogListDataSource %x", self);
 	[[TTNavigator navigator].URLMap	removeURL:[NSString stringWithFormat:@"mb://_topicture/%x/(navigateToPhotos:)", self]];
+	if (self.tableCtrl) {
+		[self.tableCtrl release];
+	}
 	[super dealloc];
 }
 

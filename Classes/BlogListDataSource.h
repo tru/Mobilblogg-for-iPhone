@@ -10,7 +10,9 @@
 #import <Three20/Three20.h>
 
 @interface BlogListDataSource : TTListDataSource {
+	TTTableViewController *_tableCtrl;
 }
 
+@property (nonatomic, retain) TTTableViewController *tableCtrl;
 
 @end
