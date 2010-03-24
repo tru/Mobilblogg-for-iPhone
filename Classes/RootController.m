@@ -96,7 +96,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 	if (!_doneFirstTime) {
-		[super viewWillAppear:animated];
 		[UIView beginAnimations:nil context:nil];
 		[UIView setAnimationDelay:0.2];
 		[UIView setAnimationDuration:0.8];

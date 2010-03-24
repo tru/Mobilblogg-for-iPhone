@@ -20,6 +20,8 @@
 	[UIView setAnimationDelay:TT_FAST_TRANSITION_DURATION];
 	_activity.alpha = 1.0;
 	[UIView commitAnimations];
+	
+	[super viewWillAppear:animated];
 }
 
 -(void)loadView
