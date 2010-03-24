@@ -1,0 +1,314 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF1F78BC0E0A7E470023CDE4 /* iphoneExif_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AF1F78BB0E0A7E470023CDE4 /* iphoneExif_Prefix.pch */; };
+		AFC2C7940DD4AA4A004A4357 /* EXFGPS.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FDC3E0DD26A9200ED8839 /* EXFGPS.m */; };
+		AFC2C7950DD4AA53004A4357 /* EXFHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FDC400DD26A9200ED8839 /* EXFHandlers.m */; };
+		AFC2C7960DD4AA5C004A4357 /* EXFJFIF.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FDC420DD26A9200ED8839 /* EXFJFIF.m */; };
+		AFC2C7970DD4AA64004A4357 /* EXFJpeg.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FDC440DD26A9200ED8839 /* EXFJpeg.m */; };
+		AFC2C7990DD4AA77004A4357 /* EXFMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FDC470DD26A9200ED8839 /* EXFMetaData.m */; };
+		AFC2C79A0DD4AA84004A4357 /* EXFTagDefinitionHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FDC490DD26A9200ED8839 /* EXFTagDefinitionHolder.m */; };
+		AFC2C79B0DD4AA8C004A4357 /* EXFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FDC4B0DD26A9200ED8839 /* EXFUtils.m */; };
+		AFC2C7E80DD4B2AD004A4357 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		AFC2C8DB0DD58E21004A4357 /* EXFLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = AFC2C8DA0DD58E21004A4357 /* EXFLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFC2C9060DD5B199004A4357 /* EXF.h in Headers */ = {isa = PBXBuildFile; fileRef = AF7FDC3B0DD26A9200ED8839 /* EXF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFC2C9070DD5B1A9004A4357 /* EXFGPS.h in Headers */ = {isa = PBXBuildFile; fileRef = AF7FDC3D0DD26A9200ED8839 /* EXFGPS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFC2C9080DD5B1B4004A4357 /* EXFHandlers.h in Headers */ = {isa = PBXBuildFile; fileRef = AF7FDC3F0DD26A9200ED8839 /* EXFHandlers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFC2C9090DD5B1C4004A4357 /* EXFJFIF.h in Headers */ = {isa = PBXBuildFile; fileRef = AF7FDC410DD26A9200ED8839 /* EXFJFIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFC2C90A0DD5B1CD004A4357 /* EXFJpeg.h in Headers */ = {isa = PBXBuildFile; fileRef = AF7FDC430DD26A9200ED8839 /* EXFJpeg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFC2C91D0DD5B1F2004A4357 /* EXFMetaData.h in Headers */ = {isa = PBXBuildFile; fileRef = AF7FDC460DD26A9200ED8839 /* EXFMetaData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFC2C91F0DD5B202004A4357 /* EXFUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AF7FDC4A0DD26A9200ED8839 /* EXFUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFC2C9200DD5B20D004A4357 /* EXFConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = AF7FDC3C0DD26A9200ED8839 /* EXFConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFC2C95A0DD5B3B0004A4357 /* EXFTagDefinitionHolder.h in Headers */ = {isa = PBXBuildFile; fileRef = AF7FDC480DD26A9200ED8839 /* EXFTagDefinitionHolder.h */; settings = {ATTRIBUTES = (Private, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF1F78BB0E0A7E470023CDE4 /* iphoneExif_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphoneExif_Prefix.pch; sourceTree = "<group>"; };
+		AF1F78C40E0A7F030023CDE4 /* libiphone-exif.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libiphone-exif.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF7FDC3B0DD26A9200ED8839 /* EXF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXF.h; sourceTree = "<group>"; };
+		AF7FDC3C0DD26A9200ED8839 /* EXFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFConstants.h; sourceTree = "<group>"; };
+		AF7FDC3D0DD26A9200ED8839 /* EXFGPS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFGPS.h; sourceTree = "<group>"; };
+		AF7FDC3E0DD26A9200ED8839 /* EXFGPS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFGPS.m; sourceTree = "<group>"; };
+		AF7FDC3F0DD26A9200ED8839 /* EXFHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFHandlers.h; sourceTree = "<group>"; };
+		AF7FDC400DD26A9200ED8839 /* EXFHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFHandlers.m; sourceTree = "<group>"; };
+		AF7FDC410DD26A9200ED8839 /* EXFJFIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFJFIF.h; sourceTree = "<group>"; };
+		AF7FDC420DD26A9200ED8839 /* EXFJFIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFJFIF.m; sourceTree = "<group>"; };
+		AF7FDC430DD26A9200ED8839 /* EXFJpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFJpeg.h; sourceTree = "<group>"; };
+		AF7FDC440DD26A9200ED8839 /* EXFJpeg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFJpeg.m; sourceTree = "<group>"; };
+		AF7FDC450DD26A9200ED8839 /* EXFMutableMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFMutableMetaData.h; sourceTree = "<group>"; };
+		AF7FDC460DD26A9200ED8839 /* EXFMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFMetaData.h; sourceTree = "<group>"; };
+		AF7FDC470DD26A9200ED8839 /* EXFMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFMetaData.m; sourceTree = "<group>"; };
+		AF7FDC480DD26A9200ED8839 /* EXFTagDefinitionHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFTagDefinitionHolder.h; sourceTree = "<group>"; };
+		AF7FDC490DD26A9200ED8839 /* EXFTagDefinitionHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFTagDefinitionHolder.m; sourceTree = "<group>"; };
+		AF7FDC4A0DD26A9200ED8839 /* EXFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFUtils.h; sourceTree = "<group>"; };
+		AF7FDC4B0DD26A9200ED8839 /* EXFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFUtils.m; sourceTree = "<group>"; };
+		AFC2C8DA0DD58E21004A4357 /* EXFLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFLogging.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFC2C7860DD4A90D004A4357 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFC2C7E80DD4B2AD004A4357 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AF7FDC3A0DD26A6700ED8839 /* EXF */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF1F78C40E0A7F030023CDE4 /* libiphone-exif.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AF1F78BB0E0A7E470023CDE4 /* iphoneExif_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107310486CEB800E47090 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF7FDC3A0DD26A6700ED8839 /* EXF */ = {
+			isa = PBXGroup;
+			children = (
+				AFC2C8DA0DD58E21004A4357 /* EXFLogging.h */,
+				AF7FDC3B0DD26A9200ED8839 /* EXF.h */,
+				AF7FDC3C0DD26A9200ED8839 /* EXFConstants.h */,
+				AF7FDC3D0DD26A9200ED8839 /* EXFGPS.h */,
+				AF7FDC3E0DD26A9200ED8839 /* EXFGPS.m */,
+				AF7FDC3F0DD26A9200ED8839 /* EXFHandlers.h */,
+				AF7FDC400DD26A9200ED8839 /* EXFHandlers.m */,
+				AF7FDC410DD26A9200ED8839 /* EXFJFIF.h */,
+				AF7FDC420DD26A9200ED8839 /* EXFJFIF.m */,
+				AF7FDC430DD26A9200ED8839 /* EXFJpeg.h */,
+				AF7FDC440DD26A9200ED8839 /* EXFJpeg.m */,
+				AF7FDC450DD26A9200ED8839 /* EXFMutableMetaData.h */,
+				AF7FDC460DD26A9200ED8839 /* EXFMetaData.h */,
+				AF7FDC470DD26A9200ED8839 /* EXFMetaData.m */,
+				AF7FDC480DD26A9200ED8839 /* EXFTagDefinitionHolder.h */,
+				AF7FDC490DD26A9200ED8839 /* EXFTagDefinitionHolder.m */,
+				AF7FDC4A0DD26A9200ED8839 /* EXFUtils.h */,
+				AF7FDC4B0DD26A9200ED8839 /* EXFUtils.m */,
+			);
+			name = EXF;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AFC2C7840DD4A90D004A4357 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFC2C95A0DD5B3B0004A4357 /* EXFTagDefinitionHolder.h in Headers */,
+				AFC2C9200DD5B20D004A4357 /* EXFConstants.h in Headers */,
+				AFC2C91F0DD5B202004A4357 /* EXFUtils.h in Headers */,
+				AFC2C91D0DD5B1F2004A4357 /* EXFMetaData.h in Headers */,
+				AFC2C90A0DD5B1CD004A4357 /* EXFJpeg.h in Headers */,
+				AFC2C9090DD5B1C4004A4357 /* EXFJFIF.h in Headers */,
+				AFC2C9080DD5B1B4004A4357 /* EXFHandlers.h in Headers */,
+				AFC2C9070DD5B1A9004A4357 /* EXFGPS.h in Headers */,
+				AFC2C9060DD5B199004A4357 /* EXF.h in Headers */,
+				AFC2C8DB0DD58E21004A4357 /* EXFLogging.h in Headers */,
+				AF1F78BC0E0A7E470023CDE4 /* iphoneExif_Prefix.pch in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AFC2C7870DD4A90D004A4357 /* exifLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFC2C78B0DD4A92C004A4357 /* Build configuration list for PBXNativeTarget "exifLib" */;
+			buildPhases = (
+				AFC2C7840DD4A90D004A4357 /* Headers */,
+				AFC2C7850DD4A90D004A4357 /* Sources */,
+				AFC2C7860DD4A90D004A4357 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = exifLib;
+			productName = geoFix;
+			productReference = AF1F78C40E0A7F030023CDE4 /* libiphone-exif.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iphoneExif" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFC2C7870DD4A90D004A4357 /* exifLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFC2C7850DD4A90D004A4357 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFC2C7940DD4AA4A004A4357 /* EXFGPS.m in Sources */,
+				AFC2C7950DD4AA53004A4357 /* EXFHandlers.m in Sources */,
+				AFC2C7960DD4AA5C004A4357 /* EXFJFIF.m in Sources */,
+				AFC2C7970DD4AA64004A4357 /* EXFJpeg.m in Sources */,
+				AFC2C7990DD4AA77004A4357 /* EXFMetaData.m in Sources */,
+				AFC2C79A0DD4AA84004A4357 /* EXFTagDefinitionHolder.m in Sources */,
+				AFC2C79B0DD4AA8C004A4357 /* EXFUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AFC2C7890DD4A90E004A4357 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = iphoneExif_Prefix.pch;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "iphone-exif";
+			};
+			name = Debug;
+		};
+		AFC2C78A0DD4A90E004A4357 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 0.8;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PREFIX_HEADER = iphoneExif_Prefix.pch;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = "iphone-exif";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 0.8;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_SUFFIX = "";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 0.8;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 1;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos2.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFC2C78B0DD4A92C004A4357 /* Build configuration list for PBXNativeTarget "exifLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFC2C7890DD4A90E004A4357 /* Debug */,
+				AFC2C78A0DD4A90E004A4357 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iphoneExif" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

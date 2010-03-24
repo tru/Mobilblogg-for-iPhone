@@ -112,7 +112,6 @@ static const NSInteger kMessageTextLineCount = 2;
 	if (self.detailTextLabel.text.length) {
 		textHeight = self.textLabel.font.ttLineHeight;
 		subtitleHeight = self.detailTextLabel.font.ttLineHeight;
-		CGFloat paddingY = floor((height - (textHeight + subtitleHeight))/2);
 		
 		self.textLabel.frame = CGRectMake(kMargin, kSmallMargin, self.contentView.width - (kSmallMargin*2), textHeight);
 		self.detailTextLabel.frame = CGRectMake(kMargin, (kSmallMargin*2) + 130 + textHeight, self.contentView.width - (kSmallMargin *2), subtitleHeight);
@@ -138,7 +137,7 @@ static const NSInteger kMessageTextLineCount = 2;
 		
 		self.imageView2.defaultImage = TTIMAGE(@"bundle://Three20.bundle/images/empty.png");
 		if (photo.URL) {
-			self.imageView2.URL = photo.URL;
+			self.imageView2.urlPath = photo.URL;
 		}
 		_commentView.numberOfComments = photo.numcomments;
 		_photo = photo;

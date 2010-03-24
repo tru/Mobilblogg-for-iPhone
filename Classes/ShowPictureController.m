@@ -11,7 +11,7 @@
 #import "BlogListThumbsDataSource.h"
 #import "BlogListModel.h"
 #import "PhotoViewController.h"
-#import "CommentIconView.h"
+#import "MBImageUtils.h"
 
 @implementation ShowPictureController
 
@@ -49,7 +49,8 @@
 	TTDINFO("Setting number of comments to %d", num);
 	
 	/* kind of sheer luck this works :) */
-	_commentIcon.numberComments = num;
+	
+	/* TODO: when we have the number of comments in the toolbar again */
 }
 
 -(void)updateChrome
@@ -81,13 +82,11 @@
 {
 	MBPhoto *p = (MBPhoto*)photo;
 	_photo = p;
-	_commentIcon.numberComments = p.numcomments; 
 }
 
 -(void)loadView
 {
 	[super loadView];
-	MBPhoto *p = (MBPhoto*)_centerPhoto;
 	
 	UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 						 UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
@@ -95,11 +94,11 @@
 	UIButton *infoUIButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
 	[infoUIButton addTarget:self action:@selector(photoInfo) forControlEvents:UIControlEventTouchUpInside];
 	UIBarButtonItem *info = [[[UIBarButtonItem alloc] initWithCustomView:infoUIButton] autorelease];
+	UIBarButtonItem *cmt = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"08-chat.png"]
+															 style:UIBarButtonItemStylePlain
+															target:self
+															action:@selector(comments)] autorelease];
 
-	_commentIcon = [[CommentIconView alloc] initWithNumComments:p.numcomments];
-	UIBarButtonItem *cmt = [[[UIBarButtonItem alloc] initWithCustomView:_commentIcon] autorelease];
-	[_commentIcon addTarget:self action:@selector(comments) forControlEvents:UIControlEventTouchUpInside];
-	
 	NSArray *items = [NSArray arrayWithObjects:cmt, space, _previousButton, space, _nextButton, space, info, nil];
 	
 	_toolbar.items = items;
@@ -107,7 +106,7 @@
 
 -(void)photoInfo
 {
-	MBPhoto *currentPhoto = self.centerPhoto;
+	MBPhoto *currentPhoto = (MBPhoto*)self.centerPhoto;
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:currentPhoto, @"photo", nil];
 	TTURLAction *action = [TTURLAction actionWithURLPath:@"mb://photoinfo"];
 	[action applyAnimated:YES];
@@ -123,7 +122,6 @@
 
 - (void)dealloc {
 	TTDINFO(@"DEALLOC: ShowPictureController");
-	[_commentIcon release];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[super dealloc];
 }

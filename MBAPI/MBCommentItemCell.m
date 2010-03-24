@@ -135,7 +135,7 @@ static const CGFloat kDefaultMessageImageHeight = 34;
 			self.timestampLabel.text = [item.date formatRelativeTime];
 		}
 		if (item.imageURL) {
-			self.imageView2.URL = item.imageURL;
+			self.imageView2.urlPath = item.imageURL;
 		}
 		if (item.comment) {
 			self.styledText.text = item.comment;

@@ -79,6 +79,7 @@
 	[ac applyQuery:[NSDictionary dictionaryWithObject:photos forKey:@"photos"]];
 	[ac applyAnimated:YES];
 	[[TTNavigator navigator] openURLAction:ac];
+	[ac release];
 }
 
 -(void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath

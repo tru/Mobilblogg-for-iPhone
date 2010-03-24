@@ -74,7 +74,6 @@
 		61CFC95110B1B5DC008FEBF2 /* MBCommentItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CFC95010B1B5DC008FEBF2 /* MBCommentItemCell.m */; };
 		61D99AD210B3364D00A5525A /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D99AD110B3364D00A5525A /* PhotoViewController.m */; };
 		61D99C8610B9B2B100A5525A /* 08-chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D99C8510B9B2B100A5525A /* 08-chat.png */; };
-		61D99C9210B9B5F500A5525A /* CommentIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D99C9110B9B5F500A5525A /* CommentIconView.m */; };
 		61D99DD210BAA04300A5525A /* MBPhotoItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D99DD110BAA04300A5525A /* MBPhotoItemCell.m */; };
 		61D99E2B10BAA5F900A5525A /* NSString+MBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D99E2A10BAA5F900A5525A /* NSString+MBAPI.m */; };
 		61D99E4D10BAA83C00A5525A /* 08-chatblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D99E4C10BAA83C00A5525A /* 08-chatblack.png */; };
@@ -245,8 +244,6 @@
 		61D99AD010B3364D00A5525A /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		61D99AD110B3364D00A5525A /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		61D99C8510B9B2B100A5525A /* 08-chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chat.png"; sourceTree = SOURCE_ROOT; };
-		61D99C9010B9B5F500A5525A /* CommentIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentIconView.h; sourceTree = "<group>"; };
-		61D99C9110B9B5F500A5525A /* CommentIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentIconView.m; sourceTree = "<group>"; };
 		61D99DD010BAA04300A5525A /* MBPhotoItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBPhotoItemCell.h; path = MBAPI/MBPhotoItemCell.h; sourceTree = "<group>"; };
 		61D99DD110BAA04300A5525A /* MBPhotoItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBPhotoItemCell.m; path = MBAPI/MBPhotoItemCell.m; sourceTree = "<group>"; };
 		61D99E2910BAA5F900A5525A /* NSString+MBAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MBAPI.h"; path = "MBAPI/NSString+MBAPI.h"; sourceTree = "<group>"; };
@@ -426,8 +423,6 @@
 		613A378B10B0892A00A91801 /* Comments */ = {
 			isa = PBXGroup;
 			children = (
-				61D99C9010B9B5F500A5525A /* CommentIconView.h */,
-				61D99C9110B9B5F500A5525A /* CommentIconView.m */,
 				61885098114EC150000A1E29 /* CommentLabel.h */,
 				61885099114EC150000A1E29 /* CommentLabel.m */,
 				61CFC88B10B08E38008FEBF2 /* CommentModel.h */,
@@ -757,7 +752,6 @@
 				61CFC88D10B08E38008FEBF2 /* CommentModel.m in Sources */,
 				61CFC95110B1B5DC008FEBF2 /* MBCommentItemCell.m in Sources */,
 				61D99AD210B3364D00A5525A /* PhotoViewController.m in Sources */,
-				61D99C9210B9B5F500A5525A /* CommentIconView.m in Sources */,
 				61D99DD210BAA04300A5525A /* MBPhotoItemCell.m in Sources */,
 				61D99E2B10BAA5F900A5525A /* NSString+MBAPI.m in Sources */,
 				61D99F7510BBA91B00A5525A /* UploaderViewController.m in Sources */,

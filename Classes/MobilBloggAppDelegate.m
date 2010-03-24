@@ -91,7 +91,7 @@ BOOL gLogging = FALSE;
 	TTDINFO("Registered with APNS! device token: %@", token);
 	NSString *username = [MBStore getUserName];
 	[[MBPush alloc] initWithUsername:username andToken:token];
-	
+	[token release];
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
