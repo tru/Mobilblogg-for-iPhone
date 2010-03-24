@@ -97,12 +97,14 @@
 										  delegate:self
 								 cancelButtonTitle:NSLocalizedString(@"Ok", nil)
 								 otherButtonTitles:NSLocalizedString(@"Settings", nil),nil];
+		[MBStore removePassword];
 	} else {
 		alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login failed", nil)
 										   message:[err localizedDescription]
 										  delegate:self
 								 cancelButtonTitle:NSLocalizedString(@"Ok", nil)
 								 otherButtonTitles:nil];
+		[self loginDidSucceed];
 
 	}
 

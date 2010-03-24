@@ -104,6 +104,8 @@
 		[UIView	commitAnimations];
 		_doneFirstTime = YES;
 	}
+	
+	[super viewWillAppear:animated];
 }
 
 -(void)MBUserDidReceiveInfo:(MBUser*)user
