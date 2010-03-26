@@ -12,9 +12,12 @@
 #import "MBPhoto.h"
 #import "MBUser.h"
 
-@interface ShowPictureInfoController : TTTableViewController<MBUserDelegateProtocol> {
+#import <MapKit/MapKit.h>
+
+@interface ShowPictureInfoController : TTTableViewController<MBUserDelegateProtocol,MKReverseGeocoderDelegate> {
 	MBPhoto *_photo;
 	TTTableImageItem *_userItem;
+	TTTableLongTextItem *_positionItem;
 }
 
 @end

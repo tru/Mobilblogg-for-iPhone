@@ -37,4 +37,9 @@
 	return [imgView autorelease];
 }
 
+-(UIView*)rightCalloutAccessoryView
+{
+	return [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+}
+
 @end

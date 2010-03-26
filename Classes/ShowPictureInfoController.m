@@ -20,8 +20,10 @@
 	self.variableHeightRows = YES;
 	self.tableViewStyle = UITableViewStyleGrouped;
 	
-	MBUser *user = [[[MBUser alloc] initWithUserName:_photo.user] autorelease];
+	MBUser *user = [[MBUser alloc] initWithUserName:_photo.user];
 	user.delegate = self;
+	
+	[user release];
 	
 	return self;
 }
@@ -34,14 +36,14 @@
 	_userItem.imageStyle = [TTImageStyle styleWithImageURL:nil
 											  defaultImage:TTIMAGE(@"bundle://Three20.bundle/images/empty.png")
 											   contentMode:UIViewContentModeScaleAspectFill
-													  size:CGSizeMake(80, 80) next:TTSTYLE(rounded)];
+													  size:CGSizeMake(60, 60) next:TTSTYLE(rounded)];
 	
 	TTTableImageItem *image = [TTTableImageItem itemWithText:_photo.caption];
 	image.imageURL = _photo.URL;
 	image.imageStyle = [TTImageStyle styleWithImageURL:nil
 										  defaultImage:TTIMAGE(@"bundle://Three20.bundle/images/empty.png")
 										   contentMode:UIViewContentModeScaleAspectFill
-												  size:CGSizeMake(80, 80) next:TTSTYLE(rounded)];
+												  size:CGSizeMake(120, 120) next:TTSTYLE(rounded)];
 	
 	NSMutableArray *items = [NSMutableArray arrayWithObject:image];
 	
@@ -51,8 +53,21 @@
 		bodyItem = [TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:body]];
 		[items addObject:bodyItem];
 	}
+	
 	if (_photo.date) {
 		[items addObject:[TTTableLongTextItem itemWithText:[NSString stringWithFormat:NSLocalizedString(@"Taken at %@", nil), [_photo.date formatDateTime]]]];
+	}
+	
+	if (_photo.location) {
+		_positionItem = [TTTableLongTextItem itemWithText:NSLocalizedString(@"Image position: ", nil)];
+														   
+		[items addObject:_positionItem];
+		
+		MKReverseGeocoder *geocoder = [[MKReverseGeocoder alloc] initWithCoordinate:_photo.location.coordinate];
+		geocoder.delegate = self;
+		[geocoder start];
+//		[geocoder release];
+		
 	}
 	
 	NSArray *author = [NSArray arrayWithObjects:
@@ -63,6 +78,33 @@
 
 	
 	self.dataSource = [TTSectionedDataSource dataSourceWithArrays:@"Photo", items, @"Author", author, nil];
+}
+
+-(void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
+{
+	TTDINFO(@"Did find placemark!");
+	
+	NSString *locality;
+	
+	if (placemark.thoroughfare) {
+		locality = placemark.thoroughfare;
+	} else if (placemark.locality) {
+		locality = placemark.locality;
+	} else if (placemark.administrativeArea) {
+		locality = placemark.administrativeArea;
+	} else {
+		locality = NSLocalizedString(@"Somewhere", nil);
+	}
+	
+	_positionItem.text = [NSString stringWithFormat:NSLocalizedString(@"Image position: %@, %@", nil), locality, placemark.country];
+	[self.tableView reloadData];
+}
+
+-(void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
+{
+	TTDINFO(@"Did NOT find placemark!");
+	_positionItem.text = NSLocalizedString(@"Image position: unknown", nil);
+	[self.tableView reloadData];
 }
 
 -(void)MBUserDidReceiveInfo:(MBUser *)user

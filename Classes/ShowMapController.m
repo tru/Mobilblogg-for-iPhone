@@ -114,6 +114,16 @@
 	}
 }
 
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+	TTDINFO("tapped!");
+	MBPhoto *p = (MBPhoto*)[view annotation];
+	TTURLAction *ac = [TTURLAction actionWithURLPath:@"mb://photoinfo"];
+	[ac applyAnimated:YES];
+	[ac applyQuery:[NSDictionary dictionaryWithObject:p forKey:@"photo"]];
+	[[TTNavigator navigator] openURLAction:ac];
+}
+
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
 	MBPhoto *p = (MBPhoto*)annotation;	
