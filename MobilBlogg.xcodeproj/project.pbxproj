@@ -78,6 +78,8 @@
 		61D99E2B10BAA5F900A5525A /* NSString+MBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D99E2A10BAA5F900A5525A /* NSString+MBAPI.m */; };
 		61D99E4D10BAA83C00A5525A /* 08-chatblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D99E4C10BAA83C00A5525A /* 08-chatblack.png */; };
 		61D99F7510BBA91B00A5525A /* UploaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D99F7410BBA91B00A5525A /* UploaderViewController.m */; };
+		61DA4E7F1160BD920048EC1B /* commentView2.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DA4E7E1160BD920048EC1B /* commentView2.png */; };
+		61DA4F011160CBEF0048EC1B /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DA4F001160CBEF0048EC1B /* frame.png */; };
 		61E0D48D10A430A800809C22 /* MBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D48C10A430A800809C22 /* MBLogin.m */; };
 		61E0D4E810A4549800809C22 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */; };
 		61E0D50610A4567E00809C22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E0D50510A4567E00809C22 /* Security.framework */; };
@@ -251,6 +253,8 @@
 		61D99E4C10BAA83C00A5525A /* 08-chatblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chatblack.png"; sourceTree = SOURCE_ROOT; };
 		61D99F7310BBA91B00A5525A /* UploaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploaderViewController.h; sourceTree = "<group>"; };
 		61D99F7410BBA91B00A5525A /* UploaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderViewController.m; sourceTree = "<group>"; };
+		61DA4E7E1160BD920048EC1B /* commentView2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentView2.png; sourceTree = "<group>"; };
+		61DA4F001160CBEF0048EC1B /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame.png; sourceTree = "<group>"; };
 		61E0D48B10A430A800809C22 /* MBLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBLogin.h; path = MBAPI/MBLogin.h; sourceTree = "<group>"; };
 		61E0D48C10A430A800809C22 /* MBLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBLogin.m; path = MBAPI/MBLogin.m; sourceTree = "<group>"; };
 		61E0D4E610A4549800809C22 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = SFHFKeychainUtils/SFHFKeychainUtils.m; sourceTree = SOURCE_ROOT; };
@@ -332,6 +336,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61DA4F001160CBEF0048EC1B /* frame.png */,
+				61DA4E7E1160BD920048EC1B /* commentView2.png */,
 				618850D6114EC7DB000A1E29 /* commentView.png */,
 				6113D266113BFB1300DA1ECD /* Default.png */,
 				61D99E4C10BAA83C00A5525A /* 08-chatblack.png */,
@@ -704,6 +710,8 @@
 				61D99E4D10BAA83C00A5525A /* 08-chatblack.png in Resources */,
 				6113D267113BFB1300DA1ECD /* Default.png in Resources */,
 				618850D7114EC7DB000A1E29 /* commentView.png in Resources */,
+				61DA4E7F1160BD920048EC1B /* commentView2.png in Resources */,
+				61DA4F011160CBEF0048EC1B /* frame.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

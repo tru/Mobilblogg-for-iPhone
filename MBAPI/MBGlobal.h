@@ -18,4 +18,4 @@
 
 #define kMobilBloggHTTPProtocol @"http://"
 #define kMobilBloggHTTPBasePath @"api.mobilblogg.nu/o.o.i.s"
-#define kMobilBloggTemplateName @".api.t"
+#define kMobilBloggTemplateName @"api_v2.0.t"

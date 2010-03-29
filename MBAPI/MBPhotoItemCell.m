@@ -102,6 +102,10 @@ static const NSInteger kMessageTextLineCount = 2;
 	if (_imageView2) {
 		_imageView2.frame = CGRectMake(kSmallMargin + ((self.contentView.width/2) - (75)), kVPadding + self.textLabel.font.ttLineHeight, 150, 130);
 		left = _imageView2.right + kSmallMargin;
+		
+		_imageFrame.urlPath	= @"bundle://frame.png";
+		_imageFrame.frame = CGRectMake(kSmallMargin + ((self.contentView.width/2) - (75)) - 6, kVPadding + self.textLabel.font.ttLineHeight - 5 , 160, 140);
+		
 	} else {
 		left = kHPadding;
 	}
@@ -120,7 +124,7 @@ static const NSInteger kMessageTextLineCount = 2;
 		self.detailTextLabel.frame = CGRectZero;
 	}
 	
-	_commentView.frame = CGRectMake(kSmallMargin + ((self.contentView.width/2) - (109/2)), (kVPadding*2) + 130 + textHeight + subtitleHeight, 109, 22);
+	_commentView.frame = CGRectMake(kSmallMargin + ((self.contentView.width/2) - (109/2)), (kVPadding*2) + 127 + textHeight + subtitleHeight, 109, 22);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -154,8 +158,10 @@ static const NSInteger kMessageTextLineCount = 2;
 - (TTImageView*)imageView2 {
 	if (!_imageView2) {
 		_imageView2 = [[TTImageView alloc] init];
+		_imageFrame = [[TTImageView alloc] init];
 		//    _imageView2.defaultImage = TTSTYLEVAR(personImageSmall);
 		//    _imageView2.style = TTSTYLE(threadActorIcon);
+		[self addSubview:_imageFrame];
 		[self.contentView addSubview:_imageView2];
 	}
 	return _imageView2;

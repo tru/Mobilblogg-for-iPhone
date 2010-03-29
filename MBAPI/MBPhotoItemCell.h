@@ -15,6 +15,7 @@
 	CommentLabel *_commentView;
 	TTImageView *_imageView2;
 	MBPhoto	*_photo;
+	TTImageView *_imageFrame;
 }
 
 @property(nonatomic,readonly,retain) UILabel* subtitleLabel;
