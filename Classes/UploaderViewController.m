@@ -305,8 +305,8 @@
 	if ([alertView.message isEqualToString:NSLocalizedString(@"Wrong secret word!", nil)]) {
 		_uploading = NO;
 		_secretWord = nil;
+		self.navigationItem.rightBarButtonItem.enabled = YES;
 		[MBStore setObject:nil forKey:@"secretWord"];
-		
 	} else {
 		TTDINFO("Closing window");
 		[self.navigationController popViewControllerAnimated:YES];
