@@ -20,11 +20,16 @@
 
     /* Clean table first */
     [self.items removeAllObjects];
-		
+
+	BOOL haveGPS = false;
+	
 	NSUInteger index = 0;
     for (MBPhoto *photo in [(id<BlogListModelProtocol>)self.model results]) {
 		photo.index = index ++;
         [self.items addObject:[photo retain]];
+		if (photo.location) {
+			haveGPS = true;
+		}
 	}
 	
 	if (([self.items count] % 10) == 0) {
@@ -32,7 +37,9 @@
 	}
 	
 	if (self.tableCtrl) {
-		[self.tableCtrl performSelector:@selector(dataSourceDidFinishLoading)];
+		if (haveGPS) {
+			[self.tableCtrl performSelector:@selector(dataSourceDidFinishLoadingHaveGPS)];
+		}
 	}
 	
 }

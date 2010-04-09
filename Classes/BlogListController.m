@@ -43,7 +43,7 @@
 	return [self initWithArguments:arguments];
 }
 
--(void)dataSourceDidFinishLoading
+-(void)dataSourceDidFinishLoadingHaveGPS
 {
 	self.navigationItem.rightBarButtonItem.enabled = YES;
 }
